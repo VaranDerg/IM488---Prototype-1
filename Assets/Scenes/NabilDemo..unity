@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 864919854}
   - component: {fileID: 864919853}
   - component: {fileID: 864919856}
+  - component: {fileID: 864919857}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -417,8 +418,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  dashForce: 200
+  dashForce: 50
+  dashTime: 0.5
   maxSpeed: 50
+--- !u!114 &864919857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864919852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cb4e680c74ac54fb026ff15a68e5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spellSlotSize: 3
+  _spellSlots: 
 --- !u!1 &972018264
 GameObject:
   m_ObjectHideFlags: 0
