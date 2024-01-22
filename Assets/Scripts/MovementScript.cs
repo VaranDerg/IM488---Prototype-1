@@ -18,34 +18,21 @@ public class MovementScript : MonoBehaviour
         Dashing
     };
     private MovementState _moveState;
-    private Vector3 _input;
+    private Vector3 _inputDirection;
     private Rigidbody rb;
     private PlayerActions _inputSystem;
 
 
-
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
-        
 
-        
-        
     }
 
+    // Update is called once per frame
     private void Update()
     {
-        //getting wasd input
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float veriticalInput = Input.GetAxis("Vertical");
-        //wasd input vector
-        _input = new Vector3(horizontalInput, 0, veriticalInput);
-        Move(_input);
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Dash(input, dashForce);
-        }*/
+        Move();
         MaxSpeedControl();
     }
 
@@ -55,7 +42,7 @@ public class MovementScript : MonoBehaviour
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
-    
+
 
     #region StartUp
     /// <summary>
@@ -84,34 +71,35 @@ public class MovementScript : MonoBehaviour
         _inputSystem = new PlayerActions();
         _inputSystem.PlayerMovement.Enable();
 
-        _inputSystem.PlayerMovement.Dash.performed += Dash;
+        _inputSystem.PlayerMovement.Move.performed += MoveInput;
+        _inputSystem.PlayerMovement.Move.canceled += context => _inputDirection = Vector2.zero;
+
+        _inputSystem.PlayerMovement.Dash.performed += DashInput;
     }
     #endregion
 
 
-    #region Movement Actions
+    #region Input Actions
     /// <summary>
-    /// modular movement function, just give it proper input vector
+    /// Gets the wasd input and stores it in a Vector3
     /// </summary>
-    /// <param name="input"></param>
-    private void Move(Vector3 input)
+    /// <param name="context"></param>
+    public void MoveInput(InputAction.CallbackContext context)
     {
-        if (_moveState == MovementState.Dashing)
-            return;
-        rb.velocity = input * speed;
+        _inputDirection = new Vector3(context.ReadValue<Vector2>().x,0, context.ReadValue<Vector2>().y);
     }
 
     /// <summary>
     /// Allows the player to dash in the direction he is moving in
     /// </summary>
     /// <param name="context"></param>
-    public void Dash(InputAction.CallbackContext context)
+    public void DashInput(InputAction.CallbackContext context)
     {
         if (_moveState == MovementState.Dashing)
             return;
         _moveState = MovementState.Dashing;
         rb.velocity = Vector3.zero;
-        rb.AddForce(_input * dashForce, ForceMode.Impulse);
+        rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
         //Debug.Log("Dash");
         StartCoroutine(DashCoolDown());
     }
@@ -120,6 +108,19 @@ public class MovementScript : MonoBehaviour
     {
         yield return new WaitForSeconds(dashTime);
         _moveState = MovementState.Stationary;
+    }
+    #endregion
+
+    #region Movement
+    /// <summary>
+    /// modular movement function, just give it proper input vector
+    /// </summary>
+    /// <param name="input"></param>
+    private void Move()
+    {
+        if (_moveState == MovementState.Dashing)
+            return;
+        rb.velocity = _inputDirection * speed;
     }
     #endregion
 }
