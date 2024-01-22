@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpellCasting : MonoBehaviour
 {
-    [SerializeField] private float _spellSlotSize;
-    [SerializeField] private List<Elements.SpellElement> _spellSlots;
+    [SerializeField] private float _elementSlotSize;
+    [SerializeField] private List<Elements.SpellElement> _elementSlots;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +24,8 @@ public class SpellCasting : MonoBehaviour
 
     public void AddElementToSpellSlot(Elements.SpellElement element)
     {
-        if (_spellSlots.Count >= _spellSlotSize)
+        if (_elementSlots.Count >= _elementSlotSize)
             return;
-        _spellSlots.Add(element);
+        _elementSlots.Add(element);
     }
 }
