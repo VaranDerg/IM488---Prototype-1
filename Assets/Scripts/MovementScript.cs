@@ -8,6 +8,7 @@ public class MovementScript : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float dashForce;
+    [SerializeField] float dashTime;
     [SerializeField] float maxSpeed;
 
     public enum MovementState
@@ -57,11 +58,15 @@ public class MovementScript : MonoBehaviour
     
 
     #region StartUp
+    /// <summary>
+    /// You know how start works I'm not going to explain it to you
+    /// </summary>
     void Start()
     {
         VariableAssignment();
         InputSystemAssignment();
     }
+
     /// <summary>
     /// Assigns variables before play
     /// </summary>
@@ -70,6 +75,7 @@ public class MovementScript : MonoBehaviour
         _moveState = MovementState.Stationary;
         rb = GetComponent<Rigidbody>();
     }
+
     /// <summary>
     /// Set up for the Input System
     /// </summary>
@@ -82,13 +88,16 @@ public class MovementScript : MonoBehaviour
     }
     #endregion
 
+
     #region Movement Actions
     /// <summary>
     /// modular movement function, just give it proper input vector
     /// </summary>
     /// <param name="input"></param>
     private void Move(Vector3 input)
-    {  
+    {
+        if (_moveState == MovementState.Dashing)
+            return;
         rb.velocity = input * speed;
     }
 
@@ -98,15 +107,19 @@ public class MovementScript : MonoBehaviour
     /// <param name="context"></param>
     public void Dash(InputAction.CallbackContext context)
     {
+        if (_moveState == MovementState.Dashing)
+            return;
+        _moveState = MovementState.Dashing;
         rb.velocity = Vector3.zero;
         rb.AddForce(_input * dashForce, ForceMode.Impulse);
-        Debug.Log("Dash");
-        
+        //Debug.Log("Dash");
+        StartCoroutine(DashCoolDown());
     }
 
     private IEnumerator DashCoolDown()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(dashTime);
+        _moveState = MovementState.Stationary;
     }
     #endregion
 }
