@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af6f494cb609e143a185f69a4da5db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 10
   dashForce: 200
   maxSpeed: 50
 --- !u!1 &972018264
