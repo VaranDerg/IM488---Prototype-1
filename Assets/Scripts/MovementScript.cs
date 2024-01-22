@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class MovemenScript : MonoBehaviour
+public class MovementScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    Vector3 input;
-    Rigidbody rb;
     [SerializeField] float speed;
     [SerializeField] float dashForce;
+    [SerializeField] float maxSpeed;
+
+    private Vector3 input;
+    private Rigidbody rb;
+    private PlayerActions _input;
 
     void Start()
     {
@@ -20,29 +21,42 @@ public class MovemenScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
+        
+        
+    }
+
+    private void Update()
+    {
         //getting wasd input
         float horizontalInput = Input.GetAxis("Horizontal");
         float veriticalInput = Input.GetAxis("Vertical");
         //wasd input vector
-        input = new Vector3 (horizontalInput, 0,veriticalInput);
+        input = new Vector3(horizontalInput, 0, veriticalInput);
         Move(input);
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Dash(input, dashForce);
         }
-        
+        MaxSpeedControl();
     }
+
+    private void MaxSpeedControl()
+    {
+        if (rb.velocity.magnitude > maxSpeed)
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+    }
+
+    #region Movement Actions
     /// <summary>
     /// modular movement function, just give it proper input vector
     /// </summary>
     /// <param name="input"></param>
     private void Move(Vector3 input)
-    {
-        
-        rb.velocity = input * speed * Time.deltaTime;
-
-
+    {  
+        rb.velocity = input * speed;
     }
     /// <summary>
     /// Allows the player to dash in the direction he is moving in
@@ -52,5 +66,7 @@ public class MovemenScript : MonoBehaviour
     private void Dash(Vector3 input, float dashForce)
     {
         rb.AddForce(input * dashForce, ForceMode.Impulse);
+        Debug.Log("Dash");
     }
+    #endregion
 }

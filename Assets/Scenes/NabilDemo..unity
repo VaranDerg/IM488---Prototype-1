@@ -387,7 +387,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!4 &864919855
 Transform:
   m_ObjectHideFlags: 0
@@ -416,8 +416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af6f494cb609e143a185f69a4da5db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
-  dashForce: 15
+  speed: 50
+  dashForce: 200
+  maxSpeed: 50
 --- !u!1 &972018264
 GameObject:
   m_ObjectHideFlags: 0

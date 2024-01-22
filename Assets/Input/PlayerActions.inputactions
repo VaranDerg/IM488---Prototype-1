@@ -1,0 +1,34 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "Player Movement",
+            "id": "7eba90f2-afc8-4943-980c-cbde6b2ce682",
+            "actions": [
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "b940eaaa-b41d-4134-9982-3ebbd4e84e1a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "779153e7-f49b-4716-a5b4-813c478be8d6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
