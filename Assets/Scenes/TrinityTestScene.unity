@@ -5281,7 +5281,7 @@ MonoBehaviour:
   speed: 10
   dashForce: 70
   dashTime: 0.2
-  dashCooldown: 0
+  dashCooldown: 0.1
   maxSpeed: 50
 --- !u!114 &864919857
 MonoBehaviour:
