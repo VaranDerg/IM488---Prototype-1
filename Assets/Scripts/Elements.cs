@@ -6,7 +6,7 @@ public class Elements : MonoBehaviour
 {
     public enum SpellElement
     {
-        Empty,
+        None,
         Placeholder
     };
 }

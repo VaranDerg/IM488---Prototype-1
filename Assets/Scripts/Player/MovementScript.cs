@@ -9,7 +9,7 @@ public class MovementScript : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float dashForce;
     [SerializeField] float dashTime;
-    [SerializeField] float dashCooldown;
+    [SerializeField] float dashCooldownTime;
     [SerializeField] float maxSpeed;
 
     public enum MovementState
@@ -18,6 +18,7 @@ public class MovementScript : MonoBehaviour
         Moving,
         Dashing
     };
+    private bool dashCoolingDown;
     private MovementState _moveState;
     private Vector3 _inputDirection;
     private Rigidbody rb;
@@ -96,19 +97,23 @@ public class MovementScript : MonoBehaviour
     /// <param name="context"></param>
     public void DashInput(InputAction.CallbackContext context)
     {
-        if (_moveState == MovementState.Dashing)
+        if (dashCoolingDown)
             return;
         _moveState = MovementState.Dashing;
+        dashCoolingDown = true;
+
         rb.velocity = Vector3.zero;
         rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
         //Debug.Log("Dash");
-        StartCoroutine(DashCoolDown());
+        StartCoroutine(DashProcess());
     }
 
-    private IEnumerator DashCoolDown()
+    private IEnumerator DashProcess()
     {
-        yield return new WaitForSeconds(dashTime + dashCooldown);
+        yield return new WaitForSeconds(dashTime);
         _moveState = MovementState.Stationary;
+        yield return new WaitForSeconds(dashCooldownTime);
+        dashCoolingDown = false;
     }
     #endregion
 
