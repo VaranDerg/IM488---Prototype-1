@@ -9,6 +9,7 @@ public class MovementScript : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float dashForce;
     [SerializeField] float dashTime;
+    [SerializeField] float dashCooldown;
     [SerializeField] float maxSpeed;
 
     public enum MovementState
@@ -106,7 +107,7 @@ public class MovementScript : MonoBehaviour
 
     private IEnumerator DashCoolDown()
     {
-        yield return new WaitForSeconds(dashTime);
+        yield return new WaitForSeconds(dashTime + dashCooldown);
         _moveState = MovementState.Stationary;
     }
     #endregion
