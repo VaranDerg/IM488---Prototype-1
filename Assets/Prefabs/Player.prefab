@@ -147,7 +147,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 11db07fc-7d1e-4f2a-b58b-59b810a12d28
     m_ActionName: Player Movement/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Movement
   m_SplitScreenIndex: -1
