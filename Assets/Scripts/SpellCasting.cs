@@ -16,16 +16,16 @@ public class SpellCasting : MonoBehaviour
     void Update()
     {
         //Ignore me I am just for testing purposes
-        if(Input.GetKeyDown(KeyCode.P))
+        /*if(Input.GetKeyDown(KeyCode.P))
         {
             AddElementToSpellSlot(Elements.SpellElement.Placeholder);
-        }
+        }*/
     }
 
-    public void AddElementToSpellSlot(Elements.SpellElement element)
+    /*public void AddElementToSpellSlot(Elements.SpellElement element)
     {
         if (_elementSlots.Count >= _elementSlotSize)
             return;
         _elementSlots.Add(element);
-    }
+    }*/
 }
