@@ -20,6 +20,16 @@ public class GameRoundHandler : MonoBehaviour
         StartCoroutine(RoundTimerCountDown());
     }
 
+    public void P1Won()
+    {
+
+    }
+
+    public void P2Won()
+    {
+
+    }
+
     public void RoundEnd()
     {
 
