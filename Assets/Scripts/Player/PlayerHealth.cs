@@ -18,4 +18,13 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
     {
         _currentHealth -= damage;
     }
+
+    private bool HasDied()
+    {
+        if(_currentHealth <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }
