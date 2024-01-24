@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameRoundHandler : MonoBehaviour
 {
     [SerializeField] private float _roundTimerLength;
+    [SerializeField] private Vector3 p1StartLoc;
+    [SerializeField] private Vector3 p2StartLoc;
     private float _currentRoundTime;
     private float _p1Score;
     private float _p2Score;
@@ -24,10 +26,11 @@ public class GameRoundHandler : MonoBehaviour
         if (P1 == null)
         {
             P1 = inGO;
+            P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
             return;
         }
         P2 = inGO;
-        
+        P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
     }
 
     void RoundStart()

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private MovementScript _pMovement;
     [SerializeField] private PlayerHealth _pHealth;
+
+/*    [Header("Variables")]
+    [SerializeField] private bool isP1;*/
 
     // Start is called before the first frame update
     void Start()
@@ -13,9 +17,8 @@ public class PlayerManager : MonoBehaviour
         GameRoundHandler.instance.AssignPlayer(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerStartingLocation(Vector3 startPos)
     {
-        
+        transform.position = startPos;
     }
 }
