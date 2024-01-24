@@ -5,25 +5,28 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Author: Liz
-/// The MenuController contains raw, basic functionality for very simple UI usage. It holds basic functions that all menus should be able to perform.
+/// The BaseMenuController contains raw, basic functionality for very simple UI usage. It holds basic functions that all menus should be able to perform.
 /// </summary>
-public class MenuController : MonoBehaviour
+public class BaseMenuController : MonoBehaviour
 {
     //Include every menu "page" in this list.
-    [SerializeField] private List<GameObject> _menuPages;
+    [SerializeField] protected List<GameObject> MenuPages;
 
-    private void Start()
+    protected virtual void Awake()
     {
-        SetPageActive(_menuPages[0]);
+        if (MenuPages.Count > 0)
+        {
+            SetPageActive(MenuPages[0]);
+        }
     }
 
     /// <summary>
-    /// Pass in a page via the inspector. Alternatively, reference the "_menuPages" list.
+    /// Pass in a page via the inspector. Alternatively, reference the "MenuPages" list.
     /// </summary>
     /// <param name="page">This page will be enabled.</param>
     public void SetPageActive(GameObject page)
     {
-        foreach (GameObject p in _menuPages)
+        foreach (GameObject p in MenuPages)
         {
             p.SetActive(false);
         }
@@ -38,13 +41,5 @@ public class MenuController : MonoBehaviour
     public void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
-    }
-
-    /// <summary>
-    /// Closes the game.
-    /// </summary>
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
