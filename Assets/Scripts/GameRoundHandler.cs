@@ -9,9 +9,24 @@ public class GameRoundHandler : MonoBehaviour
     private float _p1Score;
     private float _p2Score;
 
+    internal static GameRoundHandler instance;
+    internal GameObject P1;
+    internal GameObject P2;
+
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+    }
+
+    public void AssignPlayer(GameObject inGO)
+    {
+        if (P1 == null)
+        {
+            P1 = inGO;
+            return;
+        }
+        P2 = inGO;
         
     }
 
