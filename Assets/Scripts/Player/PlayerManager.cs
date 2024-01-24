@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameRoundHandler.instance.AssignPlayer(gameObject);
+        GameRoundHandler.Instance.AssignPlayer(gameObject);
     }
 
     public void PlayerStartingLocation(Vector3 startPos)
