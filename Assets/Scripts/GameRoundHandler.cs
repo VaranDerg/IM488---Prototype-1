@@ -21,16 +21,17 @@ public class GameRoundHandler : MonoBehaviour
         instance = this;
     }
 
-    public void AssignPlayer(GameObject inGO)
+    public PlayerTag AssignPlayer(GameObject inGO)
     {
         if (P1 == null)
         {
             P1 = inGO;
             P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
-            return;
+            return PlayerTag.PLAYER1;
         }
         P2 = inGO;
         P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
+        return PlayerTag.PLAYER2;
     }
 
     void RoundStart()

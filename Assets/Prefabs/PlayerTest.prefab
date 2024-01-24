@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4154672118953922561}
   - component: {fileID: 4154672118953922564}
   - component: {fileID: 1253072382235262524}
+  - component: {fileID: 3494249741853352444}
+  - component: {fileID: 3264294643241418380}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Untagged
@@ -146,6 +148,34 @@ MonoBehaviour:
   dashTime: 0.2
   dashCooldownTime: 0.3
   maxSpeed: 50
+--- !u!114 &3494249741853352444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154672118953922560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a8328c3e28f4b4d88d248f9be9e5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 5
+--- !u!114 &3264294643241418380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154672118953922560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c616f336a4ff8a45b78c514da776a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pMovement: {fileID: 0}
+  _pHealth: {fileID: 3494249741853352444}
+  _pController: {fileID: 1253072382235262524}
 --- !u!1 &4154672119527252999
 GameObject:
   m_ObjectHideFlags: 0
