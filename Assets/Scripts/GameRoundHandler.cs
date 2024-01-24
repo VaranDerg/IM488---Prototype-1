@@ -10,9 +10,11 @@ public class GameRoundHandler : MonoBehaviour
     private const int _winsRequired = 3;
     private float _currentRoundTime;
     int _p1Wins, _p2Wins;
+    private Coroutine _timerCountdown;
 
     internal GameObject P1;
     internal GameObject P2;
+
     public enum Player
     {
         one = 0,
@@ -38,10 +40,8 @@ public class GameRoundHandler : MonoBehaviour
         P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
     }
 
-    void RoundStart()
-    {
-        StartCoroutine(RoundTimerCountDown());
-    }
+    void RoundStart() => _timerCountdown = StartCoroutine(RoundTimerCountDown());
+    
     void Awake() => Reset();
     void OnEnable() => Instance = this;
     void OnDisable() => Instance = null;
@@ -89,6 +89,9 @@ public class GameRoundHandler : MonoBehaviour
 
     public void RoundEnd()
     {
+        if(_timerCountdown != null)
+            StopCoroutine(_timerCountdown);
+
         var rt = GameRoundHandler.Instance;
 
         GameRoundHandler.Instance.RecordRoundWinner(winner: GameRoundHandler.Player.one);
