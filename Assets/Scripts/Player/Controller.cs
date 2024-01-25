@@ -18,14 +18,18 @@ public class Controller : MonoBehaviour
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }*/
-
+    [Header("Movement Variables")]
     [SerializeField] float speed;
     [SerializeField] float dashForce;
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldownTime;
     [SerializeField] float maxSpeed;
+    [Space]
+
+    [Header("Spells")]
     //[SerializeField] private List<ISpell> spellList;
-    [SerializeField] private List<AbstractSpell> absSpellList;
+    [SerializeField] private List<AbstractSpell> manualSpellList;
+    [SerializeField] private List<AbstractSpell> dashSpellList;
     
 
     public enum MovementState
@@ -64,21 +68,36 @@ public class Controller : MonoBehaviour
         return lastNonZeroMovement;
     }
 
-    public void AddSpellToList(AbstractSpell newSpell)
+    public void AddManualSpellToList(AbstractSpell newSpell)
     {
-        absSpellList.Add(newSpell);
+        manualSpellList.Add(newSpell);
+    }
+
+    public void AddDashSpellToList(AbstractSpell newSpell)
+    {
+        dashSpellList.Add(newSpell);
     }
 
 
     //Temporary
-    public void OtherStartingSpells()
+    public void AddManualStartingSpells()
     {
         foreach (AbstractSpell currentSpell in GetComponentsInChildren<AbstractSpell>())
         {
             Debug.Log("FoundSpell");
-            absSpellList.Add(currentSpell);
+            manualSpellList.Add(currentSpell);
         }
     }
+    //Temporary
+    public void AddDashStartingSpells()
+    {
+        foreach (AbstractSpell currentSpell in GetComponentsInChildren<AbstractSpell>())
+        {
+            Debug.Log("FoundSpell");
+            dashSpellList.Add(currentSpell);
+        }
+    }
+
 
     #region StartUp
     /// <summary>
@@ -96,8 +115,10 @@ public class Controller : MonoBehaviour
     {
         _moveState = MovementState.Stationary;
         rb = GetComponent<Rigidbody>();
-        //AddStartingSpells();
-        OtherStartingSpells();
+
+        //TEMPORARY
+        AddManualStartingSpells();
+        AddDashStartingSpells();
     }
 
     #endregion
@@ -129,7 +150,9 @@ public class Controller : MonoBehaviour
 
         rb.velocity = Vector3.zero;
         rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
-        //Debug.Log("Dash");
+
+        DashSpellCast();
+
         StartCoroutine(DashProcess());
     }
 
@@ -137,13 +160,21 @@ public class Controller : MonoBehaviour
     {
         if(context.started)
         {
-            foreach (ISpell currentSpell in absSpellList)
+            foreach (ISpell currentSpell in manualSpellList)
             {
                 Debug.Log("Cast Manual Spell");
                 currentSpell.Execute();
             }
         }
-        
+    }
+
+    public void DashSpellCast()
+    {
+        foreach (ISpell currentSpell in dashSpellList)
+        {
+            Debug.Log("Cast Dash Spell");
+            currentSpell.Execute();
+        }
     }
 
     private IEnumerator DashProcess()
