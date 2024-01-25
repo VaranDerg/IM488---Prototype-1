@@ -35,7 +35,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
             timeTillNextTick -= deltaTime * tickRateScalar;
         else
         {
-            Execute();
+            if(castMethod == CastingMethod.AUTO)
+                Execute();
 
             timeTillNextTick = tickRate;
         }

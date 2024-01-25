@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class AbstractPool : MonoBehaviour
 {
     [SerializeField]
+    PoolSpawnType spawnType = PoolSpawnType.UNDER_SPAWNER;
+
+    [SerializeField]
     float duration;
 
     [SerializeField]
@@ -25,6 +28,10 @@ public abstract class AbstractPool : MonoBehaviour
     public abstract void Execute();
 
     protected abstract void ChildTick();
+
+    protected abstract void OnSpawn();
+
+    protected abstract void OnExpiration();
 
     public void Tick(float deltaTime)
     {
@@ -48,7 +55,31 @@ public abstract class AbstractPool : MonoBehaviour
 
     void Deactivate()
     {
+        OnExpiration();
+
         gameObject.SetActive(false);
+    }
+
+    public void AssignPlayer(Player tag)
+    {
+        owner = tag;
+    }
+
+    private Vector3 GetSpawnPosition()
+    {
+        switch (spawnType)
+        {
+            case PoolSpawnType.UNDER_SPAWNER:
+                return new Vector3(transform.position.x, 0, transform.position.z);
+
+            case PoolSpawnType.RANDOM:
+                Vector3 randomSphere = Random.insideUnitSphere;
+
+                return new Vector3(randomSphere.x, 0, randomSphere.z).normalized;
+
+            default:
+                return Vector3.zero;
+        }
     }
 
     private void Start()
@@ -57,6 +88,10 @@ public abstract class AbstractPool : MonoBehaviour
         timeTillNextTick = startDelay;
 
         StartCoroutine(DelayedDeactivate());
+
+        transform.position = GetSpawnPosition();
+
+        OnSpawn();
     }
 
     private void FixedUpdate()
@@ -73,4 +108,10 @@ public abstract class AbstractPool : MonoBehaviour
     {
         objectsInPool.Remove(other.gameObject);
     }
+}
+
+public enum PoolSpawnType
+{
+    UNDER_SPAWNER,
+    RANDOM
 }

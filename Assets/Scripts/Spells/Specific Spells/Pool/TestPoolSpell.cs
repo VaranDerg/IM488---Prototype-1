@@ -9,13 +9,11 @@ public class TestPoolSpell : AbstractSpell
 
     public override void Execute()
     {
-        GameObject projectileObj = Instantiate(poolPrefab, transform.position, Quaternion.identity);
+        GameObject poolObj = Instantiate(poolPrefab, transform.position, Quaternion.identity);
 
-        TestProjectile projectile = projectileObj.GetComponent<TestProjectile>();
+        TestPool pool = poolObj.GetComponent<TestPool>();
 
-        projectile.AssignPlayer(owner);
-
-        projectile.Launch();
+        pool.AssignPlayer(owner);
     }
 
     protected override void ChildTick()

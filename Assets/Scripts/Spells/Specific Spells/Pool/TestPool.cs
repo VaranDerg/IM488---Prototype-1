@@ -9,12 +9,26 @@ public class TestPool : AbstractPool
 
     public override void Execute()
     {
-        particles.Play();
+        
+
+        Debug.Log("Objects in Pool: ");
+        foreach (GameObject obj in objectsInPool)
+            Debug.Log(obj.name);
     }
 
     protected override void ChildTick()
     {
         
+    }
+
+    protected override void OnExpiration()
+    {
+        
+    }
+
+    protected override void OnSpawn()
+    {
+        particles.Play();
     }
 
 }
