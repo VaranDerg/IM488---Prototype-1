@@ -46,11 +46,17 @@ public abstract class AbstractProjectile : MonoBehaviour
 
             OnPlayerCollision(other);
         }
-        else if (other.CompareTag("Environment"))
-            OnEnvironmentCollision(other);
+        
 
         if (!isPersistent)
             Deactivate();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log("HitWall");
+        if (collision.gameObject.CompareTag("Environment"))
+            OnEnvironmentCollision(collision);
     }
 
     private void FixedUpdate()
@@ -98,10 +104,9 @@ public abstract class AbstractProjectile : MonoBehaviour
             yield return new WaitForEndOfFrame();
             lastVelocity = rb.velocity;
         }
-        
     }
 
-    private void BounceOffSurface(Collision other)
+    public void BounceOffSurface(Collision other)
     {
         Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
         rb.velocity = bounceDirection * lastVelocity.magnitude;
@@ -140,7 +145,7 @@ public abstract class AbstractProjectile : MonoBehaviour
     // Child Functions
     protected abstract void OnPlayerCollision(Collider other);
 
-    protected abstract void OnEnvironmentCollision(Collider other);
+    protected abstract void OnEnvironmentCollision(Collision other);
 
     protected abstract void OnLaunch();
 }

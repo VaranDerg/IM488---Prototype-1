@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TestProjectile : AbstractProjectile
 {
-    protected override void OnEnvironmentCollision(Collider other)
+    protected override void OnEnvironmentCollision(Collision other)
     {
         Debug.Log("Environment Collision");
-        
+        BounceOffSurface(other);
     }
 
     protected override void OnLaunch()
@@ -20,9 +20,5 @@ public class TestProjectile : AbstractProjectile
         Debug.Log("Player Collision");
     }
 
-    private void BounceOffSurface(Collision other)
-    {
-        Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
-        rb.velocity = bounceDirection * lastVelocity.magnitude;
-    }
+
 }
