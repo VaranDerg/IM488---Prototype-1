@@ -4859,6 +4859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tickRate: 2
   tickRateScalar: 1
+  castMethod: 1
   particles: {fileID: 921856726353192123}
   particlePrefab: {fileID: 1382817315148964899, guid: b680fa2c2a1af2740809b92b2a150bfc,
     type: 3}
@@ -5027,6 +5028,8 @@ MonoBehaviour:
   dashTime: 0.2
   dashCooldownTime: 0.3
   maxSpeed: 50
+  manualSpellList: []
+  dashSpellList: []
 --- !u!114 &3494249741853352444
 MonoBehaviour:
   m_ObjectHideFlags: 0

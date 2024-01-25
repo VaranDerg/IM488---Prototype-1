@@ -117,8 +117,8 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         //TEMPORARY
-        AddManualStartingSpells();
-        AddDashStartingSpells();
+        /*AddManualStartingSpells();
+        AddDashStartingSpells();*/
     }
 
     #endregion

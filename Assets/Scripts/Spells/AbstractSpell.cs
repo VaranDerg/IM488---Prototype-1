@@ -18,6 +18,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
 
     float timeTillNextTick = 1;
 
+    [SerializeField] CastingMethod castMethod;
+
     protected Player owner { get; private set; }
 
     // The actual function of the spell to be referenced from the child
@@ -48,10 +50,34 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
         Debug.Log(owner);
+        AddSpellsToLists();
+    }
+
+    protected void AddSpellsToLists()
+    {
+        switch (castMethod)
+        {
+            case CastingMethod.AUTO:
+                return;
+            case CastingMethod.MANUAL:
+                MultiplayerManager.Instance.GetPlayer(owner).GetComponent<Controller>().AddManualSpellToList(this);
+                return;
+            case CastingMethod.DASH:
+                MultiplayerManager.Instance.GetPlayer(owner).GetComponent<Controller>().AddDashSpellToList(this);
+                return;
+        }
+
     }
 
     private void FixedUpdate()
     {
         Tick(Time.fixedDeltaTime);
     }
+}
+
+public enum CastingMethod
+{
+    AUTO,
+    MANUAL,
+    DASH
 }
