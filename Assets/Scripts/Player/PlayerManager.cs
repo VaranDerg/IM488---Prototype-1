@@ -31,4 +31,9 @@ public class PlayerManager : MonoBehaviour
     {
         return _pController.GetMovementDirection();
     }
+
+    public Vector3 GetLastNonZeroMovement()
+    {
+        return _pController.GetLastNonZeroMovement();
+    }
 }

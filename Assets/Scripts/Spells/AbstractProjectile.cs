@@ -19,13 +19,22 @@ public abstract class AbstractProjectile : MonoBehaviour
     [SerializeField]
     float projectileSpeed = 1;
 
+    [SerializeField] bool hasLifeTime;
+    [SerializeField] bool canBounce;
+    [SerializeField] float projectileLifeTime;
+
     Rigidbody rb;
+    private Vector3 lastVelocity;
 
     protected Player owner { get; private set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(TargetReeval());
+        StartCoroutine(TrackLastVelocity());
+        if (hasLifeTime)
+            StartCoroutine(LifeTime());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +46,7 @@ public abstract class AbstractProjectile : MonoBehaviour
 
             OnPlayerCollision(other);
         }
-        else
+        else if (other.CompareTag("Environment"))
             OnEnvironmentCollision(other);
 
         if (!isPersistent)
@@ -46,8 +55,17 @@ public abstract class AbstractProjectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (doReevaluateTargetting)
+        /*if (doReevaluateTargetting)
+            Move();*/
+    }
+
+    private IEnumerator TargetReeval()
+    {
+        while(doReevaluateTargetting)
+        {
             Move();
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public void AssignPlayer(Player tag)
@@ -67,20 +85,47 @@ public abstract class AbstractProjectile : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    protected virtual Vector3 GetTargetLocation()
+    private IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(projectileLifeTime);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator TrackLastVelocity()
+    {
+        while(canBounce)
+        {
+            yield return new WaitForEndOfFrame();
+            lastVelocity = rb.velocity;
+        }
+        
+    }
+
+    private void BounceOffSurface(Collision other)
+    {
+        Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
+        rb.velocity = bounceDirection * lastVelocity.magnitude;
+    }
+
+    protected virtual Vector3 GetTargetDirection()
     {
         switch(targetType){
             case TargetType.OTHER_PLAYER:
-                return MultiplayerManager.Instance.GetPlayer(owner).transform.position - 
-                    MultiplayerManager.Instance.GetOpposingPlayer(owner).transform.position;
+                Vector3 enemyTargetDir = (MultiplayerManager.Instance.GetOpposingPlayer(owner).transform.position
+                    - MultiplayerManager.Instance.GetPlayer(owner).transform.position).normalized;
+                return new Vector3(enemyTargetDir.x, 0, enemyTargetDir.z);
 
             case TargetType.MOVE_DIRECTION:
                 PlayerManager player = MultiplayerManager.Instance.GetPlayer(owner);
-
-                return player.GetMovementDirection();
+                return player.GetLastNonZeroMovement().normalized;
+                //return player.GetMovementDirection();
 
             case TargetType.RANDOM:
-                return new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+                /*return new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)).normalized 
+                    + MultiplayerManager.Instance.GetPlayer(owner).transform.position;*/
+                Vector3 randomSphere = Random.insideUnitSphere;
+                //Debug.Log(new Vector3(randomSphere.x, 0, randomSphere.z).normalized);
+                return new Vector3(randomSphere.x, 0, randomSphere.z).normalized;
 
             default:
                 return Vector3.zero;
@@ -89,7 +134,7 @@ public abstract class AbstractProjectile : MonoBehaviour
 
     protected virtual void Move()
     {
-        rb.AddForce(GetTargetLocation() * projectileSpeed, ForceMode.Impulse);
+        rb.AddForce(GetTargetDirection() * projectileSpeed, ForceMode.Impulse);
     }
 
     // Child Functions

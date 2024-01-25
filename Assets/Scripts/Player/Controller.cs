@@ -24,6 +24,7 @@ public class Controller : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldownTime;
     [SerializeField] float maxSpeed;
+    
 
     public enum MovementState
     {
@@ -34,6 +35,7 @@ public class Controller : MonoBehaviour
     private bool dashCoolingDown;
     private MovementState _moveState;
     private Vector3 _inputDirection;
+    private Vector3 lastNonZeroMovement;
     private Rigidbody rb;
 
     // Update is called once per frame
@@ -41,6 +43,7 @@ public class Controller : MonoBehaviour
     {
         Move();
         MaxSpeedControl();
+
     }
 
     private void MaxSpeedControl()
@@ -52,6 +55,11 @@ public class Controller : MonoBehaviour
     public Vector3 GetMovementDirection()
     {
         return _inputDirection;
+    }
+
+    public Vector3 GetLastNonZeroMovement()
+    {
+        return lastNonZeroMovement;
     }
 
     #region StartUp
@@ -83,6 +91,9 @@ public class Controller : MonoBehaviour
     public void MoveInput(InputAction.CallbackContext context)
     {
         _inputDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+
+        if (_inputDirection != Vector3.zero)
+            lastNonZeroMovement = _inputDirection;
     }
 
     /// <summary>
