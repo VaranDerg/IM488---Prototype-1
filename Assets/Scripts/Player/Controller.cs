@@ -24,6 +24,8 @@ public class Controller : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldownTime;
     [SerializeField] float maxSpeed;
+    //[SerializeField] private List<ISpell> spellList;
+    [SerializeField] private List<AbstractSpell> absSpellList;
     
 
     public enum MovementState
@@ -62,6 +64,22 @@ public class Controller : MonoBehaviour
         return lastNonZeroMovement;
     }
 
+    public void AddSpellToList(AbstractSpell newSpell)
+    {
+        absSpellList.Add(newSpell);
+    }
+
+
+    //Temporary
+    public void OtherStartingSpells()
+    {
+        foreach (AbstractSpell currentSpell in GetComponentsInChildren<AbstractSpell>())
+        {
+            Debug.Log("FoundSpell");
+            absSpellList.Add(currentSpell);
+        }
+    }
+
     #region StartUp
     /// <summary>
     /// You know how start works I'm not going to explain it to you
@@ -78,6 +96,8 @@ public class Controller : MonoBehaviour
     {
         _moveState = MovementState.Stationary;
         rb = GetComponent<Rigidbody>();
+        //AddStartingSpells();
+        OtherStartingSpells();
     }
 
     #endregion
@@ -111,6 +131,19 @@ public class Controller : MonoBehaviour
         rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
         //Debug.Log("Dash");
         StartCoroutine(DashProcess());
+    }
+
+    public void ManualCastInput(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            foreach (ISpell currentSpell in absSpellList)
+            {
+                Debug.Log("Cast Manual Spell");
+                currentSpell.Execute();
+            }
+        }
+        
     }
 
     private IEnumerator DashProcess()

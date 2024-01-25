@@ -37,6 +37,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ManualSpellCast"",
+                    ""type"": ""Button"",
+                    ""id"": ""4057da82-5655-4711-8471-0c19cf9b2310"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""11db07fc-7d1e-4f2a-b58b-59b810a12d28"",
@@ -244,6 +253,39 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fe5ddbd-ac2c-4497-b843-fa393417b502"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ManualSpellCast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f529044-f641-4bf8-9799-41d194f08bac"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ManualSpellCast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""adf137ad-c6f5-4f5b-b8ee-cd3f6f1933e4"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ManualSpellCast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -287,6 +329,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         // Player Movement
         m_PlayerMovement = asset.FindActionMap("Player Movement", throwIfNotFound: true);
         m_PlayerMovement_Dash = m_PlayerMovement.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerMovement_ManualSpellCast = m_PlayerMovement.FindAction("ManualSpellCast", throwIfNotFound: true);
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
     }
 
@@ -350,12 +393,14 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Dash;
+    private readonly InputAction m_PlayerMovement_ManualSpellCast;
     private readonly InputAction m_PlayerMovement_Move;
     public struct PlayerMovementActions
     {
         private @PlayerActions m_Wrapper;
         public PlayerMovementActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Dash => m_Wrapper.m_PlayerMovement_Dash;
+        public InputAction @ManualSpellCast => m_Wrapper.m_PlayerMovement_ManualSpellCast;
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
@@ -369,6 +414,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @ManualSpellCast.started += instance.OnManualSpellCast;
+            @ManualSpellCast.performed += instance.OnManualSpellCast;
+            @ManualSpellCast.canceled += instance.OnManualSpellCast;
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -379,6 +427,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @ManualSpellCast.started -= instance.OnManualSpellCast;
+            @ManualSpellCast.performed -= instance.OnManualSpellCast;
+            @ManualSpellCast.canceled -= instance.OnManualSpellCast;
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
@@ -429,6 +480,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     public interface IPlayerMovementActions
     {
         void OnDash(InputAction.CallbackContext context);
+        void OnManualSpellCast(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
     }
 }

@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ManualSpellCast",
+                    "type": "Button",
+                    "id": "4057da82-5655-4711-8471-0c19cf9b2310",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "11db07fc-7d1e-4f2a-b58b-59b810a12d28",
@@ -222,6 +231,39 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7fe5ddbd-ac2c-4497-b843-fa393417b502",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ManualSpellCast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f529044-f641-4bf8-9799-41d194f08bac",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ManualSpellCast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adf137ad-c6f5-4f5b-b8ee-cd3f6f1933e4",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ManualSpellCast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

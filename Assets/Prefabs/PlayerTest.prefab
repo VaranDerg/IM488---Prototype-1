@@ -4989,6 +4989,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 11db07fc-7d1e-4f2a-b58b-59b810a12d28
     m_ActionName: Player Movement/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1253072382235262524}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: ManualCastInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4057da82-5655-4711-8471-0c19cf9b2310
+    m_ActionName: Player Movement/ManualSpellCast[/Keyboard/leftCtrl,/Keyboard/rightCtrl]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Movement
