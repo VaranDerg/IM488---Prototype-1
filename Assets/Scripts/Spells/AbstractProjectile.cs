@@ -19,24 +19,28 @@ public abstract class AbstractProjectile : MonoBehaviour
     [SerializeField]
     float projectileSpeed = 1;
 
-    Collider hitbox;
+    Rigidbody rb;
 
-    protected PlayerTag owner { get; private set; }
+    protected Player owner { get; private set; }
+
     private void Awake()
     {
-        hitbox = GetComponent<Collider>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.GetComponent<PlayerManager>().PlayerTag != owner)
+        if (other.CompareTag("Player"))
         {
-            OnPlayerCollision();
+            if (other.GetComponent<PlayerManager>().PlayerTag == owner)
+                return;
+
+            OnPlayerCollision(other);
         }
         else
-            OnEnvironmentCollision();
+            OnEnvironmentCollision(other);
 
-        if(!isPersistent)
+        if (!isPersistent)
             Deactivate();
     }
 
@@ -46,12 +50,12 @@ public abstract class AbstractProjectile : MonoBehaviour
             Move();
     }
 
-    public void AssignPlayer(PlayerTag tag)
+    public void AssignPlayer(Player tag)
     {
         owner = tag;
     }
 
-    protected void Launch()
+    public void Launch()
     {
         Move();
 
@@ -67,13 +71,16 @@ public abstract class AbstractProjectile : MonoBehaviour
     {
         switch(targetType){
             case TargetType.OTHER_PLAYER:
-                return Vector3.zero;
+                return MultiplayerManager.Instance.GetPlayer(owner).transform.position - 
+                    MultiplayerManager.Instance.GetOpposingPlayer(owner).transform.position;
 
             case TargetType.MOVE_DIRECTION:
-                return Vector3.zero;
+                PlayerManager player = MultiplayerManager.Instance.GetPlayer(owner);
+
+                return player.GetMovementDirection();
 
             case TargetType.RANDOM:
-                return Vector3.zero;
+                return new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
 
             default:
                 return Vector3.zero;
@@ -82,13 +89,13 @@ public abstract class AbstractProjectile : MonoBehaviour
 
     protected virtual void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, GetTargetLocation(), projectileSpeed);
+        rb.AddForce(GetTargetLocation() * projectileSpeed, ForceMode.Impulse);
     }
 
     // Child Functions
-    protected abstract void OnPlayerCollision();
+    protected abstract void OnPlayerCollision(Collider other);
 
-    protected abstract void OnEnvironmentCollision();
+    protected abstract void OnEnvironmentCollision(Collider other);
 
     protected abstract void OnLaunch();
 }

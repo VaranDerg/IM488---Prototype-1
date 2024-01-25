@@ -18,6 +18,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
 
     float timeTillNextTick = 1;
 
+    protected Player owner { get; private set; }
+
     // The actual function of the spell to be referenced from the child
     public abstract void Execute();
 
@@ -43,6 +45,9 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
     {
         // Delays the first tick by the tickRate in seconds
         timeTillNextTick = tickRate;
+
+        owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
+        Debug.Log(owner);
     }
 
     private void FixedUpdate()

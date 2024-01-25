@@ -15,11 +15,6 @@ public class GameRoundHandler : MonoBehaviour
     internal GameObject P1;
     internal GameObject P2;
 
-    public enum Player
-    {
-        one = 0,
-        two = 1
-    }
     static public GameRoundHandler Instance { get; private set; }
 
     // Start is called before the first frame update
@@ -28,17 +23,17 @@ public class GameRoundHandler : MonoBehaviour
         
     }
 
-    public PlayerTag AssignPlayer(GameObject inGO)
+    public Player AssignPlayer(GameObject inGO)
     {
         if (P1 == null)
         {
             P1 = inGO;
             P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
-            return PlayerTag.PLAYER1;
+            return Player.one;
         }
         P2 = inGO;
         P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
-        return PlayerTag.PLAYER2;
+        return Player.two;
     }
 
     void RoundStart() => _timerCountdown = StartCoroutine(RoundTimerCountDown());
@@ -95,11 +90,17 @@ public class GameRoundHandler : MonoBehaviour
 
         var rt = GameRoundHandler.Instance;
 
-        GameRoundHandler.Instance.RecordRoundWinner(winner: GameRoundHandler.Player.one);
+        GameRoundHandler.Instance.RecordRoundWinner(winner: Player.one);
 
         if (rt.FinalRound())
         {
-            var totalWins = $"{CurrentWinsOf(GameRoundHandler.Player.one)} to {CurrentWinsOf(GameRoundHandler.Player.two)}";
+            var totalWins = $"{CurrentWinsOf(Player.one)} to {CurrentWinsOf(Player.two)}";
         }
     }
+}
+
+public enum Player
+{
+    one = 0,
+    two = 1
 }

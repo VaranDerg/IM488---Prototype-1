@@ -49,7 +49,10 @@ public class Controller : MonoBehaviour
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
-
+    public Vector3 GetMovementDirection()
+    {
+        return _inputDirection;
+    }
 
     #region StartUp
     /// <summary>

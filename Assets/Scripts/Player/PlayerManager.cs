@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private MovementScript _pMovement;
+    //[SerializeField] private MovementScript _pMovement;
     [SerializeField] private PlayerHealth _pHealth;
+    [SerializeField] private Controller _pController;
+
+    public Player PlayerTag { get; private set; }
 
 /*    [Header("Variables")]
     [SerializeField] private bool isP1;*/
@@ -14,11 +17,18 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameRoundHandler.Instance.AssignPlayer(gameObject);
+        PlayerTag = GameRoundHandler.Instance.AssignPlayer(gameObject);
+
+        MultiplayerManager.Instance.AssignPlayer(PlayerTag, this);
     }
 
     public void PlayerStartingLocation(Vector3 startPos)
     {
         transform.position = startPos;
+    }
+
+    public Vector3 GetMovementDirection()
+    {
+        return _pController.GetMovementDirection();
     }
 }

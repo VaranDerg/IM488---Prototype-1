@@ -6,15 +6,29 @@ public class MultiplayerManager : MonoBehaviour
 {
     public static MultiplayerManager Instance;
 
-    Dictionary<PlayerTag, PlayerManager> players;
+    Dictionary<Player, PlayerManager> players = new();
 
-    private void Start()
+    private void OnEnable()
     {
         Instance = this;
     }
 
-    public void AssignPlayer(PlayerTag tag, PlayerManager player)
+    public void AssignPlayer(Player tag, PlayerManager player)
     {
         players.Add(tag, player);
+    }
+
+    public PlayerManager GetPlayer(Player tag)
+    {
+        return players[tag];
+    }
+
+    public PlayerManager GetOpposingPlayer(Player tag)
+    {
+        foreach (Player t in players.Keys)
+            if (t != tag)
+                return players[t];
+
+        return null;
     }
 }
