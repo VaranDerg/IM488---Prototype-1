@@ -113,13 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fe0083c596e2a47b84eb767cce53bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetType: 1
+  targetType: 2
   doReevaluateTargetting: 0
   isPersistent: 1
   projectileSpeed: 5
-  hasLifeTime: 0
+  randomSpeedVariance: 0
   canBounce: 1
-  projectileLifeTime: 0
+  projectileLifeTime: 30
 --- !u!54 &7889882392917698092
 Rigidbody:
   m_ObjectHideFlags: 0

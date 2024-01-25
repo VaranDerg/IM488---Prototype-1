@@ -19,7 +19,8 @@ public abstract class AbstractProjectile : MonoBehaviour
     [SerializeField]
     float projectileSpeed = 1;
 
-    [SerializeField] bool hasLifeTime;
+    [SerializeField] float randomSpeedVariance;
+
     [SerializeField] bool canBounce;
     [SerializeField] float projectileLifeTime;
 
@@ -33,10 +34,10 @@ public abstract class AbstractProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         StartCoroutine(TargetReeval());
         StartCoroutine(TrackLastVelocity());
-        if (hasLifeTime)
-            StartCoroutine(LifeTime());
+        StartCoroutine(LifeTime());
     }
 
+    #region Collision
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -58,6 +59,7 @@ public abstract class AbstractProjectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Environment"))
             OnEnvironmentCollision(collision);
     }
+    #endregion
 
     private void FixedUpdate()
     {
@@ -81,9 +83,16 @@ public abstract class AbstractProjectile : MonoBehaviour
 
     public void Launch()
     {
+        SpeedVariance();
+
         Move();
 
         OnLaunch();
+    }
+
+    private void SpeedVariance()
+    {
+        projectileSpeed = Random.Range(projectileSpeed - randomSpeedVariance, projectileSpeed + randomSpeedVariance);
     }
 
     protected void Deactivate()
