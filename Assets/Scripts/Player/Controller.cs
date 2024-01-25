@@ -79,7 +79,7 @@ public class Controller : MonoBehaviour
     }
 
 
-    //Temporary
+/*    //Temporary
     public void AddManualStartingSpells()
     {
         foreach (AbstractSpell currentSpell in GetComponentsInChildren<AbstractSpell>())
@@ -96,7 +96,7 @@ public class Controller : MonoBehaviour
             Debug.Log("FoundSpell");
             dashSpellList.Add(currentSpell);
         }
-    }
+    }*/
 
 
     #region StartUp
@@ -115,10 +115,6 @@ public class Controller : MonoBehaviour
     {
         _moveState = MovementState.Stationary;
         rb = GetComponent<Rigidbody>();
-
-        //TEMPORARY
-        /*AddManualStartingSpells();
-        AddDashStartingSpells();*/
     }
 
     #endregion
