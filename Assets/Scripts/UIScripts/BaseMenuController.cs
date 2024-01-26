@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Author: Liz
@@ -40,6 +39,17 @@ public class BaseMenuController : MonoBehaviour
     /// <param name="sceneIndex"></param>
     public void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        SetTimescale(1f);
+
+        SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, sceneIndex);
+    }
+
+    /// <summary>
+    /// Adjusts the current timescale.
+    /// </summary>
+    /// <param name="newTimescale">The new timescale to set</param>
+    public void SetTimescale(float newTimescale)
+    {
+        Time.timeScale = newTimescale;
     }
 }

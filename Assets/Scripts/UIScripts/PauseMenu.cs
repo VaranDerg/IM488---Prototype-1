@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Liz
+/// Description: Provides pause-menu specific behavior. 
+/// </summary>
 public class PauseMenu : BaseMenuController
 {
     [SerializeField] private List<GameObject> _pauseObjects;
@@ -17,6 +21,11 @@ public class PauseMenu : BaseMenuController
 
     private void Update()
     {
+        if (SceneTransitions.TransitionActive)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -57,10 +66,5 @@ public class PauseMenu : BaseMenuController
         {
             page.SetActive(false);
         }
-    }
-
-    private void SetTimescale(float newTimescale)
-    {
-        Time.timeScale = newTimescale;
     }
 }
