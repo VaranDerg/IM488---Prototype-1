@@ -508,20 +508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointsToWin: 3
-  _spellOptionsGiven: 3
-  _allSpells:
-  - {fileID: 11400000, guid: 0d1d9354e9329854bb71a2e0ea5f103a, type: 2}
-  - {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
-  - {fileID: 11400000, guid: e311932b7313b064da844c46bc027143, type: 2}
-  - {fileID: 11400000, guid: b64b24589e9daf747a6c1f6c66fd152b, type: 2}
-  - {fileID: 11400000, guid: 39b22791cca09a3439ceadee5a9dec27, type: 2}
-  - {fileID: 11400000, guid: 42a072f560bed634c9ae88e3515acb38, type: 2}
-  - {fileID: 11400000, guid: d030c1ccff10b7a4fb453d278cee8fce, type: 2}
-  - {fileID: 11400000, guid: 6d48995f0f1b8934089fc250987218bd, type: 2}
-  - {fileID: 11400000, guid: 3b58eaa526b329340a5c6ac23dc144f1, type: 2}
-  - {fileID: 11400000, guid: 627181a03606cd546af6c3368aff6d37, type: 2}
-  - {fileID: 11400000, guid: bc8c5c88a46e93441b857da13a1fd174, type: 2}
-  - {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
   _playersRegenerateHP: 0
 --- !u!1 &757084794
 GameObject:
@@ -1422,6 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b170412165d93ad48b90e5c215392d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spellOptionsGiven: 3
 --- !u!1 &4609876780365572404
 GameObject:
   m_ObjectHideFlags: 0

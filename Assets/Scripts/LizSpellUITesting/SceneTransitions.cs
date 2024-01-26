@@ -23,6 +23,7 @@ public class SceneTransitions : MonoBehaviour
 
     public static bool TransitionActive;
 
+    [SerializeField] private int _spellSelectScene;
     [SerializeField] private int[] _arenaScenes;
     [Space]
     [SerializeField] private Animator _animator;
@@ -42,6 +43,18 @@ public class SceneTransitions : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    /// <summary>
+    /// Use this to load the SpellSelectScene.
+    /// </summary>
+    /// <param name="losingPlayer">The player who lost the last round. Alternatively, pass -1 to let both players choose a spell.</param>
+    /// 
+    public void LoadSpellSelectScene(PlayerSpellManager.SpellSelectionMode mode)
+    {
+        PlayerSpellManager.Instance.PrepareSpellSelectionState(mode);
+
+        LoadSceneWithTransition(TransitionType.LeftRight, _spellSelectScene);
     }
 
     /// <summary>

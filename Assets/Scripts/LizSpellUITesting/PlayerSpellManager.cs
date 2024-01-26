@@ -6,7 +6,17 @@ public class PlayerSpellManager : MonoBehaviour
 {
     public static PlayerSpellManager Instance;
 
+    [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
     private List<TestSpellSO> _playerOneSpells, _playerTwoSpells;
+    private SpellSelectionMode _currentSelectionMode;
+    private bool _playerOneSelectedStartingSpell = false;
+
+    public enum SpellSelectionMode
+    {
+        PlayerOne,
+        PlayerTwo,
+        NewGame
+    }
 
     /// <summary>
     /// Singleton pattern
@@ -23,6 +33,78 @@ public class PlayerSpellManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    /// <summary>
+    /// Sets the spell selection mode.
+    /// </summary>
+    /// <param name="mode"></param>
+    public void PrepareSpellSelectionState(SpellSelectionMode mode)
+    {
+        _currentSelectionMode = mode;
+
+        switch (mode)
+        {
+            case SpellSelectionMode.PlayerOne:
+                //Generate spells for player one in UI
+                break;
+            case SpellSelectionMode.PlayerTwo:
+                //Generate spells for player two in UI
+                break;
+            case SpellSelectionMode.NewGame:
+                _playerOneSelectedStartingSpell = false;
+                //Generate spells for player one in UI, and set 
+                break;
+        }
+    }
+
+    public void ProgressSpellSelectionState()
+    {
+        if (_currentSelectionMode == SpellSelectionMode.NewGame)
+        {
+            _playerOneSelectedStartingSpell = true;
+            //Generate spells for player two in UI
+        }
+        else
+        {
+            //Display selected spell in UI then load new arena
+        }
+    }
+
+    /// <summary>
+    /// Gets spells that a player has not selected.
+    /// </summary>
+    /// <param name="player">The player's spells to check</param>
+    /// <returns>A list of spell that player doesn't have.</returns>
+    public List<TestSpellSO> GetNewSpellsForPlayer(int player)
+    {
+        List<TestSpellSO> newSpells = new List<TestSpellSO>();
+
+        if (PlayerIsValid(player))
+        {
+            if (player == 1)
+            {
+                foreach (TestSpellSO spell in _allSpells)
+                {
+                    if (!_playerOneSpells.Contains(spell))
+                    {
+                        newSpells.Add(spell);
+                    }
+                }
+            }
+            else
+            {
+                foreach (TestSpellSO spell in _allSpells)
+                {
+                    if (!_playerTwoSpells.Contains(spell))
+                    {
+                        newSpells.Add(spell);
+                    }
+                }
+            }
+        }
+
+        return newSpells;
     }
 
     /// <summary>
@@ -103,5 +185,37 @@ public class PlayerSpellManager : MonoBehaviour
     {
         _playerOneSpells.Clear();
         _playerTwoSpells.Clear();
+    }
+
+    public int SpellSelectionModeToPlayer(SpellSelectionMode mode)
+    {
+        int player = 0;
+
+        switch(mode)
+        {
+            case SpellSelectionMode.PlayerOne:
+                player = 1;
+                break;
+            case SpellSelectionMode.PlayerTwo:
+                player = 2;
+                break;
+            case SpellSelectionMode.NewGame:
+                if(_playerOneSelectedStartingSpell)
+                {
+                    player = 2;
+                }
+                else
+                {
+                    player = 1;
+                }
+                break;
+        }
+
+        return player;
+    }
+
+    public SpellSelectionMode GetCurrentSpellSelectionMode()
+    {
+        return _currentSelectionMode;
     }
 }
