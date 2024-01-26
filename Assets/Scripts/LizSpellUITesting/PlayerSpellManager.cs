@@ -7,7 +7,8 @@ public class PlayerSpellManager : MonoBehaviour
     public static PlayerSpellManager Instance;
 
     [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
-    private List<TestSpellSO> _playerOneSpells, _playerTwoSpells;
+    private List<TestSpellSO> _playerOneSpells = new List<TestSpellSO>();
+    private List<TestSpellSO> _playerTwoSpells = new List<TestSpellSO>();
     private SpellSelectionMode _currentSelectionMode;
 
     public enum SpellSelectionMode

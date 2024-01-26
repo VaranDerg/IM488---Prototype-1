@@ -6,7 +6,7 @@ using TMPro;
 
 public class SpellBoxGameplay : BaseUIElement
 {
-    [SerializeField] [Range(1, 3)] private int _whichPlayer;
+    [SerializeField] [Range(1, 2)] private int _whichPlayer;
     [Space]
     [SerializeField] private TextMeshProUGUI _playerText;
     [SerializeField] private GameObject _spellIcon;

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3032639866660484381}
   - component: {fileID: 3032639866660484380}
+  - component: {fileID: 4867200525087942519}
   m_Layer: 0
-  m_Name: PlayerSpellManager
+  m_Name: GameProgressManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,3 +58,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 627181a03606cd546af6c3368aff6d37, type: 2}
   - {fileID: 11400000, guid: bc8c5c88a46e93441b857da13a1fd174, type: 2}
   - {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
+--- !u!114 &4867200525087942519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032639866660484378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9887786f091f9e4fb1bf34c2f32f817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointsToWin: 5
+  _winDelay: 2
+  _playersRegenerateHP: 0
