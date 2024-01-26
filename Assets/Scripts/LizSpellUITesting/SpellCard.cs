@@ -10,16 +10,19 @@ public class SpellCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _descriptionText;
     [SerializeField] private Image _icon;
 
+    private TestSpellSO _thisSpell;
+    private int _playerSelecting;
+    private SpellSelectUI _ui;
+
     private void Start()
     {
-        PrepareSpellCard();
+        
     }
 
-    private void PrepareSpellCard()
+    public void GiveSpell(TestSpellSO spell, int player)
     {
-        PlayerSpellManager psm = PlayerSpellManager.Instance;
-        List<TestSpellSO> newSpells = psm.GetNewSpellsForPlayer(psm.SpellSelectionModeToPlayer(psm.GetCurrentSpellSelectionMode()));
-        TestSpellSO spell = newSpells[Random.Range(0, newSpells.Count)];
+        _thisSpell = spell;
+        _playerSelecting = player;
 
         _nameText.text = spell.SpellName;
         _descriptionText.text = spell.SpellDescription;
@@ -28,6 +31,7 @@ public class SpellCard : MonoBehaviour
 
     public void SelectSpell()
     {
-
+        PlayerSpellManager psm = PlayerSpellManager.Instance;
+        psm.AddSpellToPlayer(_playerSelecting, _thisSpell);
     }
 }

@@ -9,13 +9,12 @@ public class PlayerSpellManager : MonoBehaviour
     [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
     private List<TestSpellSO> _playerOneSpells, _playerTwoSpells;
     private SpellSelectionMode _currentSelectionMode;
-    private bool _playerOneSelectedStartingSpell = false;
 
     public enum SpellSelectionMode
     {
         PlayerOne,
         PlayerTwo,
-        NewGame
+        BothPlayers
     }
 
     /// <summary>
@@ -51,23 +50,21 @@ public class PlayerSpellManager : MonoBehaviour
             case SpellSelectionMode.PlayerTwo:
                 //Generate spells for player two in UI
                 break;
-            case SpellSelectionMode.NewGame:
-                _playerOneSelectedStartingSpell = false;
-                //Generate spells for player one in UI, and set 
+            case SpellSelectionMode.BothPlayers:
+                //Generate spells for player one in UI,
                 break;
         }
     }
 
-    public void ProgressSpellSelectionState()
+    public void LoadSceneAfterSpellPicked()
     {
-        if (_currentSelectionMode == SpellSelectionMode.NewGame)
+        if (_currentSelectionMode == SpellSelectionMode.BothPlayers)
         {
-            _playerOneSelectedStartingSpell = true;
-            //Generate spells for player two in UI
+            //Load spell select for player two
         }
         else
         {
-            //Display selected spell in UI then load new arena
+            //Load random arena
         }
     }
 
@@ -199,19 +196,23 @@ public class PlayerSpellManager : MonoBehaviour
             case SpellSelectionMode.PlayerTwo:
                 player = 2;
                 break;
-            case SpellSelectionMode.NewGame:
-                if(_playerOneSelectedStartingSpell)
-                {
-                    player = 2;
-                }
-                else
-                {
-                    player = 1;
-                }
+            case SpellSelectionMode.BothPlayers:
+                //If you set this to "BothPlayers, it will default to 1. After player one picks, the SpellSelectionMode will be set to "PlayerTwo."
+                player = 1;
                 break;
         }
 
         return player;
+    }
+
+    public List<TestSpellSO> GetPlayerOneSpells()
+    {
+        return _playerOneSpells;
+    }
+
+    public List<TestSpellSO> GetPlayerTwoSpells()
+    {
+        return _playerTwoSpells;
     }
 
     public SpellSelectionMode GetCurrentSpellSelectionMode()

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// Author: Liz
 /// Description: Allows for easy scene loading with transitions. Nice and pretty!
 /// </summary>
-public class SceneTransitions : MonoBehaviour
+public class SceneTransitions : BaseUIElement
 {
     public static SceneTransitions Instance;
 
@@ -149,26 +149,5 @@ public class SceneTransitions : MonoBehaviour
         }
 
         return possibleArenaScenes[Random.Range(0, _arenaScenes.Length)];
-    }
-
-    /// <summary>
-    /// Calculates the animation time of an animation.
-    /// </summary>
-    /// <param name="anims">The animator to search through.</param>
-    /// <param name="animationName">The name of the animation to find.</param>
-    /// <returns>The animation time if an animation is found. 0 otherwise, and flags a warning.</returns>
-    public float GetAnimationTime(Animator anims, string animationName)
-    {
-        AnimationClip[] clips = anims.runtimeAnimatorController.animationClips;
-        foreach (AnimationClip c in clips)
-        {
-            if (c.name == animationName)
-            {
-                return c.length;
-            }
-        }
-
-        Debug.LogWarning($"Could not find animation named {animationName} in {anims.name}");
-        return 0;
     }
 }

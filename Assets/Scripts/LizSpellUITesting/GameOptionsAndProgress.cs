@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSetupOptions : MonoBehaviour
+public class GameOptionsAndProgress : MonoBehaviour
 {
+    public static int PlayerOneScore;
+    public static int PlayerTwoScore;
+
     [Header("Gameplay Information")]
     [SerializeField] [Range(3, 5)] private int _pointsToWin;
 
