@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Author: Liz
+/// Description: Controls the top left and right spell boxes during gameplay
+/// </summary>
 public class SpellBoxGameplay : BaseUIElement
 {
     [SerializeField] [Range(1, 2)] private int _whichPlayer;
@@ -17,6 +21,9 @@ public class SpellBoxGameplay : BaseUIElement
         PopulateWithPlayerSpellInformation();
     }
 
+    /// <summary>
+    /// Sets up the gameplay boxes with the player's current spells
+    /// </summary>
     private void PopulateWithPlayerSpellInformation()
     {
         _playerText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + _whichPlayer;

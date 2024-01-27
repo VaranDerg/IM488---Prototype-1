@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Liz
+/// Description: Manages spell ownership and selection logic
+/// </summary>
 public class SpellManager : MonoBehaviour
 {
     [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
@@ -198,6 +202,11 @@ public class SpellManager : MonoBehaviour
         _playerTwoSpells.Clear();
     }
 
+    /// <summary>
+    /// Converts the spell selection mode to the current player
+    /// </summary>
+    /// <param name="mode">Which mode</param>
+    /// <returns>A player, integer</returns>
     public int SpellSelectionModeToPlayer(SpellSelectionMode mode)
     {
         int player = 0;
@@ -218,6 +227,8 @@ public class SpellManager : MonoBehaviour
 
         return player;
     }
+
+    //Simple getters
 
     public List<TestSpellSO> GetPlayerOneSpells()
     {

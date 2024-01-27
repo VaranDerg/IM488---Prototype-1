@@ -4,6 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Liz
+/// Description: Manages the UI part of spell selection. some functionality, this is a prototype :3
+/// </summary>
 public class SpellSelectUI : BaseUIElement
 {
     private const string SPELLBOX_ANIM_ENTER = "SpellBoxOpen";
@@ -18,6 +22,9 @@ public class SpellSelectUI : BaseUIElement
     private List<SpellCard> _spawnedSpellCards = new List<SpellCard>();
     private List<TestSpellSO> _spawnedSpells = new List<TestSpellSO>();
 
+    /// <summary>
+    /// Sets up text and spawns spell cards
+    /// </summary>
     private void Start()
     {
         PopulateWithSpells();
@@ -26,11 +33,17 @@ public class SpellSelectUI : BaseUIElement
         _headerText.text = "Fuse, " + ManagerParent.Instance.Game.GetPlayerName() + " " + curPlayer + ".";
     }
 
+    /// <summary>
+    /// Wrapper in case this ever needs to be called externally, but I doubt it does
+    /// </summary>
     public void PopulateWithSpells()
     {
         StartCoroutine(SpellPopulateProcess());
     }
 
+    /// <summary>
+    /// Enumerator for populating spells in a cool animation
+    /// </summary>
     private IEnumerator SpellPopulateProcess()
     {
         yield return new WaitForSecondsRealtime(_populateWithSpellsDelay);
@@ -46,6 +59,9 @@ public class SpellSelectUI : BaseUIElement
         }
     }
 
+    /// <summary>
+    /// Spawns and prepares the spell card while adding it to correct lists
+    /// </summary>
     private SpellCard SpawnSpellCard()
     {
         SpellManager psm = ManagerParent.Instance.Spells;
@@ -60,7 +76,11 @@ public class SpellSelectUI : BaseUIElement
 
         return spellCard;
     }
-
+    
+    /// <summary>
+    /// Removes each spell card that isn't selected
+    /// </summary>
+    /// <param name="selectedCard">The card the player picked</param>
     public void RemovePassedSpellCards(SpellCard selectedCard)
     {
         foreach (SpellCard card in _spawnedSpellCards)

@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Author: Liz
+/// Description: Base script for UI elements.
+/// </summary>
 public class BaseUIElement : MonoBehaviour
 {
     /// <summary>

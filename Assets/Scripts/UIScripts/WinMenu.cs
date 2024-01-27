@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Author: Liz
+/// Description: Win menu functionality
+/// </summary>
 public class WinMenu : BaseMenuController
 {
     [SerializeField] private TextMeshProUGUI _playerWinText;
 
+    /// <summary>
+    /// Gets the integer of the winning player.
+    /// </summary>
     private void Start()
     {
         int winningPlayer;
@@ -23,6 +30,10 @@ public class WinMenu : BaseMenuController
         PreparePlayerWin(winningPlayer);
     }
 
+    /// <summary>
+    /// Prepares the text.
+    /// </summary>
+    /// <param name="winningPlayer">The player who won</param>
     private void PreparePlayerWin(int winningPlayer)
     {
         _playerWinText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + winningPlayer + " is Victorious.";

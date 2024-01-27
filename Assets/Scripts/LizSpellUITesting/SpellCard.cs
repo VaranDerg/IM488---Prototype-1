@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Author: Liz
+/// Description: Behavior for a spell card on the spell select screen.
+/// </summary>
 public class SpellCard : BaseUIElement
 {
     private const string SELECT_ANIM_NAME = "SpellCardSelect";
@@ -16,6 +20,11 @@ public class SpellCard : BaseUIElement
     private TestSpellSO _thisSpell;
     private int _playerSelecting;
 
+    /// <summary>
+    /// Gives this spell card a spell
+    /// </summary>
+    /// <param name="spell">Spell information object</param>
+    /// <param name="player">The player who is selecting the spell</param>
     public void GiveSpell(TestSpellSO spell, int player)
     {
         _thisSpell = spell;
@@ -27,6 +36,9 @@ public class SpellCard : BaseUIElement
         GetComponentInChildren<SpellIcon>().SetUpIcon(spell);
     }
 
+    /// <summary>
+    /// Adds the spell to the player and plays an animation.
+    /// </summary>
     public void SelectSpell()
     {
         SpellManager psm = ManagerParent.Instance.Spells;
@@ -37,6 +49,9 @@ public class SpellCard : BaseUIElement
         _animator.Play(SELECT_ANIM_NAME);
     }
 
+    /// <summary>
+    /// Removes this card visually and disables the button.
+    /// </summary>
     public void RemoveCard()
     {
         GetComponent<Button>().enabled = false;

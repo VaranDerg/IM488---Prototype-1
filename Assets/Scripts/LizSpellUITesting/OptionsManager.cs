@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Liz
+/// Description: Holds basic game options for easy editor use and future options screen?
+/// </summary>
 public class OptionsManager : MonoBehaviour
 {
     [Header("Gameplay Options")]
@@ -10,6 +14,8 @@ public class OptionsManager : MonoBehaviour
 
     [Header("Player Options")]
     [SerializeField] private bool _playersRegenerateHP;
+
+    //Simple getters
 
     public int GetSpellsToPick()
     {

@@ -2,18 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Liz
+/// Description: Manages basic game processes.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
+    ///Constants for gameplay.
     private const int WIN_SCENE = 5;
     private const int SPELL_SCENE = 1;
     private const string PLAYER_NAME = "Plasmo";
 
+    //Scenes for inspector assignment.
     [SerializeField] private int _spellSelectScene;
     [SerializeField] private int[] _arenaScenes;
 
+    //Holds player scores.
     private int _playerOneScore;
     private int _playerTwoScore;
 
+    /// <summary>
+    /// Increases the score for a player.
+    /// </summary>
+    /// <param name="player">Which player to increase the score of.</param>
+    /// <param name="winDelay">How long a win message is displayed.</param>
     public void IncreasePlayerScore(int player, float winDelay)
     {
         if (player == 1)
@@ -32,6 +44,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ToNextGamePhaseProcess(winDelay));
     }
 
+    /// <summary>
+    /// Moves to the next game phase, either the spell select scene or win scene.
+    /// </summary>
+    /// <param name="waitTime">The amount of wait time.</param>
     private IEnumerator ToNextGamePhaseProcess(float waitTime)
     {
         int pointsToWin = ManagerParent.Instance.Options.GetPointsToWin();
@@ -50,6 +66,9 @@ public class GameManager : MonoBehaviour
         SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, nextScene);
     }
 
+    /// <summary>
+    /// Resets scores and spells.
+    /// </summary>
     public void ResetGame()
     {
         _playerOneScore = 0;
@@ -85,6 +104,8 @@ public class GameManager : MonoBehaviour
 
         return possibleArenaScenes[Random.Range(0, _arenaScenes.Length)];
     }
+
+    //Basic getters
 
     public int GetPlayerOneScore()
     {

@@ -12,6 +12,9 @@ public class PauseMenu : BaseMenuController
 
     private bool _gamePaused;
 
+    /// <summary>
+    /// Disables this specific menu
+    /// </summary>
     protected override void Awake()
     {
         SetPauseObjectsActive(false);
@@ -19,6 +22,9 @@ public class PauseMenu : BaseMenuController
         _gamePaused = false;
     }
 
+    /// <summary>
+    /// Checks for pause inputs. Change to new input system upon implementation occuring. 
+    /// </summary>
     private void Update()
     {
         if (SceneTransitions.TransitionActive)
@@ -32,6 +38,9 @@ public class PauseMenu : BaseMenuController
         }
     }
 
+    /// <summary>
+    /// Toggles the paused state.
+    /// </summary>
     public void TogglePause()
     {
         if (!_gamePaused)
@@ -52,13 +61,20 @@ public class PauseMenu : BaseMenuController
         }
     }
 
+    /// <summary>
+    /// Loads the main menu while resetting the game.
+    /// </summary>
     public void ToMainMenu()
     {
-        LoadScene(0);
-
         ManagerParent.Instance.Game.ResetGame();
+
+        LoadScene(0);
     }
 
+    /// <summary>
+    /// Enables/disables objects for the pause menu
+    /// </summary>
+    /// <param name="active">True if you want the objects enabled</param>
     private void SetPauseObjectsActive(bool active)
     {
         foreach (GameObject obj in _pauseObjects)
@@ -67,6 +83,9 @@ public class PauseMenu : BaseMenuController
         }
     }
 
+    /// <summary>
+    /// Disables every pause page
+    /// </summary>
     private void DisablePages()
     {
         foreach (GameObject page in MenuPages)

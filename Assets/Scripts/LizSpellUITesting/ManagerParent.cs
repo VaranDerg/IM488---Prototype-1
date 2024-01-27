@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Liz
+/// Description: Holds every manager for easy editor use
+/// </summary>
 public class ManagerParent : MonoBehaviour
 {
     public static ManagerParent Instance;
@@ -11,6 +15,9 @@ public class ManagerParent : MonoBehaviour
     [HideInInspector] public SpellManager Spells;
     [HideInInspector] public GameManager Game;
 
+    /// <summary>
+    /// Singleton pattern
+    /// </summary>
     private void Awake()
     {
         if (Instance == null && Instance != this)
@@ -28,6 +35,9 @@ public class ManagerParent : MonoBehaviour
         AssignManagers();
     }
 
+    /// <summary>
+    /// Spawns every manager
+    /// </summary>
     private void SpawnManagers()
     {
         foreach (GameObject manager in _managerPrefabs)
@@ -36,6 +46,9 @@ public class ManagerParent : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Assigns every manager
+    /// </summary>
     private void AssignManagers()
     {
         Options = FindObjectOfType<OptionsManager>();

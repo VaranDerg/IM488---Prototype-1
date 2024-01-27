@@ -15,6 +15,7 @@ public class SceneTransitions : BaseUIElement
     private const string FADE_ANIMATION = "Fade";
     private const string ANIM_ENTER_SUFFIX = "Start";
     private const string ANIM_EXIT_SUFFIX = "End";
+
     public enum TransitionType
     {
         LeftRight,

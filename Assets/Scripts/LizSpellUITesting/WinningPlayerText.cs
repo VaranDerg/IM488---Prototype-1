@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Author: Liz
+/// Description: A cool visual for the player that one.
+/// </summary>
 public class WinningPlayerText : BaseUIElement
 {
     private const string TEXT_ANIMATION_NAME = "PlayerWinTextEnter";
@@ -16,6 +20,10 @@ public class WinningPlayerText : BaseUIElement
     [SerializeField] private TextMeshProUGUI _flavorText;
     [SerializeField] private Animator _animator;
 
+    /// <summary>
+    /// Displays the text
+    /// </summary>
+    /// <param name="winningPlayer">The player that won the round</param>
     public void DisplayText(int winningPlayer)
     {
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(-_rotationDeviation, _rotationDeviation));
