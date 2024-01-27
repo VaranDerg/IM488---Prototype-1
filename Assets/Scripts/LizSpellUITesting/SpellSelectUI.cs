@@ -8,15 +8,23 @@ public class SpellSelectUI : BaseUIElement
 {
     private const string SPELLBOX_ANIM_ENTER = "SpellBoxOpen";
 
-    [SerializeField] [Range(3, 5)] private int _spellOptionsGiven;
     [SerializeField] private float _populateWithSpellsDelay = 0.5f;
     [Space]
     [SerializeField] private GameObject _spellCard;
-    [SerializeField] private Transform _spellBox;
     [Space]
+    [SerializeField] private Transform _spellGrid;
     [SerializeField] private TextMeshProUGUI _headerText;
-    [Space]
     [SerializeField] private Animator _spellBoxAnimator;
+    private List<SpellCard> _spawnedSpellCards = new List<SpellCard>();
+    private List<TestSpellSO> _spawnedSpells = new List<TestSpellSO>();
+
+    private void Start()
+    {
+        PopulateWithSpells();
+
+        int curPlayer = ManagerParent.Instance.Spells.SpellSelectionModeToPlayer(ManagerParent.Instance.Spells.GetCurrentSpellSelectionMode());
+        _headerText.text = "Fuse, " + ManagerParent.Instance.Game.GetPlayerName() + " " + curPlayer + ".";
+    }
 
     public void PopulateWithSpells()
     {
@@ -31,20 +39,38 @@ public class SpellSelectUI : BaseUIElement
 
         yield return new WaitForSecondsRealtime(GetAnimationTime(_spellBoxAnimator, SPELLBOX_ANIM_ENTER));
 
-        for (int i = 0; i < _spellOptionsGiven; i++)
+        for (int i = 0; i < ManagerParent.Instance.Options.GetSpellsToPick(); i++)
         {
-            SpawnSpellCard();
+            SpellCard newSpellCard = SpawnSpellCard();
+            _spawnedSpellCards.Add(newSpellCard);
         }
     }
 
-    private void SpawnSpellCard()
+    private SpellCard SpawnSpellCard()
     {
-        PlayerSpellManager psm = PlayerSpellManager.Instance;
+        SpellManager psm = ManagerParent.Instance.Spells;
         int currentPlayer = psm.SpellSelectionModeToPlayer(psm.GetCurrentSpellSelectionMode());
-        List<TestSpellSO> newSpells = psm.GetNewSpellsForPlayer(currentPlayer);
-        TestSpellSO spell = newSpells[Random.Range(0, newSpells.Count)];
 
-        SpellCard spellCard = Instantiate(_spellCard, _spellBox).GetComponent<SpellCard>();
+        List<TestSpellSO> newSpells = psm.GetNewSpellsForPlayer(currentPlayer, _spawnedSpells);
+        TestSpellSO spell = newSpells[Random.Range(0, newSpells.Count)];
+        _spawnedSpells.Add(spell);
+
+        SpellCard spellCard = Instantiate(_spellCard, _spellGrid).GetComponent<SpellCard>();
         spellCard.GiveSpell(spell, currentPlayer);
+
+        return spellCard;
+    }
+
+    public void RemovePassedSpellCards(SpellCard selectedCard)
+    {
+        foreach (SpellCard card in _spawnedSpellCards)
+        {
+            if (card == selectedCard)
+            {
+                continue;
+            }
+
+            card.RemoveCard();
+        }
     }
 }

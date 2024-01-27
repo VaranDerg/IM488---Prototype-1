@@ -14,4 +14,11 @@ public class MainMenu : BaseMenuController
     {
         Application.Quit();
     }
+
+    public void StartGame()
+    {
+        ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.BothPlayers);
+
+        SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, SceneTransitions.Instance.GetSpellSelectScene());
+    }
 }

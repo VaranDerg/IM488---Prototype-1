@@ -20,7 +20,7 @@ public class WinningPlayerText : BaseUIElement
     {
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(-_rotationDeviation, _rotationDeviation));
 
-        _playerWinsText.text = "Player " + winningPlayer + " Remains";
+        _playerWinsText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + winningPlayer + " Remains.";
         _flavorText.text = _flavorTextPopups[Random.Range(0, _flavorTextPopups.Length)];
 
         _animator.Play(TEXT_ANIMATION_NAME);

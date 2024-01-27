@@ -50,9 +50,9 @@ public class SceneTransitions : BaseUIElement
     /// </summary>
     /// <param name="losingPlayer">The player who lost the last round. Alternatively, pass -1 to let both players choose a spell.</param>
     /// 
-    public void LoadSpellSelectScene(PlayerSpellManager.SpellSelectionMode mode)
+    public void LoadSpellSelectScene(SpellManager.SpellSelectionMode mode)
     {
-        PlayerSpellManager.Instance.PrepareSpellSelectionState(mode);
+        ManagerParent.Instance.Spells.PrepareSpellSelectionState(mode);
 
         LoadSceneWithTransition(TransitionType.LeftRight, _spellSelectScene);
     }
@@ -149,5 +149,10 @@ public class SceneTransitions : BaseUIElement
         }
 
         return possibleArenaScenes[Random.Range(0, _arenaScenes.Length)];
+    }
+
+    public int GetSpellSelectScene()
+    {
+        return _spellSelectScene;
     }
 }

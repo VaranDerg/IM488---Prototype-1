@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpellManager : MonoBehaviour
+public class SpellManager : MonoBehaviour
 {
-    public static PlayerSpellManager Instance;
-
     [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
+    [SerializeField] private float _opponentViewPickedSpellTime = 1.5f;
+
     private List<TestSpellSO> _playerOneSpells = new List<TestSpellSO>();
     private List<TestSpellSO> _playerTwoSpells = new List<TestSpellSO>();
     private SpellSelectionMode _currentSelectionMode;
@@ -16,23 +16,6 @@ public class PlayerSpellManager : MonoBehaviour
         PlayerOne,
         PlayerTwo,
         BothPlayers
-    }
-
-    /// <summary>
-    /// Singleton pattern
-    /// </summary>
-    private void Awake()
-    {
-        if (Instance == null && Instance != this)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
@@ -57,54 +40,6 @@ public class PlayerSpellManager : MonoBehaviour
         }
     }
 
-    public void LoadSceneAfterSpellPicked()
-    {
-        if (_currentSelectionMode == SpellSelectionMode.BothPlayers)
-        {
-            //Load spell select for player two
-        }
-        else
-        {
-            //Load random arena
-        }
-    }
-
-    /// <summary>
-    /// Gets spells that a player has not selected.
-    /// </summary>
-    /// <param name="player">The player's spells to check</param>
-    /// <returns>A list of spell that player doesn't have.</returns>
-    public List<TestSpellSO> GetNewSpellsForPlayer(int player)
-    {
-        List<TestSpellSO> newSpells = new List<TestSpellSO>();
-
-        if (PlayerIsValid(player))
-        {
-            if (player == 1)
-            {
-                foreach (TestSpellSO spell in _allSpells)
-                {
-                    if (!_playerOneSpells.Contains(spell))
-                    {
-                        newSpells.Add(spell);
-                    }
-                }
-            }
-            else
-            {
-                foreach (TestSpellSO spell in _allSpells)
-                {
-                    if (!_playerTwoSpells.Contains(spell))
-                    {
-                        newSpells.Add(spell);
-                    }
-                }
-            }
-        }
-
-        return newSpells;
-    }
-
     /// <summary>
     /// Adds a spell to that player's list
     /// </summary>
@@ -123,6 +58,82 @@ public class PlayerSpellManager : MonoBehaviour
                 _playerTwoSpells.Add(spell);
             }
         }
+
+        StartCoroutine(LoadSceneAfterSpellPicked());
+    }
+
+    /// <summary>
+    /// Enumerator that loads the next scene depening on how the spell select is being used.
+    /// </summary>
+    private IEnumerator LoadSceneAfterSpellPicked()
+    {
+        if (_currentSelectionMode == SpellSelectionMode.BothPlayers)
+        {
+            PrepareSpellSelectionState(SpellSelectionMode.PlayerTwo);
+
+            yield return new WaitForSecondsRealtime(_opponentViewPickedSpellTime);
+
+            SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, SceneTransitions.Instance.GetBuildIndex());
+        }
+        else
+        {
+            yield return new WaitForSecondsRealtime(_opponentViewPickedSpellTime);
+
+            SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, SceneTransitions.Instance.GetRandomArenaScene());
+        }
+    }
+
+    /// <summary>
+    /// Gets spells that a player has not selected.
+    /// </summary>
+    /// <param name="player">The player's spells to check</param>
+    /// <returns>A list of spell that player doesn't have.</returns>
+    public List<TestSpellSO> GetNewSpellsForPlayer(int player, List<TestSpellSO> alreadySpawnedSpells)
+    {
+        List<TestSpellSO> spellsNotAlreadySpawned = new List<TestSpellSO>();
+        foreach (TestSpellSO spell in _allSpells)
+        {
+            bool spellIsNew = true;
+            foreach (TestSpellSO spawnedSpell in alreadySpawnedSpells)
+            {
+                if (spawnedSpell.SpellName == spell.SpellName)
+                {
+                    spellIsNew = false;
+                }
+            }
+
+            if (spellIsNew)
+            {
+                spellsNotAlreadySpawned.Add(spell);
+            }
+        }
+
+        List<TestSpellSO> newSpells = new List<TestSpellSO>();
+        if (PlayerIsValid(player))
+        {
+            if (player == 1)
+            {
+                foreach (TestSpellSO spell in spellsNotAlreadySpawned)
+                {
+                    if (!_playerOneSpells.Contains(spell))
+                    {
+                        newSpells.Add(spell);
+                    }
+                }
+            }
+            else
+            {
+                foreach (TestSpellSO spell in spellsNotAlreadySpawned)
+                {
+                    if (!_playerTwoSpells.Contains(spell))
+                    {
+                        newSpells.Add(spell);
+                    }
+                }
+            }
+        }
+
+        return newSpells;
     }
 
     /// <summary>

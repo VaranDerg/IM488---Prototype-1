@@ -226,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649c022c379d3b043a290d1e6e1901aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spellSelectScene: 1
+  _arenaScenes: 020000000300000004000000
   _animator: {fileID: 6741917773113718180}
 --- !u!1 &6741917773134587741
 GameObject:

@@ -4,20 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SpellCard : MonoBehaviour
+public class SpellCard : BaseUIElement
 {
+    private const string SELECT_ANIM_NAME = "SpellCardSelect";
+    private const string REMOVE_ANIM_NAME = "SpellCardExit";
+
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
-    [SerializeField] private Image _icon;
+    [SerializeField] private Animator _animator;
 
     private TestSpellSO _thisSpell;
     private int _playerSelecting;
-    private SpellSelectUI _ui;
-
-    private void Start()
-    {
-        
-    }
 
     public void GiveSpell(TestSpellSO spell, int player)
     {
@@ -26,12 +23,23 @@ public class SpellCard : MonoBehaviour
 
         _nameText.text = spell.SpellName;
         _descriptionText.text = spell.SpellDescription;
-        _icon.color = spell.SpellColor;
+
+        GetComponentInChildren<SpellIcon>().SetUpIcon(spell);
     }
 
     public void SelectSpell()
     {
-        PlayerSpellManager psm = PlayerSpellManager.Instance;
+        SpellManager psm = ManagerParent.Instance.Spells;
         psm.AddSpellToPlayer(_playerSelecting, _thisSpell);
+
+        FindObjectOfType<SpellSelectUI>().RemovePassedSpellCards(this);
+
+        _animator.Play(SELECT_ANIM_NAME);
+    }
+
+    public void RemoveCard()
+    {
+        GetComponent<Button>().enabled = false;
+        _animator.Play(REMOVE_ANIM_NAME);
     }
 }

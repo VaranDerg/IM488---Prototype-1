@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 8951414621037726342, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8951414621037726342, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
         type: 3}
@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 8951414621037726343, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
         type: 3}
       propertyPath: m_text
-      value: Player X Wins!
+      value: Player X is Victorious.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b542a5d035ff849a8bdf4f7d7f741f, type: 3}

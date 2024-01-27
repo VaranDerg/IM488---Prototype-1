@@ -52,6 +52,13 @@ public class PauseMenu : BaseMenuController
         }
     }
 
+    public void ToMainMenu()
+    {
+        LoadScene(0);
+
+        ManagerParent.Instance.Game.ResetGame();
+    }
+
     private void SetPauseObjectsActive(bool active)
     {
         foreach (GameObject obj in _pauseObjects)

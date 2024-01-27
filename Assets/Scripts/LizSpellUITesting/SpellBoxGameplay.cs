@@ -19,9 +19,9 @@ public class SpellBoxGameplay : BaseUIElement
 
     private void PopulateWithPlayerSpellInformation()
     {
-        _playerText.text = "Player " + _whichPlayer;
+        _playerText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + _whichPlayer;
 
-        PlayerSpellManager psm = PlayerSpellManager.Instance;
+        SpellManager psm = ManagerParent.Instance.Spells;
         List<TestSpellSO> playerSpells;
         if (_whichPlayer == 1)
         {

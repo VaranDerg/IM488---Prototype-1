@@ -9,13 +9,22 @@ public class WinMenu : BaseMenuController
 
     private void Start()
     {
-        Debug.Log("Winning player is being determined randomly until implementation is complete.");
+        int winningPlayer;
+        if (ManagerParent.Instance.Game.GetPlayerOneScore() == ManagerParent.Instance.Options.GetPointsToWin())
+        {
+            winningPlayer = 1;
+        }
+        else
+        {
+            winningPlayer = 2;
+        }
 
-        PreparePlayerWin(Random.Range(1, 3));
+
+        PreparePlayerWin(winningPlayer);
     }
 
     private void PreparePlayerWin(int winningPlayer)
     {
-        _playerWinText.text = $"Player {winningPlayer} Wins!";
+        _playerWinText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + winningPlayer + " is Victorious.";
     }
 }
