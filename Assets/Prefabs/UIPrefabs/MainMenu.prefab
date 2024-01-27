@@ -427,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 6134341618809271344, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_Name
-      value: HowToPlayText
+      value: CreditsText
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}

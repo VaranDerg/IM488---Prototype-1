@@ -17,6 +17,7 @@ public class PauseMenu : BaseMenuController
     /// </summary>
     protected override void Awake()
     {
+        DisablePages();
         SetPauseObjectsActive(false);
         SetTimescale(1f);
         _gamePaused = false;
