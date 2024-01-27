@@ -8,6 +8,9 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
     float ISpell.TickRate { get => tickRate; set => this.tickRate = value; }
     float ISpell.TickRateScalar { get => tickRateScalar; set => this.tickRateScalar = value; }
 
+    [SerializeField]
+    TestSpellSO data;
+
     // Essentially the 'cooldown' of a spell. Time between its executions in seconds
     [SerializeField]
     float tickRate = 1;
@@ -27,6 +30,11 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
 
     // Called every FixedUpdate. Should be used if a spell needs to do something between executions
     protected abstract void ChildTick();
+
+    protected virtual void OnStart()
+    {
+
+    }
 
     // Tracks the time remaining till next tick. Calls ChildTick each
     public void Tick(float deltaTime)
@@ -52,6 +60,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
         Debug.Log(owner);
         AddSpellsToLists();
+
+        OnStart();
     }
 
     protected void AddSpellsToLists()

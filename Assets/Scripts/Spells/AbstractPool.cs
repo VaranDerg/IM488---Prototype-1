@@ -82,6 +82,25 @@ public abstract class AbstractPool : MonoBehaviour
         }
     }
 
+    protected void DamageAllInside(float damage, bool doSelfDamage)
+    {
+        if (objectsInPool.Count == 0)
+            return;
+
+        foreach (GameObject obj in objectsInPool)
+        {
+            PlayerManager player = obj.GetComponent<PlayerManager>();
+
+            if (player == null)
+                continue;
+
+            bool isSelf = player.PlayerTag == owner;
+
+            if (!isSelf || (doSelfDamage && isSelf))
+                player.Damage(damage);
+        }
+    }
+
     private void Start()
     {
         // Delays the first tick by the startDelay

@@ -36,4 +36,9 @@ public class PlayerManager : MonoBehaviour
     {
         return _pController.GetLastNonZeroMovement();
     }
+
+    public void Damage(float damage)
+    {
+        _pHealth.TakeDamage(damage);
+    }
 }
