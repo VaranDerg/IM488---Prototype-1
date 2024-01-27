@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Contains Main Menu-specific functionality.
+/// Author: Liz
+/// Description: 
 /// </summary>
 public class MainMenu : BaseMenuController
 {
@@ -13,5 +14,16 @@ public class MainMenu : BaseMenuController
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Starts the game with the correct spell selection state and transition
+    /// </summary>
+    public void StartGame()
+    {
+        ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.BothPlayers);
+
+        int spellSelectScene = ManagerParent.Instance.Game.GetSpellSelectScene();
+        SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, spellSelectScene);
     }
 }
