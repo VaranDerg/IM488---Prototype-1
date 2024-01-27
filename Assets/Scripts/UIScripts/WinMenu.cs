@@ -26,5 +26,7 @@ public class WinMenu : BaseMenuController
     private void PreparePlayerWin(int winningPlayer)
     {
         _playerWinText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + winningPlayer + " is Victorious.";
+
+        ManagerParent.Instance.Game.ResetGame();
     }
 }

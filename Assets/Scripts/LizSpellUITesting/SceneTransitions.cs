@@ -23,9 +23,6 @@ public class SceneTransitions : BaseUIElement
 
     public static bool TransitionActive;
 
-    [SerializeField] private int _spellSelectScene;
-    [SerializeField] private int[] _arenaScenes;
-    [Space]
     [SerializeField] private Animator _animator;
 
     /// <summary>
@@ -54,7 +51,7 @@ public class SceneTransitions : BaseUIElement
     {
         ManagerParent.Instance.Spells.PrepareSpellSelectionState(mode);
 
-        LoadSceneWithTransition(TransitionType.LeftRight, _spellSelectScene);
+        LoadSceneWithTransition(TransitionType.LeftRight, ManagerParent.Instance.Game.GetSpellSelectScene());
     }
 
     /// <summary>
@@ -121,38 +118,5 @@ public class SceneTransitions : BaseUIElement
     public int GetBuildIndex()
     {
         return SceneManager.GetActiveScene().buildIndex;
-    }
-
-    /// <summary>
-    /// Used for loading a random Arena.
-    /// </summary>
-    /// <returns>The index of a random arena scene.</returns>
-    public int GetRandomArenaScene()
-    {
-        return _arenaScenes[Random.Range(0, _arenaScenes.Length)];
-    }
-
-    /// <summary>
-    /// Used for loading a random Arena.
-    /// </summary>
-    /// <param name="excludeScene">A scene you want to exclude from selection. Pass in current build index to prevent repeated arenas.</param>
-    /// <returns>The index of a random arena scene. The excludeScene is not possible.</returns>
-    public int GetRandomArenaScene(int excludeScene)
-    {
-        List<int> possibleArenaScenes = new List<int>();
-        foreach (int scene in _arenaScenes)
-        {
-            if (scene != excludeScene)
-            {
-                possibleArenaScenes.Add(scene);
-            }
-        }
-
-        return possibleArenaScenes[Random.Range(0, _arenaScenes.Length)];
-    }
-
-    public int GetSpellSelectScene()
-    {
-        return _spellSelectScene;
     }
 }

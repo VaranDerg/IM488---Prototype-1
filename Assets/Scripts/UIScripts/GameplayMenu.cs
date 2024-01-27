@@ -10,6 +10,8 @@ using TMPro;
 /// </summary>
 public class GameplayMenu : BaseUIElement
 {
+    [SerializeField] private float _winDelayBeforeSceneLoad = 1.5f;
+    [Space]
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _firstToText;
     [SerializeField] private WinningPlayerText _winText;
@@ -34,6 +36,6 @@ public class GameplayMenu : BaseUIElement
 
     public void TestPlayerWin(int player)
     {
-        ManagerParent.Instance.Game.IncreasePlayerScore(player);
+        ManagerParent.Instance.Game.IncreasePlayerScore(player, _winDelayBeforeSceneLoad);
     }
 }

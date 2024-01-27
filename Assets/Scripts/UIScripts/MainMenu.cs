@@ -19,6 +19,7 @@ public class MainMenu : BaseMenuController
     {
         ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.BothPlayers);
 
-        SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, SceneTransitions.Instance.GetSpellSelectScene());
+        int spellSelectScene = ManagerParent.Instance.Game.GetSpellSelectScene();
+        SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, spellSelectScene);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1053257283472145122}
   - component: {fileID: 1053257283472145125}
   m_Layer: 0
-  m_Name: ScoreManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e66e50fe5629c44c91958054fa29d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spellSelectScene: 1
+  _arenaScenes: 020000000300000004000000
   _winDelay: 2

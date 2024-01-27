@@ -73,13 +73,15 @@ public class SpellManager : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(_opponentViewPickedSpellTime);
 
-            SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, SceneTransitions.Instance.GetBuildIndex());
+            int thisScene = SceneTransitions.Instance.GetBuildIndex();
+            SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.Fade, thisScene);
         }
         else
         {
             yield return new WaitForSecondsRealtime(_opponentViewPickedSpellTime);
 
-            SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, SceneTransitions.Instance.GetRandomArenaScene());
+            int arenaScene = ManagerParent.Instance.Game.GetRandomArenaScene();
+            SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, arenaScene);
         }
     }
 
