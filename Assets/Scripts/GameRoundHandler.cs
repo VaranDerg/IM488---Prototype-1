@@ -117,6 +117,7 @@ public class GameRoundHandler : MonoBehaviour
         while(true)
         {
             _currentRoundTime -= Time.deltaTime;
+            yield return null;
         }
     }
 
