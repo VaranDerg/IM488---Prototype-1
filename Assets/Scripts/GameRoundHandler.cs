@@ -7,6 +7,7 @@ public class GameRoundHandler : MonoBehaviour
     [SerializeField] private float _roundTimerLength;
     [SerializeField] private Vector3 p1StartLoc;
     [SerializeField] private Vector3 p2StartLoc;
+    [SerializeField] private PlayerHealth _pHealth;
     private const int _winsRequired = 3;
     private float _currentRoundTime;
     int _p1Wins, _p2Wins;
@@ -20,7 +21,12 @@ public class GameRoundHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        RoundStart();
+    }
+
+    void Update()
+    {
+        DetermineWhoDied();
     }
 
     public Player AssignPlayer(GameObject inGO)
@@ -48,14 +54,32 @@ public class GameRoundHandler : MonoBehaviour
         _p1Wins = _p2Wins = 0;
     }
 
+    public void DetermineWhoDied()
+    {
+        if (_pHealth.HasDied(Player.one) == true)
+        {
+            P2Won();
+        }
+        else if (_pHealth.HasDied(Player.two) == true)
+        {
+            P1Won();
+        }
+        else
+            return;
+    }
+
     public void P1Won()
     {
-
+        RecordRoundWinner(winner: Player.one);
+        RoundEnd();
+        P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
     }
 
     public void P2Won()
     {
-
+        RecordRoundWinner(winner: Player.two);
+        RoundEnd();
+        P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
     }
 
     private IEnumerator RoundTimerCountDown()
@@ -73,8 +97,6 @@ public class GameRoundHandler : MonoBehaviour
 
     public bool FinalRound() => _p1Wins == _winsRequired || _p2Wins == _winsRequired;
 
-    public Player FinalWinner => _p1Wins > _p2Wins ? Player.one : Player.two;
-
     private int getWins(Player player) => player == Player.two ? _p2Wins : _p1Wins;
 
     private void setWins(Player player, int value)
@@ -89,8 +111,6 @@ public class GameRoundHandler : MonoBehaviour
             StopCoroutine(_timerCountdown);
 
         var rt = GameRoundHandler.Instance;
-
-        GameRoundHandler.Instance.RecordRoundWinner(winner: Player.one);
 
         if (rt.FinalRound())
         {
