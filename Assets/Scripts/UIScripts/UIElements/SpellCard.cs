@@ -41,6 +41,8 @@ public class SpellCard : BaseUIElement
     /// </summary>
     public void SelectSpell()
     {
+        GetComponent<Button>().enabled = false;
+
         SpellManager psm = ManagerParent.Instance.Spells;
         psm.AddSpellToPlayer(_playerSelecting, _thisSpell);
 
