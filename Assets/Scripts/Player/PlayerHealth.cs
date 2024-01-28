@@ -17,14 +17,15 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        CheckForDeath();
     }
 
-    public bool HasDied(Player player)
+    public void CheckForDeath()
     {
+        //GameRoundHandler.Instance.DetermineWhoDied(
         if(_currentHealth <= 0)
         {
-            return true;
+            GameRoundHandler.Instance.DetermineWhoDied(GetComponent<PlayerManager>().PlayerTag);
         }
-        return false;
     }
 }

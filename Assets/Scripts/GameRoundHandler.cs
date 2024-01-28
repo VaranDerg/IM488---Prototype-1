@@ -26,7 +26,7 @@ public class GameRoundHandler : MonoBehaviour
 
     void Update()
     {
-        DetermineWhoDied();
+        //DetermineWhoDied();
     }
 
     public Player AssignPlayer(GameObject inGO)
@@ -54,9 +54,20 @@ public class GameRoundHandler : MonoBehaviour
         _p1Wins = _p2Wins = 0;
     }
 
-    public void DetermineWhoDied()
+    public void DetermineWhoDied(Player whichPlayer)
     {
-        if (_pHealth.HasDied(Player.one) == true)
+        switch(whichPlayer)
+        {
+            case (Player.one):
+                P2Won();
+                return;
+            case (Player.two):
+                P1Won();
+                return;
+            default:
+                return;
+        }
+        /*if (_pHealth.HasDied(Player.one) == true)
         {
             P2Won();
         }
@@ -65,21 +76,21 @@ public class GameRoundHandler : MonoBehaviour
             P1Won();
         }
         else
-            return;
+            return;*/
     }
 
     public void P1Won()
     {
         RecordRoundWinner(winner: Player.one);
         RoundEnd();
-        P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
+        //P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
     }
 
     public void P2Won()
     {
         RecordRoundWinner(winner: Player.two);
         RoundEnd();
-        P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
+        //P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
     }
 
     private IEnumerator RoundTimerCountDown()
@@ -110,9 +121,9 @@ public class GameRoundHandler : MonoBehaviour
         if(_timerCountdown != null)
             StopCoroutine(_timerCountdown);
 
-        var rt = GameRoundHandler.Instance;
+        //var rt = GameRoundHandler.Instance;
 
-        if (rt.FinalRound())
+        if (FinalRound())
         {
             var totalWins = $"{CurrentWinsOf(Player.one)} to {CurrentWinsOf(Player.two)}";
         }
