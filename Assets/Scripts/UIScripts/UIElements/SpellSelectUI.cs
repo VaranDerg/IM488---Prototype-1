@@ -56,7 +56,12 @@ public class SpellSelectUI : BaseUIElement
         {
             SpellCard newSpellCard = SpawnSpellCard();
             _spawnedSpellCards.Add(newSpellCard);
+
+            if(i == 0)
+                ControllerInputManager.Instance.AssignControllerSelected(newSpellCard.gameObject);
         }
+
+
     }
 
     /// <summary>
