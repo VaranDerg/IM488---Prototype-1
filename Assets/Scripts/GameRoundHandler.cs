@@ -7,7 +7,7 @@ public class GameRoundHandler : MonoBehaviour
     [SerializeField] private float _roundTimerLength;
     [SerializeField] private Vector3 p1StartLoc;
     [SerializeField] private Vector3 p2StartLoc;
-    [SerializeField] private PlayerHealth _pHealth;
+    //[SerializeField] private PlayerHealth _pHealth;
     private const int _winsRequired = 3;
     private float _currentRoundTime;
     int _p1Wins, _p2Wins;

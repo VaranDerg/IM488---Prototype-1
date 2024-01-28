@@ -163,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 4692981391097743893, guid: 22a6a395c13f4a3448e5ba9a0091862d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4692981391097743893, guid: 22a6a395c13f4a3448e5ba9a0091862d,
         type: 3}
@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 6959942804876473248, guid: 574aeb5b7cab8c947af9d61f7d2f86c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6959942804876473248, guid: 574aeb5b7cab8c947af9d61f7d2f86c1,
         type: 3}
@@ -629,7 +629,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715018759
 GameObject:
@@ -814,12 +814,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827998999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.192674, y: -5.4814215, z: -0.1503228}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &972018264
 GameObject:
@@ -879,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 6741917773113718181, guid: 8d398089072174b4ab555c207a72d0c9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6741917773113718181, guid: 8d398089072174b4ab555c207a72d0c9,
         type: 3}
@@ -1048,7 +1048,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2078370345
 PrefabInstance:
@@ -1070,7 +1070,7 @@ PrefabInstance:
     - target: {fileID: 606007939486339426, guid: 02bcf704bf493394b8e7b3af4ca93c97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 606007939486339426, guid: 02bcf704bf493394b8e7b3af4ca93c97,
         type: 3}
