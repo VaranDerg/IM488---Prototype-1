@@ -16,7 +16,7 @@ public class GameRoundHandler : MonoBehaviour
     internal GameObject P1;
     internal GameObject P2;
 
-    static public GameRoundHandler Instance { get; private set; }
+    public static GameRoundHandler Instance { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,12 @@ public class GameRoundHandler : MonoBehaviour
         RoundStart();
     }
 
-    void Update()
+    /*void Update()
     {
-        //DetermineWhoDied();
-    }
+        DetermineWhoDied();
+    }*/
+
+
 
     public Player AssignPlayer(GameObject inGO)
     {
@@ -43,11 +45,27 @@ public class GameRoundHandler : MonoBehaviour
     }
 
     void RoundStart() => _timerCountdown = StartCoroutine(RoundTimerCountDown());
-    
-    void Awake() => Reset();
-    void OnEnable() => Instance = this;
+
+    void Awake()
+    {
+        Reset();
+        EstablishSingleton();
+    }
+
+    void EstablishSingleton()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            return;
+        }
+        Destroy(gameObject);
+
+    }
+/*    void OnEnable() => Instance = this;
     void OnDisable() => Instance = null;
-    void OnDestroy() => OnDisable();
+    void OnDestroy() => OnDisable();*/
 
     public void Reset()
     {
