@@ -78,6 +78,11 @@ public class Controller : MonoBehaviour
         dashSpellList.Add(newSpell);
     }
 
+    private Vector3 InputDirectionNoY()
+    {
+        return new Vector3(_inputDirection.x, rb.velocity.y, _inputDirection.z);
+    }
+
 
 /*    //Temporary
     public void AddManualStartingSpells()
@@ -145,7 +150,7 @@ public class Controller : MonoBehaviour
         dashCoolingDown = true;
 
         rb.velocity = Vector3.zero;
-        rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
+        rb.AddForce(InputDirectionNoY() * dashForce, ForceMode.Impulse);
 
         DashSpellCast();
 
@@ -191,7 +196,7 @@ public class Controller : MonoBehaviour
     {
         if (_moveState == MovementState.Dashing)
             return;
-        rb.velocity = _inputDirection * speed;
+        rb.velocity = InputDirectionNoY() * speed;
     }
     #endregion
 }

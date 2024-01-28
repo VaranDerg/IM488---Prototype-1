@@ -13,6 +13,7 @@ public class TestSpellSO : ScriptableObject
     [TextArea(3, 10)] public string SpellDescription;
     public Color SpellColor;
     public SpellType TypeOfSpell;
+    public GameObject AssociatedPrefab;
 
     //Currently unused, but should be used for visuals 
     public enum SpellType
