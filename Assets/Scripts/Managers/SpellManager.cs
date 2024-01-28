@@ -230,6 +230,18 @@ public class SpellManager : MonoBehaviour
 
     //Simple getters
 
+    public List<TestSpellSO> GetSpellListFromPlayer(Player player)
+    {
+        switch (player)
+        {
+            case (Player.one):
+                return GetPlayerOneSpells();
+            case (Player.two):
+                return GetPlayerTwoSpells();
+        }
+        return null;
+    }
+
     public List<TestSpellSO> GetPlayerOneSpells()
     {
         return _playerOneSpells;

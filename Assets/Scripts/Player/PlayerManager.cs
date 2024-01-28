@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     //[SerializeField] private MovementScript _pMovement;
     [SerializeField] private PlayerHealth _pHealth;
     [SerializeField] private Controller _pController;
+    [SerializeField] private GameObject _spellAttachPoint;
 
     public Player PlayerTag { get; private set; }
 
@@ -20,6 +21,8 @@ public class PlayerManager : MonoBehaviour
         PlayerTag = GameRoundHandler.Instance.AssignPlayer(gameObject);
 
         MultiplayerManager.Instance.AssignPlayer(PlayerTag, this);
+
+        AttachAssociatedSpells();
     }
 
     public void PlayerStartingLocation(Vector3 startPos)
@@ -40,5 +43,19 @@ public class PlayerManager : MonoBehaviour
     public void Damage(float damage)
     {
         _pHealth.TakeDamage(damage);
+    }
+
+    private void AttachSpell(GameObject newSpell)
+    {
+        Instantiate(newSpell, _spellAttachPoint.transform).transform.SetParent(_spellAttachPoint.transform);
+    }
+
+    public void AttachAssociatedSpells()
+    {
+        foreach (TestSpellSO spell in ManagerParent.Instance.Spells.GetSpellListFromPlayer(PlayerTag))
+        {
+            AttachSpell(spell.AssociatedPrefab);
+        }
+        
     }
 }
