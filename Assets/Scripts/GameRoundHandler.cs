@@ -100,6 +100,7 @@ public class GameRoundHandler : MonoBehaviour
     public void P1Won()
     {
         RecordRoundWinner(winner: Player.one);
+        ManagerParent.Instance.Game.IncreasePlayerScore(1);
         RoundEnd();
         //P1.GetComponent<PlayerManager>().PlayerStartingLocation(p1StartLoc);
     }
@@ -107,6 +108,7 @@ public class GameRoundHandler : MonoBehaviour
     public void P2Won()
     {
         RecordRoundWinner(winner: Player.two);
+        ManagerParent.Instance.Game.IncreasePlayerScore(2);
         RoundEnd();
         //P2.GetComponent<PlayerManager>().PlayerStartingLocation(p2StartLoc);
     }
@@ -139,7 +141,6 @@ public class GameRoundHandler : MonoBehaviour
     {
         if(_timerCountdown != null)
             StopCoroutine(_timerCountdown);
-
         //var rt = GameRoundHandler.Instance;
 
         if (FinalRound())

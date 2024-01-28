@@ -14,6 +14,15 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         _currentHealth = _maxHealth;
     }
 
+    //TESTING PURPOSES ONLY
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            TakeDamage(1);
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
