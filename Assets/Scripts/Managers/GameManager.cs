@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private const int WIN_SCENE = 5;
     private const int SPELL_SCENE = 1;
     private const string PLAYER_NAME = "Plasmo";
+    private const float _winDelayBeforeSceneLoad = 1.5f;
 
     //Scenes for inspector assignment.
     [SerializeField] private int _spellSelectScene;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="player">Which player to increase the score of.</param>
     /// <param name="winDelay">How long a win message is displayed.</param>
-    public void IncreasePlayerScore(int player, float winDelay)
+    public void IncreasePlayerScore(int player)
     {
         if (player == 1)
         {
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<GameplayMenu>().DisplayWin(player);
 
-        StartCoroutine(ToNextGamePhaseProcess(winDelay));
+        StartCoroutine(ToNextGamePhaseProcess(_winDelayBeforeSceneLoad));
     }
 
     /// <summary>

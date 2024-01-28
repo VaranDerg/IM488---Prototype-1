@@ -5348,6 +5348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightningAuraSpell
       objectReference: {fileID: 0}
+    - target: {fileID: 6700097306087382589, guid: a833fe264c11f554bb86fe27e10ee07c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a833fe264c11f554bb86fe27e10ee07c, type: 3}
 --- !u!4 &7255482009608886186 stripped

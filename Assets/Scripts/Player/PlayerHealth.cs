@@ -14,17 +14,27 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         _currentHealth = _maxHealth;
     }
 
+    //TESTING PURPOSES ONLY
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            TakeDamage(1);
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        CheckForDeath();
     }
 
-    private bool HasDied()
+    public void CheckForDeath()
     {
+        //GameRoundHandler.Instance.DetermineWhoDied(
         if(_currentHealth <= 0)
         {
-            return true;
+            GameRoundHandler.Instance.DetermineWhoDied(GetComponent<PlayerManager>().PlayerTag);
         }
-        return false;
     }
 }
