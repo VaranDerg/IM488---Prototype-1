@@ -9,14 +9,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     ///Constants for gameplay.
-    private const int WIN_SCENE = 7;
-    private const int SPELL_SCENE = 1;
-    private const string PLAYER_NAME = "Plasmo";
-    private const float _winDelayBeforeSceneLoad = 1.5f;
 
     //Scenes for inspector assignment.
-    [SerializeField] private int _spellSelectScene;
+    [SerializeField] private string _playerName = "Plasmo";
+    [Space]
+    [SerializeField] private int _spellSelectScene = 2;
     [SerializeField] private int[] _arenaScenes;
+    [SerializeField] private int _winScene = 8;
+    [Space]
+    [SerializeField] private float _winDelay = 1.5f;
 
     //Holds player scores.
     private int _playerOneScore;
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<GameplayMenu>().DisplayWin(player);
 
-        StartCoroutine(ToNextGamePhaseProcess(_winDelayBeforeSceneLoad));
+        StartCoroutine(ToNextGamePhaseProcess(_winDelay));
     }
 
     /// <summary>
@@ -60,11 +61,11 @@ public class GameManager : MonoBehaviour
         int nextScene;
         if (_playerOneScore == pointsToWin || _playerTwoScore == pointsToWin)
         {
-            nextScene = WIN_SCENE;
+            nextScene = _winScene;
         }
         else
         {
-            nextScene = SPELL_SCENE;
+            nextScene = _spellSelectScene;
         }
 
         yield return new WaitForSeconds(waitTime);
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     public string GetPlayerName()
     {
-        return PLAYER_NAME;
+        return _playerName;
     }
 
     public int GetSpellSelectScene()
