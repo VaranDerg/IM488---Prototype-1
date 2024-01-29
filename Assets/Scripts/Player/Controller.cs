@@ -118,7 +118,6 @@ public class Controller : MonoBehaviour
 
         rb.velocity = Vector3.zero;
         rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
-
         DashSpellCast();
 
         StartCoroutine(DashProcess());

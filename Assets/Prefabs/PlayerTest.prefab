@@ -107,7 +107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4154672118953922560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -196,7 +196,6 @@ MonoBehaviour:
   dashTime: 0.2
   dashCooldownTime: 0.3
   maxSpeed: 50
-  manualSpellList: []
   dashSpellList: []
 --- !u!114 &3494249741853352444
 MonoBehaviour:

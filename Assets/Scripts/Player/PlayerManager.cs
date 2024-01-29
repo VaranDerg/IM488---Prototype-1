@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
 
-    public Player PlayerTag { get; private set; }
+    public Player PlayerTag;
 
 /*    [Header("Variables")]
     [SerializeField] private bool isP1;*/
@@ -23,6 +23,15 @@ public class PlayerManager : MonoBehaviour
         MultiplayerManager.Instance.AssignPlayer(PlayerTag, this);
 
         AttachAssociatedSpells();
+
+        StartCoroutine(PlayerInputDelay());
+    }
+
+    IEnumerator PlayerInputDelay()
+    {
+        //Update to variable later - Ryan
+        yield return new WaitForSeconds(3);
+        InputParent.Instance.AttachInput(_pController, PlayerTag);
     }
 
     public void PlayerStartingLocation(Vector3 startPos)
