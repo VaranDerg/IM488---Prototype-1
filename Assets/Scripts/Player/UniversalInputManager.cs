@@ -17,6 +17,30 @@ public class UniversalInputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         devices = GetComponent<PlayerInput>().devices.ToArray();
+        Debug.Log("Connected Devices:");
+
+        bool hasKeyboard = false;
+        foreach (InputDevice d in devices)
+        {
+            Debug.Log(d.displayName);
+            if(d.displayName == "Keyboard")
+            {
+                hasKeyboard = true;
+                continue;
+            }
+        }
+
+        if (hasKeyboard)
+        {
+            InputDevice[] devices2 = new InputDevice[devices.Length + 1];
+            devices2[devices.Length] = Mouse.current;
+
+            devices = devices2;
+
+            Debug.Log("Added Mouse");
+        }
+            
+
         //EstablishSingleton();
     }
 
