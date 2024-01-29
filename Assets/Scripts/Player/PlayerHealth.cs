@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
 
     private float _currentHealth;
 
+    //added to prevent repeated death calls
+    private bool _dead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,9 +73,16 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
     public void CheckForDeath()
     {
         //GameRoundHandler.Instance.DetermineWhoDied(
-        if(_currentHealth <= 0)
+        if(_currentHealth <= 0 && !_dead)
         {
+            if (ManagerParent.Instance.Game.PlayerHasWonRound)
+            {
+                return;
+            }
+
             //GameRoundHandler.Instance.DetermineWhoDied(GetComponent<PlayerManager>().PlayerTag);
+            _currentHealth = 0;
+            _dead = true;
 
             ManagerParent.Instance.Game.IncreasePlayerScore(ThisPlayer());
         }

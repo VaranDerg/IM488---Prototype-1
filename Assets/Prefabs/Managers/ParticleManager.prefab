@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6898365707123047595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6898365707123047594}
+  - component: {fileID: 6898365707123047605}
+  m_Layer: 0
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6898365707123047594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898365707123047595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6898365707123047605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898365707123047595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4157c19aa0a242802c17efcb4a292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleLifetime: 10
+  _particles:
+  - Name: Looping_Fire
+    ParticlePrefab: {fileID: 4131834753576506440, guid: 7ef8747b28141a747901d3925dc4f246,
+      type: 3}
+  - Name: Burst_Fire
+    ParticlePrefab: {fileID: 9158829007249192475, guid: 246c501f4bcf5424b9039a4273c70b39,
+      type: 3}
+  - Name: Looping_Ice
+    ParticlePrefab: {fileID: 5644419859138113070, guid: 08106aa91bf866f4e8b64d43defd952b,
+      type: 3}
+  - Name: Burst_Ice
+    ParticlePrefab: {fileID: 8928289976834242976, guid: fe62eef750bd36c41938be3d0714e2a3,
+      type: 3}
+  - Name: Looping_Lightning
+    ParticlePrefab: {fileID: 16426994260007834, guid: 1407e40ae13d72245829b2ad6e15f4d3,
+      type: 3}
+  - Name: Burst_Lightning
+    ParticlePrefab: {fileID: 4920766053560913085, guid: 5e0f91d2bec19e9479e5714b4e956588,
+      type: 3}

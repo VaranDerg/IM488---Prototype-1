@@ -49,7 +49,9 @@ MonoBehaviour:
   - {fileID: 1053257283472145123, guid: 537524d551daaed44a75a279f3b0cd33, type: 3}
   - {fileID: 3612043440712835987, guid: 182db5d2f3aaa5d459c826dc8070c876, type: 3}
   - {fileID: 7638603741560529292, guid: 9e9f07a9d9ba42348a04400e1bd0ebf9, type: 3}
+  - {fileID: 6898365707123047595, guid: 9624e3a51f5741649b5ddcbaf0bf5cf8, type: 3}
   Options: {fileID: 0}
   Spells: {fileID: 0}
   Game: {fileID: 0}
   Audio: {fileID: 0}
+  Particles: {fileID: 0}

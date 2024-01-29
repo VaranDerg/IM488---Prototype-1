@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1253072382235262524}
   - component: {fileID: 3494249741853352444}
   - component: {fileID: 3264294643241418380}
+  - component: {fileID: 837278177261051004}
   m_Layer: 3
   m_Name: Plasmo
   m_TagString: Player
@@ -211,6 +212,20 @@ MonoBehaviour:
   _pController: {fileID: 1253072382235262524}
   _spellAttachPoint: {fileID: 879255954794083651}
   PlayerTag: 0
+--- !u!136 &837278177261051004
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154672118953922560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4154672119527252999
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +237,6 @@ GameObject:
   - component: {fileID: 4154672119527253000}
   - component: {fileID: 4154672119527253002}
   - component: {fileID: 4154672119527253001}
-  - component: {fileID: 3706655045609339867}
   m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
@@ -295,17 +309,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3706655045609339867
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4154672119527252999}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

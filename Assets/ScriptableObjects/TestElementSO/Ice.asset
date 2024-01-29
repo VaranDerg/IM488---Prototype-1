@@ -15,8 +15,6 @@ MonoBehaviour:
   ElementName: Ice
   ElementColor: {r: 0, g: 0.87953043, b: 1, a: 1}
   ElementIcon: {fileID: 21300000, guid: 7f64aac807c4f084d850c2e3ce974ce9, type: 3}
-  LoopingParticles: {fileID: 5644419859138113070, guid: 08106aa91bf866f4e8b64d43defd952b,
-    type: 3}
-  BurstParticles: {fileID: 8928289976834242976, guid: fe62eef750bd36c41938be3d0714e2a3,
-    type: 3}
+  LoopingParticles: Looping_Ice
+  BurstParticles: Burst_Ice
   SoundEffectName: IceSFX

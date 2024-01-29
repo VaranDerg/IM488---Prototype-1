@@ -15,6 +15,7 @@ public class ManagerParent : MonoBehaviour
     [HideInInspector] public SpellManager Spells;
     [HideInInspector] public GameManager Game;
     [HideInInspector] public AudioManager Audio;
+    [HideInInspector] public ParticleManager Particles;
 
     /// <summary>
     /// Singleton pattern
@@ -56,5 +57,6 @@ public class ManagerParent : MonoBehaviour
         Spells = FindObjectOfType<SpellManager>();
         Game = FindObjectOfType<GameManager>();
         Audio = FindObjectOfType<AudioManager>();
+        Particles = FindObjectOfType<ParticleManager>();
     }
 }

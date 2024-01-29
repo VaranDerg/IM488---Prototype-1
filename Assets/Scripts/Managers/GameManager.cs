@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private int _playerOneScore;
     private int _playerTwoScore;
 
+    //Marked true after a player's score increases and marked false after a spell is selected. Prevents odd behavior.
+    public bool PlayerHasWonRound { get; set; }
+
     /// <summary>
     /// Increases the score for a player.
     /// </summary>
@@ -29,6 +32,8 @@ public class GameManager : MonoBehaviour
     /// <param name="winDelay">How long a win message is displayed.</param>
     public void IncreasePlayerScore(int player)
     {
+        PlayerHasWonRound = true;
+
         if (player == 1)
         {
             _playerOneScore++;

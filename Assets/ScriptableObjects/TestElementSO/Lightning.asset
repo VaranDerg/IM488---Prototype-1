@@ -15,8 +15,6 @@ MonoBehaviour:
   ElementName: Lightning
   ElementColor: {r: 1, g: 0.9397521, b: 0, a: 1}
   ElementIcon: {fileID: 21300000, guid: ddf8c790464a72342b237f4ff195be23, type: 3}
-  LoopingParticles: {fileID: 16426994260007834, guid: 1407e40ae13d72245829b2ad6e15f4d3,
-    type: 3}
-  BurstParticles: {fileID: 4920766053560913085, guid: 5e0f91d2bec19e9479e5714b4e956588,
-    type: 3}
+  LoopingParticles: Looping_Lightning
+  BurstParticles: Burst_Lightning
   SoundEffectName: LightningSFX

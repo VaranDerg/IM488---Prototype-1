@@ -28,7 +28,7 @@ public class HPWheelUI : BaseUIElement
     {
         if (amount > 1 || amount < 0)
         {
-            Debug.LogWarning("An HP Wheel reads from values 0 to 1. Value passed was out of this range.");
+            Debug.LogWarning($"An HP Wheel reads from values 0 to 1. The value ({amount}) is out of this range.");
         }
 
         _hpWheelSlider.value = amount;

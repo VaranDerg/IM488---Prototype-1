@@ -58,7 +58,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
         timeTillNextTick = tickRate;
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
-        Debug.Log(owner);
+        //Debug.Log(owner);
         AddSpellsToLists();
 
         OnStart();

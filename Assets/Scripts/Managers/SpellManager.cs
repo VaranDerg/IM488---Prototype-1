@@ -87,6 +87,8 @@ public class SpellManager : MonoBehaviour
             int arenaScene = ManagerParent.Instance.Game.GetRandomArenaScene();
             SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, arenaScene);
         }
+
+        ManagerParent.Instance.Game.PlayerHasWonRound = false;
     }
 
     /// <summary>
