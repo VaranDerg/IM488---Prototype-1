@@ -15,7 +15,7 @@ MonoBehaviour:
   SpellName: Fire Projectile
   SpellDescription: Fire a projectile on an interval that moves slowly but deals
     heavy damage.
-  SpellColor: {r: 1, g: 0.11461386, b: 0, a: 1}
-  TypeOfSpell: 0
+  SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
+  SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
   AssociatedPrefab: {fileID: 8170845609202855336, guid: 675a12d98b4a6d54a9ffe236d1788eca,
     type: 3}

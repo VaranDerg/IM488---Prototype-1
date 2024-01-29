@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellName: Lightning Dash
   SpellDescription: Dashing summons a projectile at its original position.
-  SpellColor: {r: 1, g: 0.913718, b: 0, a: 1}
-  TypeOfSpell: 2
+  SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
+  SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
+  AssociatedPrefab: {fileID: 0}

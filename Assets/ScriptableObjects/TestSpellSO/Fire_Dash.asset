@@ -15,5 +15,6 @@ MonoBehaviour:
   SpellName: Fire Dash
   SpellDescription: 'Dashing summons an object that spawns a damaging AoE after an
     amount of time. '
-  SpellColor: {r: 1, g: 0.11461386, b: 0, a: 1}
-  TypeOfSpell: 2
+  SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
+  SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
+  AssociatedPrefab: {fileID: 0}
