@@ -17,7 +17,8 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(getDefensive);
+        //Please don't leave repeating calls in update
+        //print(getDefensive);
         if (getDefensive)
         {
             transform.Rotate(0, 1 * speed * Time.deltaTime, 0);

@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9887786f091f9e4fb1bf34c2f32f817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointsToWin: 5
+  _pointsToWin: 3
   _spellOptionsGiven: 3
   _playersRegenerateHP: 0

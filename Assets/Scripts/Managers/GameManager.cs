@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     ///Constants for gameplay.
-    private const int WIN_SCENE = 5;
+    private const int WIN_SCENE = 7;
     private const int SPELL_SCENE = 1;
     private const string PLAYER_NAME = "Plasmo";
     private const float _winDelayBeforeSceneLoad = 1.5f;

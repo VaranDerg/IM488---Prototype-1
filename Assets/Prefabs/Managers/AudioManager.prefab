@@ -87,7 +87,7 @@ MonoBehaviour:
     type: 2}
   _sceneMusic:
   - SceneBuildIndex: 0
-    MusicToPlay: PureEnergy
+    MusicToPlay: PickAndChoose
   - SceneBuildIndex: 1
     MusicToPlay: PickAndChoose
   - SceneBuildIndex: 2
@@ -97,4 +97,8 @@ MonoBehaviour:
   - SceneBuildIndex: 4
     MusicToPlay: PureEnergy
   - SceneBuildIndex: 5
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 6
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 7
     MusicToPlay: PureEnergy

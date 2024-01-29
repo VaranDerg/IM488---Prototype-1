@@ -45,5 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spellSelectScene: 1
-  _arenaScenes: 020000000300000004000000
-  _winDelay: 2
+  _arenaScenes: 0200000003000000040000000500000006000000
