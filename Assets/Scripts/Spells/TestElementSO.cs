@@ -9,6 +9,7 @@ public class TestElementSO : ScriptableObject
     public Color ElementColor;
     public Sprite ElementIcon;
     [Space]
-    public GameObject ParticlePrefab;
+    public GameObject LoopingParticles;
+    public GameObject BurstParticles;
     public string SoundEffectName;
 }
