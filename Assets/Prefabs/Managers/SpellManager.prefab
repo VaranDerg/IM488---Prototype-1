@@ -59,4 +59,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
   _opponentViewPickedSpellTime: 1.5
   _playerOneSpells:
-  - {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
+  - {fileID: 11400000, guid: 627181a03606cd546af6c3368aff6d37, type: 2}

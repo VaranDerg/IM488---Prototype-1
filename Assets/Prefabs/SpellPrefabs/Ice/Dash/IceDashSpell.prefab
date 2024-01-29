@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2611727146870864614}
-  - component: {fileID: 2834868552202458012}
+  - component: {fileID: 3657049074277070431}
   m_Layer: 0
   m_Name: IceDashSpell
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2834868552202458012
+--- !u!114 &3657049074277070431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8391078800739893117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de43b911336c91f42acef1f33b94d569, type: 3}
+  m_Script: {fileID: 11500000, guid: b22e9b4a0c88f424c9cc1036599fe00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 42a072f560bed634c9ae88e3515acb38, type: 2}
   tickRate: 1
   tickRateScalar: 1
   castMethod: 1
-  objPrefab: {fileID: 1615301249431763084, guid: 2bbd8e67e0ae7bf47ac112302d3893d0,
+  particlePrefab: {fileID: 1615301249431763084, guid: 2bbd8e67e0ae7bf47ac112302d3893d0,
     type: 3}
