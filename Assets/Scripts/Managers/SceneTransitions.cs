@@ -43,6 +43,24 @@ public class SceneTransitions : BaseUIElement
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    /// <summary>
+    /// Runs whenever the scene is loaded.
+    /// </summary>
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ManagerParent.Instance.Audio.PlaySceneMusic();
+    }
+
     /// <summary>
     /// Use this to load the SpellSelectScene.
     /// </summary>

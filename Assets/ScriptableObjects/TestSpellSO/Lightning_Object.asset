@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellName: Lightning Object
   SpellDescription: Summon an object on an interval with a damaging AoE.
-  SpellColor: {r: 1, g: 0.913718, b: 0, a: 1}
-  TypeOfSpell: 1
+  SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
+  SpellType: {fileID: 11400000, guid: 19bb5d5f9c81f8e46be6b4fc1865a7cb, type: 2}
+  AssociatedPrefab: {fileID: 0}

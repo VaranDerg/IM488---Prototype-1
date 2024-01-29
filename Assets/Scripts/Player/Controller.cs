@@ -191,7 +191,10 @@ public class Controller : MonoBehaviour
     {
         if (_moveState == MovementState.Dashing)
             return;
-        rb.velocity = _inputDirection * speed;
+        Vector3 vel = rb.velocity;
+        vel.x = _inputDirection.x * speed;
+        vel.z = _inputDirection.z * speed;
+        rb.velocity = vel;
     }
     #endregion
 }

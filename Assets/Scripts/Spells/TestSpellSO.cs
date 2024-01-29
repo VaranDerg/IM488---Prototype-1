@@ -11,15 +11,9 @@ public class TestSpellSO : ScriptableObject
 {
     public string SpellName;
     [TextArea(3, 10)] public string SpellDescription;
-    public Color SpellColor;
-    public SpellType TypeOfSpell;
-
-    //Currently unused, but should be used for visuals 
-    public enum SpellType
-    {
-        Projectile,
-        Object,
-        Dash,
-        AreaOfEffect
-    }
+    [Space]
+    public TestElementSO SpellElement;
+    public TestSpellTypeSO SpellType;
+    [Space]
+    public GameObject AssociatedPrefab;
 }

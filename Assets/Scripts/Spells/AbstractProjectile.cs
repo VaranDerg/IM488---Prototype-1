@@ -132,7 +132,10 @@ public abstract class AbstractProjectile : MonoBehaviour
             case TargetType.MOVE_DIRECTION:
                 PlayerManager player = MultiplayerManager.Instance.GetPlayer(owner);
                 return player.GetLastNonZeroMovement().normalized;
-                //return player.GetMovementDirection();
+            //return player.GetMovementDirection();
+            case TargetType.OPPOSITE_DIRECTION:
+                player = MultiplayerManager.Instance.GetPlayer(owner);
+                return player.GetLastNonZeroMovement().normalized * -1;
 
             case TargetType.RANDOM:
                 /*return new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)).normalized 
@@ -163,6 +166,7 @@ public enum TargetType
 {
     OTHER_PLAYER,
     MOVE_DIRECTION,
+    OPPOSITE_DIRECTION,
     RANDOM,
     OTHER
 }

@@ -48,6 +48,8 @@ MonoBehaviour:
   - {fileID: 8389840221807059587, guid: 0f53b45191deb8649aa0d0a241612285, type: 3}
   - {fileID: 1053257283472145123, guid: 537524d551daaed44a75a279f3b0cd33, type: 3}
   - {fileID: 3612043440712835987, guid: 182db5d2f3aaa5d459c826dc8070c876, type: 3}
+  - {fileID: 7638603741560529292, guid: 9e9f07a9d9ba42348a04400e1bd0ebf9, type: 3}
   Options: {fileID: 0}
   Spells: {fileID: 0}
-  Score: {fileID: 0}
+  Game: {fileID: 0}
+  Audio: {fileID: 0}

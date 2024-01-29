@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _whichPlayer: 1
   _playerText: {fileID: 8250838039246623033}
-  _spellIcon: {fileID: 6601926247134653033, guid: c8fbeec4eb1f06941a877191117460e6,
+  _spellIcon: {fileID: 6601926247134653033, guid: 4074fd9ab92a7c24aa11f2c600c28c97,
     type: 3}
   _spellIconGrid: {fileID: 3924452797188821209}
 --- !u!1001 &2855654111621555467
