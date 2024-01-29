@@ -11,7 +11,8 @@ public class SpellManager : MonoBehaviour
     [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
     [SerializeField] private float _opponentViewPickedSpellTime = 1.5f;
 
-    private List<TestSpellSO> _playerOneSpells = new List<TestSpellSO>();
+    //Ryan - I made this serializefield for testing, if its still like this then I forgot
+    [SerializeField] private List<TestSpellSO> _playerOneSpells = new List<TestSpellSO>();
     private List<TestSpellSO> _playerTwoSpells = new List<TestSpellSO>();
     private SpellSelectionMode _currentSelectionMode;
 
