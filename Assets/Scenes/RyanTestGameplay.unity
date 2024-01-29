@@ -740,8 +740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roundTimerLength: 555555
-  p1StartLoc: {x: -3, y: 1, z: 0}
-  p2StartLoc: {x: 3, y: 1, z: 0}
 --- !u!4 &715018761
 Transform:
   m_ObjectHideFlags: 0
@@ -929,7 +927,7 @@ PrefabInstance:
     - target: {fileID: 4154672118953922563, guid: 22b824bbfba0745408d89cb44a59f024,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.1638675
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 4154672118953922563, guid: 22b824bbfba0745408d89cb44a59f024,
         type: 3}

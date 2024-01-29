@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerTag = GameRoundHandler.Instance.AssignPlayer(gameObject);
+        //PlayerTag = GameRoundHandler.Instance.AssignPlayer(gameObject);
 
         MultiplayerManager.Instance.AssignPlayer(PlayerTag, this);
 
