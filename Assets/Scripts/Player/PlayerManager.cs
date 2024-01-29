@@ -24,14 +24,16 @@ public class PlayerManager : MonoBehaviour
 
         AttachAssociatedSpells();
 
-        StartCoroutine(PlayerInputDelay());
+        StartCoroutine(AttachInput());
     }
 
-    IEnumerator PlayerInputDelay()
+    IEnumerator AttachInput()
     {
-        //Update to variable later - Ryan
-        yield return new WaitForSeconds(3);
-        InputParent.Instance.AttachInput(_pController, PlayerTag);
+        while(InputParent.Instance != null && !InputParent.Instance.AttachInput(_pController, PlayerTag))
+        {
+            yield return null;
+        }
+        //yield return new WaitForSeconds(3);
     }
 
     public void PlayerStartingLocation(Vector3 startPos)

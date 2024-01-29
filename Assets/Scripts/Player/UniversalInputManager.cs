@@ -30,7 +30,8 @@ public class UniversalInputManager : MonoBehaviour
 
     public void AssignAssociatedController(Controller newController)
     {
-        _associatedController = newController;
+        if(newController != null)
+            _associatedController = newController;
     }
 
     private bool HasValidPlayer()

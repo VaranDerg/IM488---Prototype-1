@@ -35,16 +35,27 @@ public class InputParent : MonoBehaviour
 
     }
 
-    public void AttachInput(Controller controller,Player player)
+    public bool AttachInput(Controller controller,Player player)
     {
         switch(player)
         {
             case(Player.one):
-                _P1Input.AssignAssociatedController(controller);
-                return;
+                if(_P1Input != null)
+                {
+                    _P1Input.AssignAssociatedController(controller);
+                    return true;
+                }
+                return false;
+                    
             case (Player.two):
-                _P2Input.AssignAssociatedController(controller);
-                return;
+                if (_P2Input != null)
+                {
+                    _P2Input.AssignAssociatedController(controller);
+                    return true;
+                }
+                return false;
+                    
         }
+        return false;
     }
 }

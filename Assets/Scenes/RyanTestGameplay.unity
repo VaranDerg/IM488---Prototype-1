@@ -646,12 +646,12 @@ PrefabInstance:
     - target: {fileID: 4154672118953922560, guid: 22b824bbfba0745408d89cb44a59f024,
         type: 3}
       propertyPath: m_Name
-      value: PlayerTest (1)
+      value: PlayerTest2
       objectReference: {fileID: 0}
     - target: {fileID: 4154672118953922560, guid: 22b824bbfba0745408d89cb44a59f024,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4154672118953922563, guid: 22b824bbfba0745408d89cb44a59f024,
         type: 3}
