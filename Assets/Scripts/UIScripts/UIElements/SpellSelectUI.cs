@@ -30,6 +30,14 @@ public class SpellSelectUI : BaseUIElement
         PopulateWithSpells();
 
         int curPlayer = ManagerParent.Instance.Spells.SpellSelectionModeToPlayer(ManagerParent.Instance.Spells.GetCurrentSpellSelectionMode());
+
+        // Ensure opposing player input is disabled
+        if (curPlayer == 1)
+            ControllerInputManager.Instance.DisableGamepad();
+        else if (curPlayer == 2)
+            ControllerInputManager.Instance.DisableMNK();
+
+
         _headerText.text = "Fuse, " + ManagerParent.Instance.Game.GetPlayerName() + " " + curPlayer + ".";
     }
 

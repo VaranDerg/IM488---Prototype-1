@@ -80,6 +80,10 @@ public class SceneTransitions : BaseUIElement
     /// <param name="sceneToLoad">The scene build index to load.</param>
     public void LoadSceneWithTransition(TransitionType typeOfTransition, int sceneToLoad)
     {
+        // Enable controls for both players
+        ControllerInputManager.Instance.EnableMNK();
+        ControllerInputManager.Instance.EnableGamepad();
+
         StartCoroutine(SceneTransition(TransitionNameFromTransitionType(typeOfTransition), sceneToLoad));
     }
 

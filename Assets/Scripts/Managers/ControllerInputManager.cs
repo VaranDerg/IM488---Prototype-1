@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 public class ControllerInputManager : MonoBehaviour
@@ -11,6 +12,10 @@ public class ControllerInputManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+
+        // Enable controls for both players
+        Instance.EnableMNK();
+        Instance.EnableGamepad();
     }
 
     public void AssignControllerSelected(GameObject obj)
@@ -19,5 +24,42 @@ public class ControllerInputManager : MonoBehaviour
 
 
         EventSystem.current.SetSelectedGameObject(obj);
+    }
+
+    public void DisableGamepad()
+    {
+        //Gamepad[] gamepads = Gamepad.all.ToArray();
+        Gamepad gamepad = Gamepad.current;
+        InputSystem.DisableDevice(gamepad);
+
+        //Debug.Log("Controller Disabled!");
+    }
+
+    public void EnableGamepad()
+    {
+        Gamepad gamepad = Gamepad.current;
+        InputSystem.EnableDevice(gamepad);
+
+        //Debug.Log("Controller Enabled!");
+    }
+
+    public void DisableMNK()
+    {
+        Keyboard keyboard = Keyboard.current;
+        Mouse mouse = Mouse.current;
+        InputSystem.DisableDevice(keyboard);
+        InputSystem.DisableDevice(mouse);
+
+        //Debug.Log("MNK Disabled!");
+    }
+
+    public void EnableMNK()
+    {
+        Keyboard keyboard = Keyboard.current;
+        Mouse mouse = Mouse.current;
+        InputSystem.EnableDevice(keyboard);
+        InputSystem.EnableDevice(mouse);
+
+        //Debug.Log("MNK Enabled!");
     }
 }
