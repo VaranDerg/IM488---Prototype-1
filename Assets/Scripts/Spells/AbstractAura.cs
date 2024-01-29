@@ -19,6 +19,8 @@ public abstract class AbstractAura : AbstractSpell
 
     protected List<GameObject> objectsInAura = new();
 
+    [SerializeField] private TestSpellSO _thisSpell;
+
     private void OnTriggerEnter(Collider other)
     {
         objectsInAura.Add(other.gameObject);
@@ -70,6 +72,9 @@ public abstract class AbstractAura : AbstractSpell
 
         if (auraRenderer != null)
             auraRenderer.enabled = true;
+
+        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
+        ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
     }
 
     void DisableAura()

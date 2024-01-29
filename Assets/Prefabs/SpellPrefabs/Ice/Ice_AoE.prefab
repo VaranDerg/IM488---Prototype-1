@@ -150,6 +150,7 @@ MonoBehaviour:
   auraTickRate: 0.5
   duration: 1e+13
   auraRenderer: {fileID: 5863230248673672758}
+  _thisSpell: {fileID: 11400000, guid: 39b22791cca09a3439ceadee5a9dec27, type: 2}
   damage: 1
 --- !u!135 &7255832389795555287
 SphereCollider:

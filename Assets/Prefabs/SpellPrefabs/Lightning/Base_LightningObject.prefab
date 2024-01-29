@@ -147,4 +147,5 @@ MonoBehaviour:
   startDelay: 1
   tickRate: 0.3
   tickRateScalar: 1
+  _thisSpell: {fileID: 11400000, guid: bc8c5c88a46e93441b857da13a1fd174, type: 2}
   damage: 1
