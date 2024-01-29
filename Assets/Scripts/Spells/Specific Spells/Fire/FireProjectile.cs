@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FireProjectile : AbstractProjectile
 {
+    [SerializeField] private TestSpellSO _thisSpell;
+
     [SerializeField]
     float damage;
 
@@ -14,7 +16,8 @@ public class FireProjectile : AbstractProjectile
 
     protected override void OnLaunch()
     {
-        
+        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
+        ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
     }
 
     protected override void OnPlayerCollision(Collider other)

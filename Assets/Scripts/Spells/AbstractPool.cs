@@ -19,6 +19,9 @@ public abstract class AbstractPool : MonoBehaviour
     [SerializeField]
     float tickRateScalar;
 
+    [SerializeField]
+    private TestSpellSO _thisSpell;
+
     float timeTillNextTick;
 
     protected Player owner { get; private set; }
@@ -58,6 +61,8 @@ public abstract class AbstractPool : MonoBehaviour
     void Deactivate()
     {
         OnExpiration();
+
+        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.BurstParticles, true, transform, false);
 
         gameObject.SetActive(false);
     }

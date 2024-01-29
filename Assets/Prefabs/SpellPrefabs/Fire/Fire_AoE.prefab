@@ -163,4 +163,5 @@ MonoBehaviour:
   auraTickRate: 0.4
   duration: 3
   auraRenderer: {fileID: 5863230248673672758}
+  _thisSpell: {fileID: 11400000, guid: 0d1d9354e9329854bb71a2e0ea5f103a, type: 2}
   damage: 2

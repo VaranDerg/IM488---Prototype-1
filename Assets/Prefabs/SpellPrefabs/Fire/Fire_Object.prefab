@@ -50,3 +50,4 @@ MonoBehaviour:
   castMethod: 0
   objPrefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c,
     type: 3}
+  _thisSpell: {fileID: 11400000, guid: e311932b7313b064da844c46bc027143, type: 2}
