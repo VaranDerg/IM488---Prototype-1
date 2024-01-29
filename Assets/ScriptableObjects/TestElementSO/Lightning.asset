@@ -16,4 +16,4 @@ MonoBehaviour:
   ElementColor: {r: 1, g: 0.9397521, b: 0, a: 1}
   ElementIcon: {fileID: 21300000, guid: ddf8c790464a72342b237f4ff195be23, type: 3}
   ParticlePrefab: {fileID: 0}
-  SoundEffect: {fileID: 8300000, guid: 7935041951a3e4648b4f56b97c71fedb, type: 3}
+  SoundEffectName: LightningSFX

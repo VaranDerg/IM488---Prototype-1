@@ -10,5 +10,5 @@ public class TestElementSO : ScriptableObject
     public Sprite ElementIcon;
     [Space]
     public GameObject ParticlePrefab;
-    public AudioClip SoundEffect;
+    public string SoundEffectName;
 }
