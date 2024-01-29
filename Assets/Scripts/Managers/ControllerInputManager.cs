@@ -20,6 +20,10 @@ public class ControllerInputManager : MonoBehaviour
 
     public void AssignControllerSelected(GameObject obj)
     {
+        Gamepad gamepad = Gamepad.current;
+        if (gamepad.enabled == false)
+            return;
+
         EventSystem.current.SetSelectedGameObject(null);
 
 
@@ -62,4 +66,14 @@ public class ControllerInputManager : MonoBehaviour
 
         //Debug.Log("MNK Enabled!");
     }
+
+    /*public void TogglePlayer1Input(bool active)
+    {
+        InputParent.Instance._P1Input.enabled = active;
+    }
+
+    public void TogglePlayer2Input(bool active)
+    {
+        InputParent.Instance._P2Input.enabled = active;
+    }*/
 }

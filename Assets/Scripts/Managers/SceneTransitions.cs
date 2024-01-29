@@ -83,6 +83,8 @@ public class SceneTransitions : BaseUIElement
         // Enable controls for both players
         ControllerInputManager.Instance.EnableMNK();
         ControllerInputManager.Instance.EnableGamepad();
+        //ControllerInputManager.Instance.TogglePlayer1Input(true);
+        //ControllerInputManager.Instance.TogglePlayer2Input(true);
 
         StartCoroutine(SceneTransition(TransitionNameFromTransitionType(typeOfTransition), sceneToLoad));
     }
