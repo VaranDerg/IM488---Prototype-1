@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellName: Ice Dash
   SpellDescription: 'Dashing summons an object that deals damage on contact. '
-  SpellColor: {r: 0.3820755, g: 0.83578235, b: 1, a: 1}
-  TypeOfSpell: 2
+  SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
+  SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
+  AssociatedPrefab: {fileID: 0}

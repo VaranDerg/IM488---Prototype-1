@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellName: Lightning Area of Effect
   SpellDescription: Occasionally damages players Nearby on an Interval.
-  SpellColor: {r: 1, g: 0.913718, b: 0, a: 1}
-  TypeOfSpell: 3
+  SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
+  SpellType: {fileID: 11400000, guid: a395b40b8561bee4e8ea525e76b9b2a6, type: 2}
+  AssociatedPrefab: {fileID: 0}

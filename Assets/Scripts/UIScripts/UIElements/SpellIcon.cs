@@ -19,6 +19,6 @@ public class SpellIcon : BaseUIElement
     public void SetUpIcon(TestSpellSO spell)
     {
         _icon.color = Color.gray;
-        _border.color = spell.SpellColor;
+        _border.color = spell.SpellElement.ElementColor;
     }
 }
