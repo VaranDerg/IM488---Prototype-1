@@ -17,3 +17,5 @@ MonoBehaviour:
     of time. '
   SpellColor: {r: 1, g: 0.11461386, b: 0, a: 1}
   TypeOfSpell: 3
+  AssociatedPrefab: {fileID: 6700097306087382589, guid: 33598978649c7184cb22796cd18c455f,
+    type: 3}
