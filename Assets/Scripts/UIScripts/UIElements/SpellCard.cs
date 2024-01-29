@@ -48,7 +48,7 @@ public class SpellCard : BaseUIElement
 
         FindObjectOfType<SpellSelectUI>().RemovePassedSpellCards(this);
 
-        ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffect);
+        ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
         _animator.Play(SELECT_ANIM_NAME);
     }
 

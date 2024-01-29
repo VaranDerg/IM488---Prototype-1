@@ -10,6 +10,10 @@ public class HPWheelUI : BaseUIElement
 {
     [SerializeField] private Slider _hpWheelSlider;
 
+    //This can be used to link the wheel to the player
+    [Header("Temporary")]
+    [SerializeField] private int _player;
+
     private void Start()
     {
         _hpWheelSlider.maxValue = 1f;
@@ -28,5 +32,10 @@ public class HPWheelUI : BaseUIElement
         }
 
         _hpWheelSlider.value = amount;
+    }
+
+    public int GetPlayer()
+    {
+        return _player;
     }
 }

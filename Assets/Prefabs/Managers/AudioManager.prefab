@@ -69,14 +69,14 @@ MonoBehaviour:
     Source: {fileID: 0}
   - Name: IceSFX
     Clip: {fileID: 8300000, guid: ce54ba8301136e14f8b690d84470bbaa, type: 3}
-    Volume: 1
+    Volume: 0.8
     Pitch: 1
     PitchDeviation: 0.1
     Loop: 0
     Source: {fileID: 0}
   - Name: LightningSFX
     Clip: {fileID: 8300000, guid: 7935041951a3e4648b4f56b97c71fedb, type: 3}
-    Volume: 1
+    Volume: 0.8
     Pitch: 1
     PitchDeviation: 0.1
     Loop: 0
@@ -97,4 +97,4 @@ MonoBehaviour:
   - SceneBuildIndex: 4
     MusicToPlay: PureEnergy
   - SceneBuildIndex: 5
-    MusicToPlay: PickAndChoose
+    MusicToPlay: PureEnergy

@@ -9,7 +9,8 @@ using UnityEngine.UI;
 /// </summary>
 public class SpellIcon : BaseUIElement
 {
-    [SerializeField] private Image _icon;
+    [SerializeField] private Image _elementIcon;
+    [SerializeField] private Image _spellTypeIcon;
     [SerializeField] private Image _border;
 
     /// <summary>
@@ -18,7 +19,11 @@ public class SpellIcon : BaseUIElement
     /// <param name="spell">Spell information object</param>
     public void SetUpIcon(TestSpellSO spell)
     {
-        _icon.color = Color.gray;
         _border.color = spell.SpellElement.ElementColor;
+
+        _elementIcon.sprite = spell.SpellElement.ElementIcon;
+
+        _spellTypeIcon.color = spell.SpellElement.ElementColor;
+        _spellTypeIcon.sprite = spell.SpellType.SpellTypeIcon;
     }
 }
