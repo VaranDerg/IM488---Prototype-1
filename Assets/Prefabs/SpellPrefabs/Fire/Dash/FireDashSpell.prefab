@@ -47,6 +47,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
   tickRate: 1
   tickRateScalar: 1
-  castMethod: 2
+  castMethod: 1
   objPrefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c,
     type: 3}

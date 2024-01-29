@@ -16,4 +16,5 @@ MonoBehaviour:
   SpellDescription: 'Dashing summons an object that deals damage on contact. '
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
-  AssociatedPrefab: {fileID: 0}
+  AssociatedPrefab: {fileID: 8391078800739893117, guid: 5f8bd4fb375720747b16d554cf62805a,
+    type: 3}

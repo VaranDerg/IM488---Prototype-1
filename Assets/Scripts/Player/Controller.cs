@@ -27,8 +27,6 @@ public class Controller : MonoBehaviour
     [Space]
 
     [Header("Spells")]
-    //[SerializeField] private List<ISpell> spellList;
-    [SerializeField] private List<AbstractSpell> manualSpellList;
     [SerializeField] private List<AbstractSpell> dashSpellList;
     
 
@@ -68,36 +66,10 @@ public class Controller : MonoBehaviour
         return lastNonZeroMovement;
     }
 
-    public void AddManualSpellToList(AbstractSpell newSpell)
-    {
-        manualSpellList.Add(newSpell);
-    }
-
     public void AddDashSpellToList(AbstractSpell newSpell)
     {
         dashSpellList.Add(newSpell);
     }
-
-
-/*    //Temporary
-    public void AddManualStartingSpells()
-    {
-        foreach (AbstractSpell currentSpell in GetComponentsInChildren<AbstractSpell>())
-        {
-            Debug.Log("FoundSpell");
-            manualSpellList.Add(currentSpell);
-        }
-    }
-    //Temporary
-    public void AddDashStartingSpells()
-    {
-        foreach (AbstractSpell currentSpell in GetComponentsInChildren<AbstractSpell>())
-        {
-            Debug.Log("FoundSpell");
-            dashSpellList.Add(currentSpell);
-        }
-    }*/
-
 
     #region StartUp
     /// <summary>
@@ -146,29 +118,16 @@ public class Controller : MonoBehaviour
 
         rb.velocity = Vector3.zero;
         rb.AddForce(_inputDirection * dashForce, ForceMode.Impulse);
-
         DashSpellCast();
 
         StartCoroutine(DashProcess());
-    }
-
-    public void ManualCastInput(InputAction.CallbackContext context)
-    {
-        if(context.started)
-        {
-            foreach (ISpell currentSpell in manualSpellList)
-            {
-                Debug.Log("Cast Manual Spell");
-                currentSpell.Execute();
-            }
-        }
     }
 
     public void DashSpellCast()
     {
         foreach (ISpell currentSpell in dashSpellList)
         {
-            Debug.Log("Cast Dash Spell");
+            //Debug.Log("Cast Dash Spell");
             currentSpell.Execute();
         }
     }

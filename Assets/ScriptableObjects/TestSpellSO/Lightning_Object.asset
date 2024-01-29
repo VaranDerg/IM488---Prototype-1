@@ -16,4 +16,5 @@ MonoBehaviour:
   SpellDescription: Summon an object on an interval with a damaging AoE.
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: 19bb5d5f9c81f8e46be6b4fc1865a7cb, type: 2}
-  AssociatedPrefab: {fileID: 0}
+  AssociatedPrefab: {fileID: 7512816853408297053, guid: ce61f7f2641a2ff4687fcb2f740039ad,
+    type: 3}

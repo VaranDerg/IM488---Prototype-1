@@ -128,6 +128,8 @@ public class SceneTransitions : BaseUIElement
         yield return new WaitForSecondsRealtime(exitTime);
 
         TransitionActive = false;
+
+        //SceneManager.LoadScene(aScene.n);
     }
 
     /// <summary>

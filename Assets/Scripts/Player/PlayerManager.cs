@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
 
-    public Player PlayerTag { get; private set; }
+    public Player PlayerTag;
 
 /*    [Header("Variables")]
     [SerializeField] private bool isP1;*/
@@ -18,11 +18,22 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerTag = GameRoundHandler.Instance.AssignPlayer(gameObject);
+        //PlayerTag = GameRoundHandler.Instance.AssignPlayer(gameObject);
 
         MultiplayerManager.Instance.AssignPlayer(PlayerTag, this);
 
         AttachAssociatedSpells();
+
+        StartCoroutine(AttachInput());
+    }
+
+    IEnumerator AttachInput()
+    {
+        while(InputParent.Instance != null && !InputParent.Instance.AttachInput(_pController, PlayerTag))
+        {
+            yield return null;
+        }
+        //yield return new WaitForSeconds(3);
     }
 
     public void PlayerStartingLocation(Vector3 startPos)
