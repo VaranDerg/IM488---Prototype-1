@@ -35,10 +35,12 @@ public abstract class AbstractPool : MonoBehaviour
 
     public void Tick(float deltaTime)
     {
+        Debug.Log("Ticked");
         if (timeTillNextTick > 0)
             timeTillNextTick -= deltaTime * tickRateScalar;
         else
         {
+            Debug.Log("Execute");
             Execute();
 
             timeTillNextTick = tickRate;
@@ -82,10 +84,10 @@ public abstract class AbstractPool : MonoBehaviour
         }
     }
 
-    protected void DamageAllInside(float damage, bool doSelfDamage)
+    protected bool DamageAllInside(float damage, bool doSelfDamage)
     {
         if (objectsInPool.Count == 0)
-            return;
+            return false;
 
         foreach (GameObject obj in objectsInPool)
         {
@@ -99,6 +101,8 @@ public abstract class AbstractPool : MonoBehaviour
             if (!isSelf || (doSelfDamage && isSelf))
                 player.Damage(damage);
         }
+
+        return true;
     }
 
     private void Start()
@@ -120,7 +124,15 @@ public abstract class AbstractPool : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        if(other.CompareTag("Player") && other.GetComponent<PlayerManager>().PlayerTag == owner)
+        {
+            return;
+        }
+
         objectsInPool.Add(other.gameObject);
+
+        Debug.Log("Object added to " + gameObject.name + ": " + other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)

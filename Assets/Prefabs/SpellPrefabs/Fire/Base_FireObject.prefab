@@ -148,4 +148,4 @@ MonoBehaviour:
   tickRate: 0.001
   tickRateScalar: 1
   damage: 4
-  selfDamage: 1
+  selfDamage: 0

@@ -41,6 +41,20 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         }
     }
 
+    private int NotThisPlayer()
+    {
+        Player p = GetComponent<PlayerManager>().PlayerTag;
+
+        if (p == Player.one)
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
@@ -84,7 +98,7 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
             _currentHealth = 0;
             _dead = true;
 
-            ManagerParent.Instance.Game.IncreasePlayerScore(ThisPlayer());
+            ManagerParent.Instance.Game.IncreasePlayerScore(NotThisPlayer());
         }
     }
 }

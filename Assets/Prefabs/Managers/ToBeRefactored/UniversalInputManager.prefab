@@ -108,6 +108,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 11db07fc-7d1e-4f2a-b58b-59b810a12d28
     m_ActionName: Player Movement/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5082164925144479762}
+        m_TargetAssemblyTypeName: UniversalInputManager, Assembly-CSharp
+        m_MethodName: Nothing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4f012719-8af6-4bdf-becb-32e17f9da938
+    m_ActionName: Player Movement/Left[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Movement

@@ -33,14 +33,9 @@ public class SpellSelectUI : BaseUIElement
 
         // Ensure opposing player input is disabled
         if (curPlayer == 1)
-            ControllerInputManager.Instance.DisableGamepad();
+            InputParent.Instance.TogglePlayerDevices(Player.two, false);
         else if (curPlayer == 2)
-            ControllerInputManager.Instance.DisableMNK();
-        
-        /*if (curPlayer == 1)
-            ControllerInputManager.Instance.TogglePlayer2Input(false);
-        else if (curPlayer == 2)
-            ControllerInputManager.Instance.TogglePlayer1Input(false);*/
+            InputParent.Instance.TogglePlayerDevices(Player.one, false);
 
 
         _headerText.text = "Fuse, " + ManagerParent.Instance.Game.GetPlayerName() + " " + curPlayer + ".";

@@ -7,12 +7,24 @@ public class UniversalInputManager : MonoBehaviour
 {
     //public static UniversalInputManager Instance;
     [SerializeField] Controller _associatedController;
+
+    [SerializeField]
+    InputDevice[] devices;
     // Start is called before the first frame update
     void Start()
     {
         InputParent.Instance.AssignInputManager(this);
         DontDestroyOnLoad(gameObject);
+
+        devices = GetComponent<PlayerInput>().devices.ToArray();
         //EstablishSingleton();
+    }
+
+    public void Nothing()
+    {
+        //DON'T DELETE
+        //FOR MORE INFORMATION:
+            //SEE TF2 COCONUT
     }
 
 /*    void EstablishSingleton()
@@ -27,6 +39,21 @@ public class UniversalInputManager : MonoBehaviour
 
     }*/
 
+    public void EnableInputDevices()
+    {
+        foreach (InputDevice device in devices)
+        {
+            InputSystem.EnableDevice(device);
+        }
+    }
+
+    public void DisableInputDevices()
+    {
+        foreach (InputDevice device in devices)
+        {
+            InputSystem.DisableDevice(device);
+        }
+    }
 
     public void AssignAssociatedController(Controller newController)
     {
@@ -62,4 +89,11 @@ public class UniversalInputManager : MonoBehaviour
             _associatedController.DashInput(context);
         }
     }
+}
+
+public enum InputType
+{
+    MNK,
+    CONTROLLER1,
+    CONTROLLER2
 }

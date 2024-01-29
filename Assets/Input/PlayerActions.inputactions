@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "4f012719-8af6-4bdf-becb-32e17f9da938",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -262,6 +271,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ManualSpellCast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c2eb9e8-a67f-4c91-9f4a-fd7fda0d1fd4",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

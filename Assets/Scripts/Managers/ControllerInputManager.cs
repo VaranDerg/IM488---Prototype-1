@@ -14,8 +14,8 @@ public class ControllerInputManager : MonoBehaviour
         Instance = this;
 
         // Enable controls for both players
-        Instance.EnableMNK();
-        Instance.EnableGamepad();
+        //Instance.EnableMNK();
+        //Instance.EnableGamepad();
     }
 
     public void AssignControllerSelected(GameObject obj)
@@ -67,7 +67,7 @@ public class ControllerInputManager : MonoBehaviour
         //Debug.Log("MNK Enabled!");
     }
 
-    /*public void TogglePlayer1Input(bool active)
+    public void TogglePlayer1Input(bool active)
     {
         InputParent.Instance._P1Input.enabled = active;
     }
@@ -75,5 +75,7 @@ public class ControllerInputManager : MonoBehaviour
     public void TogglePlayer2Input(bool active)
     {
         InputParent.Instance._P2Input.enabled = active;
-    }*/
+    }
+
+    
 }

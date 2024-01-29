@@ -58,4 +58,27 @@ public class InputParent : MonoBehaviour
         }
         return false;
     }
+
+    public void TogglePlayerDevices(Player player, bool toggle)
+    {
+        switch(player){
+            case(Player.one):
+                TogglePlayerDevices(toggle, _P1Input);
+                return;
+            case (Player.two):
+                TogglePlayerDevices(toggle, _P2Input);
+                return;
+        }
+    }
+
+    private void TogglePlayerDevices(bool toggle, UniversalInputManager player)
+    {
+        if (player == null)
+            return;
+        Debug.Log("Player " + player.name + " enabled equals " + toggle);
+        if (toggle)
+            player.EnableInputDevices();
+        else
+            player.DisableInputDevices();
+    }
 }

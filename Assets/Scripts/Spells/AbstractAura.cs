@@ -87,6 +87,9 @@ public abstract class AbstractAura : AbstractSpell
 
         foreach (GameObject obj in objectsInAura)
         {
+            if (obj == null)
+                continue;
+
             PlayerManager player = obj.GetComponent<PlayerManager>();
 
             if (player == null)

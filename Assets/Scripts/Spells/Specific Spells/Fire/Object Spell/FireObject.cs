@@ -12,9 +12,8 @@ public class FireObject : AbstractPool
 
     public override void Execute()
     {
-        DamageAllInside(damage, selfDamage);
-
-        gameObject.SetActive(false);
+        if(DamageAllInside(damage, selfDamage))
+            gameObject.SetActive(false);
     }
 
     protected override void ChildTick()

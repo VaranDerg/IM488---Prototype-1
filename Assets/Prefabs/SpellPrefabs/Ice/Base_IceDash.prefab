@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 2
   doReevaluateTargetting: 0
-  isPersistent: 0
+  isPersistent: 1
   projectileSpeed: 2
   randomSpeedVariance: 0
   canBounce: 0
