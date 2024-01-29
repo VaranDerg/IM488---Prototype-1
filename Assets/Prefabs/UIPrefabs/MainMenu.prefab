@@ -1496,14 +1496,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlsText (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6134341618809271344, guid: c85b2fc96411b9642be00c30e817003e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_text
-      value: 'Keyboard 2:
+      value: 'Note:
 
-        Move: Arrow Keys
-
-        Dodge/Select: K'
+        Game currently only supports 1 controller and 1 keyboard.'
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
@@ -1662,7 +1665,10 @@ PrefabInstance:
 
         Move: Left Stick
 
-        Dodge/Select: South'
+        Dodge: Left Trigger
+
+        Select:
+        South Button'
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
@@ -2569,11 +2575,14 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_text
-      value: 'Keyboard 1:
+      value: 'Keyboard:
 
         Move: WASD
 
-        Dodge/Select: Space'
+        Dodge: Space
+
+        Select:
+        Mouse'
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}

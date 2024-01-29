@@ -46,7 +46,8 @@ public class UniversalInputManager : MonoBehaviour
 
     public void WASDInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Direction");
+        //Try and keep repeated calls commented out before finalizing.
+        //Debug.Log("Direction");
         if(HasValidPlayer())
         {
             _associatedController.MoveInput(context);

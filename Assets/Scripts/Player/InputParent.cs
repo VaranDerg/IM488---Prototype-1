@@ -8,8 +8,8 @@ public class InputParent : MonoBehaviour
     public UniversalInputManager _P1Input;
     public UniversalInputManager _P2Input;
 
-    // Start is called before the first frame update
-    void Start()
+    // Changed to awake for Execution Order - Liz
+    void Awake()
     {
         EstablishSingleton();
     }
