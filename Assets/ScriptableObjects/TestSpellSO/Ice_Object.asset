@@ -16,4 +16,5 @@ MonoBehaviour:
   SpellDescription: Summon an object on an interval nearby that damages on contact.
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: 19bb5d5f9c81f8e46be6b4fc1865a7cb, type: 2}
-  AssociatedPrefab: {fileID: 0}
+  AssociatedPrefab: {fileID: 818075348550264444, guid: 726a76372c8b24748b4956538571b5a3,
+    type: 3}

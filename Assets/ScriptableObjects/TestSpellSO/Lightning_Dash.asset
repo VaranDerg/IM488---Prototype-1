@@ -16,4 +16,5 @@ MonoBehaviour:
   SpellDescription: Dashing summons a projectile at its original position.
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
-  AssociatedPrefab: {fileID: 0}
+  AssociatedPrefab: {fileID: 8391078800739893117, guid: 5e0127501f5c93749a657f7925262fef,
+    type: 3}

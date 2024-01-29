@@ -70,9 +70,6 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
         {
             case CastingMethod.AUTO:
                 return;
-            case CastingMethod.MANUAL:
-                MultiplayerManager.Instance.GetPlayer(owner).GetComponent<Controller>().AddManualSpellToList(this);
-                return;
             case CastingMethod.DASH:
                 MultiplayerManager.Instance.GetPlayer(owner).GetComponent<Controller>().AddDashSpellToList(this);
                 return;
@@ -89,6 +86,5 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
 public enum CastingMethod
 {
     AUTO,
-    MANUAL,
     DASH
 }

@@ -16,4 +16,5 @@ MonoBehaviour:
   SpellDescription: Quickly, lightly damages players Nearby on an Interval.
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: a395b40b8561bee4e8ea525e76b9b2a6, type: 2}
-  AssociatedPrefab: {fileID: 0}
+  AssociatedPrefab: {fileID: 6700097306087382589, guid: 5c12b312d5246c34fb3533e66384db3c,
+    type: 3}
