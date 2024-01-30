@@ -77,12 +77,12 @@ public abstract class AbstractPool : MonoBehaviour
         switch (spawnType)
         {
             case PoolSpawnType.UNDER_SPAWNER:
-                return new Vector3(transform.position.x, 0, transform.position.z);
+                return new Vector3(transform.position.x, 0.4f, transform.position.z);
 
             case PoolSpawnType.RANDOM:
                 Vector3 randomSphere = Random.insideUnitSphere;
 
-                return new Vector3(randomSphere.x, 0, randomSphere.z).normalized;
+                return new Vector3(randomSphere.x, 0.4f, randomSphere.z).normalized;
 
             default:
                 return Vector3.zero;

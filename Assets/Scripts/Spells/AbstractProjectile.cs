@@ -40,13 +40,13 @@ public abstract class AbstractProjectile : MonoBehaviour
     #region Collision
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Owner: " + owner);
+        //Debug.Log("Owner: " + owner);
 
         if (other.CompareTag("Player"))
         {
             if (other.GetComponent<PlayerManager>().PlayerTag == owner)
                 return;
-            Debug.Log("Hit Player! Tag: " + other.GetComponent<PlayerManager>().PlayerTag);
+            //Debug.Log("Hit Player! Tag: " + other.GetComponent<PlayerManager>().PlayerTag);
             OnPlayerCollision(other);
         }
         
