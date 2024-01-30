@@ -46,7 +46,13 @@ public class GameManager : MonoBehaviour
             ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.PlayerOne);
         }
 
-        FindObjectOfType<GameplayMenu>().DisplayWin(player);
+        if (FindObjectOfType<TempGameTimer>())
+        {
+            if (!FindObjectOfType<TempGameTimer>().TimerEnded)
+            {
+                FindObjectOfType<GameplayMenu>().DisplayWin(player);
+            }
+        }
 
         StartCoroutine(ToNextGamePhaseProcess(_winDelay));
     }

@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1615301249431763084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4022448199919437407}
   m_Father: {fileID: 0}
@@ -50,10 +50,10 @@ MonoBehaviour:
   targetType: 2
   doReevaluateTargetting: 0
   isPersistent: 1
-  projectileSpeed: 5
+  projectileSpeed: 6
   randomSpeedVariance: 0
   canBounce: 0
-  projectileLifeTime: 3
+  projectileLifeTime: 2
   _thisSpell: {fileID: 11400000, guid: 42a072f560bed634c9ae88e3515acb38, type: 2}
   damage: 2
 --- !u!65 &1808459696724361258
