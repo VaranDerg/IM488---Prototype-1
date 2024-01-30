@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: d030c1ccff10b7a4fb453d278cee8fce, type: 2}
-  tickRate: 6
+  tickRate: 5
   tickRateScalar: 1
   castMethod: 0
   objPrefab: {fileID: 8881921000091554295, guid: 75c3f65833c568e42b6f36de9d00187f,
