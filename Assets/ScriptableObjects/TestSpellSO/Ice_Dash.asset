@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Ice_Dash
   m_EditorClassIdentifier: 
-  SpellName: Ice Dash
-  SpellDescription: 'Dashing summons an object that deals damage on contact. '
+  SpellName: Ice Shard
+  SpellDescription: Dashing launches a dangerous shard of ice away from you.
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
   AssociatedPrefab: {fileID: 8391078800739893117, guid: 5f8bd4fb375720747b16d554cf62805a,

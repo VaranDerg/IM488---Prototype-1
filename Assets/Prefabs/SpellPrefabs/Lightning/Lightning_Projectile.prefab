@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
-  tickRate: 2
+  tickRate: 1.5
   tickRateScalar: 1
   castMethod: 0
   particlePrefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07,

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Ice_Projectile
   m_EditorClassIdentifier: 
-  SpellName: Ice Projectile
-  SpellDescription: Fire a short-range projectile on an interval that deals damage.
+  SpellName: Block of Ice
+  SpellDescription: Shove a large block of ice, crushing enemy Plasmos who touch
+    it.
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
   AssociatedPrefab: {fileID: 8170845609202855336, guid: 2b434e8178bbe7d4ca237879f48655d4,

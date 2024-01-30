@@ -50,7 +50,7 @@ MonoBehaviour:
   targetType: 1
   doReevaluateTargetting: 0
   isPersistent: 1
-  projectileSpeed: 8
+  projectileSpeed: 12
   randomSpeedVariance: 0
   canBounce: 0
   projectileLifeTime: 5

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Fire_Object
   m_EditorClassIdentifier: 
-  SpellName: Fire Object
-  SpellDescription: Summon an object on an interval nearby that damages on contact.
+  SpellName: Scorch
+  SpellDescription: Periodically set the ground around you on fire, melting Plasmos
+    that touch it.
   SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
   SpellType: {fileID: 11400000, guid: 19bb5d5f9c81f8e46be6b4fc1865a7cb, type: 2}
   AssociatedPrefab: {fileID: 818075348550264444, guid: 1da3bc003cc9178498195ece3c1202ff,
