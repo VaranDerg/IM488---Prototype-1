@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviour
     {
         foreach (TestSpellSO spell in ManagerParent.Instance.Spells.GetSpellListFromPlayer(PlayerTag))
         {
-            AttachSpell(spell.AssociatedPrefab);
+            AttachSpell(spell.GetPrefab());
         }
         
     }

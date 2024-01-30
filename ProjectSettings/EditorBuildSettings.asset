@@ -15,20 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/SpellSelection.unity
     guid: e032372f34d897149a423aed1e471fad
   - enabled: 1
-    path: Assets/Scenes/ArenasInGame/Arena1_Micah.unity
-    guid: 504f18ce186c26c4fb1cb73ae36b1017
+    path: Assets/Scenes/ArenasInGame/SmallerVariants/Arena1_Micah_Small.unity
+    guid: 3b8af8dc8eb8d1c49ba69cffc41835e9
   - enabled: 1
-    path: Assets/Scenes/ArenasInGame/Arena2_Nabil.unity
-    guid: 26839f9f38d3dea4184faf66e0c548e4
+    path: Assets/Scenes/ArenasInGame/SmallerVariants/Arena2_Nabil_Small.unity
+    guid: ce86a20ac5162e043a7a3edbd960f003
   - enabled: 1
-    path: Assets/Scenes/ArenasInGame/Arena3_Nabil.unity
-    guid: 0fbeea7286e4df44ead0abe32181eb9f
+    path: Assets/Scenes/ArenasInGame/SmallerVariants/Arena3_Nabil_Small.unity
+    guid: fed2e89f7af29be499c2824fdc0de5d0
   - enabled: 1
-    path: Assets/Scenes/ArenasInGame/Arena4_Gavin.unity
-    guid: a85af5a66b6ed1a468cb8bf160ca9981
+    path: Assets/Scenes/ArenasInGame/SmallerVariants/Arena4_Gavin_Small.unity
+    guid: 64c221f829a12114ca44fb09009c4acb
   - enabled: 1
-    path: Assets/Scenes/ArenasInGame/Arena5_Gavin.unity
-    guid: ddfc1a47b6f416542a2b01c6b0a09fb8
+    path: Assets/Scenes/ArenasInGame/SmallerVariants/Arena5_Gavin_Small.unity
+    guid: ef552cdd40f9e25409191648c33374d2
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 6e0059d68c025e94eaca8c95296991ef

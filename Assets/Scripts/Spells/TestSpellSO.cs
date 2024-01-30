@@ -15,5 +15,10 @@ public class TestSpellSO : ScriptableObject
     public TestElementSO SpellElement;
     public TestSpellTypeSO SpellType;
     [Space]
-    public GameObject AssociatedPrefab;
+    [SerializeField] private GameObject AssociatedPrefab;
+
+    public GameObject GetPrefab()
+    {
+        return AssociatedPrefab;
+    }
 }
