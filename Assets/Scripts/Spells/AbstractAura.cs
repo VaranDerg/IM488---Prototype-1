@@ -21,6 +21,8 @@ public abstract class AbstractAura : AbstractSpell
 
     [SerializeField] private TestSpellSO _thisSpell;
 
+    private GameObject _currentParticles;
+
     private void OnTriggerEnter(Collider other)
     {
         objectsInAura.Add(other.gameObject);
@@ -73,8 +75,19 @@ public abstract class AbstractAura : AbstractSpell
         if (auraRenderer != null)
             auraRenderer.enabled = true;
 
-        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
+        DisableParticles();
+
+        _currentParticles = ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
         ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
+    }
+
+    private void DisableParticles()
+    {
+        if (_currentParticles != null)
+        {
+            Destroy(_currentParticles);
+            _currentParticles = null;
+        }
     }
 
     void DisableAura()
@@ -83,6 +96,8 @@ public abstract class AbstractAura : AbstractSpell
 
         if (auraRenderer != null)
             auraRenderer.enabled = false;
+
+        DisableParticles();
     }
 
     protected void DamageAllInAura(float damage)

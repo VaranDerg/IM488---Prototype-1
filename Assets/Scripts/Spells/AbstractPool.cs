@@ -38,12 +38,12 @@ public abstract class AbstractPool : MonoBehaviour
 
     public void Tick(float deltaTime)
     {
-        Debug.Log("Ticked");
+        //Debug.Log("Ticked");
         if (timeTillNextTick > 0)
             timeTillNextTick -= deltaTime * tickRateScalar;
         else
         {
-            Debug.Log("Execute");
+            //Debug.Log("Execute");
             Execute();
 
             timeTillNextTick = tickRate;
