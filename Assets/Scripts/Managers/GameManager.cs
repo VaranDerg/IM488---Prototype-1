@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     //Scenes for inspector assignment.
     [SerializeField] private string _playerName = "Plasmo";
     [Space]
+    [SerializeField] private int _mainMenuScene = 1;
     [SerializeField] private int _spellSelectScene = 2;
     [SerializeField] private int[] _arenaScenes;
     [SerializeField] private int _winScene = 8;
@@ -138,5 +139,10 @@ public class GameManager : MonoBehaviour
     public int GetSpellSelectScene()
     {
         return _spellSelectScene;
+    }
+
+    public int GetMainMenuScene()
+    {
+        return _mainMenuScene;
     }
 }

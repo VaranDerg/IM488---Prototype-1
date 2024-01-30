@@ -69,7 +69,7 @@ public class PauseMenu : BaseMenuController
     {
         ManagerParent.Instance.Game.ResetGame();
 
-        LoadScene(0);
+        LoadScene(ManagerParent.Instance.Game.GetMainMenuScene());
     }
 
     /// <summary>
