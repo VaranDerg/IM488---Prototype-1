@@ -16,6 +16,12 @@ public class FireProjectile : AbstractProjectile
 
     protected override void OnLaunch()
     {
+        if (_thisSpell == null)
+        {
+            Debug.Log("SpellSO was null");
+            return;
+        }
+
         ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
         ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
     }

@@ -54,6 +54,7 @@ MonoBehaviour:
   randomSpeedVariance: 0
   canBounce: 0
   projectileLifeTime: 3
+  _thisSpell: {fileID: 11400000, guid: 42a072f560bed634c9ae88e3515acb38, type: 2}
   damage: 4
 --- !u!65 &1808459696724361258
 BoxCollider:
