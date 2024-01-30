@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Lightning_Projectile
   m_EditorClassIdentifier: 
   SpellName: Lightning Bolt
-  SpellDescription: Quickly summon fast-traveling lightning bolts that zap Plasmos
-    on contact.
+  SpellDescription: Periodically launch quick lightning bolts that zap Plasmos on
+    contact.
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
   AssociatedPrefab: {fileID: 8170845609202855336, guid: c5c5ef4a4a739434eb917a6ed29fdda7,

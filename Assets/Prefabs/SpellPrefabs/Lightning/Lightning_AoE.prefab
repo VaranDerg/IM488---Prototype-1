@@ -160,7 +160,7 @@ MonoBehaviour:
   tickRate: 3
   tickRateScalar: 1
   castMethod: 0
-  auraTickRate: 0.3
+  auraTickRate: 0.2
   duration: 1.5
   auraRenderer: {fileID: 5863230248673672758}
   _thisSpell: {fileID: 11400000, guid: 3b58eaa526b329340a5c6ac23dc144f1, type: 2}

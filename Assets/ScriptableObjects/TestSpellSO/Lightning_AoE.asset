@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Lightning_AoE
   m_EditorClassIdentifier: 
   SpellName: Static Shock
-  SpellDescription: Quickly zap nearby Plasmos with overwhelming static electricity.
+  SpellDescription: Summon condensed static electricity around you, quickly zapping
+    nearby Plasmos.
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: a395b40b8561bee4e8ea525e76b9b2a6, type: 2}
   AssociatedPrefab: {fileID: 6700097306087382589, guid: a833fe264c11f554bb86fe27e10ee07c,
