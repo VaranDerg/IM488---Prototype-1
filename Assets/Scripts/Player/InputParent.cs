@@ -75,7 +75,7 @@ public class InputParent : MonoBehaviour
     {
         if (player == null)
             return;
-        Debug.Log("Player " + player.name + " enabled equals " + toggle);
+        //Debug.Log("Player " + player.name + " enabled equals " + toggle);
         if (toggle)
             player.EnableInputDevices();
         else

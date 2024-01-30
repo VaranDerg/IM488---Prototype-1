@@ -50,12 +50,12 @@ MonoBehaviour:
   targetType: 2
   doReevaluateTargetting: 0
   isPersistent: 1
-  projectileSpeed: 2
+  projectileSpeed: 5
   randomSpeedVariance: 0
   canBounce: 0
   projectileLifeTime: 3
   _thisSpell: {fileID: 11400000, guid: 42a072f560bed634c9ae88e3515acb38, type: 2}
-  damage: 4
+  damage: 2
 --- !u!65 &1808459696724361258
 BoxCollider:
   m_ObjectHideFlags: 0

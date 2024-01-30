@@ -34,6 +34,9 @@ public class ControllerInputManager : MonoBehaviour
     {
         //Gamepad[] gamepads = Gamepad.all.ToArray();
         Gamepad gamepad = Gamepad.current;
+        if (gamepad == null)
+            return;
+
         InputSystem.DisableDevice(gamepad);
 
         //Debug.Log("Controller Disabled!");
@@ -42,6 +45,9 @@ public class ControllerInputManager : MonoBehaviour
     public void EnableGamepad()
     {
         Gamepad gamepad = Gamepad.current;
+        if (gamepad == null)
+            return;
+
         InputSystem.EnableDevice(gamepad);
 
         //Debug.Log("Controller Enabled!");
@@ -51,8 +57,11 @@ public class ControllerInputManager : MonoBehaviour
     {
         Keyboard keyboard = Keyboard.current;
         Mouse mouse = Mouse.current;
-        InputSystem.DisableDevice(keyboard);
-        InputSystem.DisableDevice(mouse);
+        if (keyboard != null)
+            InputSystem.DisableDevice(keyboard);
+
+        if (mouse != null)
+            InputSystem.DisableDevice(mouse);
 
         //Debug.Log("MNK Disabled!");
     }
@@ -61,8 +70,11 @@ public class ControllerInputManager : MonoBehaviour
     {
         Keyboard keyboard = Keyboard.current;
         Mouse mouse = Mouse.current;
-        InputSystem.EnableDevice(keyboard);
-        InputSystem.EnableDevice(mouse);
+        if (keyboard != null)
+            InputSystem.EnableDevice(keyboard);
+
+        if (mouse != null)
+            InputSystem.EnableDevice(mouse);
 
         //Debug.Log("MNK Enabled!");
     }
