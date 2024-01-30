@@ -33,8 +33,13 @@ public class ParticleManager : MonoBehaviour
         }
         else
         {
+            Vector3 prevScale = particleSystem.transform.localScale;
+            Vector3 prevRot = particleSystem.transform.rotation.eulerAngles;
+
             particleSystem.transform.SetParent(objTransform, true);
-            particleSystem.transform.localScale = new Vector3(1, 1, 1);
+
+            particleSystem.transform.localScale = prevScale;
+            particleSystem.transform.localEulerAngles = prevRot;
         }
         
         if (hasLifetime)

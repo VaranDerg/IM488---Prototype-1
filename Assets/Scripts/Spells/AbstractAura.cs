@@ -97,6 +97,8 @@ public abstract class AbstractAura : AbstractSpell
         if (auraRenderer != null)
             auraRenderer.enabled = false;
 
+        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.BurstParticles, true, transform, false);
+
         DisableParticles();
     }
 
