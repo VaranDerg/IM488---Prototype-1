@@ -96,6 +96,9 @@ public abstract class AbstractPool : MonoBehaviour
 
         foreach (GameObject obj in objectsInPool)
         {
+            if (obj == null)
+                continue;
+
             PlayerManager player = obj.GetComponent<PlayerManager>();
 
             if (player == null)

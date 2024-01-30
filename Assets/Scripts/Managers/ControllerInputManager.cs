@@ -14,8 +14,8 @@ public class ControllerInputManager : MonoBehaviour
         Instance = this;
 
         // Enable controls for both players
-        //Instance.EnableMNK();
-        //Instance.EnableGamepad();
+        Instance.EnableMNK();
+        Instance.EnableGamepad();
     }
 
     public void AssignControllerSelected(GameObject obj)
