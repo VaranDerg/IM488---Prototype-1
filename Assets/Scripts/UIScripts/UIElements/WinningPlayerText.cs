@@ -21,7 +21,7 @@ public class WinningPlayerText : BaseUIElement
     [SerializeField] private Animator _animator;
 
     /// <summary>
-    /// Displays the text
+    /// Displays the text with a random win message.
     /// </summary>
     /// <param name="winningPlayer">The player that won the round</param>
     public void DisplayText(int winningPlayer)
@@ -30,6 +30,16 @@ public class WinningPlayerText : BaseUIElement
 
         _playerWinsText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + winningPlayer + " Remains.";
         _flavorText.text = _flavorTextPopups[Random.Range(0, _flavorTextPopups.Length)];
+
+        _animator.Play(TEXT_ANIMATION_NAME);
+    }
+
+    public void DisplayTimeoutText(int chosenPlayer)
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        _playerWinsText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + chosenPlayer + " Chosen as Winner.";
+        _flavorText.text = "Winner randomly chosen due to Timeout.";
 
         _animator.Play(TEXT_ANIMATION_NAME);
     }
