@@ -75,7 +75,6 @@ public class UniversalInputManager : MonoBehaviour
 
     public void SetSelected(GameObject obj, GameObject playerRoot = null)
     {
-        //GetComponent<MultiplayerEventSystem>().sele = obj;
         MultiplayerEventSystem eventSystem = GetComponent<MultiplayerEventSystem>();
         eventSystem.SetSelectedGameObject(obj);
 

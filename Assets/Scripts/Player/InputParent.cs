@@ -17,7 +17,7 @@ public class InputParent : MonoBehaviour
     public void SetSelectedUIObject(Player player, GameObject obj, GameObject playerRoot = null)
     {
 
-        /*UniversalInputManager playerInput = player switch
+        UniversalInputManager playerInput = player switch
         {
             (Player.one) => _P1Input,
             (Player.two) => _P2Input,
@@ -25,25 +25,9 @@ public class InputParent : MonoBehaviour
         };
 
         if (playerInput.IsMNK())
-            obj = null;
+            return;
 
-        playerInput.SetSelected(obj);
-        */
-        switch (player)
-        {
-            case (Player.one):
-                if (_P1Input.IsMNK())
-                    return;
-
-                _P1Input.SetSelected(obj, playerRoot);
-                return;
-            case (Player.two):
-                if (_P2Input.IsMNK())
-                    return;
-
-                _P2Input.SetSelected(obj, playerRoot);
-                return;
-        }
+        playerInput.SetSelected(obj, playerRoot);
     }
 
     public void AssertControlToPlayer(Player player, GameObject firstSelected, GameObject playerRoot = null)

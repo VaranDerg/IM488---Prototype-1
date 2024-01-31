@@ -20,15 +20,6 @@ public class ControllerInputManager : MonoBehaviour
 
     public void AssignControllerSelected(GameObject obj)
     {
-        /*Gamepad gamepad = Gamepad.current;
-        if (gamepad.enabled == false)
-            return;
-
-        EventSystem.current.SetSelectedGameObject(null);
-
-
-        EventSystem.current.SetSelectedGameObject(obj);*/
-
         InputParent.Instance.SetSelectedUIObject(Player.one, obj);
         InputParent.Instance.SetSelectedUIObject(Player.two, obj);
     }
