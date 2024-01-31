@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
+  _damageIFrameLength: 0.25
 --- !u!114 &3264294643241418380
 MonoBehaviour:
   m_ObjectHideFlags: 0

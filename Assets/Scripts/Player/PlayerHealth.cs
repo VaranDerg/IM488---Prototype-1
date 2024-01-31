@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour,ICanTakeDamage
 {
     [SerializeField] private float _maxHealth;
-
     private float _currentHealth;
+
+    [SerializeField] private float _damageIFrameLength;
+
+    private bool _damageIFrames;
 
     //added to prevent repeated death calls
     private bool _dead;
@@ -47,7 +50,10 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
 
     public void TakeDamage(float damage)
     {
+        if (Invulerable()) return;
+
         _currentHealth -= damage;
+        StartCoroutine(DamageIFrameProcess());
 
         SetHPWheelValue();
         CheckForDeath();
@@ -61,6 +67,19 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         SetHPWheelValue();
         return true;
+    }
+
+    private IEnumerator DamageIFrameProcess()
+    {
+        _damageIFrames = true;
+        yield return new WaitForSeconds(_damageIFrameLength);
+        _damageIFrames = false;
+    }
+
+    private bool Invulerable()
+    {
+        if(GetComponent<PlayerManager>().GetPlayerController().GetMoveState() == Controller.MovementState.Dashing  || _damageIFrames) return true;
+        return false;
     }
 
     /// <summary>

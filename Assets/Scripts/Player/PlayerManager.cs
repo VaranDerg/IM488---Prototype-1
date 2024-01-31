@@ -74,4 +74,9 @@ public class PlayerManager : MonoBehaviour
     {
         return _pHealth;
     }
+
+    public Controller GetPlayerController()
+    {
+        return _pController;
+    }
 }

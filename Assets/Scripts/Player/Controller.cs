@@ -66,6 +66,11 @@ public class Controller : MonoBehaviour
         return lastNonZeroMovement;
     }
 
+    public MovementState GetMoveState()
+    {
+        return _moveState;
+    }
+
     public void AddDashSpellToList(AbstractSpell newSpell)
     {
         dashSpellList.Add(newSpell);
