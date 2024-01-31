@@ -17,16 +17,6 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         _currentHealth = _maxHealth;
     }
 
-    //TESTING PURPOSES ONLY
-    void Update()
-    {
-        //Don't leave debugs in before finalizing! - Liz
-        //if(Input.GetKeyDown(KeyCode.Y))
-        //{
-        //    TakeDamage(1);
-        //}
-    }
-
     private int ThisPlayer()
     {
         Player p = GetComponent<PlayerManager>().PlayerTag;
@@ -61,6 +51,16 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
 
         SetHPWheelValue();
         CheckForDeath();
+    }
+
+    public bool Heal(float healAmount)
+    {
+        if (_currentHealth == _maxHealth)
+            return false;
+        _currentHealth += healAmount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        SetHPWheelValue();
+        return true;
     }
 
     /// <summary>

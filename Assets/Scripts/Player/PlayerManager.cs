@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("References")]
     //[SerializeField] private MovementScript _pMovement;
-    [SerializeField] private PlayerHealth _pHealth;
+    [SerializeField] PlayerHealth _pHealth;
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
 
@@ -68,5 +68,10 @@ public class PlayerManager : MonoBehaviour
             AttachSpell(spell.GetPrefab());
         }
         
+    }
+
+    public PlayerHealth GetPlayerHealth()
+    {
+        return _pHealth;
     }
 }
