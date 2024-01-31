@@ -46,6 +46,14 @@ public class UniversalInputManager : MonoBehaviour
         //EstablishSingleton();
     }
 
+    public bool IsMNK()
+    {
+        if (devices[0] == null)
+            return false;
+
+        return devices[0].displayName == "Mouse";
+    }
+
     public void Nothing()
     {
         //DON'T DELETE
@@ -65,9 +73,14 @@ public class UniversalInputManager : MonoBehaviour
 
     }*/
 
-    public void SetSelected(GameObject obj)
+    public void SetSelected(GameObject obj, GameObject playerRoot = null)
     {
-        GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(obj);
+        //GetComponent<MultiplayerEventSystem>().sele = obj;
+        MultiplayerEventSystem eventSystem = GetComponent<MultiplayerEventSystem>();
+        eventSystem.SetSelectedGameObject(obj);
+
+        if (playerRoot != null)
+            eventSystem.playerRoot = playerRoot;
     }
 
     public void EnableInputDevices()
@@ -126,11 +139,13 @@ public class UniversalInputManager : MonoBehaviour
     public void EnableInput()
     {
         GetComponent<PlayerInput>().enabled = true;
+        GetComponent<MultiplayerEventSystem>().playerRoot = null;
     }
 
     public void DisableInput()
     {
         GetComponent<PlayerInput>().enabled = false;
+        GetComponent<MultiplayerEventSystem>().playerRoot = gameObject;
     }
 }
 

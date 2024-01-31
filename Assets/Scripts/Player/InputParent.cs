@@ -14,17 +14,61 @@ public class InputParent : MonoBehaviour
         EstablishSingleton();
     }
 
-    public void SetSelectedUIObject(Player player, GameObject obj)
+    public void SetSelectedUIObject(Player player, GameObject obj, GameObject playerRoot = null)
+    {
+
+        /*UniversalInputManager playerInput = player switch
+        {
+            (Player.one) => _P1Input,
+            (Player.two) => _P2Input,
+            _ => _P1Input,
+        };
+
+        if (playerInput.IsMNK())
+            obj = null;
+
+        playerInput.SetSelected(obj);
+        */
+        switch (player)
+        {
+            case (Player.one):
+                if (_P1Input.IsMNK())
+                    return;
+
+                _P1Input.SetSelected(obj, playerRoot);
+                return;
+            case (Player.two):
+                if (_P2Input.IsMNK())
+                    return;
+
+                _P2Input.SetSelected(obj, playerRoot);
+                return;
+        }
+    }
+
+    public void AssertControlToPlayer(Player player, GameObject firstSelected, GameObject playerRoot = null)
     {
         switch (player)
         {
             case (Player.one):
-                _P1Input.SetSelected(obj);
+                _P2Input.DisableInput();
+                SetSelectedUIObject(Player.two, null);
+                SetSelectedUIObject(Player.one, firstSelected, playerRoot);
                 return;
+
             case (Player.two):
-                _P2Input.SetSelected(obj);
+                _P1Input.DisableInput();
+                SetSelectedUIObject(Player.one, null);
+                SetSelectedUIObject(Player.two, firstSelected, playerRoot);
                 return;
         }
+    }
+
+    public void EnableAllInputs()
+    {
+        _P1Input.EnableInput();
+        if (_P2Input != null)
+            _P2Input.EnableInput();
     }
 
     public void AssignInputManager(UniversalInputManager inputManager)

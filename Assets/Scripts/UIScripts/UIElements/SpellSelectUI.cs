@@ -60,18 +60,8 @@ public class SpellSelectUI : BaseUIElement
         }
 
         // Ensure opposing player input is disabled
-        if (curPlayer == 1)
-        {
-            InputParent.Instance.SetSelectedUIObject(Player.two, null);
-            InputParent.Instance.SetSelectedUIObject(Player.one, _spawnedSpellCards[0].gameObject);
-            InputParent.Instance._P2Input.DisableInput();
-        }
-        else if (curPlayer == 2)
-        {
-            InputParent.Instance.SetSelectedUIObject(Player.one, null);
-            InputParent.Instance.SetSelectedUIObject(Player.two, _spawnedSpellCards[0].gameObject);
-            InputParent.Instance._P1Input.DisableInput();
-        }
+        Player player = curPlayer == 1 ? Player.one : Player.two;
+        InputParent.Instance.AssertControlToPlayer(player, _spawnedSpellCards[0].gameObject, gameObject);
     }
 
     /// <summary>

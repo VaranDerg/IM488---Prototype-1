@@ -75,7 +75,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5082164925144479762}
+        m_TargetAssemblyTypeName: UniversalInputManager, Assembly-CSharp
+        m_MethodName: DashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b940eaaa-b41d-4134-9982-3ebbd4e84e1a
     m_ActionName: Player Movement/Dash[/Keyboard/space,/DualShock4GamepadHID/leftTrigger,/Keyboard/slash]
   - m_PersistentCalls:
@@ -83,7 +95,19 @@ MonoBehaviour:
     m_ActionId: 4057da82-5655-4711-8471-0c19cf9b2310
     m_ActionName: Player Movement/ManualSpellCast[/Keyboard/leftCtrl,/DualShock4GamepadHID/rightTrigger,/Keyboard/rightCtrl]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5082164925144479762}
+        m_TargetAssemblyTypeName: UniversalInputManager, Assembly-CSharp
+        m_MethodName: WASDInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 11db07fc-7d1e-4f2a-b58b-59b810a12d28
     m_ActionName: Player Movement/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right,/Keyboard/i,/Keyboard/k,/Keyboard/j,/Keyboard/l]
   - m_PersistentCalls:
