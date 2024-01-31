@@ -117,7 +117,15 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
             _currentHealth = 0;
             _dead = true;
 
+            StopPlayerAndSpellsOnDeath();
             ManagerParent.Instance.Game.IncreasePlayerScore(NotThisPlayer());
         }
+    }
+
+    private void StopPlayerAndSpellsOnDeath()
+    {
+        GetComponent<PlayerManager>().GetPlayerController().StopVelocity();
+        GetComponent<PlayerManager>().GetPlayerController().enabled = false;
+        GetComponent<PlayerManager>().DisableAssociatedSpells();
     }
 }

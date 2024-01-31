@@ -67,7 +67,11 @@ public class PlayerManager : MonoBehaviour
         {
             AttachSpell(spell.GetPrefab());
         }
-        
+    }
+
+    public void DisableAssociatedSpells()
+    {
+        _spellAttachPoint.SetActive(false);
     }
 
     public PlayerHealth GetPlayerHealth()

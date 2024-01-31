@@ -71,6 +71,11 @@ public class Controller : MonoBehaviour
         return _moveState;
     }
 
+    public void StopVelocity()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     public void AddDashSpellToList(AbstractSpell newSpell)
     {
         dashSpellList.Add(newSpell);
