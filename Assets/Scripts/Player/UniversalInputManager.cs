@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class UniversalInputManager : MonoBehaviour
 {
@@ -63,6 +65,11 @@ public class UniversalInputManager : MonoBehaviour
 
     }*/
 
+    public void SetSelected(GameObject obj)
+    {
+        GetComponent<MultiplayerEventSystem>().SetSelectedGameObject(obj);
+    }
+
     public void EnableInputDevices()
     {
         foreach (InputDevice device in devices)
@@ -114,6 +121,16 @@ public class UniversalInputManager : MonoBehaviour
         {
             _associatedController.DashInput(context);
         }
+    }
+
+    public void EnableInput()
+    {
+        GetComponent<PlayerInput>().enabled = true;
+    }
+
+    public void DisableInput()
+    {
+        GetComponent<PlayerInput>().enabled = false;
     }
 }
 

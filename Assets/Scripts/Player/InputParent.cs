@@ -14,6 +14,19 @@ public class InputParent : MonoBehaviour
         EstablishSingleton();
     }
 
+    public void SetSelectedUIObject(Player player, GameObject obj)
+    {
+        switch (player)
+        {
+            case (Player.one):
+                _P1Input.SetSelected(obj);
+                return;
+            case (Player.two):
+                _P2Input.SetSelected(obj);
+                return;
+        }
+    }
+
     public void AssignInputManager(UniversalInputManager inputManager)
     {
         if (_P1Input == null)

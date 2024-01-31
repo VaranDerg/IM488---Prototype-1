@@ -27,16 +27,9 @@ public class SpellSelectUI : BaseUIElement
     /// </summary>
     private void Start()
     {
-        PopulateWithSpells();
-
         int curPlayer = ManagerParent.Instance.Spells.SpellSelectionModeToPlayer(ManagerParent.Instance.Spells.GetCurrentSpellSelectionMode());
 
-        // Ensure opposing player input is disabled
-        if (curPlayer == 1)
-            InputParent.Instance.TogglePlayerDevices(Player.two, false);
-        else if (curPlayer == 2)
-            InputParent.Instance.TogglePlayerDevices(Player.one, false);
-
+        PopulateWithSpells(curPlayer);
 
         _headerText.text = "Fuse, " + ManagerParent.Instance.Game.GetPlayerName() + " " + curPlayer + ".";
     }
@@ -44,15 +37,15 @@ public class SpellSelectUI : BaseUIElement
     /// <summary>
     /// Wrapper in case this ever needs to be called externally, but I doubt it does
     /// </summary>
-    public void PopulateWithSpells()
+    public void PopulateWithSpells(int curPlayer)
     {
-        StartCoroutine(SpellPopulateProcess());
+        StartCoroutine(SpellPopulateProcess(curPlayer));
     }
 
     /// <summary>
     /// Enumerator for populating spells in a cool animation
     /// </summary>
-    private IEnumerator SpellPopulateProcess()
+    private IEnumerator SpellPopulateProcess(int curPlayer)
     {
         yield return new WaitForSecondsRealtime(_populateWithSpellsDelay);
 
@@ -64,12 +57,21 @@ public class SpellSelectUI : BaseUIElement
         {
             SpellCard newSpellCard = SpawnSpellCard();
             _spawnedSpellCards.Add(newSpellCard);
-
-            if(i == 0)
-                ControllerInputManager.Instance.AssignControllerSelected(newSpellCard.gameObject);
         }
 
-
+        // Ensure opposing player input is disabled
+        if (curPlayer == 1)
+        {
+            InputParent.Instance.SetSelectedUIObject(Player.two, null);
+            InputParent.Instance.SetSelectedUIObject(Player.one, _spawnedSpellCards[0].gameObject);
+            InputParent.Instance._P2Input.DisableInput();
+        }
+        else if (curPlayer == 2)
+        {
+            InputParent.Instance.SetSelectedUIObject(Player.one, null);
+            InputParent.Instance.SetSelectedUIObject(Player.two, _spawnedSpellCards[0].gameObject);
+            InputParent.Instance._P1Input.DisableInput();
+        }
     }
 
     /// <summary>

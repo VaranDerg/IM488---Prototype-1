@@ -81,8 +81,11 @@ public class SceneTransitions : BaseUIElement
     public void LoadSceneWithTransition(TransitionType typeOfTransition, int sceneToLoad)
     {
         // Enable controls for both players
-        InputParent.Instance.TogglePlayerDevices(Player.one, true);
-        InputParent.Instance.TogglePlayerDevices(Player.two, true);
+        InputParent.Instance._P1Input.EnableInput();
+        if(InputParent.Instance._P2Input != null)
+            InputParent.Instance._P2Input.EnableInput();
+        //InputParent.Instance.TogglePlayerDevices(Player.one, true);
+        //InputParent.Instance.TogglePlayerDevices(Player.two, true);
         //ControllerInputManager.Instance.EnableMNK();
         //ControllerInputManager.Instance.EnableGamepad();
         //ControllerInputManager.Instance.TogglePlayer1Input(true);
