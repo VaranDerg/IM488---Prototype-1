@@ -7,6 +7,9 @@ public class Elements : MonoBehaviour
     public enum SpellElement
     {
         None,
-        Placeholder
+        Placeholder,
+        Fire,
+        Ice,
+        Lightning
     };
 }

@@ -1987,6 +1987,7 @@ MonoBehaviour:
   - {fileID: 7762386150144721213}
   - {fileID: 5581982196049795586}
   - {fileID: 2010272075}
+  firstSelected: {fileID: 6134341619538352476}
 --- !u!1001 &6187749558600262111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2151,6 +2152,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1207e58f8a3d3334a833b67870d965e6, type: 3}
+--- !u!1 &6134341619538352476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 71708240660445315, guid: 1207e58f8a3d3334a833b67870d965e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6187749558600262111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7767745818178029212
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,10 +26,10 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
     protected Player owner { get; private set; }
 
     // The actual function of the spell to be referenced from the child
-    public abstract void Execute();
+    public abstract void StartAura();
 
     // Called every FixedUpdate. Should be used if a spell needs to do something between executions
-    protected abstract void ChildTick();
+    protected abstract void AuraTick();
 
     protected virtual void OnStart()
     {
@@ -44,12 +44,12 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
         else
         {
             if(castMethod == CastingMethod.AUTO)
-                Execute();
+                StartAura();
 
             timeTillNextTick = tickRate;
         }
 
-        ChildTick();
+        AuraTick();
     }
 
     private void Start()
@@ -75,6 +75,11 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
                 return;
         }
 
+    }
+
+    public TestSpellSO GetScriptableObject()
+    {
+        return data;
     }
 
     private void FixedUpdate()

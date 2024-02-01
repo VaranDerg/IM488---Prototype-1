@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SpellSelection.unity
     guid: e032372f34d897149a423aed1e471fad
   - enabled: 1
+    path: Assets/Scenes/ArenasInGame/SmallerVariants/ArenaStart.unity
+    guid: 2f1ed33b021ac194280d24f111710ccb
+  - enabled: 1
     path: Assets/Scenes/ArenasInGame/SmallerVariants/Arena1_Micah_Small.unity
     guid: 3b8af8dc8eb8d1c49ba69cffc41835e9
   - enabled: 1
