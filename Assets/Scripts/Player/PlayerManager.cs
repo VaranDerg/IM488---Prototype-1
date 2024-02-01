@@ -73,6 +73,6 @@ public class PlayerManager : MonoBehaviour
 
     public void AddElementalStat(Elements.SpellElement element)
     {
-        
+        elementalStats.AddElementStat(element);
     }
 }

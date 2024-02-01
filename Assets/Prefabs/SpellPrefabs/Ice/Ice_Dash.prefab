@@ -48,5 +48,5 @@ MonoBehaviour:
   tickRate: 1
   tickRateScalar: 1
   castMethod: 1
-  particlePrefab: {fileID: 1615301249431763084, guid: 2bbd8e67e0ae7bf47ac112302d3893d0,
+  projectilePrefab: {fileID: 1615301249431763084, guid: 2bbd8e67e0ae7bf47ac112302d3893d0,
     type: 3}

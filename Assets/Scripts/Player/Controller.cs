@@ -128,7 +128,7 @@ public class Controller : MonoBehaviour
         foreach (ISpell currentSpell in dashSpellList)
         {
             //Debug.Log("Cast Dash Spell");
-            currentSpell.Execute();
+            currentSpell.StartAura();
         }
     }
 
