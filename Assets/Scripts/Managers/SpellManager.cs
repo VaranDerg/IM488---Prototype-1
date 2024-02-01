@@ -84,7 +84,7 @@ public class SpellManager : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(_opponentViewPickedSpellTime);
 
-            int arenaScene = ManagerParent.Instance.Game.GetRandomArenaScene();
+            int arenaScene = ManagerParent.Instance.Game.GetNextArenaScene();
             SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, arenaScene);
         }
 

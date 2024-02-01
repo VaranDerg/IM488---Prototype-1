@@ -4,5 +4,12 @@ using UnityEngine;
 
 public interface ICanTakeDamage
 {
-    void TakeDamage(float damage);
+    void TakeDamage(float damage, InvulnTypes invulnType);
+}
+
+public enum InvulnTypes
+{
+    FULLINVULN,
+    DASHINVULN,
+    IGNOREINVULN
 }

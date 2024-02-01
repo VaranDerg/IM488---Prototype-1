@@ -66,6 +66,16 @@ public class Controller : MonoBehaviour
         return lastNonZeroMovement;
     }
 
+    public MovementState GetMoveState()
+    {
+        return _moveState;
+    }
+
+    public void StopVelocity()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     public void AddDashSpellToList(AbstractSpell newSpell)
     {
         dashSpellList.Add(newSpell);
@@ -128,7 +138,7 @@ public class Controller : MonoBehaviour
         foreach (ISpell currentSpell in dashSpellList)
         {
             //Debug.Log("Cast Dash Spell");
-            currentSpell.Execute();
+            currentSpell.StartAura();
         }
     }
 

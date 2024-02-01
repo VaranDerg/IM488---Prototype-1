@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour,ICanTakeDamage
 {
     [SerializeField] private float _maxHealth;
-
     private float _currentHealth;
+
+    [SerializeField] private float _damageIFrameLength;
+
+    private bool _damageIFrames;
 
     //added to prevent repeated death calls
     private bool _dead;
@@ -15,16 +18,6 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
     void Start()
     {
         _currentHealth = _maxHealth;
-    }
-
-    //TESTING PURPOSES ONLY
-    void Update()
-    {
-        //Don't leave debugs in before finalizing! - Liz
-        //if(Input.GetKeyDown(KeyCode.Y))
-        //{
-        //    TakeDamage(1);
-        //}
     }
 
     private int ThisPlayer()
@@ -55,12 +48,59 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         }
     }
 
-    public void TakeDamage(float damage)
-    {
+    public void TakeDamage(float damage, InvulnTypes invulnType)
+    {  
         _currentHealth -= damage;
+        if(invulnType != InvulnTypes.FULLINVULN)
+            StartCoroutine(DamageIFrameProcess());
 
         SetHPWheelValue();
         CheckForDeath();
+    }
+
+    public bool Heal(float healAmount)
+    {
+        if (_currentHealth == _maxHealth)
+            return false;
+        _currentHealth += healAmount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        SetHPWheelValue();
+        return true;
+    }
+
+    public bool InvulnerableTypeCheck(InvulnTypes invulnType)
+    {
+        switch (invulnType)
+        {
+            case (InvulnTypes.FULLINVULN):
+                if (DamageInvulnerable() || DashInvulnerable()) return true;
+                return false;
+            case (InvulnTypes.DASHINVULN):
+                if (DashInvulnerable()) return true;
+                return false;
+            case (InvulnTypes.IGNOREINVULN):
+                return false;
+        }
+        return false;
+    }
+
+    private IEnumerator DamageIFrameProcess()
+    {
+        _damageIFrames = true;
+        yield return new WaitForSeconds(_damageIFrameLength);
+        _damageIFrames = false;
+    }
+
+    public bool DashInvulnerable()
+    {
+        if(GetComponent<PlayerManager>().GetPlayerController().GetMoveState() == Controller.MovementState.Dashing) return true;
+        return false;
+    }
+
+    public bool DamageInvulnerable()
+    {
+        if (_damageIFrames) return true;
+        return false;
     }
 
     /// <summary>
@@ -98,7 +138,15 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
             _currentHealth = 0;
             _dead = true;
 
+            StopPlayerAndSpellsOnDeath();
             ManagerParent.Instance.Game.IncreasePlayerScore(NotThisPlayer());
         }
+    }
+
+    private void StopPlayerAndSpellsOnDeath()
+    {
+        GetComponent<PlayerManager>().GetPlayerController().StopVelocity();
+        GetComponent<PlayerManager>().GetPlayerController().enabled = false;
+        GetComponent<PlayerManager>().DisableAssociatedSpells();
     }
 }
