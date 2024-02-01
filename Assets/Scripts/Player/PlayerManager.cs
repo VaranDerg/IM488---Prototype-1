@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("References")]
     //[SerializeField] private MovementScript _pMovement;
-    [SerializeField] private PlayerHealth _pHealth;
+    [SerializeField] PlayerHealth _pHealth;
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
     [SerializeField] private ElementalStats elementalStats;
@@ -52,9 +52,11 @@ public class PlayerManager : MonoBehaviour
         return _pController.GetLastNonZeroMovement();
     }
 
-    public void Damage(float damage)
+    public void Damage(float damage, InvulnTypes ignoreInvuln)
     {
-        _pHealth.TakeDamage(damage);
+        if (_pHealth.InvulnerableTypeCheck(ignoreInvuln))
+            return;
+        _pHealth.TakeDamage(damage,ignoreInvuln);
     }
 
     private void AttachSpell(GameObject newSpell)
@@ -68,7 +70,21 @@ public class PlayerManager : MonoBehaviour
         {
             AttachSpell(spell.GetPrefab());
         }
-        
+    }
+
+    public void DisableAssociatedSpells()
+    {
+        _spellAttachPoint.SetActive(false);
+    }
+
+    public PlayerHealth GetPlayerHealth()
+    {
+        return _pHealth;
+    }
+
+    public Controller GetPlayerController()
+    {
+        return _pController;
     }
 
     public void AddElementalStat(Elements.SpellElement element)

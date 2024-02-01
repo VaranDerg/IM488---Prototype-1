@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     [Space]
     [SerializeField] private int _mainMenuScene = 1;
     [SerializeField] private int _spellSelectScene = 2;
+    [SerializeField] private int _startingArena;
     [SerializeField] private int[] _arenaScenes;
-    [SerializeField] private int _winScene = 8;
+    [SerializeField] private int _winScene = 9;
     [Space]
     [SerializeField] private float _winDelay = 1.5f;
 
@@ -90,6 +91,16 @@ public class GameManager : MonoBehaviour
 
         ManagerParent.Instance.Spells.ClearSpellsForBothPlayers();
     }
+
+    public int GetNextArenaScene()
+    {
+        if(_playerOneScore + _playerTwoScore == 0)
+        {
+            return _startingArena;
+        }
+        return GetRandomArenaScene();
+    }
+
 
     /// <summary>
     /// Used for loading a random Arena.

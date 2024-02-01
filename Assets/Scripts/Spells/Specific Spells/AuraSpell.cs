@@ -124,7 +124,7 @@ public class AuraSpell : AbstractSpell
             bool isSelf = player.PlayerTag == owner;
 
             if (!isSelf)
-                player.Damage(damage);
+                player.Damage(damage, InvulnTypes.DASHINVULN);
         }
     }
 }

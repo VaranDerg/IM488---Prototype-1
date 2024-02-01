@@ -129,7 +129,7 @@ public class Pool : MonoBehaviour
             bool isSelf = player.PlayerTag == owner;
 
             if (!isSelf || (doSelfDamage && isSelf))
-                player.Damage(damage);
+                player.Damage(damage, InvulnTypes.DASHINVULN);
         }
 
         return true;
