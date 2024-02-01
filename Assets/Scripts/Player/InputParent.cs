@@ -14,12 +14,18 @@ public class InputParent : MonoBehaviour
         EstablishSingleton();
     }
 
-    public void AssignControllerSelected(GameObject obj)
+    /*public void AssignControllerSelected(GameObject obj)
     {
         SetSelectedUIObject(Player.one, obj);
         SetSelectedUIObject(Player.two, obj);
-    }
+    }*/
 
+    /// <summary>
+    /// Assigns the selected UI object for a player, unless they are using Mouse & Keyboard
+    /// </summary>
+    /// <param name="player">The associated Player</param>
+    /// <param name="obj">The object to be selected</param>
+    /// <param name="playerRoot">The root object that contains all items the player can select</param>
     public void SetSelectedUIObject(Player player, GameObject obj, GameObject playerRoot = null)
     {
 
@@ -39,6 +45,12 @@ public class InputParent : MonoBehaviour
         playerInput.SetSelected(obj, playerRoot);
     }
 
+    /// <summary>
+    /// Enables controls for a player while disabling
+    /// </summary>
+    /// <param name="player"></param>
+    /// <param name="firstSelected"></param>
+    /// <param name="playerRoot"></param>
     public void AssertControlToPlayer(Player player, GameObject firstSelected, GameObject playerRoot = null)
     {
         switch (player)

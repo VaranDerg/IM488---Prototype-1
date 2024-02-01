@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerHealth _pHealth;
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
+    [SerializeField] private ElementalStats elementalStats;
 
     public Player PlayerTag;
 
@@ -67,6 +68,11 @@ public class PlayerManager : MonoBehaviour
         {
             AttachSpell(spell.GetPrefab());
         }
+        
+    }
+
+    public void AddElementalStat(Elements.SpellElement element)
+    {
         
     }
 }
