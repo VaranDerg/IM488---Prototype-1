@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Author: Liz
@@ -33,7 +34,17 @@ public class PauseMenu : BaseMenuController
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        bool controllerPaused = false;
+        foreach(Gamepad g in Gamepad.all)
+        {
+            if(g != null && (g.selectButton.wasPressedThisFrame || g.startButton.wasPressedThisFrame))
+            {
+                controllerPaused = true;
+                break;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || controllerPaused)
         {
             TogglePause();
         }
