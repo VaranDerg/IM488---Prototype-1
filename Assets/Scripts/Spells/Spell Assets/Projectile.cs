@@ -166,7 +166,7 @@ public class Projectile : MonoBehaviour
     // Child Functions
     protected virtual void OnPlayerCollision(Collider other)
     {
-        other.GetComponent<PlayerManager>().Damage(damage);
+        other.GetComponent<PlayerManager>().Damage(damage, InvulnTypes.FULLINVULN);
     }
 
     protected virtual void OnEnvironmentCollision(Collision other)
