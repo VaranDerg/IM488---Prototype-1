@@ -20,6 +20,9 @@ public class BaseMenuController : MonoBehaviour
         {
             SetPageActive(MenuPages[0]);
         }
+
+        //if (firstSelected != null)
+          //  AssignFirstSelected(firstSelected);
     }
 
     /// <summary>

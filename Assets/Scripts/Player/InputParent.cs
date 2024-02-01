@@ -14,6 +14,12 @@ public class InputParent : MonoBehaviour
         EstablishSingleton();
     }
 
+    public void AssignControllerSelected(GameObject obj)
+    {
+        SetSelectedUIObject(Player.one, obj);
+        SetSelectedUIObject(Player.two, obj);
+    }
+
     public void SetSelectedUIObject(Player player, GameObject obj, GameObject playerRoot = null)
     {
 
@@ -23,6 +29,9 @@ public class InputParent : MonoBehaviour
             (Player.two) => _P2Input,
             _ => _P1Input,
         };
+
+        if (playerInput == null)
+            return;
 
         if (playerInput.IsMNK())
             return;

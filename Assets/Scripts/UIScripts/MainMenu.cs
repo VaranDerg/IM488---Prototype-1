@@ -8,14 +8,6 @@ using UnityEngine;
 /// </summary>
 public class MainMenu : BaseMenuController
 {
-    [SerializeField]
-    GameObject startSelected;
-
-    private void Start()
-    {
-        ControllerInputManager.Instance.AssignControllerSelected(startSelected);
-    }
-
     /// <summary>
     /// Closes the game.
     /// </summary>
