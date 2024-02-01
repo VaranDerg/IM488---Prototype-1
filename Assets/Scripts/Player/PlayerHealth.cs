@@ -48,12 +48,11 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         }
     }
 
-    public void TakeDamage(float damage)
-    {
-        if (Invulerable()) return;
-
+    public void TakeDamage(float damage, InvulnTypes invulnType)
+    {  
         _currentHealth -= damage;
-        StartCoroutine(DamageIFrameProcess());
+        if(invulnType != InvulnTypes.FULLINVULN)
+            StartCoroutine(DamageIFrameProcess());
 
         SetHPWheelValue();
         CheckForDeath();
@@ -69,6 +68,22 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         return true;
     }
 
+    public bool InvulnerableTypeCheck(InvulnTypes invulnType)
+    {
+        switch (invulnType)
+        {
+            case (InvulnTypes.FULLINVULN):
+                if (DamageInvulnerable() || DashInvulnerable()) return true;
+                return false;
+            case (InvulnTypes.DASHINVULN):
+                if (DashInvulnerable()) return true;
+                return false;
+            case (InvulnTypes.IGNOREINVULN):
+                return false;
+        }
+        return false;
+    }
+
     private IEnumerator DamageIFrameProcess()
     {
         _damageIFrames = true;
@@ -76,9 +91,15 @@ public class PlayerHealth : MonoBehaviour,ICanTakeDamage
         _damageIFrames = false;
     }
 
-    private bool Invulerable()
+    public bool DashInvulnerable()
     {
-        if(GetComponent<PlayerManager>().GetPlayerController().GetMoveState() == Controller.MovementState.Dashing  || _damageIFrames) return true;
+        if(GetComponent<PlayerManager>().GetPlayerController().GetMoveState() == Controller.MovementState.Dashing) return true;
+        return false;
+    }
+
+    public bool DamageInvulnerable()
+    {
+        if (_damageIFrames) return true;
         return false;
     }
 

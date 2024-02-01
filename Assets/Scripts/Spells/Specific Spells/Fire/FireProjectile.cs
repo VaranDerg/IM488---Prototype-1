@@ -28,6 +28,6 @@ public class FireProjectile : AbstractProjectile
 
     protected override void OnPlayerCollision(Collider other)
     {
-        other.GetComponent<PlayerManager>().Damage(damage);
+        other.GetComponent<PlayerManager>().Damage(damage, InvulnTypes.FULLINVULN);
     }
 }

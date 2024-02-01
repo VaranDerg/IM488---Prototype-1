@@ -51,9 +51,11 @@ public class PlayerManager : MonoBehaviour
         return _pController.GetLastNonZeroMovement();
     }
 
-    public void Damage(float damage)
+    public void Damage(float damage, InvulnTypes ignoreInvuln)
     {
-        _pHealth.TakeDamage(damage);
+        if (_pHealth.InvulnerableTypeCheck(ignoreInvuln))
+            return;
+        _pHealth.TakeDamage(damage,ignoreInvuln);
     }
 
     private void AttachSpell(GameObject newSpell)

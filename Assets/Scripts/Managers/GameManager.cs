@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _spellSelectScene = 2;
     [SerializeField] private int _startingArena;
     [SerializeField] private int[] _arenaScenes;
-    [SerializeField] private int _winScene = 8;
+    [SerializeField] private int _winScene = 9;
     [Space]
     [SerializeField] private float _winDelay = 1.5f;
 
