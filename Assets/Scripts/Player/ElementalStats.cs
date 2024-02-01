@@ -6,11 +6,19 @@ public class ElementalStats : MonoBehaviour
 {
     [Header("Base Values")]
     [SerializeField]
-    float baseSpeed, baseAttack, baseArea;
+    float baseSpeed;
+    [SerializeField]
+    float baseAttack;
+    [SerializeField]
+    float baseArea;
 
     [Header("Added Values")]
     [SerializeField]
-    float speedToAdd, attackToAdd, areaToAdd;
+    float speedToAdd;
+    [SerializeField]
+    float attackToAdd;
+    [SerializeField]
+    float areaToAdd;
 
     // Player's actual current stats
     private float speed, attack, area;
