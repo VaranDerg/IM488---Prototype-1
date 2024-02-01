@@ -137,13 +137,14 @@ public class UniversalInputManager : MonoBehaviour
 
     public void EnableInput()
     {
-        GetComponent<PlayerInput>().enabled = true;
+        //GetComponent<PlayerInput>().enabled = true;
+        GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
         GetComponent<MultiplayerEventSystem>().playerRoot = null;
     }
 
     public void DisableInput()
     {
-        GetComponent<PlayerInput>().enabled = false;
+        GetComponent<PlayerInput>().actions.FindActionMap("UI").Disable();
         GetComponent<MultiplayerEventSystem>().playerRoot = gameObject;
     }
 }
