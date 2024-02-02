@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingWall : MonoBehaviour
+public class MovingWall : MonoBehaviour,IMapElement
 {
     [SerializeField] bool _idleRotate;
     [SerializeField] Vector3 _rotationDirection;
@@ -28,7 +28,7 @@ public class MovingWall : MonoBehaviour
         }
     }
 
-    public void StartMove()
+    public void Activate()
     {
         if (!_moving)
             StartCoroutine(Move());
@@ -36,7 +36,6 @@ public class MovingWall : MonoBehaviour
 
     IEnumerator Move()
     {
-        Debug.Log("Move");
         _moving = true;
         float moveProgress = 0;
         Vector3 startLocation = transform.position;
@@ -44,7 +43,7 @@ public class MovingWall : MonoBehaviour
 
         while (moveProgress < 1)
         {
-            moveProgress += Time.deltaTime;
+            moveProgress += Time.deltaTime/_moveTime;
             transform.position = Vector3.Lerp(startLocation, targetLocation, moveProgress);
             yield return null;
         }
@@ -59,7 +58,6 @@ public class MovingWall : MonoBehaviour
             if(transform.position == _movePoints[i].transform.position)
             {
                 i++;
-                Debug.Log("I " + i + "count" + _movePoints.Count);
                 if (i >= _movePoints.Count) i = 0;
                 return _movePoints[i].transform.position;
             }
