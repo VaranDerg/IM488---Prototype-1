@@ -19,4 +19,4 @@ MonoBehaviour:
   BurstParticles: Burst_Ice
   SoundEffectName: IceSFX
   element: 3
-  scalingStats: 04000000
+  scalingStats: 040000000500000006000000

@@ -37,7 +37,7 @@ MonoBehaviour:
     scalingValue: 0.1
   - name: Projectile Speed
     stat: 3
-    scalingValue: 10
+    scalingValue: 0.1
   - name: Projectile Size
     stat: 4
     scalingValue: 0.1
