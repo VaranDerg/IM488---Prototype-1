@@ -39,6 +39,8 @@ public class ElementalStatsSO : ScriptableObject
     /// <param name="element">The associated element</param>
     public List<ScalableStat> GetElementStats(Elements.SpellElement element)
     {
+        Debug.Log(element);
+        Debug.Log(elements.Count);
         return elements[element].scalingStats;
     }
 

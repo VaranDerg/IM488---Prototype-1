@@ -61,9 +61,15 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
         //Debug.Log(owner);
         AddSpellsToLists();
 
-        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+        StartCoroutine(DelayedStart());
 
         OnStart();
+    }
+
+    IEnumerator DelayedStart()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
     }
 
     protected void AddSpellsToLists()

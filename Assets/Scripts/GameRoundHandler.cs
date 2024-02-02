@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameRoundHandler : MonoBehaviour
 {
-    [SerializeField]
-    ElementalStatsSO elementalStatsContainer;
 
     [SerializeField] private float _roundTimerLength;
 /*    [SerializeField] private Vector3 p1StartLoc;
@@ -25,8 +23,6 @@ public class GameRoundHandler : MonoBehaviour
     void Start()
     {
         RoundStart();
-
-        elementalStatsContainer.Initialize();
     }
 
     /*void Update()

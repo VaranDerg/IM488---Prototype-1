@@ -22,6 +22,9 @@ MonoBehaviour:
   - name: Lightning
     element: 4
     elementSO: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
+  - name: Basic
+    element: 0
+    elementSO: {fileID: 11400000, guid: 9b95f4a2cc34edb4983172cf7d1f0014, type: 2}
   associatedStats:
   - name: Damage
     stat: 0

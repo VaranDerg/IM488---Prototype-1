@@ -19,7 +19,7 @@ public class ElementalStats : MonoBehaviour
             playerStats[s.GetStat()] = s.GetScalingValue();
     }
 
-    private void Start()
+    public void Initialize()
     {
         Player player = GetComponent<PlayerManager>().PlayerTag;
         List<TestSpellSO> spellList = ManagerParent.Instance.Spells.GetSpellListFromPlayer(player);

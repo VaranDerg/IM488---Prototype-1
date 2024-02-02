@@ -8,6 +8,13 @@ public class MultiplayerManager : MonoBehaviour
 
     Dictionary<Player, PlayerManager> players = new();
 
+    [SerializeField]
+    ElementalStatsSO elementalStatsContainer;
+
+    bool p1Assigned = false;
+
+    bool p2Assigned = false;
+
     private void OnEnable()
     {
         Instance = this;
@@ -16,6 +23,26 @@ public class MultiplayerManager : MonoBehaviour
     public void AssignPlayer(Player tag, PlayerManager player)
     {
         players.Add(tag, player);
+        switch(tag){
+            case (Player.one):
+                p1Assigned = true;
+                break;
+            case (Player.two):
+                p2Assigned = true;
+                break;
+        }
+
+        if (p1Assigned && p2Assigned)
+            InitializeElementalStats();
+
+    }
+
+    private void InitializeElementalStats()
+    {
+        elementalStatsContainer.Initialize();
+
+        players[Player.one].GetElementalStats().Initialize();
+        players[Player.two].GetElementalStats().Initialize();
     }
 
     public PlayerManager GetPlayer(Player tag)

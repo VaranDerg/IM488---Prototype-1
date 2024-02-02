@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1053257283472145123
+--- !u!1 &8170845609202855336
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1053257283472145122}
-  - component: {fileID: 1053257283472145125}
+  - component: {fileID: 5079786441875868967}
+  - component: {fileID: 1385884341707180741}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Basic_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1053257283472145122
+--- !u!4 &5079786441875868967
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053257283472145123}
+  m_GameObject: {fileID: 8170845609202855336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,23 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1053257283472145125
+--- !u!114 &1385884341707180741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053257283472145123}
+  m_GameObject: {fileID: 8170845609202855336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e66e50fe5629c44c91958054fa29d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: b22e9b4a0c88f424c9cc1036599fe00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerName: Plasmo
-  _mainMenuScene: 1
-  _spellSelectScene: 2
-  _startingArena: 3
-  _arenaScenes: 0400000005000000060000000700000008000000
-  _winScene: 9
-  _winDelay: 1.5
-  elementalStatsSO: {fileID: 11400000, guid: 7991694fb2bb35d4b837e3aaa6c09318, type: 2}
+  data: {fileID: 11400000, guid: f02e716f89bf9ae4fb8e0cbd174170f6, type: 2}
+  tickRate: 2
+  tickRateScalar: 1
+  castMethod: 0
+  projectilePrefab: {fileID: 1615301249431763084, guid: 08b1e951515d2854680c6398318f584f,
+    type: 3}
