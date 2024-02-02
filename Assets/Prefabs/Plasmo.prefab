@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
-  _damageIFrameLength: 0.3
+  _damageIFrameLength: 0
 --- !u!114 &3264294643241418380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   _pHealth: {fileID: 3494249741853352444}
   _pController: {fileID: 1253072382235262524}
   _spellAttachPoint: {fileID: 879255954794083651}
-  _elementalStats: {fileID: 914005900926697189}
+  elementalStats: {fileID: 914005900926697189}
   PlayerTag: 0
 --- !u!136 &837278177261051004
 CapsuleCollider:
@@ -285,26 +285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bd362716cef9549831e509eaa3d1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementalStatsSO: {fileID: 11400000, guid: 7991694fb2bb35d4b837e3aaa6c09318, type: 2}
-  baseStats:
-  - name: Damage
-    stat: 0
-    scalingValue: 1
-  - name: Move Speed
-    stat: 1
-    scalingValue: 1
-  - name: Cooldown Rate
-    stat: 2
-    scalingValue: 1
-  - name: Projectile Speed
-    stat: 3
-    scalingValue: 1
-  - name: Projectile Size
-    stat: 4
-    scalingValue: 1
-  - name: Pool Size
-    stat: 5
-    scalingValue: 1
+  baseSpeed: 1
+  baseAttack: 1
+  baseArea: 1
+  speedToAdd: 0
+  attackToAdd: 0
+  areaToAdd: 0
 --- !u!1 &4154672119527252999
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +340,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4154672119527252999}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
