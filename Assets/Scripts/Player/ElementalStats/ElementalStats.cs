@@ -35,7 +35,10 @@ public class ElementalStats : MonoBehaviour
     public void AddElementStat(Elements.SpellElement element)
     {
         foreach (ScalableStat stat in elementalStatsSO.GetElementStats(element))
+        {
             playerStats[stat] += elementalStatsSO.GetStatScalar(stat);
+            //Debug.Log("" + stat + ": " + playerStats[stat]);
+        }
     }
 
     public float GetStat(ScalableStat stat)

@@ -19,7 +19,7 @@ public class UniversalInputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         devices = GetComponent<PlayerInput>().devices.ToArray();
-        Debug.Log("Connected Devices:");
+        /*Debug.Log("Connected Devices:");
 
         //bool hasKeyboard = false;
         foreach (InputDevice d in devices)
@@ -30,7 +30,7 @@ public class UniversalInputManager : MonoBehaviour
                 hasKeyboard = true;
                 continue;
             }*/
-        }
+        //}
 
         /*if (hasKeyboard)
         {

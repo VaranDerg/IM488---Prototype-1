@@ -257,7 +257,7 @@ MonoBehaviour:
   _pHealth: {fileID: 3494249741853352444}
   _pController: {fileID: 1253072382235262524}
   _spellAttachPoint: {fileID: 879255954794083651}
-  _elementalStats: {fileID: 0}
+  _elementalStats: {fileID: 914005900926697189}
   PlayerTag: 0
 --- !u!136 &837278177261051004
 CapsuleCollider:
