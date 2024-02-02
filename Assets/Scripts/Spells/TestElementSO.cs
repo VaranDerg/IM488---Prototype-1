@@ -12,4 +12,7 @@ public class TestElementSO : ScriptableObject
     public string LoopingParticles;
     public string BurstParticles;
     public string SoundEffectName;
+    [Space]
+    public Elements.SpellElement element;
+    public List<ScalableStat> scalingStats;
 }

@@ -18,3 +18,5 @@ MonoBehaviour:
   LoopingParticles: Looping_Ice
   BurstParticles: Burst_Ice
   SoundEffectName: IceSFX
+  element: 3
+  scalingStats: 04000000

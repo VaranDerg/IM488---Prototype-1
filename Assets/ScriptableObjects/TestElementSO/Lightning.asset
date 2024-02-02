@@ -18,3 +18,5 @@ MonoBehaviour:
   LoopingParticles: Looping_Lightning
   BurstParticles: Burst_Lightning
   SoundEffectName: LightningSFX
+  element: 4
+  scalingStats: 03000000

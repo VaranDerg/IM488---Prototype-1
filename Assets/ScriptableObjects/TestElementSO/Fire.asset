@@ -18,3 +18,5 @@ MonoBehaviour:
   LoopingParticles: Looping_Fire
   BurstParticles: Burst_Fire
   SoundEffectName: FireSFX
+  element: 2
+  scalingStats: 00000000

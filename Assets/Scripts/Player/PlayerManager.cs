@@ -86,9 +86,4 @@ public class PlayerManager : MonoBehaviour
     {
         return _pController;
     }
-
-    public void AddElementalStat(Elements.SpellElement element)
-    {
-        elementalStats.AddElementStat(element);
-    }
 }
