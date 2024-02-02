@@ -12,14 +12,20 @@ public class ElementalStatsSO : ScriptableObject
     [SerializeField]
     List<AssociatedScalingStat> associatedStats;
 
-    List<ScalableStat> scalableStats = ScalableStat.GetValues(typeof(ScalableStat)).OfType<ScalableStat>().ToList();
+    //List<ScalableStat> scalableStats = ScalableStat.GetValues(typeof(ScalableStat)).OfType<ScalableStat>().ToList();
 
-    Dictionary<Elements.SpellElement, TestElementSO> elements = new();
+    Dictionary<Elements.SpellElement, TestElementSO> elements;
 
-    Dictionary<ScalableStat, float> statScalars = new();
+    Dictionary<ScalableStat, float> statScalars;
 
-    private void Awake()
+    /// <summary>
+    /// Must be called once prior to the SO's other methods being used
+    /// </summary>
+    public void Initialize()
     {
+        elements = new();
+        statScalars = new();
+
         foreach (AssociatedElement a in associatedElements)
             elements[a.GetElement()] = a.GetSO();
 
@@ -61,7 +67,9 @@ public enum ScalableStat
     MOVE_SPEED,
     COOLDOWN_RATE,
     PROJECTILE_SPEED,
-    PROJECTILE_SIZE
+    PROJECTILE_SIZE,
+    POOL_SIZE,
+    AURA_SIZE
 }
 
 [System.Serializable]

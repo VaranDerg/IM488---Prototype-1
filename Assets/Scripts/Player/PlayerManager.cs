@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] PlayerHealth _pHealth;
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
-    [SerializeField] private ElementalStats elementalStats;
+    [SerializeField] private ElementalStats _elementalStats;
 
     public Player PlayerTag;
 
@@ -85,5 +85,10 @@ public class PlayerManager : MonoBehaviour
     public Controller GetPlayerController()
     {
         return _pController;
+    }
+
+    public ElementalStats GetElementalStats()
+    {
+        return _elementalStats;
     }
 }

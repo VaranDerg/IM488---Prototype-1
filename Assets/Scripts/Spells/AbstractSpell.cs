@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbstractSpell : MonoBehaviour, ISpell
+public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 {
     
     float ISpell.TickRate { get => tickRate; set => this.tickRate = value; }
@@ -61,6 +61,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
         //Debug.Log(owner);
         AddSpellsToLists();
 
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+
         OnStart();
     }
 
@@ -74,6 +76,23 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
                 MultiplayerManager.Instance.GetPlayer(owner).GetComponent<Controller>().AddDashSpellToList(this);
                 return;
         }
+
+    }
+
+    public void Scale(ElementalStats stats)
+    {
+        ScaleCooldownRate(stats.GetStat(ScalableStat.COOLDOWN_RATE));
+
+        ChildScale(stats);
+    }
+
+    private void ScaleCooldownRate(float cooldownRateMult)
+    {
+        tickRateScalar *= cooldownRateMult;
+    }
+
+    protected virtual void ChildScale(ElementalStats stats)
+    {
 
     }
 

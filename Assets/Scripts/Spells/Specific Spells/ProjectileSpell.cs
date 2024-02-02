@@ -15,6 +15,8 @@ public class ProjectileSpell : AbstractSpell
 
         projectile.AssignPlayer(owner);
 
+        projectile.Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+
         projectile.Launch();
     }
 

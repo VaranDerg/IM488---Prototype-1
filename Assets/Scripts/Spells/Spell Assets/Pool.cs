@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool : MonoBehaviour
+public class Pool : MonoBehaviour, IScalable
 {
     [SerializeField]
     PoolSpawnType spawnType = PoolSpawnType.UNDER_SPAWNER;
@@ -41,6 +41,22 @@ public class Pool : MonoBehaviour
     {
         if (DamageAllInside(damage, doSelfDamage) && !isPersistent)
             gameObject.SetActive(false);
+    }
+
+    public void Scale(ElementalStats stats)
+    {
+        ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
+        ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
+    }
+
+    private void ScaleSize(float sizeMult)
+    {
+        transform.localScale *= sizeMult;
+    }
+
+    private void ScaleDamage(float damageMult)
+    {
+        damage *= damageMult;
     }
 
     protected void ChildTick()

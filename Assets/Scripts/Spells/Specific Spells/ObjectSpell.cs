@@ -15,6 +15,8 @@ public class ObjectSpell : AbstractSpell
 
         pool.AssignPlayer(owner);
 
+        pool.Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+
         if (GetScriptableObject() == null)
         {
             Debug.Log("SpellSO was null");

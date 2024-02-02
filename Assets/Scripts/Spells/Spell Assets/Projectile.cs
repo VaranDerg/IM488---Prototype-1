@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IScalable
 {
     [SerializeField]
     TestSpellSO _thisSpell;
@@ -97,6 +97,29 @@ public class Projectile : MonoBehaviour
         Move();
 
         OnLaunch();
+    }
+
+    // For elemental stats
+    public void Scale(ElementalStats stats)
+    {
+        ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
+        ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
+        ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
+    }
+
+    private void ScaleSpeed(float speedMult)
+    {
+        projectileSpeed *= speedMult;
+    }
+
+    private void ScaleSize(float sizeMult)
+    {
+        transform.localScale *= sizeMult;
+    }
+
+    private void ScaleDamage(float damageMult)
+    {
+        damage *= damageMult;
     }
 
     private void SpeedVariance()

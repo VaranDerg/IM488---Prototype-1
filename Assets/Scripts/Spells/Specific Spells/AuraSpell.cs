@@ -23,7 +23,6 @@ public class AuraSpell : AbstractSpell
     protected List<GameObject> objectsInAura = new();
 
     private GameObject _currentParticles;
-
     private void OnTriggerEnter(Collider other)
     {
         objectsInAura.Add(other.gameObject);
@@ -36,6 +35,8 @@ public class AuraSpell : AbstractSpell
 
     protected override void OnStart()
     {
+        
+
         timeTillNextAuraTick = auraTickRate;
         DisableAura();
     }
@@ -126,5 +127,21 @@ public class AuraSpell : AbstractSpell
             if (!isSelf)
                 player.Damage(damage, InvulnTypes.DASHINVULN);
         }
+    }
+
+    protected override void ChildScale(ElementalStats stats)
+    {
+        ScaleSize(stats.GetStat(ScalableStat.AURA_SIZE));
+        ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
+    }
+
+    private void ScaleSize(float sizeMult)
+    {
+        transform.localScale *= sizeMult;
+    }
+
+    private void ScaleDamage(float damageMult)
+    {
+        damage *= damageMult;
     }
 }

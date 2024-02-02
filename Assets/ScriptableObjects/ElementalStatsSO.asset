@@ -13,20 +13,31 @@ MonoBehaviour:
   m_Name: ElementalStatsSO
   m_EditorClassIdentifier: 
   associatedElements:
-  - element: 2
+  - name: Fire
+    element: 2
     elementSO: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
-  - element: 3
+  - name: Ice
+    element: 3
     elementSO: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
-  - element: 4
+  - name: Lightning
+    element: 4
     elementSO: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   associatedStats:
-  - stat: 0
+  - name: Damage
+    stat: 0
     scalingValue: 0.1
-  - stat: 1
+  - name: Move Speed
+    stat: 1
     scalingValue: 0.1
-  - stat: 2
+  - name: Cooldown Rate
+    stat: 2
     scalingValue: 0.1
-  - stat: 3
+  - name: Projectile Speed
+    stat: 3
     scalingValue: 0.1
-  - stat: 4
+  - name: Projectile Size
+    stat: 4
+    scalingValue: 0.1
+  - name: Pool Size
+    stat: 5
     scalingValue: 0.1

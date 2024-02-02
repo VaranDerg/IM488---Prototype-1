@@ -257,7 +257,7 @@ MonoBehaviour:
   _pHealth: {fileID: 3494249741853352444}
   _pController: {fileID: 1253072382235262524}
   _spellAttachPoint: {fileID: 879255954794083651}
-  elementalStats: {fileID: 914005900926697189}
+  _elementalStats: {fileID: 0}
   PlayerTag: 0
 --- !u!136 &837278177261051004
 CapsuleCollider:
@@ -301,6 +301,9 @@ MonoBehaviour:
     scalingValue: 1
   - name: Projectile Size
     stat: 4
+    scalingValue: 1
+  - name: Pool Size
+    stat: 5
     scalingValue: 1
 --- !u!1 &4154672119527252999
 GameObject:

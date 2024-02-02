@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ebe8d74134e5c4fb42eb0000db56cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementalStatsContainer: {fileID: 11400000, guid: 7991694fb2bb35d4b837e3aaa6c09318,
+    type: 2}
   _roundTimerLength: 555555

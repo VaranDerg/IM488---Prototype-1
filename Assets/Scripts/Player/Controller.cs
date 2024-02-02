@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Controller : MonoBehaviour
+public class Controller : MonoBehaviour, IScalable
 {
 
     /*public void OnMove(InputAction.CallbackContext context)
@@ -81,6 +81,16 @@ public class Controller : MonoBehaviour
         dashSpellList.Add(newSpell);
     }
 
+    public void Scale(ElementalStats stats)
+    {
+        ScaleSpeed(stats.GetStat(ScalableStat.MOVE_SPEED));
+    }
+
+    private void ScaleSpeed(float speedMult)
+    {
+        speed *= speedMult;
+    }
+
     #region StartUp
     /// <summary>
     /// You know how start works I'm not going to explain it to you
@@ -88,6 +98,8 @@ public class Controller : MonoBehaviour
     void Start()
     {
         VariableAssignment();
+
+        Scale(GetComponent<ElementalStats>());
     }
 
     /// <summary>
