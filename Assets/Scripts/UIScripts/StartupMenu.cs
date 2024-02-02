@@ -26,7 +26,7 @@ public class StartupMenu : BaseMenuController
 
     public void OnPlayerJoined()
     {
-        Debug.Log("Player Joined");
+        //Debug.Log("Player Joined");
 
         if (!hasP1Joined)
         {
@@ -35,7 +35,7 @@ public class StartupMenu : BaseMenuController
         }
         else
         {
-            Debug.Log("Setup Done!");
+            //Debug.Log("Setup Done!");
             SetupComplete();
         }
     }

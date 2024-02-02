@@ -46,8 +46,8 @@ public class Projectile : MonoBehaviour, IScalable
     #region Collision
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Owner: " + owner);
-        Debug.Log("Hit: " + other.name);
+        //Debug.Log("Owner: " + owner);
+        //Debug.Log("Hit: " + other.name);
 
         if (other.CompareTag("Player"))
         {

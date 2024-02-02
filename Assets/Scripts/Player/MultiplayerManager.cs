@@ -22,6 +22,11 @@ public class MultiplayerManager : MonoBehaviour
 
     public void AssignPlayer(Player tag, PlayerManager player)
     {
+        if(player == null)
+        {
+            Debug.Log("Player Null");
+        }
+
         players.Add(tag, player);
         switch(tag){
             case (Player.one):
