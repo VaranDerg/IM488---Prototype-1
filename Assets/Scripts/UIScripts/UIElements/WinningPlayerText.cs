@@ -39,7 +39,17 @@ public class WinningPlayerText : BaseUIElement
         transform.rotation = Quaternion.Euler(0, 0, 0);
 
         _playerWinsText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + chosenPlayer + " Chosen as Winner.";
-        _flavorText.text = "Winner randomly chosen due to Timeout.";
+        _flavorText.text = "Winner chosen due to disadvantage.";
+
+        _animator.Play(TEXT_ANIMATION_NAME);
+    }
+
+    public void DisplayTieTimeoutText()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        _playerWinsText.text = "Tie!";
+        _flavorText.text = "Starting Next Round";
 
         _animator.Play(TEXT_ANIMATION_NAME);
     }

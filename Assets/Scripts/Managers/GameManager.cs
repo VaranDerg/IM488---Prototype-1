@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         ManagerParent.Instance.Spells.ClearSpellsForBothPlayers();
     }
 
-    public void RoundTie()
+    public void HandleRoundTie()
     {
         if(_tieFavorsLosingPlayer)
         {
@@ -105,10 +105,16 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-        //DISPLAY UI ANNOUNCEMENT HERE
-        //FindObjectOfType<WinningPlayerText>().DisplayTimeoutText(playerWin);
+        StartCoroutine(RoundTie(_winDelay));
+    }
+
+    private IEnumerator RoundTie(float waitTime)
+    {
+        FindObjectOfType<WinningPlayerText>().DisplayTieTimeoutText();
+        yield return new WaitForSeconds(waitTime);
         int arenaScene = ManagerParent.Instance.Game.GetNextArenaScene();
         SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, arenaScene);
+        
     }
 
 
@@ -163,13 +169,6 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            _playerOneScore++;
-        }
-    }
     //Basic getters
 
     public int GetPlayerOneScore()
