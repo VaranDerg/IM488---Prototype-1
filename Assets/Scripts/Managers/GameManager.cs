@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _winScene = 9;
     [Space]
     [SerializeField] private float _winDelay = 1.5f;
+    [SerializeField] private float _tieWindow;
     [SerializeField] private bool _tieFavorsLosingPlayer;
 
     //Holds player scores.
@@ -28,7 +29,32 @@ public class GameManager : MonoBehaviour
 
     //Marked true after a player's score increases and marked false after a spell is selected. Prevents odd behavior.
     public bool PlayerHasWonRound { get; set; }
+    private Coroutine _winDelayCoroutine;
+    private int _deadPlayersCount = 0;
+    private PlayerHealth _lastDeadPlayer;
 
+
+    public void StartTieWindow(PlayerHealth player)
+    {
+        _deadPlayersCount++;
+        _lastDeadPlayer = player;
+        if (_winDelayCoroutine == null)
+            StartCoroutine(TieWindow());
+    }
+
+    public IEnumerator TieWindow()
+    {
+        yield return new WaitForSeconds(_tieWindow);
+        
+        if(_deadPlayersCount > 1)
+        {
+            HandleRoundTie();
+        }
+        else
+        {
+            IncreasePlayerScore(_lastDeadPlayer.NotThisPlayer());
+        }    
+    }
     /// <summary>
     /// Increases the score for a player.
     /// </summary>
@@ -93,6 +119,10 @@ public class GameManager : MonoBehaviour
         ManagerParent.Instance.Spells.ClearSpellsForBothPlayers();
     }
 
+    /// <summary>
+    /// Favor losing player in tie
+    /// Otherwise go to next round
+    /// </summary>
     public void HandleRoundTie()
     {
         if(_tieFavorsLosingPlayer)

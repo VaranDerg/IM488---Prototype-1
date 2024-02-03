@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private int NotThisPlayer()
+    public int NotThisPlayer()
     {
         Player p = GetComponent<PlayerManager>().PlayerTag;
 
@@ -139,9 +139,10 @@ public class PlayerHealth : MonoBehaviour
             _dead = true;
 
             StopPlayerAndSpellsOnDeath();
-            ManagerParent.Instance.Game.IncreasePlayerScore(NotThisPlayer());
+            ManagerParent.Instance.Game.StartTieWindow(this);
         }
     }
+
 
     private void StopPlayerAndSpellsOnDeath()
     {

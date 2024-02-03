@@ -51,4 +51,5 @@ MonoBehaviour:
   _arenaScenes: 0400000005000000060000000700000008000000
   _winScene: 9
   _winDelay: 1.5
+  _tieWindow: 0.1
   _tieFavorsLosingPlayer: 1
