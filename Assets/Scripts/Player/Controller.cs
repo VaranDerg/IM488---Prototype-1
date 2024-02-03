@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Controller : MonoBehaviour, IScalable
+public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 {
 
     /*public void OnMove(InputAction.CallbackContext context)
@@ -24,6 +24,7 @@ public class Controller : MonoBehaviour, IScalable
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldownTime;
     [SerializeField] float maxSpeed;
+    [SerializeField] float _postDashStunDuration;
     [Space]
 
     [Header("Spells")]
@@ -34,7 +35,8 @@ public class Controller : MonoBehaviour, IScalable
     {
         Stationary,
         Moving,
-        Dashing
+        Dashing,
+        PostDash
     };
     private bool dashCoolingDown;
     private MovementState _moveState;
@@ -74,6 +76,11 @@ public class Controller : MonoBehaviour, IScalable
     public void StopVelocity()
     {
         rb.velocity = Vector3.zero;
+    }
+
+    public void TeleportTo(Vector3 newLoc)
+    {
+        transform.position = newLoc;
     }
 
     public void AddDashSpellToList(AbstractSpell newSpell)
@@ -157,6 +164,9 @@ public class Controller : MonoBehaviour, IScalable
     private IEnumerator DashProcess()
     {
         yield return new WaitForSeconds(dashTime);
+        _moveState = MovementState.PostDash;
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(_postDashStunDuration);
         _moveState = MovementState.Stationary;
         yield return new WaitForSeconds(dashCooldownTime);
         dashCoolingDown = false;
@@ -170,7 +180,7 @@ public class Controller : MonoBehaviour, IScalable
     /// <param name="input"></param>
     private void Move()
     {
-        if (_moveState == MovementState.Dashing)
+        if (_moveState == MovementState.Dashing || _moveState == MovementState.PostDash)
             return;
         Vector3 vel = rb.velocity;
         vel.x = _inputDirection.x * speed;

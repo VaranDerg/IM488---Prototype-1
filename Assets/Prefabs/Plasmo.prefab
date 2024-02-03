@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3264294643241418380}
   - component: {fileID: 837278177261051004}
   - component: {fileID: 914005900926697189}
+  - component: {fileID: 4802560170995632002}
   m_Layer: 3
   m_Name: Plasmo
   m_TagString: Player
@@ -227,6 +228,7 @@ MonoBehaviour:
   dashTime: 0.2
   dashCooldownTime: 0.5
   maxSpeed: 50
+  _postDashStunDuration: 0.2
   dashSpellList: []
 --- !u!114 &3494249741853352444
 MonoBehaviour:
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
-  _damageIFrameLength: 0
+  _damageIFrameLength: 0.25
 --- !u!114 &3264294643241418380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +310,27 @@ MonoBehaviour:
   - name: Aura Size
     stat: 6
     scalingValue: 1
+--- !u!95 &4802560170995632002
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154672118953922560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7c99750c2d42fa4a9d05103684e48ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4154672119527252999
 GameObject:
   m_ObjectHideFlags: 0

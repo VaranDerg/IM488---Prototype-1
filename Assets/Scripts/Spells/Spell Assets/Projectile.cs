@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IScalable
+public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
 {
     [SerializeField]
     TestSpellSO _thisSpell;
@@ -147,6 +147,11 @@ public class Projectile : MonoBehaviour, IScalable
         }
     }
 
+    public void TeleportTo(Vector3 newLoc)
+    {
+        transform.position = newLoc;
+    }
+
     public void BounceOffSurface(Collision other)
     {
         Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
@@ -208,6 +213,7 @@ public class Projectile : MonoBehaviour, IScalable
         ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
         ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
     }
+
 }
 
 public enum TargetType
