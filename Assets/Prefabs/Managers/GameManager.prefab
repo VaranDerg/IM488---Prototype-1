@@ -51,4 +51,4 @@ MonoBehaviour:
   _arenaScenes: 0400000005000000060000000700000008000000
   _winScene: 9
   _winDelay: 1.5
-  elementalStatsSO: {fileID: 11400000, guid: 7991694fb2bb35d4b837e3aaa6c09318, type: 2}
+  _tieFavorsLosingPlayer: 1

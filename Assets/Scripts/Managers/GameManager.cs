@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _winScene = 9;
     [Space]
     [SerializeField] private float _winDelay = 1.5f;
+    [SerializeField] private bool _tieFavorsLosingPlayer;
 
     //Holds player scores.
     private int _playerOneScore;
@@ -92,6 +93,30 @@ public class GameManager : MonoBehaviour
         ManagerParent.Instance.Spells.ClearSpellsForBothPlayers();
     }
 
+    public void RoundTie()
+    {
+        if(_tieFavorsLosingPlayer)
+        {
+            int losingPlayer = GetLosingPlayer();
+            if (losingPlayer != 0)
+            {
+                FindObjectOfType<WinningPlayerText>().DisplayTimeoutText(losingPlayer);
+                IncreasePlayerScore(losingPlayer);
+                return;
+            }
+        }
+        //DISPLAY UI ANNOUNCEMENT HERE
+        //FindObjectOfType<WinningPlayerText>().DisplayTimeoutText(playerWin);
+        int arenaScene = ManagerParent.Instance.Game.GetNextArenaScene();
+        SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, arenaScene);
+    }
+
+
+    /// <summary>
+    /// Goes to starting arena or first round
+    /// Goes to a random arena every other round
+    /// </summary>
+    /// <returns></returns>
     public int GetNextArenaScene()
     {
         if(_playerOneScore + _playerTwoScore == 0)
@@ -130,6 +155,21 @@ public class GameManager : MonoBehaviour
         return possibleArenaScenes[Random.Range(0, _arenaScenes.Length)];
     }
 
+    public int GetLosingPlayer()
+    {
+        if (_playerOneScore > _playerTwoScore) return 2;
+        else if (_playerOneScore < _playerTwoScore) return 1;
+        //No player losing
+        return 0;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            _playerOneScore++;
+        }
+    }
     //Basic getters
 
     public int GetPlayerOneScore()
