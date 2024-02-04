@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 6975540776330345678}
   - component: {fileID: 6433070668798369095}
   m_Layer: 5
-  m_Name: HPWheel
+  m_Name: HPWheelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
