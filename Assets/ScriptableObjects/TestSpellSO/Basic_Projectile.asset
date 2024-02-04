@@ -17,5 +17,5 @@ MonoBehaviour:
   ExcludeFromUI: 1
   SpellElement: {fileID: 11400000, guid: 9b95f4a2cc34edb4983172cf7d1f0014, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
-  AssociatedPrefab: {fileID: 1615301249431763084, guid: 08b1e951515d2854680c6398318f584f,
+  AssociatedPrefab: {fileID: 8170845609202855336, guid: 35c15a7f1b49ef8408670d83539e8b70,
     type: 3}

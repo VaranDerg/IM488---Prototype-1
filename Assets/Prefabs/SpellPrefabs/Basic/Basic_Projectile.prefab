@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f02e716f89bf9ae4fb8e0cbd174170f6, type: 2}
-  tickRate: 2
+  tickRate: 4
   tickRateScalar: 1
   castMethod: 0
   projectilePrefab: {fileID: 1615301249431763084, guid: 08b1e951515d2854680c6398318f584f,
