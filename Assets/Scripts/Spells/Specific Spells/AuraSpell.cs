@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AuraSpell : AbstractSpell
 {
@@ -13,8 +14,18 @@ public class AuraSpell : AbstractSpell
     [SerializeField]
     float damage;
 
+    [Tooltip("Only used for ring-shaped colliders. Only triggers if the colliding body is at least this distance away from the spell's center.")]
+    [SerializeField]
+    float minDistance = 0;
+
+    [SerializeField]
+    bool scaleMinDistanceWithSize = true;
+
     [SerializeField]
     Renderer auraRenderer;
+
+    [SerializeField]
+    UnityEvent OnAuraStart;
 
     float timeTillNextAuraTick;
 
@@ -25,6 +36,20 @@ public class AuraSpell : AbstractSpell
     private GameObject _currentParticles;
     private void OnTriggerEnter(Collider other)
     {
+        if (HorizontalDistance(other.transform.position) < minDistance)
+            return;
+
+        objectsInAura.Add(other.gameObject);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (objectsInAura.Contains(other.gameObject))
+            return;
+
+        if (HorizontalDistance(other.transform.position) < minDistance)
+            return;
+
         objectsInAura.Add(other.gameObject);
     }
 
@@ -35,9 +60,11 @@ public class AuraSpell : AbstractSpell
 
     protected override void OnStart()
     {
-        
-
         timeTillNextAuraTick = auraTickRate;
+
+        if (scaleMinDistanceWithSize)
+            minDistance *= transform.localScale.x;
+
         DisableAura();
     }
 
@@ -58,6 +85,7 @@ public class AuraSpell : AbstractSpell
 
     public override void StartAura()
     {
+        OnAuraStart.Invoke();
         StartCoroutine(DelayedDisable());
     }
 
@@ -117,6 +145,9 @@ public class AuraSpell : AbstractSpell
             if (obj == null)
                 continue;
 
+            if (HorizontalDistance(obj.transform.position) < minDistance)
+                continue;
+
             PlayerManager player = obj.GetComponent<PlayerManager>();
 
             if (player == null)
@@ -143,5 +174,15 @@ public class AuraSpell : AbstractSpell
     private void ScaleDamage(float damageMult)
     {
         damage *= damageMult;
+    }
+
+    private float HorizontalDistance(Vector3 otherObjPosition)
+    {
+        Vector3 thisPos = transform.position;
+
+        thisPos.y = 0;
+        otherObjPosition.y = 0;
+
+        return (otherObjPosition - thisPos).magnitude;
     }
 }
