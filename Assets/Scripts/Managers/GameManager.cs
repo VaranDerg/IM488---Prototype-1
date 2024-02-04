@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour
         else
         {
             IncreasePlayerScore(_lastDeadPlayer.NotThisPlayer());
-        }    
+        }
+        _deadPlayersCount = 0;
+        _lastDeadPlayer = null;
     }
     /// <summary>
     /// Increases the score for a player.
