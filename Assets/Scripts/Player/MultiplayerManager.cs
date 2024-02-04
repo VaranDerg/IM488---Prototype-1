@@ -22,10 +22,8 @@ public class MultiplayerManager : MonoBehaviour
 
     public void AssignPlayer(Player tag, PlayerManager player)
     {
-        if(player == null)
-        {
-            Debug.Log("Player Null");
-        }
+        if (p1Assigned && p2Assigned)
+            return;
 
         players.Add(tag, player);
         switch(tag){
@@ -38,7 +36,12 @@ public class MultiplayerManager : MonoBehaviour
         }
 
         if (p1Assigned && p2Assigned)
+        {
             InitializeElementalStats();
+
+            //ManagerParent.Instance.Spells.AssignStarterSpellToPlayers();
+        }
+            
 
     }
 

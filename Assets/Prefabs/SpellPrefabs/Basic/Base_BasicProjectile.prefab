@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c193318e6d2d24e809b5c38b2fd2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _thisSpell: {fileID: 11400000, guid: b64b24589e9daf747a6c1f6c66fd152b, type: 2}
+  _thisSpell: {fileID: 11400000, guid: f02e716f89bf9ae4fb8e0cbd174170f6, type: 2}
   targetType: 0
   doReevaluateTargetting: 0
   isPersistent: 0

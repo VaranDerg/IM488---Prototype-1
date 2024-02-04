@@ -44,3 +44,6 @@ MonoBehaviour:
   - name: Pool Size
     stat: 5
     scalingValue: 0.1
+  - name: Aura Size
+    stat: 6
+    scalingValue: 0.1

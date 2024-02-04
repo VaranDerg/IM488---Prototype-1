@@ -21,6 +21,9 @@ public class MainMenu : BaseMenuController
     /// </summary>
     public void StartGame()
     {
+
+        ManagerParent.Instance.Spells.AssignStarterSpellToPlayers();
+
         ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.BothPlayers);
 
         int spellSelectScene = ManagerParent.Instance.Game.GetSpellSelectScene();

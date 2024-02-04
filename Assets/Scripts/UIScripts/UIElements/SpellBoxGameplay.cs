@@ -41,6 +41,9 @@ public class SpellBoxGameplay : BaseUIElement
 
         foreach (TestSpellSO spell in playerSpells)
         {
+            if (spell.ExcludeFromUI)
+                continue;
+
             SpellIcon icon = Instantiate(_spellIcon, _spellIconGrid).GetComponent<SpellIcon>();
             icon.SetUpIcon(spell);
         }

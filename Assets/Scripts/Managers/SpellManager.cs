@@ -8,12 +8,15 @@ using UnityEngine;
 /// </summary>
 public class SpellManager : MonoBehaviour
 {
+    [SerializeField] private TestSpellSO starterSpell;
+    [Space]
     [SerializeField] private List<TestSpellSO> _allSpells = new List<TestSpellSO>();
     [SerializeField] private float _opponentViewPickedSpellTime = 1.5f;
 
     private List<TestSpellSO> _playerOneSpells = new List<TestSpellSO>();
     private List<TestSpellSO> _playerTwoSpells = new List<TestSpellSO>();
     private SpellSelectionMode _currentSelectionMode;
+    private bool hasAssignedStarter = false;
 
     public enum SpellSelectionMode
     {
@@ -49,21 +52,26 @@ public class SpellManager : MonoBehaviour
     /// </summary>
     /// <param name="player">The player to add a spell to</param>
     /// <param name="spell">The spell data object</param>
-    public void AddSpellToPlayer(int player, TestSpellSO spell)
+    public void AddSpellToPlayer(int player, TestSpellSO spell, bool loadSceneAfter = true)
     {
+        Debug.Log("Adding spell");
         if (PlayerIsValid(player))
         {
             if (player == 1)
             {
+                Debug.Log("P1");
                 _playerOneSpells.Add(spell);
+
             }
             else
             {
+                Debug.Log("P2");
                 _playerTwoSpells.Add(spell);
             }
         }
 
-        StartCoroutine(LoadSceneAfterSpellPicked());
+        if(loadSceneAfter)
+            StartCoroutine(LoadSceneAfterSpellPicked());
     }
 
     /// <summary>
@@ -228,6 +236,20 @@ public class SpellManager : MonoBehaviour
         }
 
         return player;
+    }
+
+    /// <summary>
+    /// Assigns the designated starter spell to both players. Should only be called once.
+    /// </summary>
+    public void AssignStarterSpellToPlayers()
+    {
+        if (hasAssignedStarter)
+            return;
+
+        AddSpellToPlayer(1, starterSpell, false);
+        AddSpellToPlayer(2, starterSpell, false);
+
+        hasAssignedStarter = true;
     }
 
     //Simple getters
