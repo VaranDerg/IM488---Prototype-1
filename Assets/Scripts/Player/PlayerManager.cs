@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
     [SerializeField] private ElementalStats _elementalStats;
+    [SerializeField] private PopupTextSource _textSource;
 
     public Player PlayerTag;
 
@@ -70,6 +71,11 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
         {
             AttachSpell(spell.GetPrefab());
         }
+    }
+
+    public void SpawnText(string text, Color color, float lifetime)
+    {
+        _textSource.DisplayPopup(text, color, lifetime);
     }
 
     public void DisableAssociatedSpells()
