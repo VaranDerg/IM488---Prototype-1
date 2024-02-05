@@ -315,7 +315,7 @@ MonoBehaviour:
   _movePoints:
   - {fileID: 5492358326475216673}
   - {fileID: 5444598170713412527}
-  _moveTime: 0
+  _moveTime: 1
 --- !u!1 &5444598170713412527
 GameObject:
   m_ObjectHideFlags: 0
