@@ -12,18 +12,18 @@ public class PickupCoinVisual : MonoBehaviour
     [SerializeField] private Material _faceMat;
     [SerializeField] private ParticleSystem _particles;
 
-    [SerializeField] private PickupDataSO _testData;
-
-    private void Start()
-    {
-        PreparePickupCoinVisual(_testData);
-    }
-
+    /// <summary>
+    /// Rotates the Coin
+    /// </summary>
     private void Update()
     {
         transform.Rotate(Vector3.up * _rotateSpeed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Prepares the Coin's Visual
+    /// </summary>
+    /// <param name="pickupData">The Pickup data to be reflected in the visual</param>
     public void PreparePickupCoinVisual(PickupDataSO pickupData)
     {
         Material coloredMat = new Material(_faceMat);
