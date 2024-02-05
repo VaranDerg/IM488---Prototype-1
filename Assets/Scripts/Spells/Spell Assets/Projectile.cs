@@ -162,19 +162,13 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
     {
         Vector3 closestPoint = Physics.ClosestPoint(transform.position, wall.gameObject.GetComponent<Collider>(),wall.transform.position,wall.transform.rotation);
 
-        Debug.Log("Bounce");
-        Debug.Log("My pos " + transform.position);
-        Debug.Log("Close " +closestPoint);
-
         Vector3 dir = (closestPoint-transform.position).normalized;
         dir = new Vector3(dir.x, 0, dir.z);
 
-        Debug.DrawRay(transform.position, dir, Color.red, 5);
 
         RaycastHit rayHit;
         if(Physics.Raycast(transform.position, dir, out rayHit, _bounceRaycastDist, bounceLayerMask))
         {
-            Debug.Log("RayHit");
             Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, rayHit.normal);
             rb.velocity = bounceDirection * lastVelocity.magnitude;
         }

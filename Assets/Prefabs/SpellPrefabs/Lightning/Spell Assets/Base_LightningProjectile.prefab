@@ -79,11 +79,11 @@ MonoBehaviour:
   _thisSpell: {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
   targetType: 1
   doReevaluateTargetting: 0
-  isPersistent: 1
+  isPersistent: 0
   projectileSpeed: 8
   damage: 3
   randomSpeedVariance: 0.4
-  canBounce: 1
+  canBounce: 0
   projectileLifeTime: 10
   bounceLayerMask:
     serializedVersion: 2
