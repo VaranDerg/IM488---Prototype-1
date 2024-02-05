@@ -35,6 +35,8 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     public event IPoolableObject.DeactivationHandler Deactivated;
 
+    bool hasBeenScaled = false;
+
     protected Player owner { get; private set; }
 
     private void Awake()
@@ -104,6 +106,10 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     // For elemental stats
     public void Scale(ElementalStats stats)
     {
+        if (hasBeenScaled)
+            return;
+
+        hasBeenScaled = true;
         ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
         ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));

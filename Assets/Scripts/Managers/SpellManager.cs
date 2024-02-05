@@ -54,18 +54,18 @@ public class SpellManager : MonoBehaviour
     /// <param name="spell">The spell data object</param>
     public void AddSpellToPlayer(int player, TestSpellSO spell, bool loadSceneAfter = true)
     {
-        Debug.Log("Adding spell");
+        //Debug.Log("Adding spell");
         if (PlayerIsValid(player))
         {
             if (player == 1)
             {
-                Debug.Log("P1");
+                //Debug.Log("P1");
                 _playerOneSpells.Add(spell);
 
             }
             else
             {
-                Debug.Log("P2");
+                //Debug.Log("P2");
                 _playerTwoSpells.Add(spell);
             }
         }

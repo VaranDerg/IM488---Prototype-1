@@ -39,6 +39,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public event IPoolableObject.DeactivationHandler Deactivated;
 
+    bool hasBeenScaled = false;
+
     public void Execute()
     {
         if (DamageAllInside(damage, doSelfDamage) && !isPersistent)
@@ -47,6 +49,10 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public void Scale(ElementalStats stats)
     {
+        if (hasBeenScaled)
+            return;
+
+        hasBeenScaled = true;
         ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
     }
