@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1808459696724361258}
   - component: {fileID: 8801266245887298365}
   - component: {fileID: 3332412828209246838}
+  - component: {fileID: -803787044742786771}
   m_Layer: 6
   m_Name: Base_BasicProjectile
   m_TagString: Untagged
@@ -85,6 +86,20 @@ MonoBehaviour:
   randomSpeedVariance: 0.3
   canBounce: 0
   projectileLifeTime: 10
+--- !u!114 &-803787044742786771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615301249431763084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8170845609202855336, guid: 35c15a7f1b49ef8408670d83539e8b70, type: 3}
+  poolSize: 3
 --- !u!1 &3260017825591771134
 GameObject:
   m_ObjectHideFlags: 0

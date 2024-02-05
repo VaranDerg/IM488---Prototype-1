@@ -7,15 +7,26 @@ public class ObjectSpell : AbstractSpell
     [SerializeField]
     GameObject objPrefab;
 
+    ObjectPool pool;
+
+    private void Awake()
+    {
+        pool = GetComponent<ObjectPool>();
+    }
+
     public override void StartAura()
     {
-        GameObject poolObj = Instantiate(objPrefab, transform.position, Quaternion.identity);
+        GameObject poolObj = pool.GetObject().GetGameObject();
 
-        Pool pool = poolObj.GetComponent<Pool>();
+        Pool puddle = poolObj.GetComponent<Pool>();
 
-        pool.AssignPlayer(owner);
+        puddle.AssignPlayer(owner);
 
-        pool.Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+        puddle.Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+
+        puddle.transform.position = transform.position;
+
+        puddle.Activate();
 
         if (GetScriptableObject() == null)
         {
@@ -23,7 +34,7 @@ public class ObjectSpell : AbstractSpell
             return;
         }
 
-        ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, pool.transform, true);
+        ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, puddle.transform, true);
         ManagerParent.Instance.Audio.PlaySoundEffect(GetScriptableObject().SpellElement.SoundEffectName);
     }
 

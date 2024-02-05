@@ -24,6 +24,8 @@ public class ProjectileSpell : AbstractSpell
 
         projectile.Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
 
+        projectile.transform.position = transform.position;
+
         projectile.Activate();
     }
 

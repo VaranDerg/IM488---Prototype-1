@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool : MonoBehaviour, IScalable
+public class Pool : MonoBehaviour, IScalable, IPoolableObject
 {
     [SerializeField]
     PoolSpawnType spawnType = PoolSpawnType.UNDER_SPAWNER;
@@ -36,6 +36,8 @@ public class Pool : MonoBehaviour, IScalable
     protected Player owner { get; private set; }
 
     protected List<GameObject> objectsInPool = new();
+
+    public event IPoolableObject.DeactivationHandler Deactivated;
 
     public void Execute()
     {
@@ -90,19 +92,37 @@ public class Pool : MonoBehaviour, IScalable
         ChildTick();
     }
 
-    IEnumerator DelayedDeactivate()
+    
+    public void Activate()
     {
-        yield return new WaitForSeconds(duration);
-        Deactivate();
+        gameObject.SetActive(true);
+
+        timeTillNextTick = startDelay;
+
+        StartCoroutine(DelayedDeactivate());
+
+        transform.position = GetSpawnPosition();
+
+        OnSpawn();
     }
 
-    void Deactivate()
+    public void Deactivate()
     {
         OnExpiration();
+
+        objectsInPool.Clear();
+
+        Deactivated.Invoke(this, new PoolableObjectEventArgs(this));
 
         ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.BurstParticles, true, transform, false);
 
         gameObject.SetActive(false);
+    }
+
+    IEnumerator DelayedDeactivate()
+    {
+        yield return new WaitForSeconds(duration);
+        Deactivate();
     }
 
     public void AssignPlayer(Player tag)
@@ -151,18 +171,6 @@ public class Pool : MonoBehaviour, IScalable
         return true;
     }
 
-    private void Start()
-    {
-        // Delays the first tick by the startDelay
-        timeTillNextTick = startDelay;
-
-        StartCoroutine(DelayedDeactivate());
-
-        transform.position = GetSpawnPosition();
-
-        OnSpawn();
-    }
-
     private void FixedUpdate()
     {
         Tick(Time.fixedDeltaTime);
@@ -184,6 +192,11 @@ public class Pool : MonoBehaviour, IScalable
     private void OnTriggerExit(Collider other)
     {
         objectsInPool.Remove(other.gameObject);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }
 
