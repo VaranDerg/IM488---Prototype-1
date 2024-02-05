@@ -9,6 +9,7 @@ public class SpellIconGameplay : MonoBehaviour
     [SerializeField] private Image _iconBorder;
     [SerializeField] private Image _barColor;
     [SerializeField] private Image _barInverseFill;
+    private TestSpellSO _thisSpell;
 
     /// <summary>
     /// Prepares a spell icon with correct values.
@@ -23,6 +24,8 @@ public class SpellIconGameplay : MonoBehaviour
         //endtempt
         _iconBorder.color = spell.SpellElement.ElementColor;
         _barColor.color = spell.SpellElement.ElementColor;
+
+        _thisSpell = spell;
 
         return this;
     }
@@ -39,5 +42,10 @@ public class SpellIconGameplay : MonoBehaviour
         }
 
         _barInverseFill.fillAmount = valueNormalized;
+    }
+
+    public TestSpellSO GetTestSpellSO()
+    {
+        return _thisSpell;
     }
 }
