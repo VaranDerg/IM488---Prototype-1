@@ -39,7 +39,7 @@ public class ElementalStats : MonoBehaviour
         if (hasStatsBeenAdded)
             return;
 
-        Debug.Log("Adding elemental stats for " + gameObject.name);
+        //Debug.Log("Adding elemental stats for " + gameObject.name);
         foreach (ScalableStat stat in elementalStatsSO.GetElementStats(element))
         {
             playerStats[stat] += elementalStatsSO.GetStatScalar(stat);
@@ -50,7 +50,7 @@ public class ElementalStats : MonoBehaviour
 
     public float GetStat(ScalableStat stat)
     {
-        Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);
+        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);
         return playerStats[stat];
     }
 }
