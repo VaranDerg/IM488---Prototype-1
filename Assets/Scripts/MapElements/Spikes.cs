@@ -12,8 +12,14 @@ public class Spikes : MonoBehaviour,IMapElement
     [SerializeField] float _moveTime;
     private Coroutine _damageCoroutine;
     private Coroutine _movingCoroutine;
+    Vector3 _startLocation;
     bool _active;
     List<GameObject> _objectsInRange = new List<GameObject>();
+
+    void Start()
+    {
+        _startLocation = transform.position;
+    }
 
     IEnumerator DamageTick()
     {
@@ -28,37 +34,47 @@ public class Spikes : MonoBehaviour,IMapElement
 
     public void Activate()
     {
-        if (_movingCoroutine == null)
-            _movingCoroutine = StartCoroutine(MoveActivation());
+        if (_movingCoroutine != null)
+        {
+            StopCoroutine(_movingCoroutine);
+            Debug.Log("CoroutineStopped");
+        }
+        _movingCoroutine = StartCoroutine(MoveActivation());
+
     }
 
     IEnumerator MoveActivation()
     {
         float moveProgress = 0;
         
-        Vector3 startLocation = transform.position;
-        float _moveDirection =1;
-        if(_active)
+        Vector3 activationLocation = transform.position;
+        Vector3 targetLocation;
+        if (!_active)
         {
-            _moveDirection *= -1;
+            targetLocation = _startLocation + _activeLocation;
         }
-        Vector3 targetLocation = transform.position + (_activeLocation*_moveDirection);
+        else
+        {
+            targetLocation = _startLocation;
+        }
+        //Vector3 targetLocation = transform.position + (_activeLocation*_moveDirection);
 
+        _active = !_active;
         while (moveProgress < 1)
         {
             moveProgress += Time.deltaTime/_moveTime;
-            transform.position = Vector3.Lerp(startLocation, targetLocation, moveProgress);
+            transform.position = Vector3.Lerp(activationLocation, targetLocation, moveProgress);
             yield return null;
         }
         transform.position = targetLocation;
 
-        ChangeActiveState();
+        ChangeDamageState();
         _movingCoroutine = null;
     }
 
-    void ChangeActiveState()
+    void ChangeDamageState()
     {
-        _active = !_active;
+        
         GetComponent<Collider>().enabled = _active;
         if (!_active) _objectsInRange = new List<GameObject>();
     }

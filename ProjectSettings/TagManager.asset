@@ -17,12 +17,12 @@ TagManager:
   - Environment
   - SpellObject
   - Portal
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FireProjectile
+  - LightningProjectile
+  - IceProjectile
+  - FireEnvironment
+  - LightningEnvironment
+  - IceEnvironment
   - 
   - 
   - 

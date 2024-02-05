@@ -141,7 +141,13 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     public void DashInput(InputAction.CallbackContext context)
     {
         if (dashCoolingDown)
+        {
+            if(context.started)
+                GetComponent<PlayerManager>().SpawnText("On Cooldown!", Color.red, 1.5f);
             return;
+        }
+
+            
         _moveState = MovementState.Dashing;
         dashCoolingDown = true;
 
