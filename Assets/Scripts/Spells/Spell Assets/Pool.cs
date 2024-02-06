@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool : MonoBehaviour, IScalable
+public class Pool : MonoBehaviour, IScalable, IPoolableObject
 {
     [SerializeField]
     PoolSpawnType spawnType = PoolSpawnType.UNDER_SPAWNER;
@@ -37,6 +37,10 @@ public class Pool : MonoBehaviour, IScalable
 
     protected List<GameObject> objectsInPool = new();
 
+    public event IPoolableObject.DeactivationHandler Deactivated;
+
+    bool hasBeenScaled = false;
+
     public void Execute()
     {
         if (DamageAllInside(damage, doSelfDamage) && !isPersistent)
@@ -45,6 +49,10 @@ public class Pool : MonoBehaviour, IScalable
 
     public void Scale(ElementalStats stats)
     {
+        if (hasBeenScaled)
+            return;
+
+        hasBeenScaled = true;
         ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
     }
@@ -90,19 +98,37 @@ public class Pool : MonoBehaviour, IScalable
         ChildTick();
     }
 
-    IEnumerator DelayedDeactivate()
+    
+    public void Activate()
     {
-        yield return new WaitForSeconds(duration);
-        Deactivate();
+        gameObject.SetActive(true);
+
+        timeTillNextTick = startDelay;
+
+        StartCoroutine(DelayedDeactivate());
+
+        transform.position = GetSpawnPosition();
+
+        OnSpawn();
     }
 
-    void Deactivate()
+    public void Deactivate()
     {
         OnExpiration();
+
+        objectsInPool.Clear();
+
+        Deactivated.Invoke(this, new PoolableObjectEventArgs(this));
 
         ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.BurstParticles, true, transform, false);
 
         gameObject.SetActive(false);
+    }
+
+    IEnumerator DelayedDeactivate()
+    {
+        yield return new WaitForSeconds(duration);
+        Deactivate();
     }
 
     public void AssignPlayer(Player tag)
@@ -151,18 +177,6 @@ public class Pool : MonoBehaviour, IScalable
         return true;
     }
 
-    private void Start()
-    {
-        // Delays the first tick by the startDelay
-        timeTillNextTick = startDelay;
-
-        StartCoroutine(DelayedDeactivate());
-
-        transform.position = GetSpawnPosition();
-
-        OnSpawn();
-    }
-
     private void FixedUpdate()
     {
         Tick(Time.fixedDeltaTime);
@@ -184,6 +198,11 @@ public class Pool : MonoBehaviour, IScalable
     private void OnTriggerExit(Collider other)
     {
         objectsInPool.Remove(other.gameObject);
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }
 

@@ -13,6 +13,8 @@ public class ElementalStats : MonoBehaviour
 
     Dictionary<ScalableStat, float> playerStats = new();
 
+    bool hasStatsBeenAdded = false;
+
     private void Awake()
     {
         foreach (AssociatedScalingStat s in baseStats)
@@ -34,15 +36,21 @@ public class ElementalStats : MonoBehaviour
     /// <param name="element">Element type which decides what stat is changed</param>
     public void AddElementStat(Elements.SpellElement element)
     {
+        if (hasStatsBeenAdded)
+            return;
+
+        //Debug.Log("Adding elemental stats for " + gameObject.name);
         foreach (ScalableStat stat in elementalStatsSO.GetElementStats(element))
         {
             playerStats[stat] += elementalStatsSO.GetStatScalar(stat);
             //Debug.Log("" + stat + ": " + playerStats[stat]);
         }
+        hasStatsBeenAdded = true;
     }
 
     public float GetStat(ScalableStat stat)
     {
+        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);
         return playerStats[stat];
     }
 }

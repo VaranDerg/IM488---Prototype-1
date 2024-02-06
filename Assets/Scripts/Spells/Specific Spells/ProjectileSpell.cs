@@ -7,17 +7,26 @@ public class ProjectileSpell : AbstractSpell
     [SerializeField]
     GameObject projectilePrefab;
 
+    ObjectPool pool;
+
+    private void Awake()
+    {
+        pool = GetComponent<ObjectPool>();
+    }
+
     public override void StartAura()
     {
-        GameObject projectileObj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        IPoolableObject obj = pool.GetObject();
 
-        Projectile projectile = projectileObj.GetComponent<Projectile>();
+        Projectile projectile = obj.GetGameObject().GetComponent<Projectile>();
 
         projectile.AssignPlayer(owner);
 
         projectile.Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
 
-        projectile.Launch();
+        projectile.transform.position = transform.position;
+
+        projectile.Activate();
     }
 
     protected override void AuraTick()

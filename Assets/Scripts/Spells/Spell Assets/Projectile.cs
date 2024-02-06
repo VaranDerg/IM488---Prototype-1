@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
+public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObject
 {
     [SerializeField]
     TestSpellSO _thisSpell;
@@ -34,6 +34,10 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
 
     Rigidbody rb;
     private Vector3 lastVelocity;
+
+    public event IPoolableObject.DeactivationHandler Deactivated;
+
+    bool hasBeenScaled = false;
 
     protected Player owner { get; private set; }
 
@@ -96,7 +100,7 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
         owner = tag;
     }
 
-    public void Launch()
+    private void Launch()
     {
         SpeedVariance();
 
@@ -108,6 +112,10 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
     // For elemental stats
     public void Scale(ElementalStats stats)
     {
+        if (hasBeenScaled)
+            return;
+
+        hasBeenScaled = true;
         ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
         ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
@@ -133,8 +141,17 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
         projectileSpeed = Random.Range(projectileSpeed - randomSpeedVariance, projectileSpeed + randomSpeedVariance);
     }
 
-    protected void Deactivate()
+    public void Activate()
     {
+        gameObject.SetActive(true);
+
+        Launch();
+    }
+
+    public void Deactivate()
+    {
+        Deactivated.Invoke(this, new PoolableObjectEventArgs(this));
+
         gameObject.SetActive(false);
     }
 
@@ -236,6 +253,10 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
         ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
     }
 
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }
 
 public enum TargetType

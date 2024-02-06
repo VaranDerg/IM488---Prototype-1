@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ArenasInGame/Arena3_Gavin.unity
     guid: 64c221f829a12114ca44fb09009c4acb
-  - enabled: 1
+  - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1

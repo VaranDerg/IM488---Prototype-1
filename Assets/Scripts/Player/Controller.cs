@@ -106,7 +106,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         VariableAssignment();
 
-        Scale(GetComponent<ElementalStats>());
+        StartCoroutine(DelayedScaling());
     }
 
     /// <summary>
@@ -116,6 +116,12 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         _moveState = MovementState.Stationary;
         rb = GetComponent<Rigidbody>();
+    }
+
+    IEnumerator DelayedScaling()
+    {
+        yield return new WaitForFixedUpdate();
+        Scale(GetComponent<ElementalStats>());
     }
 
     #endregion
