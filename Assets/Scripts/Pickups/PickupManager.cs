@@ -5,12 +5,17 @@ using UnityEngine;
 public class PickupManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> _pickUps;
-    [SerializeField] List<GameObject> _spawnPoints;
+    //[SerializeField] List<GameObject> _spawnPoints;
+    [SerializeField] List<PickupLocation> _spawnPoints;
     [SerializeField] float _timerBetweenPickup;
+    [SerializeField] Vector3 _spawnOffset;
     private Vector3 lastSpawnLocation;
+
+    public static PickupManager Instance;
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         StartCoroutine(SpawnPickupTimer());
     }
 
@@ -26,26 +31,47 @@ public class PickupManager : MonoBehaviour
 
     void SpawnObjectAtRandomLocation()
     {
-        Instantiate(RandomPickup(), RandomLocation(), Quaternion.identity);
+        GameObject rngLoc = RandomLocation();
+        GameObject newPickup = Instantiate(RandomPickup(), rngLoc.transform.position + _spawnOffset, Quaternion.identity);
+        rngLoc.GetComponent<PickupLocation>().SetCurrentPickup(newPickup);
     }
+
+    public void RemovePickupFromLocation(GameObject pickUp)
+    {
+        foreach(PickupLocation pl in _spawnPoints)
+        {
+            if (pl.GetCurrentPickup() == pickUp)
+                pl.SetCurrentPickup(null);
+        }
+    }
+
+/*    private bool ValidSpawnLocationExists()
+    {
+        foreach(PickupLocation pl in _spawnPoints)
+        {
+            if (pl.GetCurrentPickup() == null) return true;
+        }
+        return false;
+    }*/
 
     GameObject RandomPickup()
     {
         return _pickUps[Random.Range(0, _pickUps.Count)];
     }
-    Vector3 RandomLocation()
+
+    GameObject RandomLocation()
     {
-        Vector3 spawnLoc;
+        GameObject spawnLoc;
         if(_spawnPoints.Count > 1)
         {
             do
             {
-                spawnLoc = _spawnPoints[Random.Range(0, _spawnPoints.Count)].transform.position;
+                spawnLoc = _spawnPoints[Random.Range(0, _spawnPoints.Count)].gameObject;
             }
-            while (spawnLoc == lastSpawnLocation);
-            lastSpawnLocation = spawnLoc;
+            while (spawnLoc.transform.position == lastSpawnLocation );
+            lastSpawnLocation = spawnLoc.transform.position;
             return spawnLoc;
         }
-        return _spawnPoints[Random.Range(0, _spawnPoints.Count)].transform.position;
+        return _spawnPoints[Random.Range(0, _spawnPoints.Count)].gameObject;
     }
 }

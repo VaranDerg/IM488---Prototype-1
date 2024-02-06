@@ -17,6 +17,7 @@ public abstract class PickupAbstract : MonoBehaviour, IPickup
 
     public void PostPickup()
     {
+        PickupManager.Instance.RemovePickupFromLocation(gameObject);
         Destroy(gameObject);
     }
 }
