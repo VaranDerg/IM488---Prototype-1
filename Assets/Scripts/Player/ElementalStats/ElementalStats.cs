@@ -48,6 +48,11 @@ public class ElementalStats : MonoBehaviour
         hasStatsBeenAdded = true;
     }
 
+    /// <summary>
+    /// Call this to add / remove temporary stats
+    /// </summary>
+    /// <param name="stat">Stat type</param>
+    /// <param name="amt">amount to be changed. Can be negative to remove</param>
     public void AddStat(ScalableStat stat, float amt)
     {
         playerStats[stat] += amt;
