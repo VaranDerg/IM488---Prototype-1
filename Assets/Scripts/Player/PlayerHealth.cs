@@ -54,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         if(invulnType != InvulnTypes.FULLINVULN)
             StartCoroutine(DamageIFrameProcess());
 
+        
         SetHPWheelValue();
         CheckForDeath();
     }
@@ -66,6 +67,11 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         SetHPWheelValue();
         return true;
+    }
+
+    public float HealthPercent()
+    {
+        return _currentHealth / _maxHealth;
     }
 
     public bool InvulnerableTypeCheck(InvulnTypes invulnType)
@@ -108,7 +114,8 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     private void SetHPWheelValue()
     {
-        HPWheelUI[] wheels = FindObjectsOfType<HPWheelUI>();
+        GetComponent<PlayerManager>().UpdateHPWheel();
+        /*HPWheelUI[] wheels = FindObjectsOfType<HPWheelUI>();
         
         foreach (HPWheelUI wheel in wheels)
         {
@@ -121,7 +128,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 wheel.SetWheelValue(_currentHealth / _maxHealth);
             }
-        }
+        }*/
     }
 
     public void CheckForDeath()
