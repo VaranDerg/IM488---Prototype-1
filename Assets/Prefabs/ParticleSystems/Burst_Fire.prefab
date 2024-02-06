@@ -19,13 +19,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
         type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.673028
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
+        type: 3}
       propertyPath: EmissionModule.rateOverTime.minMaxState
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
         type: 3}
@@ -35,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3081363799193063040, guid: e3b8b5db92674234eaefbd5835d51e7a,
         type: 3}
