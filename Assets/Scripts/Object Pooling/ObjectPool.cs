@@ -11,17 +11,7 @@ public class ObjectPool : MonoBehaviour
     int poolSize = 3;
     readonly Stack<IPoolableObject> inactiveObjects = new();
 
-    private void Start()
-    {
-        for(int i = 0; i < poolSize; i++)
-        {
-            IPoolableObject obj = InstantiateNewObject();
-
-            obj.GetGameObject().SetActive(false);
-
-            inactiveObjects.Push(obj);
-        }
-    }
+    Player owner;
 
     public IPoolableObject GetObject()
     {
@@ -43,6 +33,8 @@ public class ObjectPool : MonoBehaviour
             return null;
         }
 
+        poolable.AssignPlayer(owner);
+
         poolable.Deactivated += OnDeactivation;
 
         return poolable;
@@ -51,5 +43,33 @@ public class ObjectPool : MonoBehaviour
     private void OnDeactivation(object sender, PoolableObjectEventArgs e)
     {
         inactiveObjects.Push(e.Obj);
+    }
+
+    public void AssignPlayer()
+    {
+        owner = GetComponent<IPoolableObject>().GetPlayer();
+
+        InstantiateObjects();
+    }
+
+    public void AssignPlayer(Player owner)
+    {
+        this.owner = owner;
+
+        InstantiateObjects();
+    }
+
+    private void InstantiateObjects()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            IPoolableObject obj = InstantiateNewObject();
+
+            obj.AssignPlayer(owner);
+
+            obj.GetGameObject().SetActive(false);
+
+            inactiveObjects.Push(obj);
+        }
     }
 }

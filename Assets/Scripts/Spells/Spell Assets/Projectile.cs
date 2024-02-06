@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObject
 {
@@ -27,7 +28,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     [SerializeField] float randomSpeedVariance;
 
+    [SerializeField] bool rotateTowardsTarget = false;
     [SerializeField] bool canBounce;
+    [SerializeField] bool isStatic = false;
     [SerializeField] float projectileLifeTime;
     [SerializeField] LayerMask bounceLayerMask;
     private const float _bounceRaycastDist = 2;
@@ -38,6 +41,12 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public event IPoolableObject.DeactivationHandler Deactivated;
 
     bool hasBeenScaled = false;
+
+    [SerializeField]
+    UnityEvent OnAssignPlayer;
+
+    [SerializeField]
+    UnityEvent OnLaunchEvent;
 
     protected Player owner { get; private set; }
 
@@ -98,6 +107,13 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public void AssignPlayer(Player tag)
     {
         owner = tag;
+
+        OnAssignPlayer.Invoke();
+    }
+
+    public Player GetPlayer()
+    {
+        return owner;
     }
 
     private void Launch()
@@ -107,6 +123,8 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         Move();
 
         OnLaunch();
+
+        OnLaunchEvent.Invoke();
     }
 
     // For elemental stats
@@ -119,6 +137,11 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
         ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
+    }
+
+    public void Scale()
+    {
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
     }
 
     private void ScaleSpeed(float speedMult)
@@ -216,6 +239,10 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
                 Vector3 randomSphere = Random.insideUnitSphere;
                 //Debug.Log(new Vector3(randomSphere.x, 0, randomSphere.z).normalized);
                 return new Vector3(randomSphere.x, 0, randomSphere.z).normalized;
+            case TargetType.RANDOM_IN_RANGE:
+                randomSphere = Random.insideUnitSphere;
+                //Debug.Log(new Vector3(randomSphere.x, 0, randomSphere.z).normalized);
+                return (new Vector3(randomSphere.x, 0, randomSphere.z).normalized) * projectileSpeed;
 
             default:
                 return Vector3.zero;
@@ -224,7 +251,15 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     protected virtual void Move()
     {
-        rb.AddForce(GetTargetDirection() * projectileSpeed, ForceMode.Impulse);
+        if (isStatic)
+        {
+            transform.position += GetTargetDirection();
+            return;
+        }
+
+        Vector3 forceVector = GetTargetDirection() * projectileSpeed;
+        rb.AddForce(forceVector, ForceMode.Impulse);
+        transform.rotation = Quaternion.LookRotation(forceVector);
     }
 
     // Child Functions
@@ -265,5 +300,6 @@ public enum TargetType
     MOVE_DIRECTION,
     OPPOSITE_DIRECTION,
     RANDOM,
+    RANDOM_IN_RANGE,
     OTHER
 }

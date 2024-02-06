@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pool : MonoBehaviour, IScalable, IPoolableObject
 {
@@ -31,6 +32,9 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     [SerializeField]
     private TestSpellSO _thisSpell;
 
+    [SerializeField]
+    UnityEvent OnTriggeredEvent;
+
     float timeTillNextTick;
 
     protected Player owner { get; private set; }
@@ -44,7 +48,11 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void Execute()
     {
         if (DamageAllInside(damage, doSelfDamage) && !isPersistent)
+        {
+            OnTriggeredEvent.Invoke();
             gameObject.SetActive(false);
+        }
+            
     }
 
     public void Scale(ElementalStats stats)
@@ -55,6 +63,11 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
         hasBeenScaled = true;
         ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
+    }
+
+    public void Scale()
+    {
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
     }
 
     private void ScaleSize(float sizeMult)
@@ -134,6 +147,13 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void AssignPlayer(Player tag)
     {
         owner = tag;
+
+        OnAssignPlayer.Invoke();
+    }
+
+    public Player GetPlayer()
+    {
+        return owner;
     }
 
     private Vector3 GetSpawnPosition()

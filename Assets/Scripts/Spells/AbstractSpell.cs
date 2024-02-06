@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 {
@@ -22,6 +23,9 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
     float timeTillNextTick = 1;
 
     [SerializeField] CastingMethod castMethod;
+
+    [SerializeField]
+    UnityEvent OnPlayerAssignEvent;
 
     protected Player owner { get; private set; }
 
@@ -58,6 +62,12 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
         timeTillNextTick = tickRate;
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
+
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if(objectPool != null)
+            objectPool.AssignPlayer(owner);
+
+        OnPlayerAssignEvent.Invoke();
         //Debug.Log(owner);
         AddSpellsToLists();
 

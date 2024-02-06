@@ -13,6 +13,9 @@ public class IcePulse : MonoBehaviour
     [SerializeField]
     float scaleRate = 1;
 
+    [SerializeField]
+    bool neverShrink = false;
+
     float deltaScale;
 
     float scaleMult = 1;
@@ -34,6 +37,9 @@ public class IcePulse : MonoBehaviour
         //Debug.Log("Ice Pulse");
         if (scaleMult >= maxScale)
         {
+            if (neverShrink)
+                return;
+
             //Debug.Log("Hit max");
             isIncreasing = false;
         }
