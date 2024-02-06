@@ -33,6 +33,11 @@ public class AuraSpell : AbstractSpell
 
     protected List<GameObject> objectsInAura = new();
 
+    Vector3 startSize;
+
+    Vector3 scaledAuraSize = Vector3.one;
+    float scaledAuraDamage = 1;
+
     private GameObject _currentParticles;
     private void OnTriggerEnter(Collider other)
     {
@@ -60,6 +65,8 @@ public class AuraSpell : AbstractSpell
 
     protected override void OnStart()
     {
+        startSize = transform.localScale;
+
         timeTillNextAuraTick = auraTickRate;
 
         if (scaleMinDistanceWithSize)
@@ -91,7 +98,7 @@ public class AuraSpell : AbstractSpell
 
     protected void OnAuraTick()
     {
-        DamageAllInAura(damage);
+        DamageAllInAura(scaledAuraDamage);
     }
 
     IEnumerator DelayedDisable()
@@ -168,12 +175,13 @@ public class AuraSpell : AbstractSpell
 
     private void ScaleSize(float sizeMult)
     {
-        transform.localScale *= sizeMult;
+        scaledAuraSize = startSize * sizeMult;
+        transform.localScale = scaledAuraSize;
     }
 
     private void ScaleDamage(float damageMult)
     {
-        damage *= damageMult;
+        scaledAuraDamage = damage * damageMult;
     }
 
     private float HorizontalDistance(Vector3 otherObjPosition)

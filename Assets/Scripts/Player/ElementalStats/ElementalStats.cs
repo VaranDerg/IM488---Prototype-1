@@ -48,6 +48,11 @@ public class ElementalStats : MonoBehaviour
         hasStatsBeenAdded = true;
     }
 
+    public void AddStat(ScalableStat stat, float amt)
+    {
+        playerStats[stat] += amt;
+    }
+
     public float GetStat(ScalableStat stat)
     {
         //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);

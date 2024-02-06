@@ -15,7 +15,7 @@ public class SpellBoxGameplay : BaseUIElement
     [SerializeField] private TextMeshProUGUI _playerText;
     [SerializeField] private GameObject _spellIcon;
     [SerializeField] private Transform _spellIconGrid;
-    private List<SpellIconGameplay> _activeIcons;
+    private List<SpellIconGameplay> _activeIcons = new();
 
     private void Start()
     {
@@ -47,6 +47,9 @@ public class SpellBoxGameplay : BaseUIElement
 
             SpellIconGameplay icon = Instantiate(_spellIcon, _spellIconGrid).GetComponent<SpellIconGameplay>();
             icon.PrepareSpellIcon(spell);
+
+            if (_activeIcons == null)
+                Debug.Log(spell.SpellName);
 
             _activeIcons.Add(icon);
         }

@@ -43,11 +43,19 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public event IPoolableObject.DeactivationHandler Deactivated;
 
-    bool hasBeenScaled = false;
+    Vector3 startSize;
+
+    Vector3 scaledPoolSize = Vector3.one;
+    float scaledPoolDamage = 1;
+
+    private void Awake()
+    {
+        startSize = transform.localScale;
+    }
 
     public void Execute()
     {
-        if (DamageAllInside(damage, doSelfDamage) && !isPersistent)
+        if (DamageAllInside(scaledPoolDamage, doSelfDamage) && !isPersistent)
         {
             OnTriggeredEvent.Invoke();
             gameObject.SetActive(false);
@@ -57,10 +65,6 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public void Scale(ElementalStats stats)
     {
-        if (hasBeenScaled)
-            return;
-
-        hasBeenScaled = true;
         ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
     }
@@ -72,12 +76,13 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     private void ScaleSize(float sizeMult)
     {
-        transform.localScale *= sizeMult;
+        scaledPoolSize = startSize * sizeMult;
+        transform.localScale = scaledPoolSize;
     }
 
     private void ScaleDamage(float damageMult)
     {
-        damage *= damageMult;
+        scaledPoolDamage = damage * damageMult;
     }
 
     protected void ChildTick()
@@ -116,6 +121,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     {
         gameObject.SetActive(true);
 
+        Scale();
+
         timeTillNextTick = startDelay;
 
         StartCoroutine(DelayedDeactivate());
@@ -147,8 +154,6 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void AssignPlayer(Player tag)
     {
         owner = tag;
-
-        OnAssignPlayer.Invoke();
     }
 
     public Player GetPlayer()

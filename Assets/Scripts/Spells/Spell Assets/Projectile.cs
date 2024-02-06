@@ -35,6 +35,12 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     [SerializeField] LayerMask bounceLayerMask;
     private const float _bounceRaycastDist = 2;
 
+    Vector3 startSize;
+
+    float scaledProjectileSpeed = 1;
+    Vector3 scaledProjectileSize = Vector3.one;
+    float scaledProjectileDamage = 1;
+
     Rigidbody rb;
     private Vector3 lastVelocity;
 
@@ -42,11 +48,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     bool hasBeenScaled = false;
 
-    [SerializeField]
-    UnityEvent OnAssignPlayer;
-
-    [SerializeField]
-    UnityEvent OnLaunchEvent;
+    public UnityEvent OnLaunchEvent;
 
     protected Player owner { get; private set; }
 
@@ -56,6 +58,8 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         StartCoroutine(TargetReeval());
         StartCoroutine(TrackLastVelocity());
         StartCoroutine(LifeTime());
+
+        startSize = transform.localScale;
     }
 
     #region Collision
@@ -107,8 +111,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public void AssignPlayer(Player tag)
     {
         owner = tag;
-
-        OnAssignPlayer.Invoke();
     }
 
     public Player GetPlayer()
@@ -130,10 +132,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     // For elemental stats
     public void Scale(ElementalStats stats)
     {
-        if (hasBeenScaled)
-            return;
-
-        hasBeenScaled = true;
         ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
         ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
@@ -146,27 +144,30 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     private void ScaleSpeed(float speedMult)
     {
-        projectileSpeed *= speedMult;
+        scaledProjectileSpeed = speedMult * projectileSpeed;
     }
 
     private void ScaleSize(float sizeMult)
     {
-        transform.localScale *= sizeMult;
+        scaledProjectileSize = startSize * sizeMult;
+        transform.localScale = scaledProjectileSize;
     }
 
     private void ScaleDamage(float damageMult)
     {
-        damage *= damageMult;
+        scaledProjectileDamage = damage * damageMult;
     }
 
     private void SpeedVariance()
     {
-        projectileSpeed = Random.Range(projectileSpeed - randomSpeedVariance, projectileSpeed + randomSpeedVariance);
+        scaledProjectileSpeed = Random.Range(scaledProjectileSpeed - randomSpeedVariance, scaledProjectileSpeed + randomSpeedVariance);
     }
 
     public void Activate()
     {
         gameObject.SetActive(true);
+
+        Scale();
 
         Launch();
     }
@@ -242,7 +243,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
             case TargetType.RANDOM_IN_RANGE:
                 randomSphere = Random.insideUnitSphere;
                 //Debug.Log(new Vector3(randomSphere.x, 0, randomSphere.z).normalized);
-                return (new Vector3(randomSphere.x, 0, randomSphere.z).normalized) * projectileSpeed;
+                return (new Vector3(randomSphere.x, 0, randomSphere.z).normalized) * scaledProjectileSpeed;
 
             default:
                 return Vector3.zero;
@@ -257,7 +258,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
             return;
         }
 
-        Vector3 forceVector = GetTargetDirection() * projectileSpeed;
+        Vector3 forceVector = GetTargetDirection() * scaledProjectileSpeed;
         rb.AddForce(forceVector, ForceMode.Impulse);
         transform.rotation = Quaternion.LookRotation(forceVector);
     }
@@ -265,7 +266,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     // Child Functions
     protected virtual void OnPlayerCollision(Collider other)
     {
-        other.GetComponent<PlayerManager>().Damage(damage, InvulnTypes.FULLINVULN);
+        other.GetComponent<PlayerManager>().Damage(scaledProjectileDamage, InvulnTypes.FULLINVULN);
     }
 
     protected virtual void OnEnvironmentCollision(Collider other)

@@ -24,8 +24,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     [SerializeField] CastingMethod castMethod;
 
-    [SerializeField]
-    UnityEvent OnPlayerAssignEvent;
+    [SerializeField] float castDelay = 0;
 
     protected Player owner { get; private set; }
 
@@ -40,6 +39,17 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     }
 
+    public void DelayedStartAura()
+    {
+        StartCoroutine(DelayedAura());
+    }
+
+    IEnumerator DelayedAura()
+    {
+        yield return new WaitForSeconds(castDelay);
+        StartAura();
+    }
+
     // Tracks the time remaining till next tick. Calls ChildTick each
     public void Tick(float deltaTime)
     {
@@ -47,8 +57,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
             timeTillNextTick -= deltaTime * tickRateScalar;
         else
         {
-            if(castMethod == CastingMethod.AUTO)
-                StartAura();
+            if (castMethod == CastingMethod.AUTO)
+                DelayedStartAura();
 
             timeTillNextTick = tickRate;
         }
@@ -66,8 +76,6 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
         ObjectPool objectPool = GetComponent<ObjectPool>();
         if(objectPool != null)
             objectPool.AssignPlayer(owner);
-
-        OnPlayerAssignEvent.Invoke();
         //Debug.Log(owner);
         AddSpellsToLists();
 
