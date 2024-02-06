@@ -51,8 +51,11 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage, InvulnTypes invulnType)
     {  
         _currentHealth -= damage;
-        if(invulnType != InvulnTypes.FULLINVULN)
+        if(invulnType == InvulnTypes.FULLINVULN)
+        {
             StartCoroutine(DamageIFrameProcess());
+        }
+            
 
         
         SetHPWheelValue();
@@ -145,13 +148,12 @@ public class PlayerHealth : MonoBehaviour
             _currentHealth = 0;
             _dead = true;
 
-            StopPlayerAndSpellsOnDeath();
             ManagerParent.Instance.Game.StartTieWindow(this);
         }
     }
 
 
-    private void StopPlayerAndSpellsOnDeath()
+    public void StopPlayerAndSpellsOnDeath()
     {
         GetComponent<PlayerManager>().GetPlayerController().StopVelocity();
         GetComponent<PlayerManager>().GetPlayerController().enabled = false;

@@ -57,7 +57,11 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
     public void Damage(float damage, InvulnTypes ignoreInvuln)
     {
         if (_pHealth.InvulnerableTypeCheck(ignoreInvuln))
+        {
+            GetComponent<PlayerManager>().SpawnText("Invincible", Color.red, 1.5f);
             return;
+        }
+            
         _pHealth.TakeDamage(damage,ignoreInvuln);
     }
 

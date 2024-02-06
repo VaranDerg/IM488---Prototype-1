@@ -54,6 +54,12 @@ public class GameManager : MonoBehaviour
         {
             IncreasePlayerScore(_lastDeadPlayer.NotThisPlayer());
         }
+
+        foreach(PlayerHealth ph in FindObjectsOfType<PlayerHealth>())
+        {
+            ph.StopPlayerAndSpellsOnDeath();
+        }
+
         _deadPlayersCount = 0;
         _lastDeadPlayer = null;
     }
