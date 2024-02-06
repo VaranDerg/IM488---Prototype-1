@@ -9,10 +9,21 @@ public class PlasmoMoveTest : MonoBehaviour
     [SerializeField] private float _rotateSpeed = 10f;
     [Space]
     private bool _isWalking;
+    private PlasmoVisuals _visuals;
+
+    private void Start()
+    {
+        _visuals = GetComponentInChildren<PlasmoVisuals>();
+    }
 
     private void Update()
     {
         HandleMovement();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Cast);
+        }
     }
 
     public bool IsWalking()

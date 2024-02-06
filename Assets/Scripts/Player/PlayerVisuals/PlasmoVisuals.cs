@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class PlasmoVisuals : MonoBehaviour
 {
-    private const string IS_WALKING = "IsWalking";
+    private const string IS_WALKING = "Moving";
+    private const string CAST_SPELL = "CastSpell";
+    private const string WIN = "Win";
+    private const string LOSE = "Lose";
 
     [Header("Values")]
     [SerializeField] private float _glowColorChangeSpeed;
+    [SerializeField] private float _glowIntensity;
 
     [Header("General References")]
     [SerializeField] private PlasmoMoveTest _player;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Material _glowMaterial;
 
     [Header("Object References")]
     [SerializeField] private List<MeshRenderer> _glowingParts = new List<MeshRenderer>();
     [SerializeField] private Transform _lineRendererStart, _lineRendererEnd;
     [SerializeField] private GameObject _eyeNeutral, _eyeHappy, _eyeAngry;
 
-    private Material _glowingMaterial;
-    private Color _glowColorCurrent;
+    private Material _glowMaterialInstance;
     private Color _glowColorEnd;
+    private Color _glowColorCurrent;
 
     public enum PlasmoExpression
     {
@@ -30,27 +35,35 @@ public class PlasmoVisuals : MonoBehaviour
         Angry,
     }
 
+    public enum PlasmoAnimationTrigger
+    {
+        Cast,
+        Win,
+        Lose,
+    }
+
     private void Start()
     {
-        if(_glowingParts.Count != 0)
-        {
-            _glowingMaterial = new Material(_glowingParts[0].material);
-            _glowingMaterial.EnableKeyword("_EMISSION");
-
-            _glowColorCurrent = _glowingMaterial.GetColor("_EmissionColor");
-
-            foreach (MeshRenderer mesh in _glowingParts)
-            {
-                mesh.material = _glowingMaterial;
-            }
-        }
+        PrepareEmissiveMaterials();
+        SetGlowState(true);
+        SetGlowColor(Color.white);
     }
 
     private void Update()
     {
         HandleLineRenderer();
         HandleGlowColor();
-        //HandleAnimations();
+        HandleAnimations();
+    }
+
+    private void PrepareEmissiveMaterials()
+    {
+        _glowMaterialInstance = new Material(_glowMaterial);
+
+        foreach (MeshRenderer mesh in _glowingParts)
+        {
+            mesh.material = _glowMaterialInstance;
+        }
     }
 
     private void HandleAnimations()
@@ -60,15 +73,31 @@ public class PlasmoVisuals : MonoBehaviour
 
     private void HandleGlowColor()
     {
-        _glowColorCurrent = Color.Lerp(_glowColorCurrent, _glowColorEnd, _glowColorChangeSpeed * Time.deltaTime);
+        if (_glowColorCurrent == _glowColorEnd)
+        {
+            return;
+        }
 
-        _glowingMaterial.SetColor("_EmissionColor", _glowColorCurrent * Mathf.LinearToGammaSpace(2f));
+        _glowColorCurrent = Color.Lerp(_glowColorCurrent, _glowColorEnd, _glowColorChangeSpeed * Time.deltaTime);
+        _glowMaterialInstance.SetColor("_EmissionColor", _glowColorCurrent * _glowIntensity);
     }
 
     private void HandleLineRenderer()
     {
         _lineRenderer.SetPosition(0, _lineRendererStart.position);
         _lineRenderer.SetPosition(1, _lineRendererEnd.position);
+    }
+
+    public void SetGlowState(bool enabled)
+    {
+        if (enabled)
+        {
+            _glowMaterialInstance.EnableKeyword("_EMISSION");
+        }
+        else
+        {
+            _glowMaterialInstance.DisableKeyword("_EMISSION");
+        }
     }
 
     public void SetExpression(PlasmoExpression newExpression)
@@ -91,6 +120,22 @@ public class PlasmoVisuals : MonoBehaviour
         }
     }
 
+    public void SetAnimationTrigger(PlasmoAnimationTrigger trigger)
+    {
+        switch (trigger)
+        {
+            case PlasmoAnimationTrigger.Cast:
+                _animator.SetTrigger(CAST_SPELL);
+                break;
+            case PlasmoAnimationTrigger.Win:
+                _animator.SetTrigger(WIN);
+                break;
+            case PlasmoAnimationTrigger.Lose:
+                _animator.SetTrigger(LOSE);
+                break;
+        }
+    }
+
     public void SetGlowColor(Color newColor)
     {
         _glowColorEnd = newColor;
@@ -101,6 +146,20 @@ public class PlasmoVisuals : MonoBehaviour
     {
         SetGlowColor(Color.red);
         Debug.Log("Setting color to red");
+    }
+
+    [ContextMenu("Become Blue")]
+    private void BecomeBlue()
+    {
+        SetGlowColor(Color.blue);
+        Debug.Log("Setting color to blue");
+    }
+
+    [ContextMenu("Become Yellow")]
+    private void BecomeYellow()
+    {
+        SetGlowColor(Color.yellow);
+        Debug.Log("Setting color to yellow");
     }
 
     [ContextMenu("Become White")]
