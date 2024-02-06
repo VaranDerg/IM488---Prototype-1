@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 1463929579}
   - component: {fileID: 1463929578}
   m_Layer: 0
-  m_Name: PlayerVisual
+  m_Name: PlayerVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,10 +1296,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fcd10cc853d594bb12f6929f2e44ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _glowColorChangeSpeed: 5
   _player: {fileID: 270481757}
   _lineRenderer: {fileID: 553407251}
+  _animator: {fileID: 1463929579}
+  _glowingParts:
+  - {fileID: 203291616}
+  - {fileID: 2014651779}
+  - {fileID: 1789721163}
+  - {fileID: 1456649077}
+  - {fileID: 1907782954}
+  - {fileID: 51818365}
+  - {fileID: 757022272}
   _lineRendererStart: {fileID: 175185871}
   _lineRendererEnd: {fileID: 757022270}
+  _eyeNeutral: {fileID: 255725438}
+  _eyeHappy: {fileID: 2145873791}
+  _eyeAngry: {fileID: 136201113}
 --- !u!95 &1463929579
 Animator:
   serializedVersion: 5

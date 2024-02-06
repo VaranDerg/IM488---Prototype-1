@@ -51,7 +51,6 @@ MonoBehaviour:
   _faceMesh: {fileID: 4288052168769495378}
   _faceMat: {fileID: 2100000, guid: 2b53d7d7974b38647af054076c592803, type: 2}
   _particles: {fileID: 3382663198819740466}
-  _testData: {fileID: 11400000, guid: 425ec8b827ee6c049b31ff8964d44429, type: 2}
 --- !u!1 &3382663198819740465
 GameObject:
   m_ObjectHideFlags: 0
