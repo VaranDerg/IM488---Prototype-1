@@ -29,6 +29,8 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
 
     [SerializeField] bool canBounce;
     [SerializeField] float projectileLifeTime;
+    [SerializeField] LayerMask bounceLayerMask;
+    private const float _bounceRaycastDist = 2;
 
     Rigidbody rb;
     private Vector3 lastVelocity;
@@ -57,6 +59,10 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
             OnPlayerCollision(other);
         }
         
+        if(other.gameObject.CompareTag("Environment"))
+        {
+            OnEnvironmentCollision(other);
+        }
 
         if (!isPersistent)
             Deactivate();
@@ -65,8 +71,8 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("HitWall");
-        if (collision.gameObject.CompareTag("Environment"))
-            OnEnvironmentCollision(collision);
+        /*if (collision.gameObject.CompareTag("Environment"))
+            OnEnvironmentCollision(collision);*/
     }
     #endregion
 
@@ -152,10 +158,23 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
         transform.position = newLoc;
     }
 
-    public void BounceOffSurface(Collision other)
+    public void BounceOffSurface(Collider wall)
     {
-        Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
-        rb.velocity = bounceDirection * lastVelocity.magnitude;
+        Vector3 closestPoint = Physics.ClosestPoint(transform.position, wall.gameObject.GetComponent<Collider>(),wall.transform.position,wall.transform.rotation);
+
+        Vector3 dir = (closestPoint-transform.position).normalized;
+        dir = new Vector3(dir.x, 0, dir.z);
+
+
+        RaycastHit rayHit;
+        if(Physics.Raycast(transform.position, dir, out rayHit, _bounceRaycastDist, bounceLayerMask))
+        {
+            Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, rayHit.normal);
+            rb.velocity = bounceDirection * lastVelocity.magnitude;
+        }
+        //other.contacts[0].normal
+        
+        
     }
 
     protected virtual Vector3 GetTargetDirection()
@@ -197,9 +216,12 @@ public class Projectile : MonoBehaviour, IScalable,ICanUsePortal
         other.GetComponent<PlayerManager>().Damage(damage, InvulnTypes.FULLINVULN);
     }
 
-    protected virtual void OnEnvironmentCollision(Collision other)
+    protected virtual void OnEnvironmentCollision(Collider other)
     {
-
+        if(canBounce)
+        {
+            BounceOffSurface(other);
+        }
     }
 
     protected virtual void OnLaunch()

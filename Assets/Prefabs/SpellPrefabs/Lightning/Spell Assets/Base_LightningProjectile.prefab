@@ -85,6 +85,9 @@ MonoBehaviour:
   randomSpeedVariance: 0.4
   canBounce: 0
   projectileLifeTime: 10
+  bounceLayerMask:
+    serializedVersion: 2
+    m_Bits: 57472
 --- !u!1 &3260017825591771134
 GameObject:
   m_ObjectHideFlags: 0
