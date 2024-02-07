@@ -26,6 +26,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     [SerializeField] float castDelay = 0;
 
+    float scaledTickRateScalar = 1;
     protected Player owner { get; private set; }
 
     // The actual function of the spell to be referenced from the child
@@ -54,7 +55,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
     public void Tick(float deltaTime)
     {
         if (timeTillNextTick > 0)
-            timeTillNextTick -= deltaTime * tickRateScalar;
+            timeTillNextTick -= deltaTime * scaledTickRateScalar;
         else
         {
             if (castMethod == CastingMethod.AUTO)
@@ -70,6 +71,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
     {
         // Delays the first tick by the tickRate in seconds
         timeTillNextTick = tickRate;
+        scaledTickRateScalar = tickRate;
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
 
@@ -112,7 +114,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     private void ScaleCooldownRate(float cooldownRateMult)
     {
-        tickRateScalar *= cooldownRateMult;
+        scaledTickRateScalar = tickRateScalar * cooldownRateMult;
     }
 
     protected virtual void ChildScale(ElementalStats stats)

@@ -28,7 +28,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     [SerializeField] float randomSpeedVariance;
 
-    [SerializeField] bool rotateTowardsTarget = false;
     [SerializeField] bool canBounce;
     [SerializeField] bool isStatic = false;
     [SerializeField] float projectileLifeTime;
@@ -45,8 +44,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     private Vector3 lastVelocity;
 
     public event IPoolableObject.DeactivationHandler Deactivated;
-
-    bool hasBeenScaled = false;
 
     public UnityEvent OnLaunchEvent;
 
