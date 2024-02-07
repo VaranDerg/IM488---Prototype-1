@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class PickupAbstract : MonoBehaviour, IPickup
 {
-    protected abstract void PickUpObject(PlayerManager pm);
     [SerializeField]
     PickupDataSO data;
 
@@ -17,6 +16,8 @@ public abstract class PickupAbstract : MonoBehaviour, IPickup
             DisplayUIPickup(collision);
         }
     }
+
+    protected abstract void PickUpObject(PlayerManager pm);
 
     public PickupDataSO GetScriptableObject()
     {

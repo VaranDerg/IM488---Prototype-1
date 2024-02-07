@@ -58,6 +58,20 @@ public class ElementalStats : MonoBehaviour
         playerStats[stat] += amt;
     }
 
+    /// <summary>
+    /// Adds a stat for a set period of time
+    /// </summary>
+    /// <param name="stat"></param>
+    /// <param name="amt"></param>
+    /// <param name="duration"></param>
+    /// <returns></returns>
+    public IEnumerator TemporaryAddStat(ScalableStat stat,float amt,float duration)
+    {
+        AddStat(stat, amt);
+        yield return new WaitForSeconds(duration);
+        AddStat(stat, -amt);
+    }
+
     public float GetStat(ScalableStat stat)
     {
         //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat + " | Value : " + playerStats[stat]);

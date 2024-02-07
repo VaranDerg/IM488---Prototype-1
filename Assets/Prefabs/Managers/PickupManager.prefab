@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pickUps:
-  - {fileID: 6527676292712425691, guid: 97541f334f29701449a0a3df508209fb, type: 3}
+  - {fileID: 3382663199070414512, guid: 987313e73fc869f48a78810f9a246d72, type: 3}
   _spawnPoints: []
   _timerBetweenPickup: 8
+  _spawnOffset: {x: 0, y: 1, z: 0}
