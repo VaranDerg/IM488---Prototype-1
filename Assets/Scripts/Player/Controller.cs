@@ -5,19 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 {
-
-    /*public void OnMove(InputAction.CallbackContext context)
-    {
-        movementInput = context.ReadValue<Vector2>();
-    }
-
-    private void Update()
-    {
-        rb.velocity = movementInput * speed;
-
-        if (rb.velocity.magnitude > maxSpeed)
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-    }*/
     [Header("Movement Variables")]
     [SerializeField] float speed;
     [SerializeField] float dashForce;
@@ -50,7 +37,6 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         Move();
         MaxSpeedControl();
-
     }
 
     private void MaxSpeedControl()
