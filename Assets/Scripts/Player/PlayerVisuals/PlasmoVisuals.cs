@@ -6,33 +6,37 @@ public class PlasmoVisuals : MonoBehaviour
 {
     private const string IS_WALKING = "Moving";
     private const string CAST_SPELL = "CastSpell";
+    private const string DASH = "Dash";
     private const string WIN = "Win";
     private const string LOSE = "Lose";
 
     [Header("Values")]
+    [SerializeField] private float _antennaeMoveSpeed;
     [SerializeField] private float _glowColorChangeSpeed;
     [SerializeField] private float _glowIntensity;
 
     [Header("General References")]
-    [SerializeField] private PlasmoMoveTest _player;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private Animator _animator;
     [SerializeField] private Material _glowMaterial;
 
     [Header("Object References")]
     [SerializeField] private List<MeshRenderer> _glowingParts = new List<MeshRenderer>();
+    [SerializeField] private Transform _antennae, _antennaeFollowPoint;
     [SerializeField] private Transform _lineRendererStart, _lineRendererEnd;
-    [SerializeField] private GameObject _eyeNeutral, _eyeHappy, _eyeAngry;
+    [SerializeField] private GameObject _eyeNeutral, _eyeHappy, _eyeAngry, _eyeSad;
 
     private Material _glowMaterialInstance;
     private Color _glowColorEnd;
     private Color _glowColorCurrent;
+    private float _curExpressionTime;
 
     public enum PlasmoExpression
     {
         Neutral,
         Happy,
         Angry,
+        Sad,
     }
 
     public enum PlasmoAnimationTrigger
@@ -40,11 +44,14 @@ public class PlasmoVisuals : MonoBehaviour
         Cast,
         Win,
         Lose,
+        Dash,
     }
 
     private void Start()
     {
         PrepareEmissiveMaterials();
+        PrepareAntennae();
+
         SetGlowState(true);
         SetGlowColor(Color.white);
     }
@@ -53,7 +60,8 @@ public class PlasmoVisuals : MonoBehaviour
     {
         HandleLineRenderer();
         HandleGlowColor();
-        HandleAnimations();
+        HandleExpression();
+        HandleAntennae();
     }
 
     private void PrepareEmissiveMaterials()
@@ -66,9 +74,14 @@ public class PlasmoVisuals : MonoBehaviour
         }
     }
 
-    private void HandleAnimations()
+    private void PrepareAntennae()
     {
-        _animator.SetBool(IS_WALKING, _player.IsWalking());
+        _antennae.transform.SetParent(null);
+    }
+
+    public void HandleWalking(bool isWalking)
+    {
+        _animator.SetBool(IS_WALKING, isWalking);
     }
 
     private void HandleGlowColor()
@@ -88,6 +101,26 @@ public class PlasmoVisuals : MonoBehaviour
         _lineRenderer.SetPosition(1, _lineRendererEnd.position);
     }
 
+    private void HandleExpression()
+    {
+        if (_eyeNeutral.activeSelf)
+        {
+            return;
+        }
+
+        _curExpressionTime -= Time.deltaTime;
+
+        if (_curExpressionTime <= 0f)
+        {
+            SetExpression(PlasmoExpression.Neutral);
+        }
+    }
+
+    private void HandleAntennae()
+    {
+        _antennae.position = Vector3.Lerp(_antennae.position, _antennaeFollowPoint.position, _antennaeMoveSpeed * Time.deltaTime);
+    }
+
     public void SetGlowState(bool enabled)
     {
         if (enabled)
@@ -105,6 +138,7 @@ public class PlasmoVisuals : MonoBehaviour
         _eyeNeutral.SetActive(false);
         _eyeAngry.SetActive(false);
         _eyeHappy.SetActive(false);
+        _eyeSad.SetActive(false);
 
         switch (newExpression)
         {
@@ -117,7 +151,17 @@ public class PlasmoVisuals : MonoBehaviour
             case PlasmoExpression.Happy:
                 _eyeHappy.SetActive(true);
                 break;
+            case PlasmoExpression.Sad:
+                _eyeSad.SetActive(true);
+                break;
         }
+    }
+
+    public void SetExpression(PlasmoExpression newExpression, float time)
+    {
+        SetExpression(newExpression);
+
+        _curExpressionTime = time;
     }
 
     public void SetAnimationTrigger(PlasmoAnimationTrigger trigger)
@@ -126,6 +170,9 @@ public class PlasmoVisuals : MonoBehaviour
         {
             case PlasmoAnimationTrigger.Cast:
                 _animator.SetTrigger(CAST_SPELL);
+                break;
+            case PlasmoAnimationTrigger.Dash:
+                _animator.SetTrigger(DASH);
                 break;
             case PlasmoAnimationTrigger.Win:
                 _animator.SetTrigger(WIN);

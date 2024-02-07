@@ -18,17 +18,20 @@ public class PlasmoMoveTest : MonoBehaviour
 
     private void Update()
     {
+        _visuals.HandleWalking(_isWalking);
         HandleMovement();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Cast);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Angry, 0.5f);
         }
-    }
 
-    public bool IsWalking()
-    {
-        return _isWalking;
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, 1f);
+        }
     }
 
     private void HandleMovement()
