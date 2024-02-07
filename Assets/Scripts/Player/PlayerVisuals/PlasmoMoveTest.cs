@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlasmoMoveTest : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 7f;
-    [SerializeField] private float _rotateSpeed = 10f;
     [Space]
     private PlasmoVisuals _visuals;
 
@@ -65,7 +64,6 @@ public class PlasmoMoveTest : MonoBehaviour
         transform.position += moveDir * _moveSpeed * Time.deltaTime;
 
         _visuals.HandleWalking(moveDir != Vector3.zero);
-
-        transform.forward = Vector3.Slerp(transform.forward, -moveDir, _rotateSpeed * Time.deltaTime);
+        _visuals.HandleRotation(moveDir);
     }
 }

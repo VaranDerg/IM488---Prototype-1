@@ -137,6 +137,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 
         //The player will play their walking animation whenever the inputdirection is not vector3.zero
         _visuals.HandleWalking(_inputDirection != Vector3.zero);
+        _visuals.HandleRotation(_inputDirection);
 
         if (_inputDirection != Vector3.zero)
             lastNonZeroMovement = _inputDirection;

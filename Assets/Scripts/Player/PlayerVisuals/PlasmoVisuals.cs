@@ -12,6 +12,8 @@ public class PlasmoVisuals : MonoBehaviour
 
     [Header("Values")]
     [SerializeField] private float _antennaeMoveSpeed;
+    [SerializeField] private float _rotateSpeed;
+    [Space]
     [SerializeField] private float _glowColorChangeSpeed;
     [SerializeField] private float _glowIntensity;
     [Space]
@@ -85,6 +87,11 @@ public class PlasmoVisuals : MonoBehaviour
     public void HandleWalking(bool isWalking)
     {
         _animator.SetBool(IS_WALKING, isWalking);
+    }
+
+    public void HandleRotation(Vector3 inputDirection)
+    {
+        transform.forward = Vector3.Slerp(transform.forward, -inputDirection, _rotateSpeed * Time.deltaTime);
     }
 
     private void HandleGlowColor()

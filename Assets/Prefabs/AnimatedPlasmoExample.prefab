@@ -378,7 +378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 7
-  _rotateSpeed: 10
 --- !u!1 &8665250965237513316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,8 +1477,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _antennaeMoveSpeed: 10
+  _rotateSpeed: 10
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
+  _dashExpressionTime: 1
+  _castExpressionTime: 0.5
   _lineRenderer: {fileID: 8665250964919047545}
   _animator: {fileID: 8665250966202862721}
   _glowMaterial: {fileID: 2100000, guid: 20d335fcef6ab8d4fb7d3964f349b019, type: 2}

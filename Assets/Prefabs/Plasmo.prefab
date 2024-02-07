@@ -1850,9 +1850,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _antennaeMoveSpeed: 10
+  _rotateSpeed: 10
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
-  _dashExpressionTime: 0
+  _dashExpressionTime: 1
   _castExpressionTime: 0.5
   _lineRenderer: {fileID: 4221799163654232303}
   _animator: {fileID: 1633989319977723792}
