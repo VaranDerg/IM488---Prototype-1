@@ -43,6 +43,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     private Vector3 _inputDirection;
     private Vector3 lastNonZeroMovement;
     private Rigidbody rb;
+    private float _baseMoveSpeed;
 
     // Update is called once per frame
     private void Update()
@@ -95,7 +96,8 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 
     private void ScaleSpeed(float speedMult)
     {
-        speed *= speedMult;
+        Debug.Log("SpeedScale");
+        speed = _baseMoveSpeed*speedMult;
     }
 
     #region StartUp
@@ -114,14 +116,18 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     /// </summary>
     private void VariableAssignment()
     {
+        _baseMoveSpeed = speed;
         _moveState = MovementState.Stationary;
         rb = GetComponent<Rigidbody>();
     }
 
     IEnumerator DelayedScaling()
     {
-        yield return new WaitForFixedUpdate();
-        Scale(GetComponent<ElementalStats>());
+        while(!ManagerParent.Instance.Game.PlayerHasWonRound)
+        {
+            yield return new WaitForFixedUpdate();
+            Scale(GetComponent<ElementalStats>());
+        }
     }
 
     #endregion
