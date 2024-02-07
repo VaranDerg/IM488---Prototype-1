@@ -14,13 +14,4 @@ public class PopupTextSource : MonoBehaviour
 
         ptu.PreparePopupText(text, color, lifetime);
     }
-
-    public void PopupTextExample()
-    {
-        GameObject thisTextPopup = Instantiate(_popupTextPrefab, transform);
-        PopupTextUI ptu = thisTextPopup.GetComponent<PopupTextUI>();
-        thisTextPopup.transform.SetParent(null);
-
-        ptu.PreparePopupText("+Stat!", Color.green, 1.5f);
-    }
 }

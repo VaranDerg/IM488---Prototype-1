@@ -21,7 +21,8 @@ public class PopupTextUI : BaseUIElement
 
     public void PreparePopupText(string text, Color color, float lifetime)
     {
-        _textTransform.rotation = Quaternion.Euler(0, 0, Random.Range(-_rotationDeviation, _rotationDeviation));
+        float randomZRot = Random.Range(_textTransform.rotation.z - _rotationDeviation, _textTransform.rotation.z + _rotationDeviation);
+        _textTransform.rotation = Quaternion.Euler(_textTransform.rotation.x, _textTransform.rotation.y, randomZRot);
 
         _popupText.text = text;
         _popupText.color = color;
