@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5542101274346111275
+--- !u!1 &595731134343786385
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2705998450264178538}
-  - component: {fileID: 7013081551349040923}
-  - component: {fileID: 5863230248673672758}
-  - component: {fileID: 5397880562994360348}
+  - component: {fileID: 7790789237821771301}
+  - component: {fileID: 8903735679024241577}
+  - component: {fileID: 989589424641352034}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -19,36 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2705998450264178538
+--- !u!4 &7790789237821771301
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542101274346111275}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 595731134343786385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2713144143973656977}
+  m_Father: {fileID: 1572390079879946625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7013081551349040923
+--- !u!33 &8903735679024241577
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542101274346111275}
+  m_GameObject: {fileID: 595731134343786385}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5863230248673672758
+--- !u!23 &989589424641352034
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542101274346111275}
+  m_GameObject: {fileID: 595731134343786385}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e3e3667d1362a84c8d35427c83ac7ea, type: 2}
+  - {fileID: 2100000, guid: 093b3b9c875895745861f078d10c1550, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,20 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5397880562994360348
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5542101274346111275}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &6700097306087382589
+--- !u!1 &1528412900228266552
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,67 +91,66 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2713144143973656977}
-  - component: {fileID: 7255832389795555287}
-  - component: {fileID: 3644911175457294605}
+  - component: {fileID: 1572390079879946625}
+  - component: {fileID: 119153294824917455}
+  - component: {fileID: 98561735072162570}
   m_Layer: 8
-  m_Name: Lightning_AoE
+  m_Name: Base_FireMineRework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2713144143973656977
+--- !u!4 &1572390079879946625
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6700097306087382589}
+  m_GameObject: {fileID: 1528412900228266552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2705998450264178538}
+  - {fileID: 7790789237821771301}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &7255832389795555287
+--- !u!135 &119153294824917455
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6700097306087382589}
+  m_GameObject: {fileID: 1528412900228266552}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3644911175457294605
+--- !u!114 &98561735072162570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6700097306087382589}
+  m_GameObject: {fileID: 1528412900228266552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be342a76182952e49b34a731597ef7b0, type: 3}
+  m_Script: {fileID: 11500000, guid: f4b89c101ff7a40418a827d1e6133daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 3b58eaa526b329340a5c6ac23dc144f1, type: 2}
-  tickRate: 6
+  spawnType: 0
+  duration: 99
+  startDelay: 1
+  tickRate: 0.001
   tickRateScalar: 1
-  castMethod: 0
-  auraTickRate: 0.2
-  duration: 3
-  damage: 1
-  minDistance: 0
-  scaleMinDistanceWithSize: 1
-  auraRenderer: {fileID: 5863230248673672758}
-  OnAuraStart:
+  damage: 0
+  doSelfDamage: 1
+  isPersistent: 1
+  _thisSpell: {fileID: 11400000, guid: e311932b7313b064da844c46bc027143, type: 2}
+  OnTriggeredEvent:
     m_PersistentCalls:
       m_Calls: []

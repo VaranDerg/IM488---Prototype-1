@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 {
@@ -23,6 +24,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     [SerializeField] CastingMethod castMethod;
 
+    [SerializeField] float castDelay = 0;
+
     protected Player owner { get; private set; }
 
     // The actual function of the spell to be referenced from the child
@@ -36,6 +39,17 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     }
 
+    public void DelayedStartAura()
+    {
+        StartCoroutine(DelayedAura());
+    }
+
+    IEnumerator DelayedAura()
+    {
+        yield return new WaitForSeconds(castDelay);
+        StartAura();
+    }
+
     // Tracks the time remaining till next tick. Calls ChildTick each
     public void Tick(float deltaTime)
     {
@@ -43,8 +57,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
             timeTillNextTick -= deltaTime * tickRateScalar;
         else
         {
-            if(castMethod == CastingMethod.AUTO)
-                StartAura();
+            if (castMethod == CastingMethod.AUTO)
+                DelayedStartAura();
 
             timeTillNextTick = tickRate;
         }
@@ -58,6 +72,10 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
         timeTillNextTick = tickRate;
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
+
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if(objectPool != null)
+            objectPool.AssignPlayer(owner);
         //Debug.Log(owner);
         AddSpellsToLists();
 

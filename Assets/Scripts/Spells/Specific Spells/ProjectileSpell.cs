@@ -12,6 +12,8 @@ public class ProjectileSpell : AbstractSpell
     private void Awake()
     {
         pool = GetComponent<ObjectPool>();
+
+        
     }
 
     public override void StartAura()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pool : MonoBehaviour, IScalable, IPoolableObject
 {
@@ -31,6 +32,9 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     [SerializeField]
     private TestSpellSO _thisSpell;
 
+    [SerializeField]
+    UnityEvent OnTriggeredEvent;
+
     float timeTillNextTick;
 
     protected Player owner { get; private set; }
@@ -39,32 +43,49 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public event IPoolableObject.DeactivationHandler Deactivated;
 
-    bool hasBeenScaled = false;
+    Vector3 startSize;
+
+    Vector3 scaledPoolSize = Vector3.one;
+    float scaledPoolDamage = 1;
+
+    private void Awake()
+    {
+        startSize = transform.localScale;
+    }
 
     public void Execute()
     {
-        if (DamageAllInside(damage, doSelfDamage) && !isPersistent)
-            gameObject.SetActive(false);
+        if(DamageAllInside(scaledPoolDamage, doSelfDamage))
+        {
+            OnTriggeredEvent.Invoke();
+
+            if(!isPersistent)
+                gameObject.SetActive(false);
+        }
+            
     }
 
     public void Scale(ElementalStats stats)
     {
-        if (hasBeenScaled)
-            return;
-
-        hasBeenScaled = true;
+        //stats.LogStats();
         ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
     }
 
+    public void Scale()
+    {
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+    }
+
     private void ScaleSize(float sizeMult)
     {
-        transform.localScale *= sizeMult;
+        scaledPoolSize = startSize * sizeMult;
+        transform.localScale = scaledPoolSize;
     }
 
     private void ScaleDamage(float damageMult)
     {
-        damage *= damageMult;
+        scaledPoolDamage = damage * damageMult;
     }
 
     protected void ChildTick()
@@ -103,6 +124,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     {
         gameObject.SetActive(true);
 
+        Scale();
+
         timeTillNextTick = startDelay;
 
         StartCoroutine(DelayedDeactivate());
@@ -134,6 +157,11 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void AssignPlayer(Player tag)
     {
         owner = tag;
+    }
+
+    public Player GetPlayer()
+    {
+        return owner;
     }
 
     private Vector3 GetSpawnPosition()

@@ -169,7 +169,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
         foreach (ISpell currentSpell in dashSpellList)
         {
             //Debug.Log("Cast Dash Spell");
-            currentSpell.StartAura();
+            currentSpell.DelayedStartAura();
         }
     }
 

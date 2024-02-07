@@ -48,9 +48,25 @@ public class ElementalStats : MonoBehaviour
         hasStatsBeenAdded = true;
     }
 
+    /// <summary>
+    /// Call this to add / remove temporary stats
+    /// </summary>
+    /// <param name="stat">Stat type</param>
+    /// <param name="amt">amount to be changed. Can be negative to remove</param>
+    public void AddStat(ScalableStat stat, float amt)
+    {
+        playerStats[stat] += amt;
+    }
+
     public float GetStat(ScalableStat stat)
     {
-        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);
+        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat + " | Value : " + playerStats[stat]);
         return playerStats[stat];
+    }
+
+    public void LogStats()
+    {
+        foreach (ScalableStat stat in playerStats.Keys)
+            Debug.Log(stat + ": " + playerStats[stat]);
     }
 }

@@ -9,5 +9,7 @@ public interface ISpell
 
     public void StartAura();
 
+    public void DelayedStartAura();
+
     public void Tick(float deltaTime);
 }
