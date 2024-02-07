@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int[] _arenaScenes;
     [SerializeField] private int _winScene = 9;
     [Space]
-    [SerializeField] private float _winDelay = 1.5f;
     [SerializeField] private float _tieWindow;
     [SerializeField] private bool _tieFavorsLosingPlayer;
 
@@ -91,7 +90,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(ToNextGamePhaseProcess(_winDelay));
+        float winDelay = FindObjectOfType<GameplayMenu>().GetWinDelay();
+        StartCoroutine(ToNextGamePhaseProcess(winDelay));
     }
 
     /// <summary>
@@ -143,7 +143,9 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
-        StartCoroutine(RoundTie(_winDelay));
+
+        float winDelay = FindObjectOfType<GameplayMenu>().GetWinDelay();
+        StartCoroutine(RoundTie(winDelay));
     }
 
     private IEnumerator RoundTie(float waitTime)
