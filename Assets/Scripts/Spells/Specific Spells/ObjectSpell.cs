@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObjectSpell : AbstractSpell
 {
-    [SerializeField]
-    GameObject objPrefab;
 
     ObjectPool pool;
 

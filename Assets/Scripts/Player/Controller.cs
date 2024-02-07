@@ -96,7 +96,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 
     private void ScaleSpeed(float speedMult)
     {
-        Debug.Log("SpeedScale");
+        //Debug.Log("SpeedScale");
         speed = _baseMoveSpeed*speedMult;
     }
 

@@ -35,6 +35,9 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     [SerializeField]
     UnityEvent OnTriggeredEvent;
 
+    [SerializeField]
+    UnityEvent OnTickEvent;
+
     float timeTillNextTick;
 
     protected Player owner { get; private set; }
@@ -62,7 +65,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
             if(!isPersistent)
                 gameObject.SetActive(false);
         }
-            
+
+        OnTickEvent.Invoke();
     }
 
     public void Scale(ElementalStats stats)
@@ -243,4 +247,9 @@ public enum PoolSpawnType
 {
     UNDER_SPAWNER,
     RANDOM
+}
+
+public enum PoolTickType
+{
+
 }

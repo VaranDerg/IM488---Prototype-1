@@ -36,9 +36,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     Vector3 startSize;
 
-    public float scaledProjectileSpeed = 1;
-    public Vector3 scaledProjectileSize = Vector3.one;
-    public float scaledProjectileDamage = 1;
+    private float scaledProjectileSpeed = 1;
+    private Vector3 scaledProjectileSize = Vector3.one;
+    private float scaledProjectileDamage = 1;
 
     Rigidbody rb;
     private Vector3 lastVelocity;
@@ -54,7 +54,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         rb = GetComponent<Rigidbody>();
         StartCoroutine(TargetReeval());
         StartCoroutine(TrackLastVelocity());
-        StartCoroutine(LifeTime());
 
         startSize = transform.localScale;
     }
@@ -165,6 +164,8 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public void Activate()
     {
         gameObject.SetActive(true);
+
+        StartCoroutine(LifeTime());
 
         Scale();
 

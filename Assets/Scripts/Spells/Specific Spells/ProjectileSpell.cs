@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ProjectileSpell : AbstractSpell
 {
+
     [SerializeField]
-    GameObject projectilePrefab;
+    UnityEvent OnStartAuraEvent;
 
     ObjectPool pool;
 
     private void Awake()
     {
         pool = GetComponent<ObjectPool>();
-
-        
     }
 
     public override void StartAura()
+    {
+        SpawnProjectile();
+
+        OnStartAuraEvent.Invoke();
+    }
+
+    public void SpawnProjectile()
     {
         IPoolableObject obj = pool.GetObject();
 
