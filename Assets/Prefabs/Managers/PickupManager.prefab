@@ -46,6 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pickUps:
   - {fileID: 3382663199070414512, guid: 987313e73fc869f48a78810f9a246d72, type: 3}
+  - {fileID: 2228415029607037061, guid: dc64167c988cb8046a26a80a51fa1f6e, type: 3}
+  - {fileID: 7476936527695354103, guid: 26d4c24fb0154c14b9b2942891098083, type: 3}
+  - {fileID: 5824817585193267046, guid: 0828385d8ac4f5a42899d0baa47cce8f, type: 3}
+  - {fileID: 7235428953859941432, guid: 56b3e63e610991e45b396236d83a30c0, type: 3}
+  - {fileID: 5895917565404832034, guid: 32c27c27ebffc4f4aade9e20964e9c96, type: 3}
   _spawnPoints: []
   _timerBetweenPickup: 8
   _spawnOffset: {x: 0, y: 1, z: 0}

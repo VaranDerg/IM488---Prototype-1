@@ -17,4 +17,4 @@ MonoBehaviour:
   PopupText: Damage+
   PickupValue: 1
   PickupDuration: 5
-  StatBuff: 0
+  StatBuff: 00000000

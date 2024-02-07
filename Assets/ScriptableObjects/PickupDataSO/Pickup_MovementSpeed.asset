@@ -17,4 +17,4 @@ MonoBehaviour:
   PopupText: Move Speed+
   PickupValue: 1
   PickupDuration: 5
-  StatBuff: 1
+  StatBuff: 01000000
