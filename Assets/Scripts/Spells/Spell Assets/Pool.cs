@@ -55,10 +55,12 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public void Execute()
     {
-        if (DamageAllInside(scaledPoolDamage, doSelfDamage) && !isPersistent)
+        if(DamageAllInside(scaledPoolDamage, doSelfDamage))
         {
             OnTriggeredEvent.Invoke();
-            gameObject.SetActive(false);
+
+            if(!isPersistent)
+                gameObject.SetActive(false);
         }
             
     }

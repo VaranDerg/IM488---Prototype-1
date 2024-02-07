@@ -41,6 +41,8 @@ public class Spawner : MonoBehaviour
 
     private void SpawnObj()
     {
+        Debug.Log("Spawning Shard");
+
         IPoolableObject obj = pool.GetObject();
 
         Projectile projectile = obj.GetGameObject().GetComponent<Projectile>();
