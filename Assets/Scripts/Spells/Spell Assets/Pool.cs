@@ -65,6 +65,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public void Scale(ElementalStats stats)
     {
+        //stats.LogStats();
         ScaleSize(stats.GetStat(ScalableStat.POOL_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
     }

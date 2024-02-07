@@ -37,9 +37,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     Vector3 startSize;
 
-    float scaledProjectileSpeed = 1;
-    Vector3 scaledProjectileSize = Vector3.one;
-    float scaledProjectileDamage = 1;
+    public float scaledProjectileSpeed = 1;
+    public Vector3 scaledProjectileSize = Vector3.one;
+    public float scaledProjectileDamage = 1;
 
     Rigidbody rb;
     private Vector3 lastVelocity;
@@ -132,6 +132,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     // For elemental stats
     public void Scale(ElementalStats stats)
     {
+        //stats.LogStats();
         ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
         ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
@@ -145,6 +146,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     private void ScaleSpeed(float speedMult)
     {
         scaledProjectileSpeed = speedMult * projectileSpeed;
+        //Debug.Log("Speed: " + speedMult + " * " + projectileSpeed + " = " + scaledProjectileSpeed);
     }
 
     private void ScaleSize(float sizeMult)
@@ -252,6 +254,8 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     protected virtual void Move()
     {
+        rb.velocity = Vector3.zero;
+
         if (isStatic)
         {
             transform.position += GetTargetDirection();

@@ -60,7 +60,13 @@ public class ElementalStats : MonoBehaviour
 
     public float GetStat(ScalableStat stat)
     {
-        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);
+        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat + " | Value : " + playerStats[stat]);
         return playerStats[stat];
+    }
+
+    public void LogStats()
+    {
+        foreach (ScalableStat stat in playerStats.Keys)
+            Debug.Log(stat + ": " + playerStats[stat]);
     }
 }
