@@ -18,5 +18,5 @@ MonoBehaviour:
   LoopingParticles: Looping_Basic
   BurstParticles: Burst_Basic
   SoundEffectName: BasicSFX
-  element: 1
+  element: 0
   scalingStats: 

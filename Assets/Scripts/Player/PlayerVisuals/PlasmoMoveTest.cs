@@ -64,6 +64,6 @@ public class PlasmoMoveTest : MonoBehaviour
         transform.position += moveDir * _moveSpeed * Time.deltaTime;
 
         _visuals.HandleWalking(moveDir != Vector3.zero);
-        _visuals.HandleRotation(moveDir);
+        _visuals.SetRotation(moveDir);
     }
 }

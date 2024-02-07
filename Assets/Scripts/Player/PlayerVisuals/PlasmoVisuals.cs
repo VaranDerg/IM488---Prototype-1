@@ -13,6 +13,7 @@ public class PlasmoVisuals : MonoBehaviour
     [Header("Values")]
     [SerializeField] private float _antennaeMoveSpeed;
     [SerializeField] private float _rotateSpeed;
+    [SerializeField] private Vector3 _rotationOffset;
     [Space]
     [SerializeField] private float _glowColorChangeSpeed;
     [SerializeField] private float _glowIntensity;
@@ -27,6 +28,7 @@ public class PlasmoVisuals : MonoBehaviour
 
     [Header("Object References")]
     [SerializeField] private List<MeshRenderer> _glowingParts = new List<MeshRenderer>();
+    [SerializeField] private Transform _objectToRotate;
     [SerializeField] private Transform _antennae, _antennaeFollowPoint;
     [SerializeField] private Transform _lineRendererStart, _lineRendererEnd;
     [SerializeField] private GameObject _eyeNeutral, _eyeHappy, _eyeAngry, _eyeSad;
@@ -34,6 +36,7 @@ public class PlasmoVisuals : MonoBehaviour
     private Material _glowMaterialInstance;
     private Color _glowColorEnd;
     private Color _glowColorCurrent;
+    private Vector3 _rotationEnd;
     private float _curExpressionTime;
 
     public enum PlasmoExpression
@@ -63,6 +66,7 @@ public class PlasmoVisuals : MonoBehaviour
 
     private void Update()
     {
+        HandleRotation();
         HandleLineRenderer();
         HandleGlowColor();
         HandleExpression();
@@ -89,9 +93,9 @@ public class PlasmoVisuals : MonoBehaviour
         _animator.SetBool(IS_WALKING, isWalking);
     }
 
-    public void HandleRotation(Vector3 inputDirection)
+    private void HandleRotation()
     {
-        transform.forward = Vector3.Slerp(transform.forward, -inputDirection, _rotateSpeed * Time.deltaTime);
+        _objectToRotate.forward = Vector3.Slerp(_objectToRotate.forward, -_rotationEnd + _rotationOffset, _rotateSpeed * Time.deltaTime);
     }
 
     private void HandleGlowColor()
@@ -129,6 +133,11 @@ public class PlasmoVisuals : MonoBehaviour
     private void HandleAntennae()
     {
         _antennae.position = Vector3.Lerp(_antennae.position, _antennaeFollowPoint.position, _antennaeMoveSpeed * Time.deltaTime);
+    }
+
+    public void SetRotation(Vector3 inputDirection)
+    {
+        _rotationEnd = inputDirection;
     }
 
     public void SetGlowState(bool enabled)

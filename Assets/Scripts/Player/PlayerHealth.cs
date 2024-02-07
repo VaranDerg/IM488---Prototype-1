@@ -74,7 +74,12 @@ public class PlayerHealth : MonoBehaviour
 
     public float HealthPercent()
     {
-        return _currentHealth / _maxHealth;
+        float percentage = _currentHealth / _maxHealth;
+        if (percentage < 0)
+        {
+            percentage = 0;
+        }
+        return percentage;
     }
 
     public bool InvulnerableTypeCheck(InvulnTypes invulnType)

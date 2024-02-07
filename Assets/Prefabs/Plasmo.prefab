@@ -909,7 +909,7 @@ MonoBehaviour:
   dashCooldownTime: 0.5
   maxSpeed: 50
   _postDashStunDuration: 0.2
-  _visuals: {fileID: 0}
+  _visuals: {fileID: 1450428817285273774}
   dashSpellList: []
 --- !u!114 &3494249741853352444
 MonoBehaviour:
@@ -1851,6 +1851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _antennaeMoveSpeed: 10
   _rotateSpeed: 10
+  _rotationOffset: {x: 0, y: 0, z: 0}
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
   _dashExpressionTime: 1
@@ -1867,6 +1868,7 @@ MonoBehaviour:
   - {fileID: 235318805868378995}
   - {fileID: 7274526486715251763}
   - {fileID: 1408914177318397083}
+  _objectToRotate: {fileID: 4154672118953922563}
   _antennae: {fileID: 8953924929397161630}
   _antennaeFollowPoint: {fileID: 8832213724722072971}
   _lineRendererStart: {fileID: 3513331194654429540}
