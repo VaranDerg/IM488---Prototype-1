@@ -12,5 +12,5 @@ public class PickupDataSO : ScriptableObject
     public float PickupValue;
     [Space]
     public float PickupDuration;
-    public ScalableStat StatBuff;
+    public List<ScalableStat> StatBuff;
 }

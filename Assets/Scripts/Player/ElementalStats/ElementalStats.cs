@@ -67,8 +67,10 @@ public class ElementalStats : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TemporaryAddStat(ScalableStat stat,float amt,float duration)
     {
+        Debug.Log("Stat: " + stat + " amount: " + amt + " duration: " + duration);
         AddStat(stat, amt);
         yield return new WaitForSeconds(duration);
+        Debug.Log(playerStats[stat]);
         AddStat(stat, -amt);
     }
 

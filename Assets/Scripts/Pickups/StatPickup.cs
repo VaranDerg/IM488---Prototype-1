@@ -6,8 +6,12 @@ public class StatPickup : PickupAbstract, IPickup
 {
     protected override void PickUpObject(PlayerManager pm)
     {
-        pm.GetElementalStats().StartCoroutine(pm.GetElementalStats().
-            TemporaryAddStat(GetScriptableObject().StatBuff, GetScriptableObject().PickupValue, GetScriptableObject().PickupDuration));
+        foreach(ScalableStat statBuff in GetScriptableObject().StatBuff)
+        {
+            pm.GetElementalStats().StartCoroutine(pm.GetElementalStats().
+                TemporaryAddStat(statBuff, GetScriptableObject().PickupValue, GetScriptableObject().PickupDuration));
+        }
+        
 
         PostPickup();
         Destroy(gameObject);    
