@@ -47,7 +47,8 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     public UnityEvent OnLaunchEvent;
 
-    protected Player owner { get; private set; }
+    //protected Player owner { get; private set; }
+    public Player owner { get; set; }
 
     private void Awake()
     {
@@ -240,10 +241,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
                 Vector3 randomSphere = Random.insideUnitSphere;
                 //Debug.Log(new Vector3(randomSphere.x, 0, randomSphere.z).normalized);
                 return new Vector3(randomSphere.x, 0, randomSphere.z).normalized;
-            case TargetType.RANDOM_IN_RANGE:
-                randomSphere = Random.insideUnitSphere;
-                //Debug.Log(new Vector3(randomSphere.x, 0, randomSphere.z).normalized);
-                return (new Vector3(randomSphere.x, 0, randomSphere.z).normalized) * scaledProjectileSpeed;
 
             default:
                 return Vector3.zero;
@@ -256,7 +253,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
         if (isStatic)
         {
-            transform.position += GetTargetDirection();
+            transform.position += GetTargetDirection() * scaledProjectileSpeed;
             return;
         }
 
@@ -269,6 +266,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     protected virtual void OnPlayerCollision(Collider other)
     {
         other.GetComponent<PlayerManager>().Damage(scaledProjectileDamage, InvulnTypes.FULLINVULN);
+        Debug.Log("Damage: " + other.GetComponent<PlayerManager>().name + " | Owner: " + owner);
     }
 
     protected virtual void OnEnvironmentCollision(Collider other)
@@ -303,6 +301,5 @@ public enum TargetType
     MOVE_DIRECTION,
     OPPOSITE_DIRECTION,
     RANDOM,
-    RANDOM_IN_RANGE,
     OTHER
 }

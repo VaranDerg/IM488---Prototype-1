@@ -55,7 +55,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1026295204228910196}
         m_TargetAssemblyTypeName: ProjectileSpell, Assembly-CSharp
-        m_MethodName: SpawnProjectile
+        m_MethodName: DelayedSpawnProjectile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1026295204228910196}
         m_TargetAssemblyTypeName: ProjectileSpell, Assembly-CSharp
-        m_MethodName: SpawnProjectile
+        m_MethodName: DelayedSpawnProjectile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1026295204228910196}
         m_TargetAssemblyTypeName: ProjectileSpell, Assembly-CSharp
-        m_MethodName: SpawnProjectile
+        m_MethodName: DelayedSpawnProjectile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1026295204228910196}
         m_TargetAssemblyTypeName: ProjectileSpell, Assembly-CSharp
-        m_MethodName: SpawnProjectile
+        m_MethodName: DelayedSpawnProjectile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1026295204228910196}
         m_TargetAssemblyTypeName: ProjectileSpell, Assembly-CSharp
-        m_MethodName: SpawnProjectile
+        m_MethodName: DelayedSpawnProjectile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -27,6 +27,9 @@ public class AuraSpell : AbstractSpell
     [SerializeField]
     UnityEvent OnAuraStart;
 
+    [SerializeField]
+    UnityEvent OnAuraEnd;
+
     float timeTillNextAuraTick;
 
     bool isAuraActive = false;
@@ -112,6 +115,8 @@ public class AuraSpell : AbstractSpell
     {
         isAuraActive = true;
 
+        GetComponent<Collider>().enabled = true;
+
         if (auraRenderer != null)
             auraRenderer.enabled = true;
 
@@ -137,9 +142,13 @@ public class AuraSpell : AbstractSpell
         if (auraRenderer != null)
             auraRenderer.enabled = false;
 
+        GetComponent<Collider>().enabled = false;
+
         ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.BurstParticles, true, transform, false);
 
         DisableParticles();
+
+        OnAuraEnd.Invoke();
     }
 
     protected void DamageAllInAura(float damage)

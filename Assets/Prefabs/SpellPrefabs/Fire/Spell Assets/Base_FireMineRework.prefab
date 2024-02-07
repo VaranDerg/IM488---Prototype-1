@@ -149,8 +149,11 @@ MonoBehaviour:
   tickRateScalar: 1
   damage: 0
   doSelfDamage: 1
-  isPersistent: 1
+  isPersistent: 0
   _thisSpell: {fileID: 11400000, guid: e311932b7313b064da844c46bc027143, type: 2}
   OnTriggeredEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTickEvent:
     m_PersistentCalls:
       m_Calls: []

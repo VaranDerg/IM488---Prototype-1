@@ -38,6 +38,17 @@ public class ProjectileSpell : AbstractSpell
         projectile.Activate();
     }
 
+    public void DelayedSpawnProjectile()
+    {
+        StartCoroutine(DelayedSpawn());
+    }
+
+    IEnumerator DelayedSpawn()
+    {
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
+        SpawnProjectile();
+    }
+
     protected override void AuraTick()
     {
         

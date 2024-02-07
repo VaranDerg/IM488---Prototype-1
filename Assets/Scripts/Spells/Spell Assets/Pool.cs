@@ -24,6 +24,9 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     float damage = 1;
 
     [SerializeField]
+    float delayedDetonation = 0;
+
+    [SerializeField]
     bool doSelfDamage = false;
 
     [SerializeField]
@@ -40,7 +43,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     float timeTillNextTick;
 
-    protected Player owner { get; private set; }
+    public Player owner { get; set; }
+    //protected Player owner { get; private set; }
 
     protected List<GameObject> objectsInPool = new();
 
@@ -56,11 +60,18 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
         startSize = transform.localScale;
     }
 
+    private void Start()
+    {
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if (objectPool != null)
+            objectPool.AssignPlayer(owner);
+    }
+
     public void Execute()
     {
-        if(DamageAllInside(scaledPoolDamage, doSelfDamage))
+        if(ContainsValidTarget())
         {
-            OnTriggeredEvent.Invoke();
+            DelayedDetonation();
 
             if(!isPersistent)
                 gameObject.SetActive(false);
@@ -105,6 +116,19 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     protected void OnExpiration()
     {
 
+    }
+
+    public void DelayedDetonation()
+    {
+        StartCoroutine(DelayedDet());
+    }
+
+    IEnumerator DelayedDet()
+    {
+        yield return new WaitForSeconds(delayedDetonation);
+        DamageAllInside(scaledPoolDamage, doSelfDamage);
+
+        OnTriggeredEvent.Invoke();
     }
 
     public void Tick(float deltaTime)
@@ -190,11 +214,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
         }
     }
 
-    protected bool DamageAllInside(float damage, bool doSelfDamage)
+    protected void DamageAllInside(float damage, bool doSelfDamage)
     {
-        if (objectsInPool.Count == 0)
-            return false;
-
         foreach (GameObject obj in objectsInPool)
         {
             if (obj == null)
@@ -208,10 +229,36 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
             bool isSelf = player.PlayerTag == owner;
 
             if (!isSelf || (doSelfDamage && isSelf))
+            {
                 player.Damage(damage, InvulnTypes.DASHINVULN);
+                Debug.Log("Damage: " + player.name + " | Owner: " + owner);
+            }
+                
+        }
+    }
+
+    protected bool ContainsValidTarget()
+    {
+        if (objectsInPool.Count == 0)
+            return false;
+
+        foreach (GameObject obj in objectsInPool)
+        {
+            if (obj == null)
+                continue;
+
+            PlayerManager player = obj.GetComponent<PlayerManager>();
+            if (player == null)
+                continue;
+
+            bool isSelf = player.PlayerTag == owner;
+            if (!isSelf)
+                return true;
+            else if (doSelfDamage && isSelf)
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     private void FixedUpdate()
@@ -222,7 +269,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     private void OnTriggerEnter(Collider other)
     {
 
-        if(other.CompareTag("Player") && other.GetComponent<PlayerManager>().PlayerTag == owner)
+        if(!other.CompareTag("Player"))
         {
             return;
         }

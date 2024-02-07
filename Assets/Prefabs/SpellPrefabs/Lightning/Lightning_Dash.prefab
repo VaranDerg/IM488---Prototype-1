@@ -49,9 +49,10 @@ MonoBehaviour:
   tickRate: 1
   tickRateScalar: 1
   castMethod: 1
-  castDelay: 0
-  projectilePrefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07,
-    type: 3}
+  castDelay: 0.2
+  OnStartAuraEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-6532147166228185073
 MonoBehaviour:
   m_ObjectHideFlags: 0

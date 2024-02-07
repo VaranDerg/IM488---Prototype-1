@@ -27,7 +27,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
     [SerializeField] float castDelay = 0;
 
     float scaledTickRateScalar = 1;
-    protected Player owner { get; private set; }
+    public Player owner { get; set; }
 
     // The actual function of the spell to be referenced from the child
     public abstract void StartAura();

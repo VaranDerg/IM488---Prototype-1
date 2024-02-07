@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     int poolSize = 3;
     readonly Stack<IPoolableObject> inactiveObjects = new();
 
-    Player owner;
+    public Player owner;
 
     public IPoolableObject GetObject()
     {
@@ -56,6 +56,7 @@ public class ObjectPool : MonoBehaviour
     {
         this.owner = owner;
 
+        Debug.Log("Object: " + gameObject.name + " | Owner Assigned: " + owner);
         InstantiateObjects();
     }
 
