@@ -9,15 +9,29 @@ public class PlasmoMoveTest : MonoBehaviour
     [SerializeField] private float _rotateSpeed = 10f;
     [Space]
     private bool _isWalking;
+    private PlasmoVisuals _visuals;
+
+    private void Start()
+    {
+        _visuals = GetComponentInChildren<PlasmoVisuals>();
+    }
 
     private void Update()
     {
+        _visuals.HandleWalking(_isWalking);
         HandleMovement();
-    }
 
-    public bool IsWalking()
-    {
-        return _isWalking;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Cast);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Angry, 0.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, 1f);
+        }
     }
 
     private void HandleMovement()
