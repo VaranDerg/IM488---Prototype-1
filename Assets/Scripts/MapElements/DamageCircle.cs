@@ -43,13 +43,9 @@ public class DamageCircle : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         ICanTakeDamage damageTarget = collision.GetComponent<ICanTakeDamage>();
-        Debug.Log(damageTarget);
         if (_playersToDamage.Count == 0) return;
-        Debug.Log(_playersToDamage.Contains(damageTarget));
-        Debug.Log("HERE");
         if (damageTarget != null && _playersToDamage.Contains(damageTarget))
         {
-            Debug.Log("ERROR");
             _playersToDamage.Remove(damageTarget);
         }
     }
