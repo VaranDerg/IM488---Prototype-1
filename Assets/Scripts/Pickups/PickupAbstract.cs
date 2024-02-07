@@ -7,6 +7,11 @@ public abstract class PickupAbstract : MonoBehaviour, IPickup
     [SerializeField]
     PickupDataSO data;
 
+    private void Start()
+    {
+        GetComponentInChildren<PickupCoinVisual>().PreparePickupCoinVisual(data);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         PlayerManager pm = collision.GetComponent<PlayerManager>();
