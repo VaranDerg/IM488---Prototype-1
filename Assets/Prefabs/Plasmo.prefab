@@ -909,6 +909,7 @@ MonoBehaviour:
   dashCooldownTime: 0.5
   maxSpeed: 50
   _postDashStunDuration: 0.2
+  _visuals: {fileID: 0}
   dashSpellList: []
 --- !u!114 &3494249741853352444
 MonoBehaviour:
@@ -954,9 +955,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &914005900926697189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,6 +1852,8 @@ MonoBehaviour:
   _antennaeMoveSpeed: 10
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
+  _dashExpressionTime: 0
+  _castExpressionTime: 0.5
   _lineRenderer: {fileID: 4221799163654232303}
   _animator: {fileID: 1633989319977723792}
   _glowMaterial: {fileID: 2100000, guid: 20d335fcef6ab8d4fb7d3964f349b019, type: 2}

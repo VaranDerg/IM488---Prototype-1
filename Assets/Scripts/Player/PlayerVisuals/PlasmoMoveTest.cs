@@ -8,7 +8,6 @@ public class PlasmoMoveTest : MonoBehaviour
     [SerializeField] private float _moveSpeed = 7f;
     [SerializeField] private float _rotateSpeed = 10f;
     [Space]
-    private bool _isWalking;
     private PlasmoVisuals _visuals;
 
     private void Start()
@@ -18,7 +17,6 @@ public class PlasmoMoveTest : MonoBehaviour
 
     private void Update()
     {
-        _visuals.HandleWalking(_isWalking);
         HandleMovement();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -66,7 +64,7 @@ public class PlasmoMoveTest : MonoBehaviour
 
         transform.position += moveDir * _moveSpeed * Time.deltaTime;
 
-        _isWalking = moveDir != Vector3.zero;
+        _visuals.HandleWalking(moveDir != Vector3.zero);
 
         transform.forward = Vector3.Slerp(transform.forward, -moveDir, _rotateSpeed * Time.deltaTime);
     }

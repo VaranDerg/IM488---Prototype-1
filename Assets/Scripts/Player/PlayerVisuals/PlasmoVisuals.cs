@@ -14,6 +14,9 @@ public class PlasmoVisuals : MonoBehaviour
     [SerializeField] private float _antennaeMoveSpeed;
     [SerializeField] private float _glowColorChangeSpeed;
     [SerializeField] private float _glowIntensity;
+    [Space]
+    [SerializeField] private float _dashExpressionTime = 1f;
+    [SerializeField] private float _castExpressionTime = 0.5f;
 
     [Header("General References")]
     [SerializeField] private LineRenderer _lineRenderer;
@@ -188,31 +191,13 @@ public class PlasmoVisuals : MonoBehaviour
         _glowColorEnd = newColor;
     }
 
-    [ContextMenu("Become Red")]
-    private void BecomeRed()
+    public float GetDashExpressionTime()
     {
-        SetGlowColor(Color.red);
-        Debug.Log("Setting color to red");
+        return _dashExpressionTime;
     }
 
-    [ContextMenu("Become Blue")]
-    private void BecomeBlue()
+    public float GetCastExpressionTime()
     {
-        SetGlowColor(Color.blue);
-        Debug.Log("Setting color to blue");
-    }
-
-    [ContextMenu("Become Yellow")]
-    private void BecomeYellow()
-    {
-        SetGlowColor(Color.yellow);
-        Debug.Log("Setting color to yellow");
-    }
-
-    [ContextMenu("Become White")]
-    private void BecomeWhite()
-    {
-        SetGlowColor(Color.white);
-        Debug.Log("Setting color to white");
+        return _castExpressionTime;
     }
 }
