@@ -18,6 +18,8 @@ public class ProjectileSpell : AbstractSpell
 
     public override void StartAura()
     {
+        base.StartAura();
+
         SpawnProjectile();
 
         OnStartAuraEvent.Invoke();

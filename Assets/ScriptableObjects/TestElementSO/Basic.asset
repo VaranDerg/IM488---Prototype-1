@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Basic
   m_EditorClassIdentifier: 
   ElementName: Basic
-  ElementColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
-  ElementIcon: {fileID: -2413806693520163455, guid: b337b5c8dd7051a43bef11d4709e15ee,
-    type: 3}
-  LoopingParticles: 
-  BurstParticles: 
-  SoundEffectName: 
-  element: 0
+  ElementColor: {r: 1, g: 1, b: 1, a: 1}
+  ElementIcon: {fileID: 21300000, guid: e0b157dbe2b21d042aafdb72fd34cb7e, type: 3}
+  LoopingParticles: Looping_Basic
+  BurstParticles: Burst_Basic
+  SoundEffectName: BasicSFX
+  element: 1
   scalingStats: 

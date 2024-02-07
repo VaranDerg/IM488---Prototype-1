@@ -29,8 +29,20 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
     float scaledTickRateScalar = 1;
     public Player owner { get; set; }
 
+    private void PlayCastAnimations()
+    {
+        PlasmoVisuals visuals = MultiplayerManager.Instance.GetPlayerVisuals(owner);
+
+        visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Cast);
+        visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Angry, visuals.GetCastExpressionTime());
+        visuals.SetGlowColor(data.SpellElement.ElementColor);
+    }
+
     // The actual function of the spell to be referenced from the child
-    public abstract void StartAura();
+    public virtual void StartAura()
+    {
+        PlayCastAnimations();
+    }
 
     // Called every FixedUpdate. Should be used if a spell needs to do something between executions
     protected abstract void AuraTick();
