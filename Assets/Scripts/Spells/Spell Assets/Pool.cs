@@ -154,6 +154,11 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
         Deactivate();
     }
 
+    public void DisableTrigger()
+    {
+        GetComponent<Collider>().enabled = false;
+    }
+
     public void AssignPlayer(Player tag)
     {
         owner = tag;

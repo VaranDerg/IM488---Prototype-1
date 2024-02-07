@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2713144143973656977}
   - component: {fileID: 7255832389795555287}
   - component: {fileID: 2549639586257327571}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: Fire_DashRework
   m_TagString: Untagged
   m_Icon: {fileID: 0}

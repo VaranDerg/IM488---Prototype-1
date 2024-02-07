@@ -268,7 +268,7 @@ MonoBehaviour:
   damage: 0
   doSelfDamage: 0
   isPersistent: 1
-  _thisSpell: {fileID: 11400000, guid: d030c1ccff10b7a4fb453d278cee8fce, type: 2}
+  _thisSpell: {fileID: 11400000, guid: bc8c5c88a46e93441b857da13a1fd174, type: 2}
   OnTriggeredEvent:
     m_PersistentCalls:
       m_Calls:
