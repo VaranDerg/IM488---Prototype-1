@@ -7,6 +7,7 @@ public class MultiplayerManager : MonoBehaviour
     public static MultiplayerManager Instance;
 
     Dictionary<Player, PlayerManager> players = new();
+    Dictionary<Player, SpellBoxGameplay> spellboxUI = new();
 
     [SerializeField]
     ElementalStatsSO elementalStatsContainer;
@@ -43,6 +44,16 @@ public class MultiplayerManager : MonoBehaviour
         }
             
 
+    }
+
+    public void AssignSpellbox(Player player, SpellBoxGameplay spellbox)
+    {
+        spellboxUI[player] = spellbox;
+    }
+
+    public SpellBoxGameplay GetPlayerSpellbox(Player player)
+    {
+        return spellboxUI[player];
     }
 
     private void InitializeElementalStats()

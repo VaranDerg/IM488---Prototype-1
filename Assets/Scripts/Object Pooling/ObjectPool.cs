@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class ObjectPool : MonoBehaviour
     int poolSize = 3;
     readonly Stack<IPoolableObject> inactiveObjects = new();
 
-    public Player owner;
+    public UnityEvent<GameObject> InstantiationEvent;
+
+    Player owner;
 
     public IPoolableObject GetObject()
     {
@@ -56,7 +59,7 @@ public class ObjectPool : MonoBehaviour
     {
         this.owner = owner;
 
-        Debug.Log("Object: " + gameObject.name + " | Owner Assigned: " + owner);
+        //Debug.Log("Object: " + gameObject.name + " | Owner Assigned: " + owner);
         InstantiateObjects();
     }
 
@@ -71,6 +74,8 @@ public class ObjectPool : MonoBehaviour
             obj.GetGameObject().SetActive(false);
 
             inactiveObjects.Push(obj);
+
+            InstantiationEvent.Invoke(obj.GetGameObject());
         }
     }
 }
