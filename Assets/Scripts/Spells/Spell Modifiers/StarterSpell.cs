@@ -52,17 +52,18 @@ public class StarterSpell : MonoBehaviour
 
     public void FireMod(GameObject projectileObj)
     {
-
+        projectileObj.GetComponent<Spawner>().SetActive(true);
     }
 
     public void IceMod(GameObject projectileObj)
     {
-
+        projectileObj.GetComponent<IcePulse>().enabled = true;
     }
 
     public void LightningMod(GameObject projectileObj)
     {
-
+        projectileObj.transform.GetChild(1).gameObject.SetActive(true);
+        projectileObj.transform.GetChild(2).gameObject.SetActive(true);
     }
 
     /*public void FireMod(object sender)

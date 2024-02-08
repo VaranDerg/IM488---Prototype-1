@@ -40,6 +40,8 @@ public class ObjectPool : MonoBehaviour
 
         poolable.Deactivated += OnDeactivation;
 
+        InstantiationEvent.Invoke(poolable.GetGameObject());
+
         return poolable;
     }
 
@@ -69,13 +71,9 @@ public class ObjectPool : MonoBehaviour
         {
             IPoolableObject obj = InstantiateNewObject();
 
-            obj.AssignPlayer(owner);
-
             obj.GetGameObject().SetActive(false);
 
             inactiveObjects.Push(obj);
-
-            InstantiationEvent.Invoke(obj.GetGameObject());
         }
     }
 }
