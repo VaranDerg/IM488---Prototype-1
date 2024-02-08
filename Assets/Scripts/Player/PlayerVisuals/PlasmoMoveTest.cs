@@ -29,6 +29,13 @@ public class PlasmoMoveTest : MonoBehaviour
             _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
             _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, 1f);
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Hurt);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad, 0.25f);
+            _visuals.SetIFrameTime(0.5f);
+        }
     }
 
     private void HandleMovement()

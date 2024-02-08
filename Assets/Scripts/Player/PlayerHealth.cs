@@ -53,11 +53,16 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth -= damage;
         if(invulnType == InvulnTypes.FULLINVULN)
         {
+            //Plays hurt animation.
+            Player p = GetComponent<PlayerManager>().PlayerTag;
+            PlasmoVisuals visuals = MultiplayerManager.Instance.GetPlayerVisuals(p);
+            visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Hurt);
+            visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad, visuals.GetHurtExpressionTime());
+            visuals.SetIFrameTime(_damageIFrameLength);
+
             StartCoroutine(DamageIFrameProcess());
         }
-            
 
-        
         SetHPWheelValue();
         CheckForDeath();
     }

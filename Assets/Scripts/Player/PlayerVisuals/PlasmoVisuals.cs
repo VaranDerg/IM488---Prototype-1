@@ -9,17 +9,20 @@ public class PlasmoVisuals : MonoBehaviour
     private const string DASH = "Dash";
     private const string WIN = "Win";
     private const string LOSE = "Lose";
+    private const string TAKE_DAMAGE = "Hurt";
 
     [Header("Values")]
     [SerializeField] private float _antennaeMoveSpeed;
     [SerializeField] private float _rotateSpeed;
-    [SerializeField] private Vector3 _rotationOffset;
     [Space]
     [SerializeField] private float _glowColorChangeSpeed;
     [SerializeField] private float _glowIntensity;
     [Space]
     [SerializeField] private float _dashExpressionTime = 1f;
     [SerializeField] private float _castExpressionTime = 0.5f;
+    [SerializeField] private float _hurtExpressionTime = 0.25f;
+    [Space]
+    [SerializeField] private float _iFrameBlinkInterval;
 
     [Header("General References")]
     [SerializeField] private LineRenderer _lineRenderer;
@@ -28,6 +31,7 @@ public class PlasmoVisuals : MonoBehaviour
 
     [Header("Object References")]
     [SerializeField] private List<MeshRenderer> _glowingParts = new List<MeshRenderer>();
+    [SerializeField] private List<MeshRenderer> _iFrameBlinkParts = new List<MeshRenderer>();
     [SerializeField] private Transform _objectToRotate;
     [SerializeField] private Transform _antennae, _antennaeFollowPoint;
     [SerializeField] private Transform _lineRendererStart, _lineRendererEnd;
@@ -38,6 +42,8 @@ public class PlasmoVisuals : MonoBehaviour
     private Color _glowColorCurrent;
     private Vector3 _rotationEnd;
     private float _curExpressionTime;
+    private float _curIFrameTime;
+    private float _curIFrameBlinkInterval;
 
     public enum PlasmoExpression
     {
@@ -53,6 +59,7 @@ public class PlasmoVisuals : MonoBehaviour
         Win,
         Lose,
         Dash,
+        Hurt,
     }
 
     private void Start()
@@ -70,6 +77,7 @@ public class PlasmoVisuals : MonoBehaviour
         HandleLineRenderer();
         HandleGlowColor();
         HandleExpression();
+        HandleInvincibleVisual();
         HandleAntennae();
     }
 
@@ -95,7 +103,7 @@ public class PlasmoVisuals : MonoBehaviour
 
     private void HandleRotation()
     {
-        _objectToRotate.forward = Vector3.Slerp(_objectToRotate.forward, -_rotationEnd + _rotationOffset, _rotateSpeed * Time.deltaTime);
+        _objectToRotate.forward = Vector3.Slerp(_objectToRotate.forward, -_rotationEnd, _rotateSpeed * Time.deltaTime);
     }
 
     private void HandleGlowColor()
@@ -127,6 +135,48 @@ public class PlasmoVisuals : MonoBehaviour
         if (_curExpressionTime <= 0f)
         {
             SetExpression(PlasmoExpression.Neutral);
+        }
+    }
+
+    private void HandleInvincibleVisual()
+    {
+        if (_curIFrameTime <= 0f)
+        {
+            return;
+        }
+
+        HandleIFrameBlink();
+
+        _curIFrameTime -= Time.deltaTime;
+
+        if (_curIFrameTime <= 0f)
+        {
+            foreach (MeshRenderer mr in _iFrameBlinkParts)
+            {
+                mr.enabled = true;
+            }
+        }
+    }
+
+    private void HandleIFrameBlink()
+    {
+        _curIFrameBlinkInterval -= Time.deltaTime;
+
+        if (_curIFrameBlinkInterval <= 0f)
+        {
+            foreach (MeshRenderer mr in _iFrameBlinkParts)
+            {
+                if (mr.enabled)
+                {
+                    mr.enabled = false;
+                }
+                else
+                {
+                    mr.enabled = true;
+                }
+            }
+
+            _curIFrameBlinkInterval = _iFrameBlinkInterval;
         }
     }
 
@@ -183,6 +233,12 @@ public class PlasmoVisuals : MonoBehaviour
         _curExpressionTime = time;
     }
 
+    public void SetIFrameTime(float time)
+    {
+        _curIFrameTime = time;
+        _curIFrameBlinkInterval = _iFrameBlinkInterval;
+    }
+
     public void SetAnimationTrigger(PlasmoAnimationTrigger trigger)
     {
         switch (trigger)
@@ -198,6 +254,9 @@ public class PlasmoVisuals : MonoBehaviour
                 break;
             case PlasmoAnimationTrigger.Lose:
                 _animator.SetTrigger(LOSE);
+                break;
+            case PlasmoAnimationTrigger.Hurt:
+                _animator.SetTrigger(TAKE_DAMAGE);
                 break;
         }
     }
@@ -215,5 +274,10 @@ public class PlasmoVisuals : MonoBehaviour
     public float GetCastExpressionTime()
     {
         return _castExpressionTime;
+    }
+
+    public float GetHurtExpressionTime()
+    {
+        return _hurtExpressionTime;
     }
 }
