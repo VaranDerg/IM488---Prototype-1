@@ -111,6 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b82afae0cb72d42b34410ddccf3939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _closingTime: 15
-  _damagePerSecond: 1
+  _timeBeforeStarting: 40
+  _damageDelay: 1
+  _closingTime: 25
+  _minDamagePerSecond: 0.1
+  _maxDamagePerSecond: 3
+  _damageScalingTime: 30
   _endingScale: {x: 10, y: 0.2, z: 10}
