@@ -20,6 +20,8 @@ public class SpellBoxGameplay : BaseUIElement
     private void Start()
     {
         PopulateWithPlayerSpellInformation();
+
+        MultiplayerManager.Instance.AssignSpellbox(ConvertToPlayer(), this);
     }
 
     /// <summary>
@@ -53,6 +55,15 @@ public class SpellBoxGameplay : BaseUIElement
 
             _activeIcons.Add(icon);
         }
+    }
+
+    /// <summary>
+    /// Converts _whichPlayer to a Player enum value
+    /// </summary>
+    /// <returns>Player enum value</returns>
+    private Player ConvertToPlayer()
+    {
+        return _whichPlayer == 1 ? Player.one : Player.two;
     }
 
     /// <summary>
