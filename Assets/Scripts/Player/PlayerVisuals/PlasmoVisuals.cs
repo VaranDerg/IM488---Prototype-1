@@ -44,6 +44,7 @@ public class PlasmoVisuals : MonoBehaviour
     private float _curExpressionTime;
     private float _curIFrameTime;
     private float _curIFrameBlinkInterval;
+    private Outline _playerOutline;
 
     public enum PlasmoExpression
     {
@@ -64,7 +65,7 @@ public class PlasmoVisuals : MonoBehaviour
 
     private void Start()
     {
-        AddOutline();
+        AddOutline(gameObject);
         PrepareEmissiveMaterials();
         PrepareAntennae();
 
@@ -262,12 +263,17 @@ public class PlasmoVisuals : MonoBehaviour
         }
     }
 
-    public void AddOutline()
+    public void AddOutline(GameObject objToApplyTo)
     {
-        Outline newOutline = gameObject.AddComponent<Outline>();
+        _playerOutline = objToApplyTo.AddComponent<Outline>();
         //MultiplayerManager.Instance.GetPlayer(GetComponentInParent<PlayerManager>().PlayerTag))
-        newOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(GetComponentInParent<PlayerManager>().PlayerTag);
-        newOutline.OutlineWidth = MultiplayerManager.Instance.GetOutlineSize();
+        _playerOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(GetComponentInParent<PlayerManager>().PlayerTag);
+        _playerOutline.OutlineWidth = MultiplayerManager.Instance.GetOutlineSize();
+    }
+
+    public Outline GetOutline()
+    {
+        return _playerOutline;
     }
 
     public void SetGlowColor(Color newColor)
