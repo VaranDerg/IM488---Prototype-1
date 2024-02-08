@@ -75,11 +75,15 @@ public class GameManager : MonoBehaviour
         {
             _playerOneScore++;
             ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.PlayerTwo);
+
+            PlayEndingPlayerAnimations(Player.one);
         }
         else
         {
             _playerTwoScore++;
             ManagerParent.Instance.Spells.PrepareSpellSelectionState(SpellManager.SpellSelectionMode.PlayerOne);
+
+            PlayEndingPlayerAnimations(Player.two);
         }
 
         if (FindObjectOfType<TempGameTimer>())
@@ -150,11 +154,55 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundTie(float waitTime)
     {
+        PlayEndingPlayerAnimations();
+
         FindObjectOfType<WinningPlayerText>().DisplayTieTimeoutText();
         yield return new WaitForSeconds(waitTime);
         int arenaScene = ManagerParent.Instance.Game.GetNextArenaScene();
         SceneTransitions.Instance.LoadSceneWithTransition(SceneTransitions.TransitionType.LeftRight, arenaScene);
         
+    }
+
+    /// <summary>
+    /// Handles the win and lose animations for a specific player.
+    /// </summary>
+    /// <param name="winningPlayer">The player that has won.</param>
+    private void PlayEndingPlayerAnimations(Player winningPlayer)
+    {
+        Player losingPlayer;
+        if (winningPlayer == Player.one)
+        {
+            losingPlayer = Player.two;
+        }
+        else
+        {
+            losingPlayer = Player.one;
+        }
+
+        PlasmoVisuals winningPlayerVisuals = MultiplayerManager.Instance.GetPlayerVisuals(winningPlayer);
+        PlasmoVisuals losingPlayerVisuals = MultiplayerManager.Instance.GetPlayerVisuals(losingPlayer);
+
+        winningPlayerVisuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Win);
+        winningPlayerVisuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy);
+
+        losingPlayerVisuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Lose);
+        losingPlayerVisuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad);
+    }
+
+    /// <summary>
+    /// Override used for a tie.
+    /// </summary>
+    private void PlayEndingPlayerAnimations()
+    {
+        //Plays the correct animations for each player
+        PlasmoVisuals playerOneVisuals = MultiplayerManager.Instance.GetPlayerVisuals(Player.one);
+        PlasmoVisuals playerTwoVisuals = MultiplayerManager.Instance.GetPlayerVisuals(Player.two);
+
+        playerOneVisuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Lose);
+        playerOneVisuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad);
+
+        playerTwoVisuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Lose);
+        playerTwoVisuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad);
     }
 
 

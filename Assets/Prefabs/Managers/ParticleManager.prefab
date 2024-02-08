@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f4157c19aa0a242802c17efcb4a292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleLifetime: 10
+  _particleLifetime: 5
   _particles:
   - Name: Looping_Fire
     ParticlePrefab: {fileID: 4131834753576506440, guid: 7ef8747b28141a747901d3925dc4f246,

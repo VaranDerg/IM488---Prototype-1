@@ -5,19 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 {
-
-    /*public void OnMove(InputAction.CallbackContext context)
-    {
-        movementInput = context.ReadValue<Vector2>();
-    }
-
-    private void Update()
-    {
-        rb.velocity = movementInput * speed;
-
-        if (rb.velocity.magnitude > maxSpeed)
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-    }*/
     [Header("Movement Variables")]
     [SerializeField] float speed;
     [SerializeField] float dashForce;
@@ -25,7 +12,9 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     [SerializeField] float dashCooldownTime;
     [SerializeField] float maxSpeed;
     [SerializeField] float _postDashStunDuration;
-    [Space]
+
+    [Header("Visual Information")]
+    [SerializeField] private PlasmoVisuals _visuals;
 
     [Header("Spells")]
     [SerializeField] private List<AbstractSpell> dashSpellList;
@@ -50,7 +39,6 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         Move();
         MaxSpeedControl();
-
     }
 
     private void MaxSpeedControl()
@@ -72,6 +60,11 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     public MovementState GetMoveState()
     {
         return _moveState;
+    }
+
+    public PlasmoVisuals GetVisuals()
+    {
+        return _visuals;
     }
 
     public void StopVelocity()
@@ -142,6 +135,10 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         _inputDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
 
+        //The player will play their walking animation whenever the inputdirection is not vector3.zero
+        _visuals.HandleWalking(_inputDirection != Vector3.zero);
+        _visuals.SetRotation(_inputDirection);
+
         if (_inputDirection != Vector3.zero)
             lastNonZeroMovement = _inputDirection;
     }
@@ -159,7 +156,10 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
             return;
         }
 
-            
+        //Plays a dash animation and changes the plasmo's expression when they dash.
+        _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
+        _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, _visuals.GetDashExpressionTime());
+
         _moveState = MovementState.Dashing;
         dashCoolingDown = true;
 

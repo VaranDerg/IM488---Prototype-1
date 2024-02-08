@@ -95,6 +95,8 @@ public class AuraSpell : AbstractSpell
 
     public override void StartAura()
     {
+        base.StartAura();
+
         OnAuraStart.Invoke();
         StartCoroutine(DelayedDisable());
     }

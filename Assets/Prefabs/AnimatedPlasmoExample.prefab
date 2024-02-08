@@ -378,7 +378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 7
-  _rotateSpeed: 10
 --- !u!1 &8665250965237513316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,8 +1477,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _antennaeMoveSpeed: 10
+  _rotateSpeed: 10
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
+  _dashExpressionTime: 1
+  _castExpressionTime: 0.5
+  _hurtExpressionTime: 0.25
+  _iFrameBlinkInterval: 0.05
   _lineRenderer: {fileID: 8665250964919047545}
   _animator: {fileID: 8665250966202862721}
   _glowMaterial: {fileID: 2100000, guid: 20d335fcef6ab8d4fb7d3964f349b019, type: 2}
@@ -1492,6 +1496,21 @@ MonoBehaviour:
   - {fileID: 8665250965470226711}
   - {fileID: 8665250965915845626}
   - {fileID: 8665250964967471146}
+  _iFrameBlinkParts:
+  - {fileID: 8665250965966216301}
+  - {fileID: 8665250965521038730}
+  - {fileID: 8665250965939772709}
+  - {fileID: 8665250965856003049}
+  - {fileID: 8665250966163749921}
+  - {fileID: 8665250966229136671}
+  - {fileID: 8665250965711385408}
+  - {fileID: 8665250965470226711}
+  - {fileID: 8665250965915845626}
+  - {fileID: 8665250965463030922}
+  - {fileID: 8665250964602349250}
+  - {fileID: 8665250964967471146}
+  - {fileID: 8665250965614565819}
+  _objectToRotate: {fileID: 8665250965185576758}
   _antennae: {fileID: 8665250964967471188}
   _antennaeFollowPoint: {fileID: 8665250965443607539}
   _lineRendererStart: {fileID: 8665250965614565797}

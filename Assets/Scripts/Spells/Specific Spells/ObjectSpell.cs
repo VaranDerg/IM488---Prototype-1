@@ -14,6 +14,8 @@ public class ObjectSpell : AbstractSpell
 
     public override void StartAura()
     {
+        base.StartAura();
+
         GameObject poolObj = pool.GetObject().GetGameObject();
 
         Pool puddle = poolObj.GetComponent<Pool>();
