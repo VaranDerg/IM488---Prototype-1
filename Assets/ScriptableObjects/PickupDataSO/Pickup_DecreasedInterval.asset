@@ -16,3 +16,5 @@ MonoBehaviour:
   PickupColor: {r: 1, g: 0, b: 0.43605566, a: 1}
   PopupText: Interval-
   PickupValue: 1
+  PickupDuration: 5
+  StatBuff: 02000000

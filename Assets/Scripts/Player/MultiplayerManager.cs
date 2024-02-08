@@ -58,6 +58,11 @@ public class MultiplayerManager : MonoBehaviour
         return players[tag];
     }
 
+    public PlasmoVisuals GetPlayerVisuals(Player tag)
+    {
+        return GetPlayer(tag).GetPlayerController().GetVisuals();
+    }
+
     public PlayerManager GetOpposingPlayer(Player tag)
     {
         foreach (Player t in players.Keys)

@@ -103,4 +103,18 @@ MonoBehaviour:
   - SceneBuildIndex: 7
     MusicToPlay: PureEnergy
   - SceneBuildIndex: 8
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 9
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 10
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 11
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 12
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 13
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 14
+    MusicToPlay: PureEnergy
+  - SceneBuildIndex: 15
     MusicToPlay: PickAndChoose

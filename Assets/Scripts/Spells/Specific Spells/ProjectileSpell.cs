@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ProjectileSpell : AbstractSpell
 {
+
     [SerializeField]
-    GameObject projectilePrefab;
+    UnityEvent OnStartAuraEvent;
 
     ObjectPool pool;
 
@@ -15,6 +17,15 @@ public class ProjectileSpell : AbstractSpell
     }
 
     public override void StartAura()
+    {
+        base.StartAura();
+
+        SpawnProjectile();
+
+        OnStartAuraEvent.Invoke();
+    }
+
+    public void SpawnProjectile()
     {
         IPoolableObject obj = pool.GetObject();
 
@@ -27,6 +38,17 @@ public class ProjectileSpell : AbstractSpell
         projectile.transform.position = transform.position;
 
         projectile.Activate();
+    }
+
+    public void DelayedSpawnProjectile()
+    {
+        StartCoroutine(DelayedSpawn());
+    }
+
+    IEnumerator DelayedSpawn()
+    {
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
+        SpawnProjectile();
     }
 
     protected override void AuraTick()

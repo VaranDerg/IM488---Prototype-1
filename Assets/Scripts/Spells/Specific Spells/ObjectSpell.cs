@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObjectSpell : AbstractSpell
 {
-    [SerializeField]
-    GameObject objPrefab;
 
     ObjectPool pool;
 
@@ -16,6 +14,8 @@ public class ObjectSpell : AbstractSpell
 
     public override void StartAura()
     {
+        base.StartAura();
+
         GameObject poolObj = pool.GetObject().GetGameObject();
 
         Pool puddle = poolObj.GetComponent<Pool>();

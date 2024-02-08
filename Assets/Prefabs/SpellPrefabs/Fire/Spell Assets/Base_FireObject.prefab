@@ -148,6 +148,25 @@ MonoBehaviour:
   tickRate: 0.001
   tickRateScalar: 1
   damage: 6
+  delayedDetonation: 1.2
   doSelfDamage: 1
-  isPersistent: 0
+  isPersistent: 1
   _thisSpell: {fileID: 11400000, guid: e311932b7313b064da844c46bc027143, type: 2}
+  OnTriggeredEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 98561735072162570}
+        m_TargetAssemblyTypeName: Pool, Assembly-CSharp
+        m_MethodName: Deactivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTickEvent:
+    m_PersistentCalls:
+      m_Calls: []

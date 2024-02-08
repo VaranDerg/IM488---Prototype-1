@@ -52,11 +52,11 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_text
-      value: '1 Keyboard & 1 Controller required for gameplay.
+      value: 'Two input devices are required.
 
 
-        Press button
-        on device to select control scheme.'
+        Press a button on your device
+        to select that control scheme.'
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271347, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
@@ -180,7 +180,7 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_text
-      value: Player 1, Press a Button
+      value: Waiting for Device 1 Input...
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
@@ -444,6 +444,7 @@ MonoBehaviour:
   MenuPages:
   - {fileID: 2514966669695174419}
   - {fileID: 5387550549777639726}
+  firstSelected: {fileID: 0}
 --- !u!224 &2514966669415227740 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4609876779349578949, guid: 69d40dd4cf8fcca48b7b5a514ead27b0,
@@ -601,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_text
-      value: Player 2, Press a Button
+      value: Waiting for device 2 input...
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}

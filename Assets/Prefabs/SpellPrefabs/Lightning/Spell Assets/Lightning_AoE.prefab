@@ -163,4 +163,9 @@ MonoBehaviour:
   auraTickRate: 0.2
   duration: 3
   damage: 1
+  minDistance: 0
+  scaleMinDistanceWithSize: 1
   auraRenderer: {fileID: 5863230248673672758}
+  OnAuraStart:
+    m_PersistentCalls:
+      m_Calls: []

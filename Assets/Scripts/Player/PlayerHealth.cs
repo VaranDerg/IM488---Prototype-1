@@ -51,8 +51,17 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage, InvulnTypes invulnType)
     {  
         _currentHealth -= damage;
-        if(invulnType != InvulnTypes.FULLINVULN)
+        if(invulnType == InvulnTypes.FULLINVULN)
+        {
+            //Plays hurt animation.
+            Player p = GetComponent<PlayerManager>().PlayerTag;
+            PlasmoVisuals visuals = MultiplayerManager.Instance.GetPlayerVisuals(p);
+            visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Hurt);
+            visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad, visuals.GetHurtExpressionTime());
+            visuals.SetIFrameTime(_damageIFrameLength);
+
             StartCoroutine(DamageIFrameProcess());
+        }
 
         SetHPWheelValue();
         CheckForDeath();
@@ -66,6 +75,16 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         SetHPWheelValue();
         return true;
+    }
+
+    public float HealthPercent()
+    {
+        float percentage = _currentHealth / _maxHealth;
+        if (percentage < 0)
+        {
+            percentage = 0;
+        }
+        return percentage;
     }
 
     public bool InvulnerableTypeCheck(InvulnTypes invulnType)
@@ -108,7 +127,8 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     private void SetHPWheelValue()
     {
-        HPWheelUI[] wheels = FindObjectsOfType<HPWheelUI>();
+        GetComponent<PlayerManager>().UpdateHPWheel();
+        /*HPWheelUI[] wheels = FindObjectsOfType<HPWheelUI>();
         
         foreach (HPWheelUI wheel in wheels)
         {
@@ -121,7 +141,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 wheel.SetWheelValue(_currentHealth / _maxHealth);
             }
-        }
+        }*/
     }
 
     public void CheckForDeath()
@@ -138,13 +158,12 @@ public class PlayerHealth : MonoBehaviour
             _currentHealth = 0;
             _dead = true;
 
-            StopPlayerAndSpellsOnDeath();
             ManagerParent.Instance.Game.StartTieWindow(this);
         }
     }
 
 
-    private void StopPlayerAndSpellsOnDeath()
+    public void StopPlayerAndSpellsOnDeath()
     {
         GetComponent<PlayerManager>().GetPlayerController().StopVelocity();
         GetComponent<PlayerManager>().GetPlayerController().enabled = false;

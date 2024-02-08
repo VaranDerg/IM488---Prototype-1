@@ -49,6 +49,7 @@ MonoBehaviour:
   tickRate: 4
   tickRateScalar: 1
   castMethod: 0
+  castDelay: 0
   projectilePrefab: {fileID: 1615301249431763084, guid: 08b1e951515d2854680c6398318f584f,
     type: 3}
 --- !u!114 &-8868620481721923592
@@ -64,4 +65,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615301249431763084, guid: 08b1e951515d2854680c6398318f584f, type: 3}
-  poolSize: 3
+  poolSize: 2

@@ -48,8 +48,8 @@ MonoBehaviour:
   _mainMenuScene: 1
   _spellSelectScene: 2
   _startingArena: 3
-  _arenaScenes: 0400000005000000060000000700000008000000
-  _winScene: 9
+  _arenaScenes: 0400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000
+  _winScene: 15
   _winDelay: 1.5
   _tieWindow: 0.1
   _tieFavorsLosingPlayer: 1

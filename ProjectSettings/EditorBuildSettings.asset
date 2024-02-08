@@ -18,20 +18,38 @@ EditorBuildSettings:
     path: Assets/Scenes/ArenasInGame/ArenaStart.unity
     guid: 2f1ed33b021ac194280d24f111710ccb
   - enabled: 1
-    path: Assets/Scenes/ArenasInGame/Arena_Template.unity
-    guid: 3b8af8dc8eb8d1c49ba69cffc41835e9
-  - enabled: 1
     path: Assets/Scenes/ArenasInGame/Arena1_Nabil.unity
     guid: ce86a20ac5162e043a7a3edbd960f003
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena2_Nabil.unity
+    guid: 26839f9f38d3dea4184faf66e0c548e4
   - enabled: 1
     path: Assets/Scenes/ArenasInGame/Arena3_Gavin.unity
     guid: 64c221f829a12114ca44fb09009c4acb
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena4_Gavin.unity
+    guid: a85af5a66b6ed1a468cb8bf160ca9981
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensOne.unity
+    guid: 3347369309294f54d95876e765e93c3e
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensSimpleArenaOne.unity
+    guid: 405e1d7004436e14380df70bb0397aba
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensSimpleArenaTwo.unity
+    guid: f9ac4f77671868f4f805cbcef3b6c139
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensStartingArenaOne.unity
+    guid: 60e574a79f4fcc84f8d42a8e62033884
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensStartingArenaTwo.unity
+    guid: 31ba4c8bca2a54b41ba16bb153ad62fa
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensUniqueArenaOne.unity
+    guid: c7bd389617fd68c48b6c3d2d92862013
+  - enabled: 1
+    path: Assets/Scenes/Nabil_Arena_mockups/PostPTNabsArensUniqueArenaTwo.unity
+    guid: 8950a320163986241bb3216951ae0f9f
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 6e0059d68c025e94eaca8c95296991ef

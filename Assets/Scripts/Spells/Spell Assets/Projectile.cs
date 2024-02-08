@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObject
 {
@@ -28,25 +29,34 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     [SerializeField] float randomSpeedVariance;
 
     [SerializeField] bool canBounce;
+    [SerializeField] bool isStatic = false;
     [SerializeField] float projectileLifeTime;
     [SerializeField] LayerMask bounceLayerMask;
     private const float _bounceRaycastDist = 2;
+
+    Vector3 startSize;
+
+    private float scaledProjectileSpeed = 1;
+    private Vector3 scaledProjectileSize = Vector3.one;
+    private float scaledProjectileDamage = 1;
 
     Rigidbody rb;
     private Vector3 lastVelocity;
 
     public event IPoolableObject.DeactivationHandler Deactivated;
 
-    bool hasBeenScaled = false;
+    public UnityEvent OnLaunchEvent;
 
-    protected Player owner { get; private set; }
+    //protected Player owner { get; private set; }
+    public Player owner { get; set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(TargetReeval());
         StartCoroutine(TrackLastVelocity());
-        StartCoroutine(LifeTime());
+
+        startSize = transform.localScale;
     }
 
     #region Collision
@@ -100,6 +110,11 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         owner = tag;
     }
 
+    public Player GetPlayer()
+    {
+        return owner;
+    }
+
     private void Launch()
     {
         SpeedVariance();
@@ -107,43 +122,53 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         Move();
 
         OnLaunch();
+
+        OnLaunchEvent.Invoke();
     }
 
     // For elemental stats
     public void Scale(ElementalStats stats)
     {
-        if (hasBeenScaled)
-            return;
-
-        hasBeenScaled = true;
+        //stats.LogStats();
         ScaleSpeed(stats.GetStat(ScalableStat.PROJECTILE_SPEED));
         ScaleSize(stats.GetStat(ScalableStat.PROJECTILE_SIZE));
         ScaleDamage(stats.GetStat(ScalableStat.DAMAGE));
     }
 
+    public void Scale()
+    {
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
+    }
+
     private void ScaleSpeed(float speedMult)
     {
-        projectileSpeed *= speedMult;
+        scaledProjectileSpeed = speedMult * projectileSpeed;
+        //Debug.Log("Speed: " + speedMult + " * " + projectileSpeed + " = " + scaledProjectileSpeed);
     }
 
     private void ScaleSize(float sizeMult)
     {
-        transform.localScale *= sizeMult;
+        scaledProjectileSize = startSize * sizeMult;
+        transform.localScale = scaledProjectileSize;
     }
 
     private void ScaleDamage(float damageMult)
     {
-        damage *= damageMult;
+        scaledProjectileDamage = damage * damageMult;
     }
 
     private void SpeedVariance()
     {
-        projectileSpeed = Random.Range(projectileSpeed - randomSpeedVariance, projectileSpeed + randomSpeedVariance);
+        scaledProjectileSpeed = Random.Range(scaledProjectileSpeed - randomSpeedVariance, scaledProjectileSpeed + randomSpeedVariance);
     }
 
     public void Activate()
     {
         gameObject.SetActive(true);
+
+        StartCoroutine(LifeTime());
+
+        Scale();
 
         Launch();
     }
@@ -224,13 +249,24 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     protected virtual void Move()
     {
-        rb.AddForce(GetTargetDirection() * projectileSpeed, ForceMode.Impulse);
+        rb.velocity = Vector3.zero;
+
+        if (isStatic)
+        {
+            transform.position += GetTargetDirection() * scaledProjectileSpeed;
+            return;
+        }
+
+        Vector3 forceVector = GetTargetDirection() * scaledProjectileSpeed;
+        rb.AddForce(forceVector, ForceMode.Impulse);
+        transform.rotation = Quaternion.LookRotation(forceVector);
     }
 
     // Child Functions
     protected virtual void OnPlayerCollision(Collider other)
     {
-        other.GetComponent<PlayerManager>().Damage(damage, InvulnTypes.FULLINVULN);
+        other.GetComponent<PlayerManager>().Damage(scaledProjectileDamage, InvulnTypes.FULLINVULN);
+        Debug.Log("Damage: " + other.GetComponent<PlayerManager>().name + " | Owner: " + owner);
     }
 
     protected virtual void OnEnvironmentCollision(Collider other)

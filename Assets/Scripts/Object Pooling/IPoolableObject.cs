@@ -11,6 +11,10 @@ public interface IPoolableObject
     void Deactivate();
 
     GameObject GetGameObject();
+
+    void AssignPlayer(Player owner);
+
+    Player GetPlayer();
 }
 
 public class PoolableObjectEventArgs : EventArgs

@@ -90,7 +90,10 @@ public class InputParent : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+
+            //Commented to remove warning from inspector.
+            //DontDestroyOnLoad(gameObject);
+
             return;
         }
         Destroy(gameObject);

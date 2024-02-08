@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
     [SerializeField] private GameObject _spellAttachPoint;
     [SerializeField] private ElementalStats _elementalStats;
     [SerializeField] private PopupTextSource _textSource;
+    [SerializeField] private HPWheelPlayerUI _hpWheel;
 
     public Player PlayerTag;
 
@@ -56,7 +57,11 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
     public void Damage(float damage, InvulnTypes ignoreInvuln)
     {
         if (_pHealth.InvulnerableTypeCheck(ignoreInvuln))
+        {
+            GetComponent<PlayerManager>().SpawnText("Invincible", Color.red, 1.5f);
             return;
+        }
+            
         _pHealth.TakeDamage(damage,ignoreInvuln);
     }
 
@@ -81,6 +86,11 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
     public void DisableAssociatedSpells()
     {
         _spellAttachPoint.SetActive(false);
+    }
+
+    public void UpdateHPWheel()
+    {
+        _hpWheel.SetWheelValue(_pHealth.HealthPercent());
     }
 
     public PlayerHealth GetPlayerHealth()

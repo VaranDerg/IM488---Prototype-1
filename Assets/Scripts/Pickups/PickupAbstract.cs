@@ -4,7 +4,13 @@ using UnityEngine;
 
 public abstract class PickupAbstract : MonoBehaviour, IPickup
 {
-    protected abstract void PickUpObject(PlayerManager pm);
+    [SerializeField]
+    PickupDataSO data;
+
+    private void Start()
+    {
+        GetComponentInChildren<PickupCoinVisual>().PreparePickupCoinVisual(data);
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -12,7 +18,20 @@ public abstract class PickupAbstract : MonoBehaviour, IPickup
         if (pm != null)
         {
             PickUpObject(pm);
+            DisplayUIPickup(collision);
         }
+    }
+
+    protected abstract void PickUpObject(PlayerManager pm);
+
+    public PickupDataSO GetScriptableObject()
+    {
+        return data;
+    }
+
+    public void DisplayUIPickup(Collider collision)
+    {
+        collision.GetComponent<PlayerManager>().SpawnText(data.PopupText, Color.green, 1.5f);
     }
 
     public void PostPickup()

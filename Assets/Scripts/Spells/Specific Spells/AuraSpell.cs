@@ -27,11 +27,19 @@ public class AuraSpell : AbstractSpell
     [SerializeField]
     UnityEvent OnAuraStart;
 
+    [SerializeField]
+    UnityEvent OnAuraEnd;
+
     float timeTillNextAuraTick;
 
     bool isAuraActive = false;
 
     protected List<GameObject> objectsInAura = new();
+
+    Vector3 startSize;
+
+    Vector3 scaledAuraSize = Vector3.one;
+    float scaledAuraDamage = 1;
 
     private GameObject _currentParticles;
     private void OnTriggerEnter(Collider other)
@@ -60,6 +68,8 @@ public class AuraSpell : AbstractSpell
 
     protected override void OnStart()
     {
+        startSize = transform.localScale;
+
         timeTillNextAuraTick = auraTickRate;
 
         if (scaleMinDistanceWithSize)
@@ -85,13 +95,15 @@ public class AuraSpell : AbstractSpell
 
     public override void StartAura()
     {
+        base.StartAura();
+
         OnAuraStart.Invoke();
         StartCoroutine(DelayedDisable());
     }
 
     protected void OnAuraTick()
     {
-        DamageAllInAura(damage);
+        DamageAllInAura(scaledAuraDamage);
     }
 
     IEnumerator DelayedDisable()
@@ -104,6 +116,8 @@ public class AuraSpell : AbstractSpell
     void EnableAura()
     {
         isAuraActive = true;
+
+        GetComponent<Collider>().enabled = true;
 
         if (auraRenderer != null)
             auraRenderer.enabled = true;
@@ -130,9 +144,13 @@ public class AuraSpell : AbstractSpell
         if (auraRenderer != null)
             auraRenderer.enabled = false;
 
+        GetComponent<Collider>().enabled = false;
+
         ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.BurstParticles, true, transform, false);
 
         DisableParticles();
+
+        OnAuraEnd.Invoke();
     }
 
     protected void DamageAllInAura(float damage)
@@ -168,12 +186,13 @@ public class AuraSpell : AbstractSpell
 
     private void ScaleSize(float sizeMult)
     {
-        transform.localScale *= sizeMult;
+        scaledAuraSize = startSize * sizeMult;
+        transform.localScale = scaledAuraSize;
     }
 
     private void ScaleDamage(float damageMult)
     {
-        damage *= damageMult;
+        scaledAuraDamage = damage * damageMult;
     }
 
     private float HorizontalDistance(Vector3 otherObjPosition)

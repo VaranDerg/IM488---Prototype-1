@@ -49,8 +49,10 @@ MonoBehaviour:
   tickRate: 1
   tickRateScalar: 1
   castMethod: 1
-  projectilePrefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07,
-    type: 3}
+  castDelay: 0.2
+  OnStartAuraEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-6532147166228185073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,5 +65,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07, type: 3}
+  prefab: {fileID: 1615301249431763084, guid: ecb22d55214956441a0de93f8ef12679, type: 3}
   poolSize: 3

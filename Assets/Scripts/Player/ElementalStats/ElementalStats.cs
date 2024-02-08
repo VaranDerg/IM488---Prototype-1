@@ -48,9 +48,41 @@ public class ElementalStats : MonoBehaviour
         hasStatsBeenAdded = true;
     }
 
+    /// <summary>
+    /// Call this to add / remove temporary stats
+    /// </summary>
+    /// <param name="stat">Stat type</param>
+    /// <param name="amt">amount to be changed. Can be negative to remove</param>
+    public void AddStat(ScalableStat stat, float amt)
+    {
+        playerStats[stat] += amt;
+    }
+
+    /// <summary>
+    /// Adds a stat for a set period of time
+    /// </summary>
+    /// <param name="stat"></param>
+    /// <param name="amt"></param>
+    /// <param name="duration"></param>
+    /// <returns></returns>
+    public IEnumerator TemporaryAddStat(ScalableStat stat,float amt,float duration)
+    {
+        Debug.Log("Stat: " + stat + " amount: " + amt + " duration: " + duration);
+        AddStat(stat, amt);
+        yield return new WaitForSeconds(duration);
+        Debug.Log(playerStats[stat]);
+        AddStat(stat, -amt);
+    }
+
     public float GetStat(ScalableStat stat)
     {
-        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat);
+        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat + " | Value : " + playerStats[stat]);
         return playerStats[stat];
+    }
+
+    public void LogStats()
+    {
+        foreach (ScalableStat stat in playerStats.Keys)
+            Debug.Log(stat + ": " + playerStats[stat]);
     }
 }

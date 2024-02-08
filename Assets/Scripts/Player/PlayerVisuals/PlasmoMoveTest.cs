@@ -6,18 +6,36 @@ using UnityEngine;
 public class PlasmoMoveTest : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 7f;
-    [SerializeField] private float _rotateSpeed = 10f;
     [Space]
-    private bool _isWalking;
+    private PlasmoVisuals _visuals;
+
+    private void Start()
+    {
+        _visuals = GetComponentInChildren<PlasmoVisuals>();
+    }
 
     private void Update()
     {
         HandleMovement();
-    }
 
-    public bool IsWalking()
-    {
-        return _isWalking;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Cast);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Angry, 0.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, 1f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Hurt);
+            _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad, 0.25f);
+            _visuals.SetIFrameTime(0.5f);
+        }
     }
 
     private void HandleMovement()
@@ -52,8 +70,7 @@ public class PlasmoMoveTest : MonoBehaviour
 
         transform.position += moveDir * _moveSpeed * Time.deltaTime;
 
-        _isWalking = moveDir != Vector3.zero;
-
-        transform.forward = Vector3.Slerp(transform.forward, -moveDir, _rotateSpeed * Time.deltaTime);
+        _visuals.HandleWalking(moveDir != Vector3.zero);
+        _visuals.SetRotation(moveDir);
     }
 }

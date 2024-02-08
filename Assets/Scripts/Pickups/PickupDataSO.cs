@@ -10,4 +10,7 @@ public class PickupDataSO : ScriptableObject
     public string PopupText;
     [Space]
     public float PickupValue;
+    [Space]
+    public float PickupDuration;
+    public List<ScalableStat> StatBuff;
 }
