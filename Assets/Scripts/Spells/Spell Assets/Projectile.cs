@@ -61,9 +61,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     private void Start()
     {
-        ObjectPool objectPool = GetComponent<ObjectPool>();
-        if (objectPool != null)
-            objectPool.AssignPlayer(owner);
+        
     }
 
     #region Collision
@@ -115,6 +113,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public void AssignPlayer(Player tag)
     {
         owner = tag;
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if (objectPool != null)
+            objectPool.AssignPlayer(owner);
     }
 
     public Player GetPlayer()

@@ -80,12 +80,12 @@ MonoBehaviour:
   targetType: 2
   doReevaluateTargetting: 0
   isPersistent: 0
-  projectileSpeed: 2
-  damage: 3
+  projectileSpeed: 6
+  damage: 4
   randomSpeedVariance: 0
   canBounce: 0
-  isStatic: 1
-  projectileLifeTime: 1
+  isStatic: 0
+  projectileLifeTime: 1.5
   bounceLayerMask:
     serializedVersion: 2
     m_Bits: 57472
