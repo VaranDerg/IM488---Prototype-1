@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class DamageCircle : MonoBehaviour
 {
+    [SerializeField] float _timeBeforeStarting;
+    [SerializeField] float _damageDelay;
     [SerializeField] float _closingTime;
-    [SerializeField] float _damagePerSecond;
+    [SerializeField] float _minDamagePerSecond;
+    [SerializeField] float _maxDamagePerSecond;
+    [SerializeField] float _damageScalingTime;
     [SerializeField] Vector3 _endingScale;
     List<ICanTakeDamage> _playersToDamage = new List<ICanTakeDamage>();
     Vector3 _startingLocalScale;
+    float currentDPS;
 
     [ContextMenu("CloseCircle")]
-    public void StartCircleClosing()
+
+    private void Start()
     {
+        StartCoroutine(StartCircleClosing());
+    }
+
+    public IEnumerator StartCircleClosing()
+    {
+        yield return new WaitForSeconds(_timeBeforeStarting);
         StartCoroutine(CloseCircle());
+        StartCoroutine(DamageScaling());
         StartCoroutine(DamageOutsidePlayers());
     }
 
@@ -35,10 +48,22 @@ public class DamageCircle : MonoBehaviour
         while(true)
         {
             foreach (ICanTakeDamage player in _playersToDamage)
-                player.Damage(_damagePerSecond * Time.deltaTime, InvulnTypes.IGNOREINVULN);
+                player.Damage(currentDPS * Time.deltaTime, InvulnTypes.IGNOREINVULN);
             yield return null;
         }
-    }    
+    }  
+    
+    private IEnumerator DamageScaling()
+    {
+        float progress = 0;
+        while(progress < 1)
+        {
+            progress += Time.deltaTime / _damageScalingTime;
+            currentDPS = Mathf.Lerp(_minDamagePerSecond, _maxDamagePerSecond, progress);
+            yield return null;
+        }
+        currentDPS = _maxDamagePerSecond;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
