@@ -562,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455922391498348, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 455922391498348, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -640,6 +640,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1887503524780369268, guid: 2df1d10d017a9c14a9c08c3160ef23c5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca71d995a78772d4382edba459ee7452, type: 2}
+    - target: {fileID: 8118340335571562288, guid: 2df1d10d017a9c14a9c08c3160ef23c5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ca71d995a78772d4382edba459ee7452, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
 --- !u!1001 &174888591
@@ -1106,7 +1116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455922391498348, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 455922391498348, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1172,6 +1182,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1887503524780369268, guid: 2df1d10d017a9c14a9c08c3160ef23c5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35983086e4cad584598f12137095dfe1, type: 2}
+    - target: {fileID: 8118340335571562288, guid: 2df1d10d017a9c14a9c08c3160ef23c5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35983086e4cad584598f12137095dfe1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
 --- !u!1001 &764976540
@@ -1413,7 +1433,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2250,7 +2270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455922391498348, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 455922391498348, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2313,8 +2333,25 @@ PrefabInstance:
       value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 455923354033251, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99263144
+      objectReference: {fileID: 0}
+    - target: {fileID: 455923354033251, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.121172704
+      objectReference: {fileID: 0}
+    - target: {fileID: 455923354033251, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 13.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 455923354033251, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1065557907173897332, guid: 2df1d10d017a9c14a9c08c3160ef23c5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df1d10d017a9c14a9c08c3160ef23c5, type: 3}
