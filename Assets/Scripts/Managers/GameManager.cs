@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     private Coroutine _winDelayCoroutine;
     private int _deadPlayersCount = 0;
     private PlayerHealth _lastDeadPlayer;
-
+    private const string winStars = "Victory_Stars";
+    private const string winPulse = "Victory_Pulse";
 
     public void StartTieWindow(PlayerHealth player)
     {
@@ -51,6 +52,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            
+            ManagerParent.Instance.Particles.SpawnParticles(winStars, false,
+                FindObjectOfType<MultiplayerManager>().GetOpposingPlayer(_lastDeadPlayer.gameObject.GetComponent<PlayerManager>().PlayerTag).gameObject.transform
+                , true);
+            ManagerParent.Instance.Particles.SpawnParticles(winPulse, true,
+                FindObjectOfType<MultiplayerManager>().GetOpposingPlayer(_lastDeadPlayer.gameObject.GetComponent<PlayerManager>().PlayerTag).gameObject.transform
+                , true);
             IncreasePlayerScore(_lastDeadPlayer.NotThisPlayer());
         }
 

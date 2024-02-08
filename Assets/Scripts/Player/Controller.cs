@@ -18,6 +18,8 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 
     [Header("Spells")]
     [SerializeField] private List<AbstractSpell> dashSpellList;
+
+    bool _canDisplayCooldown = true;
     
 
     public enum MovementState
@@ -151,8 +153,12 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         if (dashCoolingDown)
         {
-            if(context.started)
+            if (context.started && _canDisplayCooldown)
+            {
                 GetComponent<PlayerManager>().SpawnText("On Cooldown!", Color.red, 1.5f);
+                _canDisplayCooldown = false;
+            }
+                
             return;
         }
 
@@ -188,6 +194,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
         _moveState = MovementState.Stationary;
         yield return new WaitForSeconds(dashCooldownTime);
         dashCoolingDown = false;
+        _canDisplayCooldown = true;
     }
     #endregion
 
