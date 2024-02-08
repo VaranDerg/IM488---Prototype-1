@@ -14,6 +14,8 @@ public class ObjectPool : MonoBehaviour
 
     public UnityEvent<GameObject> InstantiationEvent;
 
+    public UnityEvent<GameObject> GetObjectEvent;
+
     Player owner;
 
     public IPoolableObject GetObject()
@@ -21,6 +23,7 @@ public class ObjectPool : MonoBehaviour
         if (!inactiveObjects.TryPop(out IPoolableObject returnObj))
             returnObj = InstantiateNewObject();
 
+        GetObjectEvent.Invoke(returnObj.GetGameObject());
         return returnObj;
     }
 
