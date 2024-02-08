@@ -1851,11 +1851,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _antennaeMoveSpeed: 10
   _rotateSpeed: 10
-  _rotationOffset: {x: 0, y: 0, z: 0}
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
   _dashExpressionTime: 1
   _castExpressionTime: 0.5
+  _hurtExpressionTime: 0.25
+  _iFrameBlinkInterval: 0.05
   _lineRenderer: {fileID: 4221799163654232303}
   _animator: {fileID: 1633989319977723792}
   _glowMaterial: {fileID: 2100000, guid: 20d335fcef6ab8d4fb7d3964f349b019, type: 2}
@@ -1868,6 +1869,20 @@ MonoBehaviour:
   - {fileID: 235318805868378995}
   - {fileID: 7274526486715251763}
   - {fileID: 1408914177318397083}
+  _iFrameBlinkParts:
+  - {fileID: 1253620825991411212}
+  - {fileID: 5938529483966076160}
+  - {fileID: 3884839296769145895}
+  - {fileID: 4683958166659916791}
+  - {fileID: 1093700011273950060}
+  - {fileID: 1289076039713825746}
+  - {fileID: 2744702947924703342}
+  - {fileID: 235318805868378995}
+  - {fileID: 7274526486715251763}
+  - {fileID: 2809334918897476798}
+  - {fileID: 4430104324662424942}
+  - {fileID: 1408914177318397083}
+  - {fileID: 4273185400369477447}
   _objectToRotate: {fileID: 4154672118953922563}
   _antennae: {fileID: 8953924929397161630}
   _antennaeFollowPoint: {fileID: 8832213724722072971}
