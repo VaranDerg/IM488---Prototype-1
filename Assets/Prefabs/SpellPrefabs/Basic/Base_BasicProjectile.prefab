@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickAmt: 10
-  tickRate: 1
+  tickRate: 0.1
   startActive: 0
   OnTickFinish:
     m_PersistentCalls:
@@ -170,6 +170,9 @@ MonoBehaviour:
   prefab: {fileID: 1615301249431763084, guid: 5b203c58073637f4592b354a8c62d6a2, type: 3}
   poolSize: 10
   InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1717219024981831267

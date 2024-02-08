@@ -59,6 +59,13 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         startSize = transform.localScale;
     }
 
+    private void Start()
+    {
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if (objectPool != null)
+            objectPool.AssignPlayer(owner);
+    }
+
     #region Collision
     private void OnTriggerEnter(Collider other)
     {
