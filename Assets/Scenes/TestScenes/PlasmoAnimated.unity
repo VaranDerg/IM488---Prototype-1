@@ -918,6 +918,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnimatedPlasmoExample
       objectReference: {fileID: 0}
+    - target: {fileID: 8665250965185576753, guid: 079bab767a942d8499509de63de11293,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8665250965185576758, guid: 079bab767a942d8499509de63de11293,
         type: 3}
       propertyPath: m_RootOrder
