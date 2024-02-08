@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cb78686f445f44fa1310694561dc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickAmt: 20
-  tickRate: 0.3
+  tickAmt: 30
+  tickRate: 0.2
   startActive: 0
   OnTickFinish:
     m_PersistentCalls:

@@ -81,7 +81,7 @@ MonoBehaviour:
   doReevaluateTargetting: 0
   isPersistent: 0
   projectileSpeed: 2
-  damage: 3
+  damage: 1
   randomSpeedVariance: 0.4
   canBounce: 0
   isStatic: 0
