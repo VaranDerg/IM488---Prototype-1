@@ -166,6 +166,7 @@ public class PlayerHealth : MonoBehaviour
     public void StopPlayerAndSpellsOnDeath()
     {
         GetComponent<PlayerManager>().GetPlayerController().StopVelocity();
+        GetComponent<Controller>().enabled = false;
         GetComponent<PlayerManager>().GetPlayerController().enabled = false;
         GetComponent<PlayerManager>().DisableAssociatedSpells();
     }

@@ -1480,7 +1480,7 @@ MonoBehaviour:
   _rotateSpeed: 10
   _glowColorChangeSpeed: 1.5
   _glowIntensity: 3
-  _dashExpressionTime: 1
+  _dashExpressionTime: 0.5
   _castExpressionTime: 0.5
   _hurtExpressionTime: 0.25
   _iFrameBlinkInterval: 0.05

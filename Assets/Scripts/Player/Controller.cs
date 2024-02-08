@@ -18,6 +18,8 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
 
     [Header("Spells")]
     [SerializeField] private List<AbstractSpell> dashSpellList;
+
+    bool _canDisplayCooldown = true;
     
 
     public enum MovementState
@@ -133,6 +135,8 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     /// <param name="context"></param>
     public void MoveInput(InputAction.CallbackContext context)
     {
+        if (ManagerParent.Instance.Game.PlayerHasWonRound)
+            return;
         _inputDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
 
         //The player will play their walking animation whenever the inputdirection is not vector3.zero
@@ -151,8 +155,12 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     {
         if (dashCoolingDown)
         {
-            if(context.started)
+            if (context.started && _canDisplayCooldown)
+            {
                 GetComponent<PlayerManager>().SpawnText("On Cooldown!", Color.red, 1.5f);
+                _canDisplayCooldown = false;
+            }
+                
             return;
         }
 
@@ -188,6 +196,7 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
         _moveState = MovementState.Stationary;
         yield return new WaitForSeconds(dashCooldownTime);
         dashCoolingDown = false;
+        _canDisplayCooldown = true;
     }
     #endregion
 
