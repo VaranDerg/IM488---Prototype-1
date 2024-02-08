@@ -64,6 +64,7 @@ public class PlasmoVisuals : MonoBehaviour
 
     private void Start()
     {
+        AddOutline();
         PrepareEmissiveMaterials();
         PrepareAntennae();
 
@@ -259,6 +260,14 @@ public class PlasmoVisuals : MonoBehaviour
                 _animator.SetTrigger(TAKE_DAMAGE);
                 break;
         }
+    }
+
+    public void AddOutline()
+    {
+        Outline newOutline = gameObject.AddComponent<Outline>();
+        //MultiplayerManager.Instance.GetPlayer(GetComponentInParent<PlayerManager>().PlayerTag))
+        newOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(GetComponentInParent<PlayerManager>().PlayerTag);
+        newOutline.OutlineWidth = MultiplayerManager.Instance.GetOutlineSize();
     }
 
     public void SetGlowColor(Color newColor)
