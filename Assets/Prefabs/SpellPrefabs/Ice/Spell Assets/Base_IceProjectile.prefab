@@ -84,7 +84,6 @@ MonoBehaviour:
   projectileSpeed: 2
   damage: 1
   randomSpeedVariance: 0.2
-  rotateTowardsTarget: 0
   canBounce: 0
   isStatic: 0
   projectileLifeTime: 15
@@ -118,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb5b032c41a4584a969dabb5c3e984d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: 5
+  maxScale: 1.25
   minScale: 0.5
   scaleRate: 0.5
   neverShrink: 1

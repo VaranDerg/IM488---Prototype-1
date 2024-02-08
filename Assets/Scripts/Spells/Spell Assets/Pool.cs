@@ -185,6 +185,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void DisableTrigger()
     {
         GetComponent<Collider>().enabled = false;
+        objectsInPool.Clear();
     }
 
     public void AssignPlayer(Player tag)

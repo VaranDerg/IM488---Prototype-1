@@ -81,6 +81,7 @@ public class Spawner : MonoBehaviour
 
     public void SetActive(bool isActive)
     {
+        Debug.Log("Set active set: " + isActive);
         this.isActive = isActive;
     }
 }

@@ -89,8 +89,10 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
         if (firstSpell == null)
             return;
 
-        ProjectileSpell projectileSpell = firstSpell.GetComponent<ProjectileSpell>();
-        Debug.Log("Projectile: " + projectileSpell.name);
+        //ProjectileSpell projectileSpell = firstSpell.GetComponent<ProjectileSpell>();
+        StarterSpell starterSpell = firstSpell.GetComponent<StarterSpell>();
+        starterSpell.ApplyElement(spell.SpellElement.element);
+        //Debug.Log("Projectile: " + projectileSpell.name);
     }
 
     public void SpawnText(string text, Color color, float lifetime)
