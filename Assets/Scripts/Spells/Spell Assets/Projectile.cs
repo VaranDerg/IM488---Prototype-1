@@ -56,6 +56,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         StartCoroutine(TargetReeval());
         StartCoroutine(TrackLastVelocity());
 
+        Debug.Log("AssignOutline");
+        AssignOutline();
+
         startSize = transform.localScale;
     }
 
@@ -115,7 +118,16 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         owner = tag;
         ObjectPool objectPool = GetComponent<ObjectPool>();
         if (objectPool != null)
+        {
             objectPool.AssignPlayer(owner);
+        }
+            
+    }
+
+    public void AssignOutline()
+    {
+        Debug.Log("AssignOutline");
+        MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<PlasmoVisuals>().AddOutline(gameObject);
     }
 
     public Player GetPlayer()
