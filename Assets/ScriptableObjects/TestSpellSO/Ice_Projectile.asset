@@ -15,7 +15,9 @@ MonoBehaviour:
   SpellName: Block of Ice
   SpellDescription: Periodically push a large block of ice, crushing enemy Plasmos
     who touch it.
+  ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
+  SpellIcon: {fileID: 21300000, guid: 7f64aac807c4f084d850c2e3ce974ce9, type: 3}
   AssociatedPrefab: {fileID: 8170845609202855336, guid: 2b434e8178bbe7d4ca237879f48655d4,
     type: 3}

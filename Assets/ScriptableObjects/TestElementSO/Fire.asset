@@ -20,3 +20,4 @@ MonoBehaviour:
   SoundEffectName: FireSFX
   element: 2
   scalingStats: 00000000
+  ScalingStatName: +DAMAGE

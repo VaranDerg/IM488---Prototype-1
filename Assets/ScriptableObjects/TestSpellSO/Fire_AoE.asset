@@ -15,7 +15,9 @@ MonoBehaviour:
   SpellName: Heatwave
   SpellDescription: Summon a dangerous heatwave around you that slowly melts nearby
     Plasmos.
+  ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
   SpellType: {fileID: 11400000, guid: a395b40b8561bee4e8ea525e76b9b2a6, type: 2}
+  SpellIcon: {fileID: 21300000, guid: 5772ed0e86f32c6489fb2e6261701d68, type: 3}
   AssociatedPrefab: {fileID: 6700097306087382589, guid: 33598978649c7184cb22796cd18c455f,
     type: 3}

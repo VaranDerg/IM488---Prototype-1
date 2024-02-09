@@ -17,5 +17,6 @@ MonoBehaviour:
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
+  SpellIcon: {fileID: 21300000, guid: ddf8c790464a72342b237f4ff195be23, type: 3}
   AssociatedPrefab: {fileID: 8391078800739893117, guid: 5e0127501f5c93749a657f7925262fef,
     type: 3}

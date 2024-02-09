@@ -20,3 +20,4 @@ MonoBehaviour:
   SoundEffectName: IceSFX
   element: 3
   scalingStats: 040000000500000006000000
+  ScalingStatName: +SIZE

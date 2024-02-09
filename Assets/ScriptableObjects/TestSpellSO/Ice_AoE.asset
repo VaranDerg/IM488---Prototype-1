@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellName: Snowstorm
   SpellDescription: Summon a large snowstorm around you, freezing nearby Plasmos.
+  ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: a395b40b8561bee4e8ea525e76b9b2a6, type: 2}
+  SpellIcon: {fileID: 21300000, guid: 7f64aac807c4f084d850c2e3ce974ce9, type: 3}
   AssociatedPrefab: {fileID: 6700097306087382589, guid: 5c12b312d5246c34fb3533e66384db3c,
     type: 3}
