@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Fire_Projectile
   m_EditorClassIdentifier: 
-  SpellName: Fireball
-  SpellDescription: Periodically launch a dangerous ball of Fire in a random direction.
+  SpellName: Fire Augment
+  SpellDescription: Augment your Plasma with Fire, allowing it to drop fiery embers
+    as it travels.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}

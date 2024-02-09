@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Fire_AoE
   m_EditorClassIdentifier: 
-  SpellName: Heatwave
-  SpellDescription: Summon a dangerous heatwave around you that slowly melts nearby
-    Plasmos.
+  SpellName: Ring of Flame
+  SpellDescription: Periodically summon a Fiery Ring around you, burning your opponent
+    on contact and within its radius.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
   SpellType: {fileID: 11400000, guid: a395b40b8561bee4e8ea525e76b9b2a6, type: 2}

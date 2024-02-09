@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Lightning_Dash
   m_EditorClassIdentifier: 
-  SpellName: Speed of Lightning
-  SpellDescription: Dashing summons a lightning bolt in the direction of your movement.
+  SpellName: Lightning Bolt
+  SpellDescription: Dashing fires a lightning bolt behind you that quickly travels
+    to your original position.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}

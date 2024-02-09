@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Ice_Projectile
   m_EditorClassIdentifier: 
-  SpellName: Block of Ice
-  SpellDescription: Periodically push a large block of ice, crushing enemy Plasmos
-    who touch it.
+  SpellName: Ice Augment
+  SpellDescription: Augment your Plasma with Ice, allowing it to grow in size as
+    it travels.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
