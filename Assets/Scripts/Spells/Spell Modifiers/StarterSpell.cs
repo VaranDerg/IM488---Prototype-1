@@ -57,6 +57,7 @@ public class StarterSpell : MonoBehaviour
 
     public void IceMod(GameObject projectileObj)
     {
+        projectileObj.transform.GetChild(0).gameObject.SetActive(true);
         projectileObj.GetComponent<IcePulse>().enabled = true;
     }
 
