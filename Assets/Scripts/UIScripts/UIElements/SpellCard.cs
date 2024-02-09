@@ -49,8 +49,6 @@ public class SpellCard : BaseUIElement
         colorBlock.selectedColor = spell.SpellElement.ElementColor;
         colorBlock.highlightedColor = spell.SpellElement.ElementColor;
         _button.colors = colorBlock;
-
-        GetComponentInChildren<SpellIcon>().SetUpIcon(spell);
     }
 
     /// <summary>
