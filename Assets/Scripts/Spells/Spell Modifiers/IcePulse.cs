@@ -78,7 +78,7 @@ public class IcePulse : MonoBehaviour
         if (!this.isActiveAndEnabled)
             return;
 
-        Debug.Log("scale set");
+        //Debug.Log("scale set");
         transform.localScale = startScale * scaleMult;
     }
 }
