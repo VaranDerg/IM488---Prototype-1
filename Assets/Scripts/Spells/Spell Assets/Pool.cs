@@ -191,12 +191,6 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void AssignPlayer(Player tag)
     {
         owner = tag;
-        AssignOutline();
-    }
-
-    public void AssignOutline()
-    {
-        MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<PlasmoVisuals>().AddOutline(gameObject);
     }
 
     public Player GetPlayer()

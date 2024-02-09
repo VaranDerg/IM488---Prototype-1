@@ -9,11 +9,6 @@ public class MultiplayerManager : MonoBehaviour
     Dictionary<Player, PlayerManager> players = new();
     Dictionary<Player, SpellBoxGameplay> spellboxUI = new();
 
-    [Space]
-    [SerializeField] private Color _p1OutlineColor;
-    [SerializeField] private Color _p2OutlineColor;
-    [SerializeField] private float _outlineSize;
-
     [SerializeField]
     ElementalStatsSO elementalStatsContainer;
 
@@ -86,22 +81,5 @@ public class MultiplayerManager : MonoBehaviour
                 return players[t];
 
         return null;
-    }
-
-    public Color GetColorFromPlayer(Player tag)
-    {
-        switch (tag)
-        {
-            case (Player.one):
-                return _p1OutlineColor;
-            case (Player.two):
-                return _p2OutlineColor;
-        }
-        return Color.white;
-    }
-
-    public float GetOutlineSize()
-    {
-        return _outlineSize;
     }
 }
