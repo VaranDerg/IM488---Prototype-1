@@ -217,8 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cb78686f445f44fa1310694561dc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickAmt: 5
-  tickRate: 0.2
+  tickAmt: 10
+  tickRate: 0.1
+  startActive: 1
   OnTickFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -236,6 +237,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615301249431763084, guid: 4a82b5ee38bdf6049a0b2d391cdf216d, type: 3}
   poolSize: 10
+  InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9053007769370877810
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,6 +59,11 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         startSize = transform.localScale;
     }
 
+    private void Start()
+    {
+        
+    }
+
     #region Collision
     private void OnTriggerEnter(Collider other)
     {
@@ -108,6 +113,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public void AssignPlayer(Player tag)
     {
         owner = tag;
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if (objectPool != null)
+            objectPool.AssignPlayer(owner);
     }
 
     public Player GetPlayer()

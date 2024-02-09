@@ -266,24 +266,13 @@ MonoBehaviour:
   tickRate: 0.001
   tickRateScalar: 1
   damage: 0
+  delayedDetonation: 0
   doSelfDamage: 0
   isPersistent: 1
   _thisSpell: {fileID: 11400000, guid: d030c1ccff10b7a4fb453d278cee8fce, type: 2}
   OnTriggeredEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3405276413526320528}
-        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2252384906625788555}
         m_TargetAssemblyTypeName: Pool, Assembly-CSharp
         m_MethodName: DisableTrigger
@@ -296,6 +285,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3405276413526320528}
+        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTickEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3405276413526320528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,8 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cb78686f445f44fa1310694561dc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickAmt: 3
-  tickRate: 1
+  tickAmt: 10
+  tickRate: 0.1
+  startActive: 1
   OnTickFinish:
     m_PersistentCalls:
       m_Calls:
@@ -339,3 +344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615301249431763084, guid: 150b25e5a0254d8448019f4effd65dba, type: 3}
   poolSize: 10
+  InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
+      m_Calls: []

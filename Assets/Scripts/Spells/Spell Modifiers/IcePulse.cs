@@ -25,10 +25,11 @@ public class IcePulse : MonoBehaviour
     Vector3 startScale;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         startScale = transform.localScale;
         //Debug.Log("Delta Scale: " + deltaScale);
+        //Debug.Log("start");
     }
 
     // Update is called once per frame
@@ -64,6 +65,9 @@ public class IcePulse : MonoBehaviour
 
     public void ResetToMin()
     {
+        if (!this.isActiveAndEnabled)
+            return;
+
         scaleMult = minScale;
         SetScale();
         //Debug.Log("Reset To Min");
@@ -71,6 +75,10 @@ public class IcePulse : MonoBehaviour
 
     private void SetScale()
     {
+        if (!this.isActiveAndEnabled)
+            return;
+
+        Debug.Log("scale set");
         transform.localScale = startScale * scaleMult;
     }
 }

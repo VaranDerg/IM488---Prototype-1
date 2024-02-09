@@ -147,7 +147,8 @@ MonoBehaviour:
   tickRate: 12
   tickRateScalar: 1
   castMethod: 0
-  auraTickRate: 1
+  castDelay: 0
+  auraTickRate: 0.3
   duration: 8
   damage: 1
   minDistance: 0
@@ -168,6 +169,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnAuraEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7269791923590717858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +187,4 @@ MonoBehaviour:
   maxScale: 1.5
   minScale: 0.8
   scaleRate: 1
+  neverShrink: 0

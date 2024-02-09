@@ -187,6 +187,16 @@ public class SpellManager : MonoBehaviour
         return false;
     }
 
+    public TestSpellSO GetPlayerStarterSpell(Player player)
+    {
+        return player switch
+        {
+            (Player.one) => _playerOneSpells[0],
+            (Player.two) => _playerTwoSpells[0],
+            _ => null,
+        };
+    }
+
     /// <summary>
     /// Checks is player entry is valid
     /// </summary>

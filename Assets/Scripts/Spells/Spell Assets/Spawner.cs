@@ -12,17 +12,26 @@ public class Spawner : MonoBehaviour
     float tickRate = 1;
 
     [SerializeField]
+    bool startActive = true;
+
+    [SerializeField]
     UnityEvent OnTickFinish;
 
     ObjectPool pool;
 
+    bool isActive = false;
+
     private void Awake()
     {
         pool = GetComponent<ObjectPool>();
+        isActive = startActive;
     }
 
     public void Spawn()
     {
+        if (!isActive)
+            return;
+
         StartCoroutine(DelayedSpawn());
     }
 
@@ -70,4 +79,9 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void SetActive(bool isActive)
+    {
+        Debug.Log("Set active set: " + isActive);
+        this.isActive = isActive;
+    }
 }
