@@ -171,7 +171,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
         Deactivated.Invoke(this, new PoolableObjectEventArgs(this));
 
-        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.BurstParticles, true, transform, false);
+        //ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.BurstParticles, true, transform, false);
 
         gameObject.SetActive(false);
     }
@@ -232,7 +232,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
             if (!isSelf || (doSelfDamage && isSelf))
             {
                 player.Damage(damage, InvulnTypes.DASHINVULN);
-                Debug.Log("Damage: " + player.name + " | Owner: " + owner);
+                //Debug.Log("Damage: " + player.name + " | Owner: " + owner);
             }
                 
         }

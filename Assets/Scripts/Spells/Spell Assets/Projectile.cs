@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     [SerializeField]
     TestSpellSO _thisSpell;
 
+    [SerializeField]
+    bool soundEnabled = true;
+
     [Header("Stats")]
     [SerializeField]
     TargetType targetType = TargetType.RANDOM;
@@ -293,8 +296,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
             return;
         }
 
-        ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
-        ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
+        //ManagerParent.Instance.Particles.SpawnParticles(_thisSpell.SpellElement.LoopingParticles, false, transform, true);
+        if(soundEnabled)
+            ManagerParent.Instance.Audio.PlaySoundEffect(_thisSpell.SpellElement.SoundEffectName);
     }
 
     public GameObject GetGameObject()
