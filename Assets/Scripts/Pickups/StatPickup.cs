@@ -11,7 +11,9 @@ public class StatPickup : PickupAbstract, IPickup
             pm.GetElementalStats().StartCoroutine(pm.GetElementalStats().
                 TemporaryAddStat(statBuff, GetScriptableObject().PickupValue, GetScriptableObject().PickupDuration));
         }
-        
+
+        //Plays a sound effect
+        ManagerParent.Instance.Audio.PlaySoundEffect("Pickup");
 
         PostPickup();
         Destroy(gameObject);    

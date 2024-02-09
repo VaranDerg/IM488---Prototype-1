@@ -168,6 +168,9 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
         _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
         _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, _visuals.GetDashExpressionTime());
 
+        //Plays a sound effect
+        ManagerParent.Instance.Audio.PlaySoundEffect("Dash");
+
         _moveState = MovementState.Dashing;
         dashCoolingDown = true;
 
