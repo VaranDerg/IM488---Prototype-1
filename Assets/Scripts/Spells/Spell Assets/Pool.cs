@@ -277,7 +277,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
         objectsInPool.Add(other.gameObject);
 
-        Debug.Log("Object added to " + gameObject.name + ": " + other.gameObject.name);
+        //Debug.Log("Object added to " + gameObject.name + ": " + other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)

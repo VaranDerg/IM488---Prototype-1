@@ -277,7 +277,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     protected virtual void OnPlayerCollision(Collider other)
     {
         other.GetComponent<PlayerManager>().Damage(scaledProjectileDamage, InvulnTypes.FULLINVULN);
-        Debug.Log("Damage: " + other.GetComponent<PlayerManager>().name + " | Owner: " + owner);
+        //Debug.Log("Damage: " + other.GetComponent<PlayerManager>().name + " | Owner: " + owner);
     }
 
     protected virtual void OnEnvironmentCollision(Collider other)
