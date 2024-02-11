@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 455922391498348}
   - component: {fileID: 455922391498351}
   m_Layer: 0
-  m_Name: PortalMain
+  m_Name: Portal_NoVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
