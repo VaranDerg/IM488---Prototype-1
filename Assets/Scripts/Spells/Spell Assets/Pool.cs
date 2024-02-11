@@ -54,9 +54,11 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     Vector3 scaledPoolSize = Vector3.one;
     float scaledPoolDamage = 1;
+    private Outline _playerOutline;
 
     private void Awake()
     {
+        
         startSize = transform.localScale;
     }
 
@@ -191,6 +193,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     public void AssignPlayer(Player tag)
     {
         owner = tag;
+        AssignOutline();
     }
 
     public Player GetPlayer()
@@ -200,8 +203,18 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
     public void AssignOutline()
     {
-        Debug.Log("AssignOutline");
-        MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
+        //MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
+
+        _playerOutline = gameObject.AddComponent<Outline>();
+        try
+        {
+            _playerOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(owner);
+            _playerOutline.OutlineWidth = MultiplayerManager.Instance.GetOutlineSize();
+        }
+        catch
+        {
+
+        }
     }
 
     private Vector3 GetSpawnPosition()

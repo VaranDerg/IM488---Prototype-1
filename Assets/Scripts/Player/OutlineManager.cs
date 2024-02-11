@@ -27,7 +27,7 @@ public class OutlineManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log("OUTLINE ERROR");
+            
         }
 
 
