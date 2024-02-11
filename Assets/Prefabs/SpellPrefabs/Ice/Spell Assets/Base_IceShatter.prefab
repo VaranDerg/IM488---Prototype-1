@@ -274,9 +274,9 @@ MonoBehaviour:
   OnTriggeredEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2252384906625788555}
-        m_TargetAssemblyTypeName: Pool, Assembly-CSharp
-        m_MethodName: DisableTrigger
+      - m_Target: {fileID: 3405276413526320528}
+        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
+        m_MethodName: Spawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -286,9 +286,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3405276413526320528}
-        m_TargetAssemblyTypeName: Spawner, Assembly-CSharp
-        m_MethodName: Spawn
+      - m_Target: {fileID: 2252384906625788555}
+        m_TargetAssemblyTypeName: Pool, Assembly-CSharp
+        m_MethodName: DisableTrigger
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -152,6 +152,8 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     {
         gameObject.SetActive(true);
 
+        GetComponent<Collider>().enabled = true;
+
         Scale();
 
         timeTillNextTick = startDelay;
