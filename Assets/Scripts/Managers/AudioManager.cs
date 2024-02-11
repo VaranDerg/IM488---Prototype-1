@@ -167,6 +167,11 @@ public class AudioManager : MonoBehaviour
         _currentMusic = a;
     }
 
+    public void StopCurrentMusic()
+    {
+        _currentMusic.Source.Stop();
+    }
+
     public AudioFile GetMusic(string name)
     {
         foreach (AudioFile af in _music)

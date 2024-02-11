@@ -135,6 +135,8 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     /// <param name="context"></param>
     public void MoveInput(InputAction.CallbackContext context)
     {
+        if (ManagerParent.Instance.Game.PlayerHasWonRound)
+            return;
         _inputDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
 
         //The player will play their walking animation whenever the inputdirection is not vector3.zero
@@ -165,6 +167,9 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
         //Plays a dash animation and changes the plasmo's expression when they dash.
         _visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Dash);
         _visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Happy, _visuals.GetDashExpressionTime());
+
+        //Plays a sound effect
+        ManagerParent.Instance.Audio.PlaySoundEffect("Dash");
 
         _moveState = MovementState.Dashing;
         dashCoolingDown = true;

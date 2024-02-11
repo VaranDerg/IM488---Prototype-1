@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Team2
-  productName: Plasma Fusion
+  companyName: TEAM 2
+  productName: PLASMA FUSION
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -275,7 +275,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 7f64aac807c4f084d850c2e3ce974ce9, type: 3}
+      m_Icon: {fileID: 2800000, guid: 263546f249ad5924597a45753399c3b7, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

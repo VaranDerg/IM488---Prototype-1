@@ -16,6 +16,7 @@ public class TestSpellSO : ScriptableObject
     [Space]
     public TestElementSO SpellElement;
     public TestSpellTypeSO SpellType;
+    public Sprite SpellIcon;
     [Space]
     [SerializeField] private GameObject AssociatedPrefab;
 

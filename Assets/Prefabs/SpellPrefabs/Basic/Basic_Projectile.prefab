@@ -70,6 +70,9 @@ MonoBehaviour:
   poolSize: 2
   InstantiationEvent:
     m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2279134267131737379}
         m_TargetAssemblyTypeName: StarterSpell, Assembly-CSharp

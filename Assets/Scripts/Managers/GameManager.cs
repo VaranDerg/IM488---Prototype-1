@@ -79,6 +79,10 @@ public class GameManager : MonoBehaviour
     {
         PlayerHasWonRound = true;
 
+        //Play sound effect
+        ManagerParent.Instance.Audio.StopCurrentMusic();
+        ManagerParent.Instance.Audio.PlaySoundEffect("WinJingle");
+
         if (player == 1)
         {
             _playerOneScore++;

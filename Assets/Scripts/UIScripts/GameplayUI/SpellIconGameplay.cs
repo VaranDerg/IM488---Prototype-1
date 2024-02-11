@@ -18,7 +18,7 @@ public class SpellIconGameplay : MonoBehaviour
     /// <returns>Returns the icon to easily reference its progress bar.</returns>
     public SpellIconGameplay PrepareSpellIcon(TestSpellSO spell)
     {
-        _icon.sprite = spell.SpellType.SpellTypeIcon;
+        _icon.sprite = spell.SpellIcon;
         //temp
         _icon.color = spell.SpellElement.ElementColor;
         //endtempt

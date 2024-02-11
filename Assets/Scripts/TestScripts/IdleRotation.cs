@@ -6,15 +6,16 @@ using UnityEngine;
 /// Author: Liz
 /// Description: Rotates an object
 /// </summary>
-public class TestObjectRotate : MonoBehaviour
+public class IdleRotation : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed;
+    [SerializeField] private Vector3 _rotateAngleNormalized = Vector3.forward;
 
     /// <summary>
     /// Rotation
     /// </summary>
     private void Update()
     {
-        transform.Rotate(Vector3.forward * _rotateSpeed * Time.deltaTime, Space.Self);
+        transform.Rotate(_rotateAngleNormalized * _rotateSpeed * Time.deltaTime, Space.Self);
     }
 }
