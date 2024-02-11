@@ -47,6 +47,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     private Vector3 lastVelocity;
 
     public event IPoolableObject.DeactivationHandler Deactivated;
+    private Outline _playerOutline;
 
     public UnityEvent OnLaunchEvent;
 
@@ -55,6 +56,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     private void Awake()
     {
+        
         rb = GetComponent<Rigidbody>();
         StartCoroutine(TargetReeval());
         StartCoroutine(TrackLastVelocity());
@@ -119,11 +121,28 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         ObjectPool objectPool = GetComponent<ObjectPool>();
         if (objectPool != null)
             objectPool.AssignPlayer(owner);
+
+        AssignOutline();
     }
 
     public Player GetPlayer()
     {
         return owner;
+    }
+
+    public void AssignOutline()
+    {
+        //MultiplayerManager.Instance.GetPlayer(owner).gameObject.GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
+        _playerOutline = gameObject.AddComponent<Outline>();
+        try
+        {
+            _playerOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(owner);
+            _playerOutline.OutlineWidth = MultiplayerManager.Instance.GetOutlineSize();
+        }
+        catch
+        {
+
+        }
     }
 
     private void Launch()

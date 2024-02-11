@@ -12,6 +12,11 @@ public class MultiplayerManager : MonoBehaviour
     [SerializeField]
     ElementalStatsSO elementalStatsContainer;
 
+    [Space]
+    [SerializeField] private Color _p1OutlineColor;
+    [SerializeField] private Color _p2OutlineColor;
+    [SerializeField] private float _outlineSize;
+
     bool p1Assigned = false;
 
     bool p2Assigned = false;
@@ -81,5 +86,25 @@ public class MultiplayerManager : MonoBehaviour
                 return players[t];
 
         return null;
+    }
+    public Color GetColorFromPlayer(Player tag)
+    {
+        if(tag == Player.two)
+        {
+            Debug.Log("HEY");
+        }
+        switch (tag)
+        {
+            case (Player.one):
+                return _p1OutlineColor;
+            case (Player.two):
+                return _p2OutlineColor;
+        }
+        return Color.white;
+    }
+
+    public float GetOutlineSize()
+    {
+        return _outlineSize;
     }
 }
