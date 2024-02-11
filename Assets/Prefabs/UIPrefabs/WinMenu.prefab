@@ -120,7 +120,27 @@ PrefabInstance:
     - target: {fileID: 8951414621037726343, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
         type: 3}
       propertyPath: m_text
-      value: Player X is Victorious.
+      value: Player X is Victorious!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414621037726343, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414621037726343, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414621037726343, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414621037726343, guid: 35b542a5d035ff849a8bdf4f7d7f741f,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b542a5d035ff849a8bdf4f7d7f741f, type: 3}
@@ -287,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuPages:
   - {fileID: 8053804343501516437}
+  firstSelected: {fileID: 0}
   _playerWinText: {fileID: 6370065235764682539}
 --- !u!1001 &6559061583839628158
 PrefabInstance:
