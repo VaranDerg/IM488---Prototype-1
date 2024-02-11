@@ -198,6 +198,12 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
         return owner;
     }
 
+    public void AssignOutline()
+    {
+        Debug.Log("AssignOutline");
+        MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
+    }
+
     private Vector3 GetSpawnPosition()
     {
         switch (spawnType)
@@ -231,7 +237,7 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
 
             if (!isSelf || (doSelfDamage && isSelf))
             {
-                player.Damage(damage, InvulnTypes.DASHINVULN);
+                player.Damage(damage, InvulnTypes.FULLINVULN);
                 //Debug.Log("Damage: " + player.name + " | Owner: " + owner);
             }
                 

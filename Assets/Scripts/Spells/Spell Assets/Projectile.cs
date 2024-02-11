@@ -126,6 +126,12 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         return owner;
     }
 
+    public void AssignOutline()
+    {
+        Debug.Log("AssignOutline");
+        MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
+    }
+
     private void Launch()
     {
         SpeedVariance();

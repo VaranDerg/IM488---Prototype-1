@@ -1790,6 +1790,7 @@ GameObject:
   - component: {fileID: 2135304848660770351}
   - component: {fileID: 1633989319977723792}
   - component: {fileID: 1450428817285273774}
+  - component: {fileID: 1480218003839211423}
   m_Layer: 0
   m_Name: PlayerVisuals
   m_TagString: Untagged
@@ -1892,6 +1893,18 @@ MonoBehaviour:
   _eyeHappy: {fileID: 576749091255890577}
   _eyeAngry: {fileID: 4758460183527083938}
   _eyeSad: {fileID: 4846713880890839175}
+--- !u!114 &1480218003839211423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103421787447225271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1480855b1db311428f392367ec39423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8848172394152725571
 GameObject:
   m_ObjectHideFlags: 0
