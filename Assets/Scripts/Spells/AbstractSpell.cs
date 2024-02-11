@@ -54,7 +54,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     public void DelayedStartAura()
     {
-        StartCoroutine(DelayedAura());
+        if(isActiveAndEnabled)
+            StartCoroutine(DelayedAura());
     }
 
     IEnumerator DelayedAura()
