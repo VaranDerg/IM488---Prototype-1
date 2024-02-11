@@ -53,7 +53,7 @@ MonoBehaviour:
     Loop: 1
     Source: {fileID: 0}
   - Name: PickAndChoose
-    Clip: {fileID: 8300000, guid: 02b5a42aa00d46b41af1b907b7149411, type: 3}
+    Clip: {fileID: 8300000, guid: 2c7f0ae422ec2ae4e9ca790faa7fbab9, type: 3}
     Volume: 1
     Pitch: 1
     PitchDeviation: 0
