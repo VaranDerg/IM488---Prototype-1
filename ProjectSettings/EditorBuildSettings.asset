@@ -51,6 +51,24 @@ EditorBuildSettings:
     path: Assets/Scenes/ArenasInGame/Arena11_Nabil.unity
     guid: 8950a320163986241bb3216951ae0f9f
   - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena12_Nate.unity
+    guid: 4749763f5e78bda4ba8f6894c34a1cbd
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena13_Nate.unity
+    guid: 09c5d742e6ba3f14b807fdd08920d893
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena14_Nate.unity
+    guid: 8ef358fac90c554458068fc3927baa4a
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena15_Nate.unity
+    guid: cd15db7889870fb4d88a3c1e03c2bfae
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena16_Nate.unity
+    guid: 7dd99bc880c586d4dbf53a43905fbacf
+  - enabled: 1
+    path: Assets/Scenes/ArenasInGame/Arena17_Nate.unity
+    guid: 5dd6ea6ac38a60c429d4553ad6d23a16
+  - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 6e0059d68c025e94eaca8c95296991ef
   m_configObjects: {}
