@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _music:
   - Name: PureEnergy
-    Clip: {fileID: 8300000, guid: 8617389774376754c90fa634dbd96ae4, type: 3}
+    Clip: {fileID: 8300000, guid: 155c1cf6c1c2e684a8ab1a64116fe6d2, type: 3}
     Volume: 1
     Pitch: 1
     PitchDeviation: 0
@@ -59,24 +59,80 @@ MonoBehaviour:
     PitchDeviation: 0
     Loop: 1
     Source: {fileID: 0}
+  - Name: TremblingAnticipation
+    Clip: {fileID: 8300000, guid: 657f1b6bb6cf57f4fa774e263fb82d67, type: 3}
+    Volume: 1
+    Pitch: 1
+    PitchDeviation: 0
+    Loop: 1
+    Source: {fileID: 0}
   _soundEffects:
   - Name: FireSFX
     Clip: {fileID: 8300000, guid: 042efc939829fd4478fd60d179992004, type: 3}
-    Volume: 1
+    Volume: 0.9
     Pitch: 1
     PitchDeviation: 0.1
     Loop: 0
     Source: {fileID: 0}
   - Name: IceSFX
     Clip: {fileID: 8300000, guid: ce54ba8301136e14f8b690d84470bbaa, type: 3}
-    Volume: 0.8
+    Volume: 0.7
     Pitch: 1
     PitchDeviation: 0.1
     Loop: 0
     Source: {fileID: 0}
   - Name: LightningSFX
     Clip: {fileID: 8300000, guid: 7935041951a3e4648b4f56b97c71fedb, type: 3}
+    Volume: 0.7
+    Pitch: 1
+    PitchDeviation: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: HeavyHit
+    Clip: {fileID: 8300000, guid: 49db8dc9c9c7ba348abf5ba6c5ccd12f, type: 3}
+    Volume: 0.4
+    Pitch: 1
+    PitchDeviation: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: LightHit
+    Clip: {fileID: 8300000, guid: 40fa6b495ebaf8342a8c0d216c460a64, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    PitchDeviation: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: MenuClick
+    Clip: {fileID: 8300000, guid: f1bd181c0ae396c4199df3e16a2f34c0, type: 3}
     Volume: 0.8
+    Pitch: 1
+    PitchDeviation: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: WinJingle
+    Clip: {fileID: 8300000, guid: 777fd25a0b36fe24cbaf4eed92efa385, type: 3}
+    Volume: 0.8
+    Pitch: 1
+    PitchDeviation: 0
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: BasicProjectile
+    Clip: {fileID: 8300000, guid: 708c72129c48c044d911eea20c73585c, type: 3}
+    Volume: 0.65
+    Pitch: 1
+    PitchDeviation: 0.15
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Dash
+    Clip: {fileID: 8300000, guid: aa20dd8033920ea40b69f7e1066bd5b9, type: 3}
+    Volume: 0.7
+    Pitch: 1
+    PitchDeviation: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Pickup
+    Clip: {fileID: 8300000, guid: aa20dd8033920ea40b69f7e1066bd5b9, type: 3}
+    Volume: 0.9
     Pitch: 1
     PitchDeviation: 0.1
     Loop: 0
@@ -89,7 +145,7 @@ MonoBehaviour:
   - SceneBuildIndex: 0
     MusicToPlay: PickAndChoose
   - SceneBuildIndex: 1
-    MusicToPlay: PureEnergy
+    MusicToPlay: TremblingAnticipation
   - SceneBuildIndex: 2
     MusicToPlay: PickAndChoose
   - SceneBuildIndex: 3
@@ -117,4 +173,4 @@ MonoBehaviour:
   - SceneBuildIndex: 14
     MusicToPlay: PureEnergy
   - SceneBuildIndex: 15
-    MusicToPlay: PickAndChoose
+    MusicToPlay: TremblingAnticipation

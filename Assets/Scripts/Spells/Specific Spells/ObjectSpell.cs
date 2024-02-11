@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectSpell : AbstractSpell
 {
+    [SerializeField]
+    bool soundEnabled = true;
 
     ObjectPool pool;
 
@@ -34,8 +36,9 @@ public class ObjectSpell : AbstractSpell
             return;
         }
 
-        ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, puddle.transform, true);
-        ManagerParent.Instance.Audio.PlaySoundEffect(GetScriptableObject().SpellElement.SoundEffectName);
+        //ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, puddle.transform, true);
+        if(soundEnabled)
+            ManagerParent.Instance.Audio.PlaySoundEffect(GetScriptableObject().SpellElement.SoundEffectName);
     }
 
     protected override void AuraTick()

@@ -75,7 +75,24 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
         foreach (TestSpellSO spell in ManagerParent.Instance.Spells.GetSpellListFromPlayer(PlayerTag))
         {
             AttachSpell(spell.GetPrefab());
+            if(spell.SpellType.SpellTypeName == "Projectile")
+            {
+                AttachProjectileSpell(spell);
+            }
         }
+    }
+
+    private void AttachProjectileSpell(TestSpellSO spell)
+    {
+        Transform firstSpell = _spellAttachPoint.transform.GetChild(0);
+
+        if (firstSpell == null)
+            return;
+
+        //ProjectileSpell projectileSpell = firstSpell.GetComponent<ProjectileSpell>();
+        StarterSpell starterSpell = firstSpell.GetComponent<StarterSpell>();
+        starterSpell.ApplyElement(spell.SpellElement.element);
+        //Debug.Log("Projectile: " + projectileSpell.name);
     }
 
     public void SpawnText(string text, Color color, float lifetime)

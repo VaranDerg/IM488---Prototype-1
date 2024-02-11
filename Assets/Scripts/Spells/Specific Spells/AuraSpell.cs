@@ -6,6 +6,9 @@ using UnityEngine.Events;
 public class AuraSpell : AbstractSpell
 {
     [SerializeField]
+    bool soundEnabled = true;
+
+    [SerializeField]
     float auraTickRate;
 
     [SerializeField]
@@ -124,8 +127,9 @@ public class AuraSpell : AbstractSpell
 
         DisableParticles();
 
-        _currentParticles = ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, transform, true);
-        ManagerParent.Instance.Audio.PlaySoundEffect(GetScriptableObject().SpellElement.SoundEffectName);
+        //_currentParticles = ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, transform, true);
+        if(soundEnabled)
+            ManagerParent.Instance.Audio.PlaySoundEffect(GetScriptableObject().SpellElement.SoundEffectName);
     }
 
     private void DisableParticles()
@@ -146,7 +150,7 @@ public class AuraSpell : AbstractSpell
 
         GetComponent<Collider>().enabled = false;
 
-        ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.BurstParticles, true, transform, false);
+        //ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.BurstParticles, true, transform, false);
 
         DisableParticles();
 

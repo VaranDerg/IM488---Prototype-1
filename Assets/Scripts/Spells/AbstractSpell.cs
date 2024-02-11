@@ -77,6 +77,9 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
         }
 
         AuraTick();
+
+        if(!data.ExcludeFromUI)
+            MultiplayerManager.Instance.GetPlayerSpellbox(owner).UpdateSpellIconBar(data, Mathf.Clamp01(timeTillNextTick / tickRate));
     }
 
     private void Start()

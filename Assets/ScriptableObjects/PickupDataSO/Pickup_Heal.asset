@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Pickup_Heal
   m_EditorClassIdentifier: 
   PickupName: Health
-  PickupColor: {r: 0.14185381, g: 1, b: 0, a: 1}
+  PickupColor: {r: 0.08657048, g: 0.6132076, b: 0, a: 1}
   PopupText: HP+
   PickupValue: 1
+  PickupDuration: 0
+  StatBuff: 

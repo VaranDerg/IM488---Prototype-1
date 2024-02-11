@@ -51,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage, InvulnTypes invulnType)
     {  
         _currentHealth -= damage;
+
         if(invulnType == InvulnTypes.FULLINVULN)
         {
             //Plays hurt animation.
@@ -60,7 +61,15 @@ public class PlayerHealth : MonoBehaviour
             visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Sad, visuals.GetHurtExpressionTime());
             visuals.SetIFrameTime(_damageIFrameLength);
 
+            //Plays sound.
+            ManagerParent.Instance.Audio.PlaySoundEffect("HeavyHit");
+
             StartCoroutine(DamageIFrameProcess());
+        }
+        else
+        {
+            //Plays light sound.
+            ManagerParent.Instance.Audio.PlaySoundEffect("LightHit");
         }
 
         SetHPWheelValue();
@@ -166,6 +175,7 @@ public class PlayerHealth : MonoBehaviour
     public void StopPlayerAndSpellsOnDeath()
     {
         GetComponent<PlayerManager>().GetPlayerController().StopVelocity();
+        GetComponent<Controller>().enabled = false;
         GetComponent<PlayerManager>().GetPlayerController().enabled = false;
         GetComponent<PlayerManager>().DisableAssociatedSpells();
     }

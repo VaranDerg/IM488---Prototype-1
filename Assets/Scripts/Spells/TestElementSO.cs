@@ -15,4 +15,5 @@ public class TestElementSO : ScriptableObject
     [Space]
     public Elements.SpellElement element;
     public List<ScalableStat> scalingStats;
+    public string ScalingStatName;
 }

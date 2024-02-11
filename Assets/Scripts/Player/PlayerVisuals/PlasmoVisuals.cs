@@ -280,4 +280,10 @@ public class PlasmoVisuals : MonoBehaviour
     {
         return _hurtExpressionTime;
     }
+
+    [ContextMenu("Red")]
+    private void BecomeRed()
+    {
+        SetGlowColor(Color.red);
+    }
 }

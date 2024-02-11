@@ -32,6 +32,13 @@ public class PickupManager : MonoBehaviour
     void SpawnObjectAtRandomLocation()
     {
         GameObject rngLoc = RandomLocation();
+
+        if (rngLoc == null)
+        {
+            //Prevents an NRE
+            return;
+        }
+
         GameObject newPickup = Instantiate(RandomPickup(), rngLoc.transform.position + _spawnOffset, Quaternion.identity);
         rngLoc.GetComponent<PickupLocation>().SetCurrentPickup(newPickup);
     }
@@ -72,6 +79,13 @@ public class PickupManager : MonoBehaviour
             lastSpawnLocation = spawnLoc.transform.position;
             return spawnLoc;
         }
+
+        if (_spawnPoints.Count < 1)
+        {
+            //Added this to prevent an NRE that would occur due to improper pickup spawn locations.
+            return null;
+        }
+
         return _spawnPoints[Random.Range(0, _spawnPoints.Count)].gameObject;
     }
 }

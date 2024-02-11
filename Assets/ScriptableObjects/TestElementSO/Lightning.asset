@@ -20,3 +20,4 @@ MonoBehaviour:
   SoundEffectName: LightningSFX
   element: 4
   scalingStats: 03000000
+  ScalingStatName: +SPEED
