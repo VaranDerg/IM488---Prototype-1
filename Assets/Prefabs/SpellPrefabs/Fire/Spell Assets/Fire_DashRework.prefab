@@ -129,7 +129,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.48
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2549639586257327571
 MonoBehaviour:
@@ -143,33 +143,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be342a76182952e49b34a731597ef7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 0d1d9354e9329854bb71a2e0ea5f103a, type: 2}
-  tickRate: 0
-  tickRateScalar: 0
+  data: {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
+  tickRate: 1
+  tickRateScalar: 1
   castMethod: 1
   castDelay: 0.1
   soundEnabled: 1
-  auraTickRate: 0.2
+  auraTickRate: 0.05
   duration: 1
-  damage: 1.5
-  minDistance: 0.5
+  damage: 2
+  minDistance: 0.3
   scaleMinDistanceWithSize: 1
   auraRenderer: {fileID: 5863230248673672758}
   OnAuraStart:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnAuraEnd:
     m_PersistentCalls:
       m_Calls: []
