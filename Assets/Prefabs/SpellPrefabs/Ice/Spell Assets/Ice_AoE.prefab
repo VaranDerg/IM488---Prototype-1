@@ -130,7 +130,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3804905776297591358
 MonoBehaviour:
@@ -174,6 +174,9 @@ MonoBehaviour:
   OnAuraEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnObjectEnter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7269791923590717858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb5b032c41a4584a969dabb5c3e984d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: 1.5
-  minScale: 0.8
+  maxScale: 1.2
+  minScale: 0.6
   scaleRate: 1
   neverShrink: 0
 --- !u!1001 &7024373686340935898

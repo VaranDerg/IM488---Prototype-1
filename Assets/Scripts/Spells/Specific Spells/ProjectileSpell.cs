@@ -55,4 +55,24 @@ public class ProjectileSpell : AbstractSpell
     {
         
     }
+
+    public void LightningAura()
+    {
+        StartCoroutine(DelayedLightning());
+    }
+
+    IEnumerator DelayedLightning()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.15f);
+
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnProjectile();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
 }
