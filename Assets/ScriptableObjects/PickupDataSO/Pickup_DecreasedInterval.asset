@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Pickup_DecreasedInterval
   m_EditorClassIdentifier: 
   PickupName: Interval Decrease
-  PickupColor: {r: 1, g: 0, b: 0.43605566, a: 1}
-  PopupText: Interval-
+  PickupColor: {r: 1, g: 0.5896226, b: 0.9195339, a: 1}
+  PopupText: Cooldowns-
   PickupValue: 1
   PickupDuration: 5
   StatBuff: 02000000

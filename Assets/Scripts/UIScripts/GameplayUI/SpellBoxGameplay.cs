@@ -31,6 +31,18 @@ public class SpellBoxGameplay : BaseUIElement
     {
         _playerText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + _whichPlayer;
 
+        Color textColor;
+        if (_whichPlayer == 1)
+        {
+            textColor = MultiplayerManager.Instance.GetColorFromPlayer(Player.one);
+        }
+        else
+        {
+            textColor = MultiplayerManager.Instance.GetColorFromPlayer(Player.two);
+        }
+
+        _playerText.color = textColor;
+
         SpellManager psm = ManagerParent.Instance.Spells;
         List<TestSpellSO> playerSpells;
         if (_whichPlayer == 1)
