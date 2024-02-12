@@ -53,13 +53,15 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlaySceneMusic();
-
-
     }
 
     public void PlaySceneMusic()
     {
-        PlayMusic(_sceneMusic[SceneTransitions.Instance.GetBuildIndex()]);
+        int scene = SceneTransitions.Instance.GetBuildIndex();
+        string music = _sceneMusic[scene];
+        Debug.Log($"Playing {music} for scene {scene}.");
+
+        PlayMusic(_sceneMusic[scene]);
     }
 
     /// <summary>

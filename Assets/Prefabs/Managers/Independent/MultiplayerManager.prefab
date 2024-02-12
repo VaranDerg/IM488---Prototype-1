@@ -47,5 +47,5 @@ MonoBehaviour:
   elementalStatsContainer: {fileID: 11400000, guid: 7991694fb2bb35d4b837e3aaa6c09318,
     type: 2}
   _p1OutlineColor: {r: 0.64401007, g: 0, b: 1, a: 1}
-  _p2OutlineColor: {r: 1, g: 0.5261965, b: 0, a: 1}
+  _p2OutlineColor: {r: 1, g: 0.8644681, b: 0, a: 1}
   _outlineSize: 7
