@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Ice_Object
   m_EditorClassIdentifier: 
-  SpellName: Shattershard
-  SpellDescription: Periodically place a pillar that launches ice shards when any
+  SpellName: Glacier
+  SpellDescription: Periodically summon a glacier that launches ice shards when any
     plasmo is near. These shards only damage your opponent.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
