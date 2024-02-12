@@ -67,3 +67,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615301249431763084, guid: ecb22d55214956441a0de93f8ef12679, type: 3}
   poolSize: 3
+  InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
+      m_Calls: []

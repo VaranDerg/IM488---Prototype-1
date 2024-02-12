@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
-  tickRate: 1
-  tickRateScalar: 1
+  tickRate: 0
+  tickRateScalar: 0
   castMethod: 1
-  objPrefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c,
-    type: 3}
+  castDelay: 0
+  soundEnabled: 1
 --- !u!114 &-8660481493959898637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +65,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c, type: 3}
   poolSize: 3
+  InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
+      m_Calls: []

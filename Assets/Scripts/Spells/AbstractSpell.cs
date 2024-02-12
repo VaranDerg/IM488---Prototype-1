@@ -54,7 +54,8 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 
     public void DelayedStartAura()
     {
-        StartCoroutine(DelayedAura());
+        if(isActiveAndEnabled)
+            StartCoroutine(DelayedAura());
     }
 
     IEnumerator DelayedAura()
@@ -86,7 +87,7 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
     {
         // Delays the first tick by the tickRate in seconds
         timeTillNextTick = tickRate;
-        scaledTickRateScalar = tickRate;
+        scaledTickRateScalar = tickRateScalar;
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
 

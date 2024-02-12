@@ -51,7 +51,7 @@ public class UniversalInputManager : MonoBehaviour
         if (devices[0] == null)
             return false;
 
-        return devices[0].displayName == "Mouse";
+        return devices[0].displayName == "Mouse" || devices[0].displayName == "Keyboard";
     }
 
     public void Nothing()

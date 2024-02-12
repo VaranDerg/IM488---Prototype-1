@@ -25,9 +25,11 @@ public class ElementalStats : MonoBehaviour
     {
         Player player = GetComponent<PlayerManager>().PlayerTag;
         List<TestSpellSO> spellList = ManagerParent.Instance.Spells.GetSpellListFromPlayer(player);
-
+        
         foreach (TestSpellSO spell in spellList)
             AddElementStat(spell.SpellElement.element);
+
+        hasStatsBeenAdded = true;
     }
 
     /// <summary>
@@ -38,14 +40,13 @@ public class ElementalStats : MonoBehaviour
     {
         if (hasStatsBeenAdded)
             return;
-
+        //Debug.Log("Adding Stat: " + element);
         //Debug.Log("Adding elemental stats for " + gameObject.name);
         foreach (ScalableStat stat in elementalStatsSO.GetElementStats(element))
         {
             playerStats[stat] += elementalStatsSO.GetStatScalar(stat);
             //Debug.Log("" + stat + ": " + playerStats[stat]);
         }
-        hasStatsBeenAdded = true;
     }
 
     /// <summary>
@@ -67,7 +68,7 @@ public class ElementalStats : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TemporaryAddStat(ScalableStat stat,float amt,float duration)
     {
-        Debug.Log("Stat: " + stat + " amount: " + amt + " duration: " + duration);
+        //Debug.Log("Stat: " + stat + " amount: " + amt + " duration: " + duration);
         AddStat(stat, amt);
         yield return new WaitForSeconds(duration);
         Debug.Log(playerStats[stat]);
@@ -76,7 +77,8 @@ public class ElementalStats : MonoBehaviour
 
     public float GetStat(ScalableStat stat)
     {
-        //Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat + " | Value : " + playerStats[stat]);
+        //if(stat != ScalableStat.MOVE_SPEED)
+          //  Debug.Log("Getting elemental stat for " + gameObject.name + " | Stat: " + stat + " | Value : " + playerStats[stat]);
         return playerStats[stat];
     }
 

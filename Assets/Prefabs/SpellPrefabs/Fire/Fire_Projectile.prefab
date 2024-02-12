@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b64b24589e9daf747a6c1f6c66fd152b, type: 2}
-  tickRate: 2
+  tickRate: 3
   tickRateScalar: 1
   castMethod: 0
-  projectilePrefab: {fileID: 1615301249431763084, guid: 41150a7346349b54797bc41f055cf95e,
-    type: 3}
+  castDelay: 0
+  OnStartAuraEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6077482934170460748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +67,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615301249431763084, guid: 41150a7346349b54797bc41f055cf95e, type: 3}
   poolSize: 3
+  InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -44,7 +44,7 @@ public class MultiplayerManager : MonoBehaviour
         if (p1Assigned && p2Assigned)
         {
             InitializeElementalStats();
-
+            //Debug.Log("Elemental Stats Initialized");
             //ManagerParent.Instance.Spells.AssignStarterSpellToPlayers();
         }
             
