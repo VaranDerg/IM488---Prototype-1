@@ -205,7 +205,15 @@ public class Pool : MonoBehaviour, IScalable, IPoolableObject
     {
         //MultiplayerManager.Instance.GetPlayer(owner).GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
 
-        _playerOutline = gameObject.AddComponent<Outline>();
+        if (!gameObject.GetComponent<Outline>())
+        {
+            _playerOutline = gameObject.AddComponent<Outline>();
+        }
+        else
+        {
+            _playerOutline = GetComponent<Outline>();
+        }
+
         try
         {
             _playerOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(owner);

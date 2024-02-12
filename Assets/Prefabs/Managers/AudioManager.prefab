@@ -142,45 +142,24 @@ MonoBehaviour:
   _soundEffectGroup: {fileID: 3221184055220460722, guid: aaa32dc9e45560944bad60b42c5545fd,
     type: 2}
   _sceneMusic:
-  - SceneBuildIndex: 0
-    MusicToPlay: PickAndChoose
-  - SceneBuildIndex: 1
-    MusicToPlay: TremblingAnticipation
-  - SceneBuildIndex: 2
-    MusicToPlay: PickAndChoose
-  - SceneBuildIndex: 3
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 4
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 5
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 6
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 7
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 8
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 9
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 10
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 11
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 12
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 13
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 14
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 16
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 17
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 18
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 19
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 20
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 21
-    MusicToPlay: TremblingAnticipation
+  - PickAndChoose
+  - TremblingAnticipation
+  - PickAndChoose
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - TremblingAnticipation

@@ -133,7 +133,15 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     public void AssignOutline()
     {
         //MultiplayerManager.Instance.GetPlayer(owner).gameObject.GetComponentInChildren<OutlineManager>().AddOutline(gameObject);
-        _playerOutline = gameObject.AddComponent<Outline>();
+        if (!gameObject.GetComponent<Outline>())
+        {
+            _playerOutline = gameObject.AddComponent<Outline>();
+        }
+        else
+        {
+            _playerOutline = GetComponent<Outline>();
+        }
+
         try
         {
             _playerOutline.OutlineColor = MultiplayerManager.Instance.GetColorFromPlayer(owner);
