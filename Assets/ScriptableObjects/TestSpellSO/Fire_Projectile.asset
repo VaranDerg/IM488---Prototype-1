@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Fire_Projectile
   m_EditorClassIdentifier: 
-  SpellName: Fireball Augment
+  SpellName: Fireball
   SpellDescription: Periodically launch a dangerous fireball, while also causing
     your Plasma to drop hot Embers.
   ExcludeFromUI: 0
