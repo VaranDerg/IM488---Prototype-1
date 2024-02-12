@@ -224,13 +224,18 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         Destroy(gameObject);
     }
 
-    private IEnumerator TrackLastVelocity()
+/*    private IEnumerator TrackLastVelocity()
     {
         while(canBounce)
         {
             yield return new WaitForEndOfFrame();
-            lastVelocity = rb.velocity;
+            //lastVelocity = rb.velocity;
         }
+    }*/
+
+    private void LateUpdate()
+    {
+        lastVelocity = rb.velocity;
     }
 
     public void TeleportTo(Vector3 newLoc)
@@ -240,6 +245,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     public void BounceOffSurface(Collider wall)
     {
+        
         Vector3 closestPoint = Physics.ClosestPoint(transform.position, wall.gameObject.GetComponent<Collider>(),wall.transform.position,wall.transform.rotation);
 
         Vector3 dir = (closestPoint-transform.position).normalized;
@@ -251,10 +257,11 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         {
             Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, rayHit.normal);
             rb.velocity = bounceDirection * lastVelocity.magnitude;
+            Debug.Log(lastVelocity.magnitude);
         }
         //other.contacts[0].normal
-        
-        
+
+
     }
 
     protected virtual Vector3 GetTargetDirection()
