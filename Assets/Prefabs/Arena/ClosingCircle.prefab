@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeBeforeStarting: 40
-  _damageDelay: 1
   _closingTime: 25
-  _minDamagePerSecond: 0.1
-  _maxDamagePerSecond: 3
+  _minDamagePerTick: 0.2
+  _maxDamagePerTick: 4
+  _tickRate: 0.25
   _damageScalingTime: 30
   _endingScale: {x: 10, y: 0.2, z: 10}

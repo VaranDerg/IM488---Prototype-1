@@ -25,17 +25,6 @@ public class AudioFile
 
 /// <summary>
 /// Author: Liz
-/// Description: Plays music at the start of 
-/// </summary>
-[System.Serializable]
-public class SceneMusic
-{
-    public int SceneBuildIndex;
-    public string MusicToPlay;
-}
-
-/// <summary>
-/// Author: Liz
 /// Description: 
 /// </summary>
 public class AudioManager : MonoBehaviour
@@ -48,7 +37,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup _musicGroup;
     [SerializeField] private AudioMixerGroup _soundEffectGroup;
     [Space]
-    [SerializeField] private List<SceneMusic> _sceneMusic;
+    [SerializeField] private List<string> _sceneMusic;
 
     private AudioFile _currentMusic;
 
@@ -64,19 +53,15 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlaySceneMusic();
-
-
     }
 
     public void PlaySceneMusic()
     {
-        foreach (SceneMusic sceneMusic in _sceneMusic)
-        {
-            if (sceneMusic.SceneBuildIndex == SceneTransitions.Instance.GetBuildIndex())
-            {
-                PlayMusic(sceneMusic.MusicToPlay);
-            }
-        }
+        int scene = SceneTransitions.Instance.GetBuildIndex();
+        string music = _sceneMusic[scene];
+        Debug.Log($"Playing {music} for scene {scene}.");
+
+        PlayMusic(_sceneMusic[scene]);
     }
 
     /// <summary>

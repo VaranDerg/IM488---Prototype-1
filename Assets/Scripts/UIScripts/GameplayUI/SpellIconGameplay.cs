@@ -19,8 +19,6 @@ public class SpellIconGameplay : MonoBehaviour
     public SpellIconGameplay PrepareSpellIcon(TestSpellSO spell)
     {
         _icon.sprite = spell.SpellIcon;
-        //temp
-        _icon.color = spell.SpellElement.ElementColor;
         //endtempt
         _iconBorder.color = spell.SpellElement.ElementColor;
         _barColor.color = spell.SpellElement.ElementColor;

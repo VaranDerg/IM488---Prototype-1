@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Pickup_MovementSpeed
   m_EditorClassIdentifier: 
   PickupName: Movement Speed
-  PickupColor: {r: 0, g: 1, b: 0.6116061, a: 1}
+  PickupColor: {r: 0.48584908, g: 1, b: 0.8544642, a: 1}
   PopupText: Move Speed+
-  PickupValue: 1
+  PickupValue: 0.75
   PickupDuration: 5
   StatBuff: 01000000

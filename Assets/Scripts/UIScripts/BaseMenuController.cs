@@ -42,6 +42,8 @@ public class BaseMenuController : MonoBehaviour
         {
             AssignFirstSelected(firstSelected);
         }
+
+        ManagerParent.Instance.Audio.PlaySoundEffect("MenuClick");
     }
 
     /// <summary>

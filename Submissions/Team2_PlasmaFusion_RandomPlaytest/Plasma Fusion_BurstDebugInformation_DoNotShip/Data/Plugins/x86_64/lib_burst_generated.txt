@@ -137,7 +137,7 @@ Library: C:\Users\rwolf\Desktop\Work\SP24\IM488 - Prototype 1\Temp\StagingArea\D
 --compilation-defines=USING_PHYSICS2D_MODULE
 --compilation-defines=UNIVERSAL_1_0_0_OR_NEWER
 --compilation-defines=TIMELINE_FRAMEACCURATE
---linker-options=PdbAltPath="Plasma Fusion_Data/Plugins/x86_64/lib_burst_generated.pdb"
+--linker-options=PdbAltPath="PLASMA FUSION_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\rwolf\Desktop\Work\SP24\IM488 - Prototype 1\Temp\Burst
 --output=C:\Users\rwolf\Desktop\Work\SP24\IM488 - Prototype 1\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
@@ -295,7 +295,7 @@ Library: C:\Users\rwolf\Desktop\Work\SP24\IM488 - Prototype 1\Temp\StagingArea\D
 --compilation-defines=USING_PHYSICS2D_MODULE
 --compilation-defines=UNIVERSAL_1_0_0_OR_NEWER
 --compilation-defines=TIMELINE_FRAMEACCURATE
---linker-options=PdbAltPath="Plasma Fusion_Data/Plugins/x86_64/lib_burst_generated.pdb"
+--linker-options=PdbAltPath="PLASMA FUSION_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\rwolf\Desktop\Work\SP24\IM488 - Prototype 1\Temp\Burst
 --output=C:\Users\rwolf\Desktop\Work\SP24\IM488 - Prototype 1\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated

@@ -5,10 +5,10 @@ using UnityEngine;
 public class DamageCircle : MonoBehaviour
 {
     [SerializeField] float _timeBeforeStarting;
-    [SerializeField] float _damageDelay;
     [SerializeField] float _closingTime;
-    [SerializeField] float _minDamagePerSecond;
-    [SerializeField] float _maxDamagePerSecond;
+    [SerializeField] float _minDamagePerTick;
+    [SerializeField] float _maxDamagePerTick;
+    [SerializeField] float _tickRate;
     [SerializeField] float _damageScalingTime;
     [SerializeField] Vector3 _endingScale;
     List<ICanTakeDamage> _playersToDamage = new List<ICanTakeDamage>();
@@ -49,7 +49,7 @@ public class DamageCircle : MonoBehaviour
         {
             foreach (ICanTakeDamage player in _playersToDamage)
                 player.Damage(currentDPS * Time.deltaTime, InvulnTypes.IGNOREINVULN);
-            yield return null;
+            yield return new WaitForSeconds(_tickRate);
         }
     }  
     
@@ -59,10 +59,10 @@ public class DamageCircle : MonoBehaviour
         while(progress < 1)
         {
             progress += Time.deltaTime / _damageScalingTime;
-            currentDPS = Mathf.Lerp(_minDamagePerSecond, _maxDamagePerSecond, progress);
+            currentDPS = Mathf.Lerp(_minDamagePerTick, _maxDamagePerTick, progress);
             yield return null;
         }
-        currentDPS = _maxDamagePerSecond;
+        currentDPS = _maxDamagePerTick;
     }
 
     private void OnTriggerEnter(Collider collision)

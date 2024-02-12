@@ -149,6 +149,7 @@ MonoBehaviour:
   tickRateScalar: 1
   castMethod: 0
   castDelay: 0
+  soundEnabled: 1
   auraTickRate: 0.3
   duration: 8
   damage: 1
@@ -219,7 +220,7 @@ PrefabInstance:
     - target: {fileID: 4900056156506419552, guid: 754e2e81d56c7234fa9489519d19ec12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4900056156506419552, guid: 754e2e81d56c7234fa9489519d19ec12,
         type: 3}

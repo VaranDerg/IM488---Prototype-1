@@ -32,6 +32,15 @@ public class SpellSelectUI : BaseUIElement
         PopulateWithSpells(curPlayer);
 
         _headerText.text = "Fuse, " + ManagerParent.Instance.Game.GetPlayerName() + " " + curPlayer + ".";
+
+        if (curPlayer == 1)
+        {
+            _headerText.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.one);
+        }
+        else
+        {
+            _headerText.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.two);
+        }
     }
 
     /// <summary>

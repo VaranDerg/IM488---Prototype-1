@@ -157,7 +157,6 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
         {
             if (context.started && _canDisplayCooldown)
             {
-                GetComponent<PlayerManager>().SpawnText("On Cooldown!", Color.red, 1.5f);
                 _canDisplayCooldown = false;
             }
                 

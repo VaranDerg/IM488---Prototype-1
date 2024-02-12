@@ -53,7 +53,7 @@ MonoBehaviour:
     Loop: 1
     Source: {fileID: 0}
   - Name: PickAndChoose
-    Clip: {fileID: 8300000, guid: 02b5a42aa00d46b41af1b907b7149411, type: 3}
+    Clip: {fileID: 8300000, guid: 2c7f0ae422ec2ae4e9ca790faa7fbab9, type: 3}
     Volume: 1
     Pitch: 1
     PitchDeviation: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
     Source: {fileID: 0}
   - Name: MenuClick
     Clip: {fileID: 8300000, guid: f1bd181c0ae396c4199df3e16a2f34c0, type: 3}
-    Volume: 0.8
+    Volume: 1
     Pitch: 1
     PitchDeviation: 0.1
     Loop: 0
@@ -137,40 +137,37 @@ MonoBehaviour:
     PitchDeviation: 0.1
     Loop: 0
     Source: {fileID: 0}
+  - Name: Teleport
+    Clip: {fileID: 8300000, guid: b0c05da63cbb6cd4ab1a52b1263c4d4a, type: 3}
+    Volume: 0.85
+    Pitch: 1
+    PitchDeviation: 0.1
+    Loop: 0
+    Source: {fileID: 0}
   _musicGroup: {fileID: -6366596288163594241, guid: aaa32dc9e45560944bad60b42c5545fd,
     type: 2}
   _soundEffectGroup: {fileID: 3221184055220460722, guid: aaa32dc9e45560944bad60b42c5545fd,
     type: 2}
   _sceneMusic:
-  - SceneBuildIndex: 0
-    MusicToPlay: PickAndChoose
-  - SceneBuildIndex: 1
-    MusicToPlay: TremblingAnticipation
-  - SceneBuildIndex: 2
-    MusicToPlay: PickAndChoose
-  - SceneBuildIndex: 3
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 4
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 5
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 6
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 7
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 8
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 9
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 10
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 11
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 12
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 13
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 14
-    MusicToPlay: PureEnergy
-  - SceneBuildIndex: 15
-    MusicToPlay: TremblingAnticipation
+  - PickAndChoose
+  - TremblingAnticipation
+  - PickAndChoose
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - PureEnergy
+  - TremblingAnticipation
