@@ -155,7 +155,7 @@ MonoBehaviour:
   damage: 1
   minDistance: 0
   scaleMinDistanceWithSize: 1
-  auraRenderer: {fileID: 5863230248673672758}
+  auraVisuals: {fileID: 2701009388691526073}
   OnAuraStart:
     m_PersistentCalls:
       m_Calls:
@@ -269,6 +269,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754e2e81d56c7234fa9489519d19ec12, type: 3}
+--- !u!1 &2701009388691526073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4900056156506419555, guid: 754e2e81d56c7234fa9489519d19ec12,
+    type: 3}
+  m_PrefabInstance: {fileID: 7024373686340935898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2701009388691526074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4900056156506419552, guid: 754e2e81d56c7234fa9489519d19ec12,

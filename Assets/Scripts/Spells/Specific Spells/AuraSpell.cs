@@ -25,13 +25,16 @@ public class AuraSpell : AbstractSpell
     bool scaleMinDistanceWithSize = true;
 
     [SerializeField]
-    Renderer auraRenderer;
+    GameObject auraVisuals;
 
     [SerializeField]
     UnityEvent OnAuraStart;
 
     [SerializeField]
     UnityEvent OnAuraEnd;
+
+    [SerializeField]
+    UnityEvent<GameObject> OnObjectEnter;
 
     float timeTillNextAuraTick;
 
@@ -51,6 +54,7 @@ public class AuraSpell : AbstractSpell
             return;
 
         objectsInAura.Add(other.gameObject);
+        OnObjectEnter.Invoke(other.gameObject);
     }
 
     private void OnTriggerStay(Collider other)
@@ -62,6 +66,7 @@ public class AuraSpell : AbstractSpell
             return;
 
         objectsInAura.Add(other.gameObject);
+        OnObjectEnter.Invoke(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
@@ -122,12 +127,10 @@ public class AuraSpell : AbstractSpell
 
         GetComponent<Collider>().enabled = true;
 
-        if (auraRenderer != null)
-            auraRenderer.enabled = true;
+        if (auraVisuals != null)
+            auraVisuals.SetActive(true);
 
         DisableParticles();
-
-        Debug.Log("Aura Enabled!");
 
         //_currentParticles = ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, transform, true);
         if(soundEnabled)
@@ -147,16 +150,16 @@ public class AuraSpell : AbstractSpell
     {
         isAuraActive = false;
 
-        if (auraRenderer != null)
-            auraRenderer.enabled = false;
+        if (auraVisuals != null)
+            auraVisuals.SetActive(false);
 
         GetComponent<Collider>().enabled = false;
 
         //ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.BurstParticles, true, transform, false);
 
-        DisableParticles();
+        objectsInAura.Clear();
 
-        Debug.Log("Aura Disabled!");
+        DisableParticles();
 
         OnAuraEnd.Invoke();
     }
@@ -211,5 +214,16 @@ public class AuraSpell : AbstractSpell
         otherObjPosition.y = 0;
 
         return (otherObjPosition - thisPos).magnitude;
+    }
+
+    public void RemoveProjectiles(GameObject otherObj)
+    {
+        Projectile proj = otherObj.GetComponent<Projectile>();
+
+        if (proj.GetPlayer() == owner)
+            return;
+
+        if(proj != null)
+            proj.Deactivate();
     }
 }
