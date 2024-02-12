@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateSpeed: 200
   _rotateAngleNormalized: {x: 0, y: 0, z: 1}
+  ignoreParentRotation: 0
 --- !u!1 &3075073539751779038
 GameObject:
   m_ObjectHideFlags: 0

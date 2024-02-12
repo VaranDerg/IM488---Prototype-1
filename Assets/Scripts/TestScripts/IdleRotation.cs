@@ -10,6 +10,7 @@ public class IdleRotation : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private Vector3 _rotateAngleNormalized = Vector3.forward;
+    [SerializeField] bool ignoreParentRotation = true;
 
     private Vector3 prevRotation = Vector3.zero;
 
@@ -23,8 +24,13 @@ public class IdleRotation : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        transform.rotation = Quaternion.Euler(prevRotation);
-        transform.Rotate(((_rotateAngleNormalized * _rotateSpeed)) * Time.deltaTime, Space.Self);
-        prevRotation = transform.rotation.eulerAngles;
+        if (ignoreParentRotation)
+        {
+            transform.rotation = Quaternion.Euler(prevRotation);
+            transform.Rotate((_rotateAngleNormalized * _rotateSpeed) * Time.deltaTime, Space.Self);
+            prevRotation = transform.rotation.eulerAngles;
+        }
+        else
+            transform.Rotate(_rotateAngleNormalized * _rotateSpeed * Time.deltaTime, Space.Self);
     }
 }

@@ -127,6 +127,8 @@ public class AuraSpell : AbstractSpell
 
         DisableParticles();
 
+        Debug.Log("Aura Enabled!");
+
         //_currentParticles = ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.LoopingParticles, false, transform, true);
         if(soundEnabled)
             ManagerParent.Instance.Audio.PlaySoundEffect(GetScriptableObject().SpellElement.SoundEffectName);
@@ -153,6 +155,8 @@ public class AuraSpell : AbstractSpell
         //ManagerParent.Instance.Particles.SpawnParticles(GetScriptableObject().SpellElement.BurstParticles, true, transform, false);
 
         DisableParticles();
+
+        Debug.Log("Aura Disabled!");
 
         OnAuraEnd.Invoke();
     }

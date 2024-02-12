@@ -151,7 +151,7 @@ MonoBehaviour:
   castDelay: 0
   soundEnabled: 1
   auraTickRate: 0.3
-  duration: 8
+  duration: 6
   damage: 1
   minDistance: 0
   scaleMinDistanceWithSize: 1

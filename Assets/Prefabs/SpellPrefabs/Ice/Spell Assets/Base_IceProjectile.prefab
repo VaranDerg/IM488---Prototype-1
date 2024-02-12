@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisSpell: {fileID: 11400000, guid: 6d48995f0f1b8934089fc250987218bd, type: 2}
+  soundEnabled: 1
   targetType: 1
   doReevaluateTargetting: 0
   isPersistent: 0
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb5b032c41a4584a969dabb5c3e984d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: 1.25
+  maxScale: 1.1
   minScale: 0.5
   scaleRate: 0.5
   neverShrink: 1
