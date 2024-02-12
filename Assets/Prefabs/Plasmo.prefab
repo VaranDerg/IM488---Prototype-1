@@ -906,7 +906,7 @@ MonoBehaviour:
   speed: 10
   dashForce: 35
   dashTime: 0.2
-  dashCooldownTime: 0.5
+  dashCooldownTime: 0
   maxSpeed: 50
   _postDashStunDuration: 0.2
   _visuals: {fileID: 1450428817285273774}
@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
-  _damageIFrameLength: 0.25
+  _damageIFrameLength: 0.5
 --- !u!114 &3264294643241418380
 MonoBehaviour:
   m_ObjectHideFlags: 0
