@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisSpell: {fileID: 11400000, guid: f02e716f89bf9ae4fb8e0cbd174170f6, type: 2}
+  soundEnabled: 1
   targetType: 0
   doReevaluateTargetting: 0
   isPersistent: 0
@@ -800,7 +801,7 @@ PrefabInstance:
     - target: {fileID: 2792657899930330467, guid: a4e8c95b56750f54687fdf53546a9dcf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2792657899930330467, guid: a4e8c95b56750f54687fdf53546a9dcf,
         type: 3}

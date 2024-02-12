@@ -15,5 +15,7 @@ public class Portal : MonoBehaviour
 
         _parent.StartCoroutine(_parent.TeleportCooldown());
         teleportInterface.TeleportTo(_parent.OutputPortalLocation(this));
+
+        ManagerParent.Instance.Audio.PlaySoundEffect("Teleport");
     }
 }

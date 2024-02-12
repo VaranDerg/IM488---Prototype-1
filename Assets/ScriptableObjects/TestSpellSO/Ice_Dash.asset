@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Ice_Dash
   m_EditorClassIdentifier: 
-  SpellName: Block of Ice
-  SpellDescription: Dashing shoves a large block of ice in the opposite direction
+  SpellName: Shard of Ice
+  SpellDescription: Dashing shoves a dangerous ice shard in the opposite direction
     of your Dash.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}

@@ -78,6 +78,8 @@ public class PauseMenu : BaseMenuController
     /// </summary>
     public void ToMainMenu()
     {
+        StopAllCoroutines();
+
         ManagerParent.Instance.Game.ResetGame();
 
         LoadScene(ManagerParent.Instance.Game.GetMainMenuScene());
