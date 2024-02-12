@@ -59,7 +59,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         
         rb = GetComponent<Rigidbody>();
         StartCoroutine(TargetReeval());
-        StartCoroutine(TrackLastVelocity());
 
         startSize = transform.localScale;
     }

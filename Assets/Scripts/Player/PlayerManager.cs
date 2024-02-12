@@ -60,7 +60,6 @@ public class PlayerManager : MonoBehaviour, ICanTakeDamage
             return;
         if (_pHealth.InvulnerableTypeCheck(ignoreInvuln))
         {
-            GetComponent<PlayerManager>().SpawnText("Invincible", Color.red, 1.5f);
             return;
         }
             
