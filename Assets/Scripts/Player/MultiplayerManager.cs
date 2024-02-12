@@ -89,10 +89,6 @@ public class MultiplayerManager : MonoBehaviour
     }
     public Color GetColorFromPlayer(Player tag)
     {
-        if(tag == Player.two)
-        {
-            Debug.Log("HEY");
-        }
         switch (tag)
         {
             case (Player.one):
