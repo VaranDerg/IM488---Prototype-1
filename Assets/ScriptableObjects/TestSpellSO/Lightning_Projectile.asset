@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Lightning_Projectile
   m_EditorClassIdentifier: 
   SpellName: Lightning Augment
-  SpellDescription: Augment your Plasma with Lightning, allowing two bolts of electricity
-    to travel alongside it.
+  SpellDescription: Periodically launch a lightning bolt, while also charging your
+    plasma with two sparks of electricity.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ice_Projectile
   m_EditorClassIdentifier: 
   SpellName: Ice Augment
-  SpellDescription: Augment your Plasma with Ice, allowing it to grow in size as
-    it travels.
+  SpellDescription: Periodically launch a slow-moving block of ice, while also infusing
+    your Plasma to grow as it travels.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
