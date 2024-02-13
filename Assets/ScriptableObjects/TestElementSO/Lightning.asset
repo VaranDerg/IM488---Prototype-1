@@ -19,5 +19,5 @@ MonoBehaviour:
   BurstParticles: Burst_Lightning
   SoundEffectName: LightningSFX
   element: 4
-  scalingStats: 03000000
+  scalingStats: 0300000001000000
   ScalingStatName: +SPEED
