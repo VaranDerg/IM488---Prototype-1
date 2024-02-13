@@ -256,7 +256,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         {
             Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, rayHit.normal);
             rb.velocity = bounceDirection * lastVelocity.magnitude;
-            //Debug.Log(lastVelocity.magnitude);
         }
         //other.contacts[0].normal
 

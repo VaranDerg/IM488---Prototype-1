@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            
             ManagerParent.Instance.Particles.SpawnParticles(winStars, false,
                 FindObjectOfType<MultiplayerManager>().GetOpposingPlayer(_lastDeadPlayer.gameObject.GetComponent<PlayerManager>().PlayerTag).gameObject.transform
                 , true);
@@ -98,13 +97,7 @@ public class GameManager : MonoBehaviour
             PlayEndingPlayerAnimations(Player.two);
         }
 
-        if (FindObjectOfType<TempGameTimer>())
-        {
-            if (!FindObjectOfType<TempGameTimer>().TimerEnded)
-            {
-                FindObjectOfType<GameplayMenu>().DisplayWin(player);
-            }
-        }
+        FindObjectOfType<GameplayMenu>().DisplayWin(player);
 
         float winDelay = FindObjectOfType<GameplayMenu>().GetWinDelay();
         StartCoroutine(ToNextGamePhaseProcess(winDelay));
