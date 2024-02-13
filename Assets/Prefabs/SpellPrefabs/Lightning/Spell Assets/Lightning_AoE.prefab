@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 6700097306087382589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2705998450264178538}
@@ -143,7 +143,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.48
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3644911175457294605
 MonoBehaviour:
@@ -163,9 +163,9 @@ MonoBehaviour:
   castMethod: 0
   castDelay: 0
   soundEnabled: 1
-  auraTickRate: 0.2
+  auraTickRate: 0.05
   duration: 3
-  damage: 1
+  damage: 0.8
   minDistance: 0
   scaleMinDistanceWithSize: 1
   auraVisuals: {fileID: 8850539283753138840}
@@ -173,6 +173,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAuraEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnObjectEnter:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1583375335207504246

@@ -148,7 +148,7 @@ MonoBehaviour:
   startDelay: 1
   tickRate: 0.001
   tickRateScalar: 1
-  damage: 6
+  damage: 3
   delayedDetonation: 0.25
   doSelfDamage: 0
   isPersistent: 1

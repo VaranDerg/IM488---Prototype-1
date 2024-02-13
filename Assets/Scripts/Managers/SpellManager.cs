@@ -220,6 +220,7 @@ public class SpellManager : MonoBehaviour
     {
         _playerOneSpells.Clear();
         _playerTwoSpells.Clear();
+        hasAssignedStarter = false;
     }
 
     /// <summary>
