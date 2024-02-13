@@ -307,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuPages:
   - {fileID: 8053804343501516437}
-  firstSelected: {fileID: 0}
+  firstSelected: {fileID: 6627246419489371133}
   _playerWinText: {fileID: 6370065235764682539}
 --- !u!1001 &6559061583839628158
 PrefabInstance:
@@ -468,3 +468,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1207e58f8a3d3334a833b67870d965e6, type: 3}
+--- !u!1 &6627246419489371133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 71708240660445315, guid: 1207e58f8a3d3334a833b67870d965e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6559061583839628158}
+  m_PrefabAsset: {fileID: 0}
