@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 7649097382939282705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2429091026228797293}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickAmt: 10
-  tickRate: 0.1
+  tickRate: 0.05
   startActive: 1
   OnTickFinish:
     m_PersistentCalls:

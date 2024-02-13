@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class ProjectileSpell : AbstractSpell
 {
+    private const int PROJECTILE_AMOUNT_LIGHTNINGAOE = 5;
 
     [SerializeField]
     UnityEvent OnStartAuraEvent;
@@ -67,7 +68,7 @@ public class ProjectileSpell : AbstractSpell
 
         yield return new WaitForSeconds(0.15f);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < PROJECTILE_AMOUNT_LIGHTNINGAOE; i++)
         {
             SpawnProjectile();
             yield return new WaitForSeconds(0.1f);

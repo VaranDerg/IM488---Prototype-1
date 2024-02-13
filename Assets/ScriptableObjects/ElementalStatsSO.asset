@@ -28,7 +28,7 @@ MonoBehaviour:
   associatedStats:
   - name: Damage
     stat: 0
-    scalingValue: 0.1
+    scalingValue: 0.2
   - name: Move Speed
     stat: 1
     scalingValue: 0.1
@@ -37,13 +37,13 @@ MonoBehaviour:
     scalingValue: 0.1
   - name: Projectile Speed
     stat: 3
-    scalingValue: 0.1
+    scalingValue: 0.3
   - name: Projectile Size
     stat: 4
-    scalingValue: 0.1
+    scalingValue: 0.15
   - name: Pool Size
     stat: 5
-    scalingValue: 0.1
+    scalingValue: 0.2
   - name: Aura Size
     stat: 6
-    scalingValue: 0.1
+    scalingValue: 0.3

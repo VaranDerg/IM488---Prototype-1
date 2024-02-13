@@ -177,13 +177,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 39b22791cca09a3439ceadee5a9dec27, type: 2}
-  tickRate: 12
+  tickRate: 10
   tickRateScalar: 1
   castMethod: 0
   castDelay: 0
   soundEnabled: 1
   auraTickRate: 0.3
-  duration: 6
+  duration: 5
   damage: 1
   minDistance: 0
   scaleMinDistanceWithSize: 1

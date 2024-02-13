@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1615301249431763084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4022448199919437407}
   - {fileID: 5183751711537996706}
@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.46832412, y: 0.9, z: 1.529427}
-  m_Center: {x: -0.065247506, y: 0, z: 0.1475586}
+  m_Size: {x: 0.46832412, y: 0.90000004, z: 2.2547069}
+  m_Center: {x: -0.06524751, y: 0, z: -0.14077593}
 --- !u!54 &8801266245887298365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
   targetType: 1
   doReevaluateTargetting: 0
   isPersistent: 0
-  projectileSpeed: 11
-  damage: 2
+  projectileSpeed: 10
+  damage: 1
   randomSpeedVariance: 0.4
   canBounce: 0
   isStatic: 0

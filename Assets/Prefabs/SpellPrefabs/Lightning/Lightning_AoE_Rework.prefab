@@ -28,7 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5972903280137783925}
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1615301249431763084, guid: 4a82b5ee38bdf6049a0b2d391cdf216d, type: 3}
+  prefab: {fileID: 1615301249431763084, guid: ad308576caf970e40971b815278f8c7b, type: 3}
   poolSize: 10
   InstantiationEvent:
     m_PersistentCalls:
