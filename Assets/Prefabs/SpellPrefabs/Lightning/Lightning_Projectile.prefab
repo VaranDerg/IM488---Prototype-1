@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5079786441875868967}
   - component: {fileID: 1385884341707180741}
+  - component: {fileID: -7395380576152103874}
   m_Layer: 0
   m_Name: Lightning_Projectile
   m_TagString: Untagged
@@ -48,5 +49,19 @@ MonoBehaviour:
   tickRate: 1.5
   tickRateScalar: 1
   castMethod: 0
-  particlePrefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07,
+  projectilePrefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07,
     type: 3}
+--- !u!114 &-7395380576152103874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170845609202855336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1615301249431763084, guid: 85c07bcb718b06546872942037787d07, type: 3}
+  poolSize: 3

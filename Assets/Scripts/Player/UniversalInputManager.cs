@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class UniversalInputManager : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class UniversalInputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         devices = GetComponent<PlayerInput>().devices.ToArray();
-        Debug.Log("Connected Devices:");
+        /*Debug.Log("Connected Devices:");
 
         //bool hasKeyboard = false;
         foreach (InputDevice d in devices)
@@ -28,7 +30,7 @@ public class UniversalInputManager : MonoBehaviour
                 hasKeyboard = true;
                 continue;
             }*/
-        }
+        //}
 
         /*if (hasKeyboard)
         {
@@ -42,6 +44,14 @@ public class UniversalInputManager : MonoBehaviour
             
 
         //EstablishSingleton();
+    }
+
+    public bool IsMNK()
+    {
+        if (devices[0] == null)
+            return false;
+
+        return devices[0].displayName == "Mouse" || devices[0].displayName == "Keyboard";
     }
 
     public void Nothing()
@@ -62,6 +72,15 @@ public class UniversalInputManager : MonoBehaviour
         Destroy(gameObject);
 
     }*/
+
+    public void SetSelected(GameObject obj, GameObject playerRoot = null)
+    {
+        MultiplayerEventSystem eventSystem = GetComponent<MultiplayerEventSystem>();
+        eventSystem.SetSelectedGameObject(obj);
+
+        if (playerRoot != null)
+            eventSystem.playerRoot = playerRoot;
+    }
 
     public void EnableInputDevices()
     {
@@ -114,6 +133,19 @@ public class UniversalInputManager : MonoBehaviour
         {
             _associatedController.DashInput(context);
         }
+    }
+
+    public void EnableInput()
+    {
+        //GetComponent<PlayerInput>().enabled = true;
+        GetComponent<PlayerInput>().actions.FindActionMap("UI").Enable();
+        GetComponent<MultiplayerEventSystem>().playerRoot = null;
+    }
+
+    public void DisableInput()
+    {
+        GetComponent<PlayerInput>().actions.FindActionMap("UI").Disable();
+        GetComponent<MultiplayerEventSystem>().playerRoot = gameObject;
     }
 }
 

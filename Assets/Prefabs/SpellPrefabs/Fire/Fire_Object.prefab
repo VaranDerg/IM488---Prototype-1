@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5651566984856474502}
   - component: {fileID: 5955233024456991691}
+  - component: {fileID: -3354450329884128391}
   m_Layer: 3
   m_Name: Fire_Object
   m_TagString: Untagged
@@ -50,4 +51,17 @@ MonoBehaviour:
   castMethod: 0
   objPrefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c,
     type: 3}
-  _thisSpell: {fileID: 11400000, guid: e311932b7313b064da844c46bc027143, type: 2}
+--- !u!114 &-3354450329884128391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818075348550264444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c, type: 3}
+  poolSize: 3

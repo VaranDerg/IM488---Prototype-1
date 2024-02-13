@@ -7,7 +7,9 @@ public interface ISpell
     public float TickRate { get; protected set; }
     public float TickRateScalar { get; protected set; }
 
-    public void Execute();
+    public void StartAura();
+
+    public void DelayedStartAura();
 
     public void Tick(float deltaTime);
 }

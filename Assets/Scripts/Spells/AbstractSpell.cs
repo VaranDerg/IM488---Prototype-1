@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class AbstractSpell : MonoBehaviour, ISpell
+public abstract class AbstractSpell : MonoBehaviour, ISpell, IScalable
 {
     
     float ISpell.TickRate { get => tickRate; set => this.tickRate = value; }
@@ -23,45 +24,88 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
 
     [SerializeField] CastingMethod castMethod;
 
-    protected Player owner { get; private set; }
+    [SerializeField] float castDelay = 0;
+
+    float scaledTickRateScalar = 1;
+    public Player owner { get; set; }
+
+    private void PlayCastAnimations()
+    {
+        PlasmoVisuals visuals = MultiplayerManager.Instance.GetPlayerVisuals(owner);
+
+        visuals.SetAnimationTrigger(PlasmoVisuals.PlasmoAnimationTrigger.Cast);
+        visuals.SetExpression(PlasmoVisuals.PlasmoExpression.Angry, visuals.GetCastExpressionTime());
+        visuals.SetGlowColor(data.SpellElement.ElementColor);
+    }
 
     // The actual function of the spell to be referenced from the child
-    public abstract void Execute();
+    public virtual void StartAura()
+    {
+        PlayCastAnimations();
+    }
 
     // Called every FixedUpdate. Should be used if a spell needs to do something between executions
-    protected abstract void ChildTick();
+    protected abstract void AuraTick();
 
     protected virtual void OnStart()
     {
 
     }
 
+    public void DelayedStartAura()
+    {
+        if(isActiveAndEnabled)
+            StartCoroutine(DelayedAura());
+    }
+
+    IEnumerator DelayedAura()
+    {
+        yield return new WaitForSeconds(castDelay);
+        StartAura();
+    }
+
     // Tracks the time remaining till next tick. Calls ChildTick each
     public void Tick(float deltaTime)
     {
         if (timeTillNextTick > 0)
-            timeTillNextTick -= deltaTime * tickRateScalar;
+            timeTillNextTick -= deltaTime * scaledTickRateScalar;
         else
         {
-            if(castMethod == CastingMethod.AUTO)
-                Execute();
+            if (castMethod == CastingMethod.AUTO)
+                DelayedStartAura();
 
             timeTillNextTick = tickRate;
         }
 
-        ChildTick();
+        AuraTick();
+
+        if(!data.ExcludeFromUI)
+            MultiplayerManager.Instance.GetPlayerSpellbox(owner).UpdateSpellIconBar(data, Mathf.Clamp01(timeTillNextTick / tickRate));
     }
 
     private void Start()
     {
         // Delays the first tick by the tickRate in seconds
         timeTillNextTick = tickRate;
+        scaledTickRateScalar = tickRateScalar;
 
         owner = transform.parent.parent.GetComponent<PlayerManager>().PlayerTag;
+
+        ObjectPool objectPool = GetComponent<ObjectPool>();
+        if(objectPool != null)
+            objectPool.AssignPlayer(owner);
         //Debug.Log(owner);
         AddSpellsToLists();
 
+        StartCoroutine(DelayedStart());
+
         OnStart();
+    }
+
+    IEnumerator DelayedStart()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        Scale(MultiplayerManager.Instance.GetPlayer(owner).GetElementalStats());
     }
 
     protected void AddSpellsToLists()
@@ -75,6 +119,28 @@ public abstract class AbstractSpell : MonoBehaviour, ISpell
                 return;
         }
 
+    }
+
+    public void Scale(ElementalStats stats)
+    {
+        ScaleCooldownRate(stats.GetStat(ScalableStat.COOLDOWN_RATE));
+
+        ChildScale(stats);
+    }
+
+    private void ScaleCooldownRate(float cooldownRateMult)
+    {
+        scaledTickRateScalar = tickRateScalar * cooldownRateMult;
+    }
+
+    protected virtual void ChildScale(ElementalStats stats)
+    {
+
+    }
+
+    public TestSpellSO GetScriptableObject()
+    {
+        return data;
     }
 
     private void FixedUpdate()

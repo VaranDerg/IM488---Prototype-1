@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cab22439b4cbde46bc1d98b775fe338, type: 3}
+  m_Name: ElementalStatsSO
+  m_EditorClassIdentifier: 
+  associatedElements:
+  - name: Fire
+    element: 2
+    elementSO: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
+  - name: Ice
+    element: 3
+    elementSO: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
+  - name: Lightning
+    element: 4
+    elementSO: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
+  - name: Basic
+    element: 0
+    elementSO: {fileID: 11400000, guid: 9b95f4a2cc34edb4983172cf7d1f0014, type: 2}
+  associatedStats:
+  - name: Damage
+    stat: 0
+    scalingValue: 0.1
+  - name: Move Speed
+    stat: 1
+    scalingValue: 0.1
+  - name: Cooldown Rate
+    stat: 2
+    scalingValue: 0.1
+  - name: Projectile Speed
+    stat: 3
+    scalingValue: 0.1
+  - name: Projectile Size
+    stat: 4
+    scalingValue: 0.1
+  - name: Pool Size
+    stat: 5
+    scalingValue: 0.1
+  - name: Aura Size
+    stat: 6
+    scalingValue: 0.1

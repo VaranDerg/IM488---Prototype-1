@@ -11,12 +11,18 @@ public class BaseMenuController : MonoBehaviour
     //Include every menu "page" in this list.
     [SerializeField] protected List<GameObject> MenuPages;
 
+    [SerializeField]
+    GameObject firstSelected;
+
     protected virtual void Awake()
     {
         if (MenuPages.Count > 0)
         {
             SetPageActive(MenuPages[0]);
         }
+
+        //if (firstSelected != null)
+          //  AssignFirstSelected(firstSelected);
     }
 
     /// <summary>
@@ -31,6 +37,23 @@ public class BaseMenuController : MonoBehaviour
         }
 
         page.SetActive(true);
+
+        if(firstSelected != null)
+        {
+            AssignFirstSelected(firstSelected);
+        }
+
+        ManagerParent.Instance.Audio.PlaySoundEffect("MenuClick");
+    }
+
+    /// <summary>
+    /// Pass in a UI object that should be selected
+    /// </summary>
+    /// <param name="obj">This object will be selected</param>
+    public void AssignFirstSelected(GameObject obj)
+    {
+        InputParent.Instance._P1Input.SetSelected(obj, gameObject);
+        InputParent.Instance._P2Input.SetSelected(obj, gameObject);
     }
 
     /// <summary>

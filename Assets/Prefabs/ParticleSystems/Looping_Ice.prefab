@@ -29,11 +29,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
         type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
-        type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 2
       objectReference: {fileID: 0}
@@ -44,13 +39,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
         type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 1.5
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.82249546
       objectReference: {fileID: 0}
     - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
         type: 3}
-      propertyPath: EmissionModule.rateOverTime.minMaxState
+      propertyPath: InitialModule.startColor.maxColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.63268685
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
+        type: 3}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438715247172338155, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7438715247172338156, guid: 6c7630c9bbe77a343922806e6ca9c9b5,
         type: 3}

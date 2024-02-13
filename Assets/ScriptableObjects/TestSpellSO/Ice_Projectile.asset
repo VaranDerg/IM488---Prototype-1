@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f3d05f86285514a8fc12cb2506954c, type: 3}
   m_Name: Ice_Projectile
   m_EditorClassIdentifier: 
-  SpellName: Block of Ice
-  SpellDescription: Periodically push a large block of ice, crushing enemy Plasmos
-    who touch it.
+  SpellName: Snowball Augment
+  SpellDescription: Periodically launch a slow-moving block of ice, while also infusing
+    your Plasma to grow as it travels.
+  ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: d92dec9d347bc4d4eae59a129fde314f, type: 2}
+  SpellIcon: {fileID: 21300000, guid: 411fb5229997c61419e0ab6c9d6bfc87, type: 3}
   AssociatedPrefab: {fileID: 8170845609202855336, guid: 2b434e8178bbe7d4ca237879f48655d4,
     type: 3}

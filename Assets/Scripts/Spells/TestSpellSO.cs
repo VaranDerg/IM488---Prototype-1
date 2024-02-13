@@ -12,8 +12,11 @@ public class TestSpellSO : ScriptableObject
     public string SpellName;
     [TextArea(3, 10)] public string SpellDescription;
     [Space]
+    public bool ExcludeFromUI;
+    [Space]
     public TestElementSO SpellElement;
     public TestSpellTypeSO SpellType;
+    public Sprite SpellIcon;
     [Space]
     [SerializeField] private GameObject AssociatedPrefab;
 

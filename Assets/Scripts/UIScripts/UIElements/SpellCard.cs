@@ -14,9 +14,15 @@ public class SpellCard : BaseUIElement
     private const string SELECT_ANIM_NAME = "SpellCardSelect";
     private const string REMOVE_ANIM_NAME = "SpellCardExit";
 
+    [SerializeField] private Image _spellIcon;
+    [SerializeField] private Image _elementIcon;
+    [SerializeField] private Image _iconBorder;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _descriptionText;
+    [SerializeField] private TextMeshProUGUI _statBoostTest;
+    [Space]
     [SerializeField] private Animator _animator;
+    [SerializeField] private Button _button;
 
     private TestSpellSO _thisSpell;
     private int _playerSelecting;
@@ -31,10 +37,18 @@ public class SpellCard : BaseUIElement
         _thisSpell = spell;
         _playerSelecting = player;
 
+        _spellIcon.sprite = spell.SpellIcon;
+        _elementIcon.sprite = spell.SpellElement.ElementIcon;
+        _iconBorder.color = spell.SpellElement.ElementColor;
+
         _nameText.text = spell.SpellName;
         _descriptionText.text = spell.SpellDescription;
+        _statBoostTest.text = spell.SpellElement.ScalingStatName;
 
-        GetComponentInChildren<SpellIcon>().SetUpIcon(spell);
+        ColorBlock colorBlock = _button.colors;
+        colorBlock.selectedColor = spell.SpellElement.ElementColor;
+        colorBlock.highlightedColor = spell.SpellElement.ElementColor;
+        _button.colors = colorBlock;
     }
 
     /// <summary>

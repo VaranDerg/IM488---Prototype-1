@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9a634b53ab8dc4086dbbe6515f9ded, type: 3}
+  m_Name: Pickup_MovementSpeed
+  m_EditorClassIdentifier: 
+  PickupName: Movement Speed
+  PickupColor: {r: 0.48584908, g: 1, b: 0.8544642, a: 1}
+  PopupText: Move Speed+
+  PickupValue: 0.75
+  PickupDuration: 5
+  StatBuff: 01000000

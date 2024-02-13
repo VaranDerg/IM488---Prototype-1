@@ -11,6 +11,7 @@ using TMPro;
 public class GameplayMenu : BaseUIElement
 {
     //How long the win message is displayed
+    [SerializeField] private float _winTextShowTime;
     [Space]
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _firstToText;
@@ -51,5 +52,10 @@ public class GameplayMenu : BaseUIElement
     public void TestPlayerWin(int player)
     {
         ManagerParent.Instance.Game.IncreasePlayerScore(player);
+    }
+
+    public float GetWinDelay()
+    {
+        return _winTextShowTime;
     }
 }

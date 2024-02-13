@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5651566984856474502}
   - component: {fileID: 5955233024456991691}
+  - component: {fileID: 5546165640140624898}
   m_Layer: 3
   m_Name: Ice_Object
   m_TagString: Untagged
@@ -48,6 +49,22 @@ MonoBehaviour:
   tickRate: 5
   tickRateScalar: 1
   castMethod: 0
+  OnPlayerAssignEvent:
+    m_PersistentCalls:
+      m_Calls: []
   objPrefab: {fileID: 8881921000091554295, guid: 726a76372c8b24748b4956538571b5a3,
     type: 3}
-  _thisSpell: {fileID: 11400000, guid: d030c1ccff10b7a4fb453d278cee8fce, type: 2}
+--- !u!114 &5546165640140624898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818075348550264444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8881921000091554295, guid: 5aa8826de56b65a49a2f38a69ebce79e, type: 3}
+  poolSize: 3

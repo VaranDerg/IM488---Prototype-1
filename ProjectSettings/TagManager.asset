@@ -16,15 +16,15 @@ TagManager:
   - Projectile
   - Environment
   - SpellObject
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Portal
+  - FireProjectile
+  - LightningProjectile
+  - IceProjectile
+  - FireEnvironment
+  - LightningEnvironment
+  - IceEnvironment
+  - PostProcessing
+  - FireDash
   - 
   - 
   - 

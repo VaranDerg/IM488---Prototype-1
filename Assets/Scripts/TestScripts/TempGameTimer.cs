@@ -48,9 +48,11 @@ public class TempGameTimer : MonoBehaviour
             _currentTime = 0;
             TimerEnded = true;
 
-            PickRandomWinner();
+            //PickRandomWinner();
+            ManagerParent.Instance.Game.HandleRoundTie();
         }
     }
+
 
     private void PickRandomWinner()
     {

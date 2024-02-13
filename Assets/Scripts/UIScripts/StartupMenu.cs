@@ -8,6 +8,14 @@ public class StartupMenu : BaseMenuController
 {
     bool hasP1Joined = false;
 
+    [SerializeField] private TextMeshProUGUI _waitingText1, _waitingText2;
+
+    private void Start()
+    {
+        _waitingText1.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.one);
+        _waitingText2.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.two);
+    }
+
     /// <summary>
     /// Prompts player 2 to press a button.
     /// </summary>
@@ -26,7 +34,7 @@ public class StartupMenu : BaseMenuController
 
     public void OnPlayerJoined()
     {
-        Debug.Log("Player Joined");
+        //Debug.Log("Player Joined");
 
         if (!hasP1Joined)
         {
@@ -35,7 +43,7 @@ public class StartupMenu : BaseMenuController
         }
         else
         {
-            Debug.Log("Setup Done!");
+            //Debug.Log("Setup Done!");
             SetupComplete();
         }
     }

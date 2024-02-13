@@ -44,5 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e66e50fe5629c44c91958054fa29d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerName: Plasmo
+  _mainMenuScene: 1
   _spellSelectScene: 2
-  _arenaScenes: 0300000004000000050000000600000007000000
+  _startingArena: 3
+  _arenaScenes: 0400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+  _winScene: 21
+  _tieWindow: 0.1
+  _tieFavorsLosingPlayer: 1

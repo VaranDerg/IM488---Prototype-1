@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a62f57c4e71848c488ab1b245bf9094b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starterSpell: {fileID: 11400000, guid: f02e716f89bf9ae4fb8e0cbd174170f6, type: 2}
   _allSpells:
   - {fileID: 11400000, guid: 0d1d9354e9329854bb71a2e0ea5f103a, type: 2}
   - {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
@@ -58,5 +59,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc8c5c88a46e93441b857da13a1fd174, type: 2}
   - {fileID: 11400000, guid: 3383af31c6b23dc4fb6a9584c6618230, type: 2}
   _opponentViewPickedSpellTime: 1.5
-  _playerOneSpells:
-  - {fileID: 11400000, guid: 627181a03606cd546af6c3368aff6d37, type: 2}

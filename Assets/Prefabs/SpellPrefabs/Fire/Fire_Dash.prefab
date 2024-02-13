@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2611727146870864614}
   - component: {fileID: 2834868552202458012}
+  - component: {fileID: -8660481493959898637}
   m_Layer: 0
   m_Name: Fire_Dash
   m_TagString: Untagged
@@ -45,9 +46,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
-  tickRate: 1
-  tickRateScalar: 1
+  tickRate: 0
+  tickRateScalar: 0
   castMethod: 1
-  objPrefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c,
-    type: 3}
-  _thisSpell: {fileID: 11400000, guid: a55c9e03e5d25254b99f477acaf54fe8, type: 2}
+  castDelay: 0
+  soundEnabled: 1
+--- !u!114 &-8660481493959898637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391078800739893117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4a25c6b903e8a48bca99b216b8bd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1528412900228266552, guid: 2820a73e756592141938525c0c4bf26c, type: 3}
+  poolSize: 3
+  InstantiationEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetObjectEvent:
+    m_PersistentCalls:
+      m_Calls: []

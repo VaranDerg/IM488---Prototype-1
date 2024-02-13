@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ICanTakeDamage
 {
     [Header("References")]
     //[SerializeField] private MovementScript _pMovement;
-    [SerializeField] private PlayerHealth _pHealth;
+    [SerializeField] PlayerHealth _pHealth;
     [SerializeField] private Controller _pController;
     [SerializeField] private GameObject _spellAttachPoint;
+    [SerializeField] private ElementalStats _elementalStats;
+    [SerializeField] private PopupTextSource _textSource;
+    [SerializeField] private HPWheelPlayerUI _hpWheel;
 
     public Player PlayerTag;
 
@@ -51,9 +54,16 @@ public class PlayerManager : MonoBehaviour
         return _pController.GetLastNonZeroMovement();
     }
 
-    public void Damage(float damage)
+    public void Damage(float damage, InvulnTypes ignoreInvuln)
     {
-        _pHealth.TakeDamage(damage);
+        if (ManagerParent.Instance.Game.PlayerHasWonRound)
+            return;
+        if (_pHealth.InvulnerableTypeCheck(ignoreInvuln))
+        {
+            return;
+        }
+            
+        _pHealth.TakeDamage(damage,ignoreInvuln);
     }
 
     private void AttachSpell(GameObject newSpell)
@@ -66,7 +76,53 @@ public class PlayerManager : MonoBehaviour
         foreach (TestSpellSO spell in ManagerParent.Instance.Spells.GetSpellListFromPlayer(PlayerTag))
         {
             AttachSpell(spell.GetPrefab());
+            if(spell.SpellType.SpellTypeName == "Projectile")
+            {
+                AttachProjectileSpell(spell);
+            }
         }
-        
+    }
+
+    private void AttachProjectileSpell(TestSpellSO spell)
+    {
+        Transform firstSpell = _spellAttachPoint.transform.GetChild(0);
+
+        if (firstSpell == null)
+            return;
+
+        //ProjectileSpell projectileSpell = firstSpell.GetComponent<ProjectileSpell>();
+        StarterSpell starterSpell = firstSpell.GetComponent<StarterSpell>();
+        starterSpell.ApplyElement(spell.SpellElement.element);
+        //Debug.Log("Projectile: " + projectileSpell.name);
+    }
+
+    public void SpawnText(string text, Color color, float lifetime)
+    {
+        _textSource.DisplayPopup(text, color, lifetime);
+    }
+
+    public void DisableAssociatedSpells()
+    {
+        _spellAttachPoint.SetActive(false);
+    }
+
+    public void UpdateHPWheel()
+    {
+        _hpWheel.SetWheelValue(_pHealth.HealthPercent());
+    }
+
+    public PlayerHealth GetPlayerHealth()
+    {
+        return _pHealth;
+    }
+
+    public Controller GetPlayerController()
+    {
+        return _pController;
+    }
+
+    public ElementalStats GetElementalStats()
+    {
+        return _elementalStats;
     }
 }
