@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnType: 0
-  duration: 99
+  duration: 30
   startDelay: 1
   tickRate: 0.001
   tickRateScalar: 1
