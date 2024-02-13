@@ -52,5 +52,5 @@ MonoBehaviour:
   - {fileID: 7235428953859941432, guid: 56b3e63e610991e45b396236d83a30c0, type: 3}
   - {fileID: 5895917565404832034, guid: 32c27c27ebffc4f4aade9e20964e9c96, type: 3}
   _spawnPoints: []
-  _timerBetweenPickup: 8
+  _timerBetweenPickup: 6
   _spawnOffset: {x: 0, y: 1, z: 0}
