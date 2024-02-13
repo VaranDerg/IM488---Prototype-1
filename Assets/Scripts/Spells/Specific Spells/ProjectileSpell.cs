@@ -67,7 +67,7 @@ public class ProjectileSpell : AbstractSpell
 
         yield return new WaitForSeconds(0.15f);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             SpawnProjectile();
             yield return new WaitForSeconds(0.1f);
