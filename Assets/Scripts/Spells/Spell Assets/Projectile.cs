@@ -51,6 +51,9 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
     public UnityEvent OnLaunchEvent;
 
+    private Coroutine WallBounce;
+    private bool inWall;
+
     //protected Player owner { get; private set; }
     public Player owner { get; set; }
 
@@ -96,6 +99,37 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
 
         if (!isPersistent)
             Deactivate();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Environment") && WallBounce == null)
+        {
+            inWall = true;
+            WallBounce = StartCoroutine(TriggerStayWallCollision(other));
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Environment"))
+        {
+            inWall = false;
+        }
+    }
+
+    IEnumerator TriggerStayWallCollision(Collider other)
+    {
+
+        yield return new WaitForSeconds(.1f);
+        if (inWall)
+        {
+            OnEnvironmentCollision(other);
+        }
+        yield return new WaitForSeconds(.12f);
+
+        WallBounce = null;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -257,11 +291,11 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         Vector3 dir = (closestPoint-transform.position).normalized;
         dir = new Vector3(dir.x, 0, dir.z);
 
-
         RaycastHit rayHit;
-        if(Physics.Raycast(transform.position, dir, out rayHit, _bounceRaycastDist, bounceLayerMask))
+        if(Physics.Raycast(transform.position, dir, out rayHit, _bounceRaycastDist, bounceLayerMask,QueryTriggerInteraction.Ignore))
         {
             Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, rayHit.normal);
+            if (bounceDirection == Vector3.zero) return ;
             rb.velocity = bounceDirection * lastVelocity.magnitude;
         }
         //other.contacts[0].normal
