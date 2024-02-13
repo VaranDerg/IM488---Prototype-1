@@ -87,6 +87,13 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
             OnEnvironmentCollision(other);
         }
 
+        AuraSpell aura = other.GetComponent<AuraSpell>();
+        if(aura != null)
+        {
+            if (aura.owner == owner)
+                return;
+        }
+
         if (!isPersistent)
             Deactivate();
     }
