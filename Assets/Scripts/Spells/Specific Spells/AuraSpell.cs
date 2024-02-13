@@ -220,6 +220,11 @@ public class AuraSpell : AbstractSpell
     {
         Projectile proj = otherObj.GetComponent<Projectile>();
 
+        if (proj == null)
+        {
+            return;
+        }
+
         if (proj.GetPlayer() == owner)
             return;
 

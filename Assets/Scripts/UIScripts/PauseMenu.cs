@@ -78,7 +78,7 @@ public class PauseMenu : BaseMenuController
     /// </summary>
     public void ToMainMenu()
     {
-        StopAllCoroutines();
+        FindObjectOfType<SceneTransitions>().StopAllCoroutines();
 
         ManagerParent.Instance.Game.ResetGame();
 
