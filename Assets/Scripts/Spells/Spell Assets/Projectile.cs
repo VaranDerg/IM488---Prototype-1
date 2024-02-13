@@ -257,11 +257,11 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
         Vector3 dir = (closestPoint-transform.position).normalized;
         dir = new Vector3(dir.x, 0, dir.z);
 
-
         RaycastHit rayHit;
-        if(Physics.Raycast(transform.position, dir, out rayHit, _bounceRaycastDist, bounceLayerMask))
+        if(Physics.Raycast(transform.position, dir, out rayHit, _bounceRaycastDist, bounceLayerMask,QueryTriggerInteraction.Ignore))
         {
             Vector3 bounceDirection = Vector3.Reflect(lastVelocity.normalized, rayHit.normal);
+            if (bounceDirection == Vector3.zero) return;
             rb.velocity = bounceDirection * lastVelocity.magnitude;
         }
         //other.contacts[0].normal
