@@ -153,6 +153,8 @@ public class Controller : MonoBehaviour, IScalable, ICanUsePortal
     /// <param name="context"></param>
     public void DashInput(InputAction.CallbackContext context)
     {
+        if (ManagerParent.Instance.Game.PlayerHasWonRound)
+            return;
         if (dashCoolingDown)
         {
             if (context.started && _canDisplayCooldown)
