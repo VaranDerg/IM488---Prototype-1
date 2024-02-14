@@ -10,6 +10,11 @@ public class StartupMenu : BaseMenuController
 
     [SerializeField] private TextMeshProUGUI _waitingText1, _waitingText2;
 
+    protected override void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         _waitingText1.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.one);

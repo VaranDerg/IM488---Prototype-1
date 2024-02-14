@@ -21,7 +21,7 @@ public class MultiplayerManager : MonoBehaviour
 
     bool p2Assigned = false;
 
-    private void OnEnable()
+    private void Awake()
     {
         Instance = this;
     }

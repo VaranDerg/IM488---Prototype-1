@@ -16,6 +16,7 @@ public class BaseMenuController : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Debug.Log(MenuPages[0]);
         if (MenuPages.Count > 0)
         {
             SetPageActive(MenuPages[0]);
