@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 0.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: -0.25}
 --- !u!54 &8801266245887298365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   doReevaluateTargetting: 0
   isPersistent: 0
   projectileSpeed: 10
-  damage: 1
+  damage: 1.5
   randomSpeedVariance: 0.4
   canBounce: 0
   isStatic: 0
@@ -192,17 +192,17 @@ PrefabInstance:
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.3965
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.3965
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.2177808
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
@@ -212,12 +212,12 @@ PrefabInstance:
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.429
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
         type: 3}
@@ -253,6 +253,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642525440510846729, guid: af11d825457a8154c945198ef0134807,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7642525440510846730, guid: af11d825457a8154c945198ef0134807,
         type: 3}
