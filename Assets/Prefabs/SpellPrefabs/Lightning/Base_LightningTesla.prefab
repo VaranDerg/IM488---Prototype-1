@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnType: 0
-  duration: 7
+  duration: 8
   startDelay: 1
   tickRate: 2
   tickRateScalar: 1

@@ -85,9 +85,9 @@ MonoBehaviour:
   projectileSpeed: 2
   damage: 0.5
   randomSpeedVariance: 0.4
-  canBounce: 0
+  canBounce: 1
   isStatic: 0
-  projectileLifeTime: 3
+  projectileLifeTime: 2
   bounceLayerMask:
     serializedVersion: 2
     m_Bits: 57472
