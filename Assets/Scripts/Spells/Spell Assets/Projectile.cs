@@ -299,8 +299,6 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
             rb.velocity = bounceDirection * lastVelocity.magnitude;
         }
         //other.contacts[0].normal
-
-
     }
 
     protected virtual Vector3 GetTargetDirection()

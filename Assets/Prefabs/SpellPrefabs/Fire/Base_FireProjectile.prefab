@@ -81,16 +81,16 @@ MonoBehaviour:
   soundEnabled: 1
   targetType: 0
   doReevaluateTargetting: 0
-  isPersistent: 0
+  isPersistent: 1
   projectileSpeed: 4
   damage: 5
   randomSpeedVariance: 0.4
   canBounce: 1
   isStatic: 0
-  projectileLifeTime: 6
+  projectileLifeTime: 4
   bounceLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 49280
   OnLaunchEvent:
     m_PersistentCalls:
       m_Calls: []
