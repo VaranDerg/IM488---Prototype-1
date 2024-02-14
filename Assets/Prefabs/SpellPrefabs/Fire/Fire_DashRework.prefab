@@ -129,7 +129,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.48
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2549639586257327571
 MonoBehaviour:
@@ -150,7 +150,7 @@ MonoBehaviour:
   castDelay: 0.1
   soundEnabled: 1
   auraTickRate: 0.05
-  duration: 0.5
+  duration: 0.25
   damage: 2
   minDistance: 0.3
   scaleMinDistanceWithSize: 1

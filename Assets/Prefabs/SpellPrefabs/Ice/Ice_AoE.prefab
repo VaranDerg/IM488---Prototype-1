@@ -182,7 +182,7 @@ MonoBehaviour:
   castMethod: 0
   castDelay: 0
   soundEnabled: 1
-  auraTickRate: 0.3
+  auraTickRate: 0.05
   duration: 5
   damage: 1
   minDistance: 0
