@@ -131,7 +131,7 @@ MonoBehaviour:
     Loop: 0
     Source: {fileID: 0}
   - Name: Pickup
-    Clip: {fileID: 8300000, guid: aa20dd8033920ea40b69f7e1066bd5b9, type: 3}
+    Clip: {fileID: 8300000, guid: 9a1026af3b9635c4ca746c7478f80524, type: 3}
     Volume: 0.9
     Pitch: 1
     PitchDeviation: 0.1

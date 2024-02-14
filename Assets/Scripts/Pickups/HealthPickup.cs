@@ -8,6 +8,7 @@ public class HealthPickup : PickupAbstract, IPickup
     {
         if(pm.GetPlayerHealth().Heal(GetScriptableObject().PickupValue))
         {
+            ManagerParent.Instance.Audio.PlaySoundEffect("Pickup");
             Destroy(gameObject);
         }
         PostPickup();

@@ -71,7 +71,7 @@ public class ElementalStats : MonoBehaviour
         //Debug.Log("Stat: " + stat + " amount: " + amt + " duration: " + duration);
         AddStat(stat, amt);
         yield return new WaitForSeconds(duration);
-        Debug.Log(playerStats[stat]);
+        //Debug.Log(playerStats[stat]);
         AddStat(stat, -amt);
     }
 

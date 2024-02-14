@@ -31,7 +31,7 @@ public abstract class PickupAbstract : MonoBehaviour, IPickup
 
     public void DisplayUIPickup(Collider collision)
     {
-        collision.GetComponent<PlayerManager>().SpawnText(data.PopupText, Color.green, 1.5f);
+        collision.GetComponent<PlayerManager>().SpawnText(data.PopupText, data.PickupColor, 1.5f);
     }
 
     public void PostPickup()
