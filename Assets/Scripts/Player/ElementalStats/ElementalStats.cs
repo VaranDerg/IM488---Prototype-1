@@ -66,13 +66,14 @@ public class ElementalStats : MonoBehaviour
     /// <param name="amt"></param>
     /// <param name="duration"></param>
     /// <returns></returns>
-    public IEnumerator TemporaryAddStat(ScalableStat stat,float amt,float duration)
+    public IEnumerator TemporaryAddStat(PlayerManager pm, PickupDataSO pickup, ScalableStat stat,float amt,float duration)
     {
         //Debug.Log("Stat: " + stat + " amount: " + amt + " duration: " + duration);
         AddStat(stat, amt);
         yield return new WaitForSeconds(duration);
         //Debug.Log(playerStats[stat]);
         AddStat(stat, -amt);
+        pm.SpawnText(pickup.EndPopupText, Color.white, 1.5f);
     }
 
     public float GetStat(ScalableStat stat)

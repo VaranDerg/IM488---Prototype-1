@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class ProjectileSpell : AbstractSpell
 {
-    private const int PROJECTILE_AMOUNT_LIGHTNINGAOE = 5;
+    private const int PROJECTILE_AMOUNT_LIGHTNINGAOE = 8;
 
     [SerializeField]
     UnityEvent OnStartAuraEvent;

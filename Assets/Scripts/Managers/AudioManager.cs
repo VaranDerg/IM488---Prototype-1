@@ -33,6 +33,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioFile> _music = new List<AudioFile>();
     [SerializeField] private List<AudioFile> _soundEffects = new List<AudioFile>();
 
+    [Header("Flavor")]
+    [SerializeField] private float _lastRoundPitch = 0.1f;
+
     [Header("Mixing")]
     [SerializeField] private AudioMixerGroup _musicGroup;
     [SerializeField] private AudioMixerGroup _soundEffectGroup;
@@ -141,6 +144,15 @@ public class AudioManager : MonoBehaviour
 
         if (a.Source.isActiveAndEnabled)
         {
+            if (ManagerParent.Instance.Game.GetPlayerOneScore() == ManagerParent.Instance.Options.GetPointsToWin() - 1 || ManagerParent.Instance.Game.GetPlayerTwoScore() == ManagerParent.Instance.Options.GetPointsToWin() - 1)
+            {
+                a.Source.pitch = _lastRoundPitch;
+            }
+            else
+            {
+                a.Source.pitch = a.Pitch;
+            }
+
             a.Source.Play();
             a.Source.playOnAwake = true;
         }

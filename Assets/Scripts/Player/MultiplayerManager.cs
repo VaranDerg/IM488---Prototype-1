@@ -99,6 +99,11 @@ public class MultiplayerManager : MonoBehaviour
         return Color.white;
     }
 
+    public void DisplayTextForPlayer(Player tag, string text, Color c, float lifetime)
+    {
+        GetPlayer(tag).SpawnText(text, c, lifetime);
+    }
+
     public float GetOutlineSize()
     {
         return _outlineSize;

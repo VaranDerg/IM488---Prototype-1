@@ -906,7 +906,7 @@ MonoBehaviour:
   speed: 10
   dashForce: 35
   dashTime: 0.2
-  dashCooldownTime: 0
+  dashCooldownTime: 0.25
   maxSpeed: 50
   _postDashStunDuration: 0.2
   _visuals: {fileID: 1450428817285273774}

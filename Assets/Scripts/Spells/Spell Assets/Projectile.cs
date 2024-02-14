@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     [Header("Stats")]
     [SerializeField]
     TargetType targetType = TargetType.RANDOM;
+    [SerializeField] InvulnTypes invulnType = InvulnTypes.FULLINVULN;
 
     [SerializeField]
     [Tooltip("If true, reevaluates its target's position every FixedUpdate. For homing effects.")]
@@ -347,7 +348,7 @@ public class Projectile : MonoBehaviour, IScalable, ICanUsePortal, IPoolableObje
     // Child Functions
     protected virtual void OnPlayerCollision(Collider other)
     {
-        other.GetComponent<PlayerManager>().Damage(scaledProjectileDamage, InvulnTypes.FULLINVULN);
+        other.GetComponent<PlayerManager>().Damage(scaledProjectileDamage, invulnType);
         //Debug.Log("Damage: " + other.GetComponent<PlayerManager>().name + " | Owner: " + owner);
     }
 

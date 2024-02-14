@@ -144,6 +144,7 @@ MonoBehaviour:
     PitchDeviation: 0.1
     Loop: 0
     Source: {fileID: 0}
+  _lastRoundPitch: 1.1
   _musicGroup: {fileID: -6366596288163594241, guid: aaa32dc9e45560944bad60b42c5545fd,
     type: 2}
   _soundEffectGroup: {fileID: 3221184055220460722, guid: aaa32dc9e45560944bad60b42c5545fd,

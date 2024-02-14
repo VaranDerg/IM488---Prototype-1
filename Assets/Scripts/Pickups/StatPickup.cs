@@ -9,7 +9,7 @@ public class StatPickup : PickupAbstract, IPickup
         foreach(ScalableStat statBuff in GetScriptableObject().StatBuff)
         {
             pm.GetElementalStats().StartCoroutine(pm.GetElementalStats().
-                TemporaryAddStat(statBuff, GetScriptableObject().PickupValue, GetScriptableObject().PickupDuration));
+                TemporaryAddStat(pm, GetScriptableObject(), statBuff, GetScriptableObject().PickupValue, GetScriptableObject().PickupDuration));
         }
 
         //Plays a sound effect
