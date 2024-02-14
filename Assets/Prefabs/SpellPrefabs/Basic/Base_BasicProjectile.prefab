@@ -87,12 +87,12 @@ MonoBehaviour:
   targetType: 0
   doReevaluateTargetting: 0
   isPersistent: 1
-  projectileSpeed: 3
+  projectileSpeed: 4
   damage: 3
   randomSpeedVariance: 0.3
   canBounce: 1
   isStatic: 0
-  projectileLifeTime: 10
+  projectileLifeTime: 8
   bounceLayerMask:
     serializedVersion: 2
     m_Bits: 57472
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickAmt: 10
-  tickRate: 2
+  tickRate: 1.5
   startActive: 0
   OnTickFinish:
     m_PersistentCalls:

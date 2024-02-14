@@ -16,5 +16,5 @@ MonoBehaviour:
   PickupColor: {r: 1, g: 0.091889694, b: 0, a: 1}
   PopupText: Damage+
   PickupValue: 1
-  PickupDuration: 5
+  PickupDuration: 7.5
   StatBuff: 00000000
