@@ -91,7 +91,7 @@ MonoBehaviour:
   projectileLifeTime: 10
   bounceLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 24704
   OnLaunchEvent:
     m_PersistentCalls:
       m_Calls:

@@ -28,6 +28,19 @@ public class WinningPlayerText : BaseUIElement
     {
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(-_rotationDeviation, _rotationDeviation));
 
+        Color c;
+        if (winningPlayer == 1)
+        {
+            c = MultiplayerManager.Instance.GetColorFromPlayer(Player.one);
+        }
+        else
+        {
+            c = MultiplayerManager.Instance.GetColorFromPlayer(Player.two);
+        }
+
+        _playerWinsText.color = c;
+        _flavorText.color = c;
+
         _playerWinsText.text = ManagerParent.Instance.Game.GetPlayerName() + " " + winningPlayer + " Remains.";
         _flavorText.text = _flavorTextPopups[Random.Range(0, _flavorTextPopups.Length)];
 

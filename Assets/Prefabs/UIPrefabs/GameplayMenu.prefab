@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc76051c8248114d9d6529fdc4fbc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationDeviation: 15
+  _rotationDeviation: 10
   _flavorTextPopups:
   - Good stuff.
   - Too easy.
