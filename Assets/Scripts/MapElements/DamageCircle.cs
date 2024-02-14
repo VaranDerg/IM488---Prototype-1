@@ -48,7 +48,7 @@ public class DamageCircle : MonoBehaviour
         while(true)
         {
             foreach (ICanTakeDamage player in _playersToDamage)
-                player.Damage(currentDPS * Time.deltaTime, InvulnTypes.IGNOREINVULN);
+                player.Damage(currentDPS, InvulnTypes.IGNOREINVULN);
             yield return new WaitForSeconds(_tickRate);
         }
     }  
