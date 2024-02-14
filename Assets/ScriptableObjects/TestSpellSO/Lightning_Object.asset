@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Lightning_Object
   m_EditorClassIdentifier: 
   SpellName: Tesla Coil
-  SpellDescription: Periodically place a Tesla that fires out electric charges that
-    damage your opponent.
+  SpellDescription: Periodically place a Tesla that fires continuous electric charges.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: 0f8252fb4c300aa40a3254429974c84f, type: 2}
   SpellType: {fileID: 11400000, guid: 19bb5d5f9c81f8e46be6b4fc1865a7cb, type: 2}

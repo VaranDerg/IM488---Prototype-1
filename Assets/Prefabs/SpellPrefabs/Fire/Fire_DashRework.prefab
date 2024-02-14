@@ -151,7 +151,7 @@ MonoBehaviour:
   soundEnabled: 1
   auraTickRate: 0.05
   duration: 0.25
-  damage: 2
+  damage: 1
   minDistance: 0.3
   scaleMinDistanceWithSize: 1
   auraVisuals: {fileID: 4487717306911379694}

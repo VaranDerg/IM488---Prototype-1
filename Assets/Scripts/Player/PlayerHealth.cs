@@ -52,6 +52,11 @@ public class PlayerHealth : MonoBehaviour
     {  
         _currentHealth -= damage;
 
+        if (damage == 0)
+        {
+            return;
+        }
+
         if(invulnType == InvulnTypes.FULLINVULN)
         {
             //Plays hurt animation.

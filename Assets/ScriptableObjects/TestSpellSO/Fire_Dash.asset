@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Fire_Dash
   m_EditorClassIdentifier: 
   SpellName: Flame Burst
-  SpellDescription: After Dashing, you fire a small burst of Flame, protecting yourself
-    from projectiles and damaging your opponent.
+  SpellDescription: Emit flame after dashing, destroying projectiles and damaging
+    enemy Plasmos.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: eeca3b05bf048ad4fb7397ba6346d7a5, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}

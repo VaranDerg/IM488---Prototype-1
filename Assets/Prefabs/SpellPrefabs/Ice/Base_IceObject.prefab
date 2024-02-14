@@ -268,7 +268,7 @@ MonoBehaviour:
   tickRateScalar: 1
   damage: 0
   delayedDetonation: 0
-  doSelfDamage: 0
+  doSelfDamage: 1
   isPersistent: 1
   _thisSpell: {fileID: 11400000, guid: d030c1ccff10b7a4fb453d278cee8fce, type: 2}
   OnTriggeredEvent:

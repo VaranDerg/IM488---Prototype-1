@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ice_Dash
   m_EditorClassIdentifier: 
   SpellName: Shard of Ice
-  SpellDescription: Dashing shoves a dangerous ice shard in the opposite direction
-    of your Dash.
+  SpellDescription: Dashing launches an ice shard in the opposite direction of your
+    Dash.
   ExcludeFromUI: 0
   SpellElement: {fileID: 11400000, guid: d3d6ae2d5d69a944f924261d9501f8d7, type: 2}
   SpellType: {fileID: 11400000, guid: 359f28217b494ea4d8ee909eb197e63a, type: 2}
