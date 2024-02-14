@@ -15,6 +15,7 @@ MonoBehaviour:
   PickupName: Element Size
   PickupColor: {r: 0, g: 0.83824706, b: 1, a: 1}
   PopupText: Size+
+  EndPopupText: Size-
   PickupValue: 0.75
   PickupDuration: 7.5
   StatBuff: 040000000500000006000000

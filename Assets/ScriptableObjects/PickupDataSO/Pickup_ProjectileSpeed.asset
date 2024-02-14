@@ -15,6 +15,7 @@ MonoBehaviour:
   PickupName: Projectile Speed
   PickupColor: {r: 1, g: 0.9175043, b: 0, a: 1}
   PopupText: Projectile Speed+
+  EndPopupText: Projectile Speed-
   PickupValue: 1.25
   PickupDuration: 7.5
   StatBuff: 03000000

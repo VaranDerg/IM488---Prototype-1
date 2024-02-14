@@ -15,6 +15,7 @@ MonoBehaviour:
   PickupName: Interval Decrease
   PickupColor: {r: 1, g: 0.5896226, b: 0.9195339, a: 1}
   PopupText: Cooldowns-
+  EndPopupText: Cooldowns+
   PickupValue: 2
   PickupDuration: 7.5
   StatBuff: 02000000
