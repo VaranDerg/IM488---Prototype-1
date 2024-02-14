@@ -77,6 +77,28 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "be599dd0-4bb2-49c8-9649-4e8e3f66d035",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7930360a-47d0-4fa4-8b83-4134ab4ef726",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector",
                     "id": "bacd8850-780e-4ed2-b3b3-e947dc2f6472",
                     "path": "2DVector",

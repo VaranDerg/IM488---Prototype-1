@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &23303833813811522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -418,7 +418,7 @@ PrefabInstance:
 
         Move: WASD
 
-        Dodge: Space
+        Dodge: Space/Shift
 
         Select:
         Mouse'
@@ -426,12 +426,17 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_fontSize
-      value: 14
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271347, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
@@ -566,12 +571,17 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_fontSize
-      value: 14
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271347, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
@@ -1487,7 +1497,7 @@ PrefabInstance:
 
         Move: Left Stick
 
-        Dodge: Left Trigger
+        Dodge: LT/RT
 
         Select:
         South Button'
@@ -1495,12 +1505,17 @@ PrefabInstance:
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_fontSize
-      value: 14
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271346, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6134341618809271347, guid: c85b2fc96411b9642be00c30e817003e,
         type: 3}

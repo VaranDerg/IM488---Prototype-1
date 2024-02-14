@@ -5345,7 +5345,7 @@ PrefabInstance:
 
         Move: Left Stick
 
-        Dodge: LT
+        Dodge: LT/RT
 
         Select:
         South '
@@ -7268,7 +7268,7 @@ PrefabInstance:
 
         Move: WASD
 
-        Dodge: Space
+        Dodge: Space/Shift
 
         Select:
         Mouse'
