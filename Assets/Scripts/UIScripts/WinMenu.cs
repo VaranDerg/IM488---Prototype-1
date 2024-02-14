@@ -20,12 +20,13 @@ public class WinMenu : BaseMenuController
         if (ManagerParent.Instance.Game.GetPlayerOneScore() == ManagerParent.Instance.Options.GetPointsToWin())
         {
             winningPlayer = 1;
+            _playerWinText.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.one);
         }
         else
         {
             winningPlayer = 2;
+            _playerWinText.color = MultiplayerManager.Instance.GetColorFromPlayer(Player.two);
         }
-
 
         PreparePlayerWin(winningPlayer);
     }
