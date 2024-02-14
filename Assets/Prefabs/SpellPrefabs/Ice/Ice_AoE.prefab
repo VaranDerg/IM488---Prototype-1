@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScale: 1.2
-  minScale: 0.6
+  minScale: 0.8
   scaleRate: 1
   neverShrink: 0
 --- !u!1001 &7024373686340935898
